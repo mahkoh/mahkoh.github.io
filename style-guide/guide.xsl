@@ -48,7 +48,6 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
                   var bodyName = namePrefix + '<xsl:value-of select="$body_suffix"/>';
                   var buttonName = namePrefix + '<xsl:value-of select="$button_suffix"/>';
                   var bodyElements = GetElementsByName(bodyName);
-                  var linkElement = GetElementsByName('link-' + buttonName)[0];
                   if (bodyElements.length != 1) {
                     throw Error('ShowHideByName() got the wrong number of bodyElements:  ' + 
                         bodyElements.length);
@@ -58,11 +57,9 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
                     var isVisible = bodyElement.style.display != "none";
                     if (getVisibility(isVisible)) {
                       bodyElement.style.display = "inline";
-                      linkElement.style.display = "block";
                       buttonElement.innerHTML = '<xsl:value-of select="$hide_button_text"/>';
                     } else {
                       bodyElement.style.display = "none";
-                      linkElement.style.display = "none";
                       buttonElement.innerHTML = '<xsl:value-of select="$show_button_text"/>';
                     }
                   }
@@ -95,8 +92,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
                     if (root[i].className == 'showhide_button')  {
                       root[i].innerHTML = newButton;
                     }
-                    if (root[i].className == 'stylepoint_body' ||
-                        root[i].className == 'link_button')  {
+                    if (root[i].className == 'stylepoint_body') {
                       root[i].style.display = newState;
                     }
                   }
@@ -164,34 +160,6 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
   </xsl:template>
 
   <xsl:template match="OVERVIEW">
-    <xsl:variable name="button_text">
-      <xsl:choose>
-        <xsl:when test="$show_explanation_default">
-          <xsl:value-of select="$hide_button_text"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$show_button_text"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <DIV style="margin-left: 50%; font-size: 75%;">
-      <P>
-        Each style point has a summary for which additional information is available
-        by toggling the accompanying arrow button that looks this way:
-        <SPAN class="showhide_button" style="margin-left: 0; float: none">
-          <xsl:value-of select="$show_button_text"/></SPAN>.
-        You may toggle all summaries with the big arrow button:
-      </P>
-      <DIV style=" font-size: larger; margin-left: +2em;">
-        <SPAN class="showhide_button" style="font-size: 180%; float: none">
-          <xsl:attribute name="onclick"><xsl:value-of select="'javascript:ShowHideAll()'"/></xsl:attribute>
-          <xsl:attribute name="name"><xsl:value-of select="$show_hide_all_button"/></xsl:attribute>
-          <xsl:attribute name="id"><xsl:value-of select="$show_hide_all_button"/></xsl:attribute>
-          <xsl:value-of select="$button_text"/>
-        </SPAN>
-        Toggle all summaries
-      </DIV>
-    </DIV>
     <xsl:call-template name="TOC">
       <xsl:with-param name="root" select=".."/>
     </xsl:call-template>
@@ -239,7 +207,8 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
         </xsl:choose>
       </xsl:variable>
       <H3>
-        <A>
+        <A class="stylepoint_title">
+          <xsl:attribute name="href">?showone=<xsl:value-of select="$stylepoint_name"/>#<xsl:value-of select="$stylepoint_name"/></xsl:attribute>
           <xsl:attribute name="name"><xsl:value-of select="$stylepoint_name"/></xsl:attribute>
           <xsl:attribute name="id"><xsl:value-of select="$stylepoint_name"/></xsl:attribute>
           <xsl:value-of select="@title"/>
@@ -253,18 +222,14 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
         <xsl:value-of select="$stylepoint_name"/>
         <xsl:text>')</xsl:text>
       </xsl:variable>
-      <SPAN class="link_button" id="link-{$buttonName}" name="link-{$buttonName}">
-        <A>
-          <xsl:attribute name="href">?showone=<xsl:value-of select="$stylepoint_name"/>#<xsl:value-of select="$stylepoint_name"/></xsl:attribute>
-          link
-        </A>
-      </SPAN>
-      <SPAN class="showhide_button">
-        <xsl:attribute name="onclick"><xsl:value-of select="$onclick_definition"/></xsl:attribute>
-        <xsl:attribute name="name"><xsl:value-of select="$buttonName"/></xsl:attribute>
-        <xsl:attribute name="id"><xsl:value-of select="$buttonName"/></xsl:attribute>
-        <xsl:value-of select="$button_text"/>
-      </SPAN>
+      <xsl:if test="BODY">
+        <SPAN class="showhide_button">
+          <xsl:attribute name="onclick"><xsl:value-of select="$onclick_definition"/></xsl:attribute>
+          <xsl:attribute name="name"><xsl:value-of select="$buttonName"/></xsl:attribute>
+          <xsl:attribute name="id"><xsl:value-of select="$buttonName"/></xsl:attribute>
+          <xsl:value-of select="$button_text"/>
+        </SPAN>
+      </xsl:if>
       <xsl:apply-templates>
         <xsl:with-param name="anchor_prefix" select="$stylepoint_name" />
       </xsl:apply-templates>
@@ -295,47 +260,6 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
         <xsl:apply-templates/>
       </DIV>
     </DIV>
-  </xsl:template>
-
-  <xsl:template match="DEFINITION">
-    <P>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <SPAN class="stylepoint_section">Definition:  </SPAN>
-      <xsl:apply-templates/>
-    </P>
-  </xsl:template>
-
-  <xsl:template match="PROS">
-    <P>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <SPAN class="stylepoint_section">Pros:  </SPAN>
-      <xsl:apply-templates/>
-    </P>
-  </xsl:template>
-
-  <xsl:template match="CONS">
-    <P>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <SPAN class="stylepoint_section">Cons: </SPAN>
-      <xsl:apply-templates/>
-    </P>
-  </xsl:template>
-
-  <xsl:template match="DECISION">
-    <P>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <SPAN class="stylepoint_section">Decision:  </SPAN>
-      <xsl:apply-templates/>
-    </P>
-  </xsl:template>
-
-  <xsl:template match="TODO">
-    <P>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <DIV style="font-size: 150%;">TODO:
-        <xsl:apply-templates/>
-      </DIV>
-    </P>
   </xsl:template>
 
   <xsl:template match="SUBSECTION">
@@ -387,38 +311,6 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
          </xsl:call-template></PRE>
     </DIV>
   </xsl:template>
-
-  <xsl:template match="PY_CODE_SNIPPET">
-    <DIV>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <PRE><xsl:call-template name="print_python_code">
-             <xsl:with-param name="text" select="."/>
-           </xsl:call-template></PRE>
-    </DIV>
-  </xsl:template>
-
-  <xsl:template match="BAD_PY_CODE_SNIPPET">
-    <DIV>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <PRE class="badcode"><xsl:call-template name="print_python_code">
-                             <xsl:with-param name="text" select="."/>
-                           </xsl:call-template></PRE>
-    </DIV>
-  </xsl:template>
-
-  <xsl:template match="FUNCTION">
-    <xsl:call-template name="print_function_name">
-      <xsl:with-param name="text" select="."/>
-    </xsl:call-template>
-  </xsl:template>
-
-  <xsl:template match="SYNTAX">
-    <I>
-      <xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute>
-      <xsl:apply-templates/>
-    </I>
-  </xsl:template>
-
 
   <!-- This passes through any HTML elements that the
     XML doc uses for minor formatting -->

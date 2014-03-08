@@ -7,10 +7,11 @@ body {
   margin-left: 100px;
 }
 
-h1, h2, h3, h4, h5, h6, .toc_title {
+h1, h2, h3, h4, h5, h6, .toc_title, h3 > a {
   color: #06c;
   margin-top: 2em;
   margin-bottom: 1em;
+  text-decoration: none;
 }
 
 h1 {
@@ -84,22 +85,6 @@ pre.badcode {
   border-color: #ddd #aaa #aaa #ddd;
   padding: 0 3px 1px;
   margin: 0 4px 8px 0;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-}
-
-.link_button {
-  float: left;
-  display: none;
-  background-color: #f8f8ff;
-  border-color: #f0f0ff;
-  border-style: solid;
-  border-width: 1px;
-  font-size: 75%;
-  margin-top: 0;
-  margin-left: -50px;
-  padding: 4px;
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;

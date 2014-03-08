@@ -2,12 +2,6 @@
 <?xml-stylesheet type="text/xsl" href="guide.xsl"?>
 <GUIDE title="Neovim Style Guide">
 
-<p align="right">
-
-Revision 1
-</p>
-
-
 <OVERVIEW>
 <CATEGORY title="Important Note">
   <STYLEPOINT title="Displaying Hidden Details in this Guide">
@@ -20,10 +14,22 @@ Revision 1
      <BODY>
        <p>
         Hooray!  Now you know you can expand points to get more
-        details.  Alternatively, there's an "expand all" at the
-        top of this document.
+        details.
        </p>
      </BODY>
+  </STYLEPOINT>
+
+  <STYLEPOINT title="Copyright">
+    <SUMMARY>
+      <p>
+        This style guide is licensed under the
+        <a href="http://creativecommons.org/licenses/by/3.0/">CC-By 3.0</a>
+        License.
+        It was originally created by
+        <a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google</a>
+        and has been modified to fit Neovim's needs.
+      </p>
+    </SUMMARY>
   </STYLEPOINT>
 </CATEGORY>
 <CATEGORY title="Background">
@@ -52,38 +58,19 @@ Revision 1
       All header files should have <code>#define</code> guards to
       prevent multiple inclusion.  The format of the symbol name
       should be
-      <code><i>NEOVIM</i>_<i>&lt;FILE&gt;</i>_H</code>.
-    </SUMMARY>
-    <BODY>
-      
-      <CODE_SNIPPET>
-         #ifndef NEOVIM_FOO_H
-         #define NEOVIM_FOO_H
-
-         ...
-
-         #endif // NEOVIM_FOO_H
-      </CODE_SNIPPET>
-      
-    </BODY>
-  </STYLEPOINT>
-
-  <STYLEPOINT title="Function Parameter Ordering">
-    <SUMMARY>
-      When defining a function, parameter order is: inputs,
-      then outputs.
+      <code><i>NEOVIM</i>_<i>&lt;DIRECTORY&gt;</i>_<i>&lt;FILE&gt;</i>_H</code>.
     </SUMMARY>
     <BODY>
       <p>
-        Parameters to C functions are either input to the
-        function, output from the function, or both. Input parameters
-        are usually values or <code>const</code> pointers, while output
-        and input/output parameters will be non-<code>const</code>
-        pointers. When ordering function parameters, put all input-only
-        parameters before any output parameters.  In particular, do not add
-        new parameters to the end of the function just because they are
-        new; place new input-only parameters before the output
-        parameters.
+        In <code>foo/bar.h</code>:
+        <CODE_SNIPPET>
+           #ifndef NEOVIM_FOO_BAR_H
+           #define NEOVIM_FOO_BAR_H
+
+           ...
+
+           #endif  // NEOVIM_FOO_BAR_H
+        </CODE_SNIPPET>
       </p>
     </BODY>
   </STYLEPOINT>
@@ -125,6 +112,13 @@ Revision 1
       <p>
         Macro constants in header files cannot be used by unit tests.
       </p>
+      <CODE_SNIPPET>
+        enum {
+          kMyFirstConstant = 0;
+          kMySecondConstant = 1;
+          kMyThirdConstant = 0;
+        };
+      </CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
 </CATEGORY>
@@ -184,13 +178,26 @@ Revision 1
     <SUMMARY>
       We do not allow variable-length arrays or <code>alloca()</code>.
     </SUMMARY>
-    <BODY></BODY>
+    <BODY>
+      <p>
+        Variable-length arrays can cause hard to detect stack overflows.
+      </p>
+    </BODY>
   </STYLEPOINT>
 
   <STYLEPOINT title="Postincrement and Postdecrement">
     <SUMMARY>
-      Use postfix form (<code>i++</code>) in <code>for</code> loops.
+      Use postfix form (<code>i++</code>) in statements.
     </SUMMARY>
+    <BODY>
+      <CODE_SNIPPET>
+        for (int i = 0; i &lt; 3; i++) { }
+        int j = ++i;  // OK: ++i is used as an expression.
+      </CODE_SNIPPET>
+      <BAD_CODE_SNIPPET>
+        ++i;  // BAD: ++i is used as a statement.
+      </BAD_CODE_SNIPPET>
+    </BODY>
   </STYLEPOINT>
 
   <STYLEPOINT title="Use of const">
@@ -201,7 +208,7 @@ Revision 1
       <SUBSECTION title="Where to put the const">
         <p>
           Some people favor the form <code>int const *foo</code> to
-          <code>const int* foo</code>.  They argue that this is more
+          <code>const int *foo</code>.  They argue that this is more
           readable because it's more consistent: it keeps the rule
           that <code>const</code> always follows the object it's
           describing.  However, this consistency argument doesn't
@@ -306,6 +313,22 @@ Revision 1
           </TBODY>
         </table>
       </p>
+    </BODY>
+  </STYLEPOINT>
+
+  <STYLEPOINT title="Function declarations">
+    <SUMMARY>
+      Every function must have a declaration separate from its definition.
+    </SUMMARY>
+    <BODY>
+      <CODE_SNIPPET>
+        static void f(void);
+
+        static void f(void)
+        {
+          ...
+        }
+      </CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
 
@@ -445,13 +468,13 @@ Revision 1
     </SUMMARY>
     <BODY>
       <p>
-        Examples of acceptable file names:
+        Use underscores to separate words. Examples of acceptable file names:
       </p>
       <p>
-        <code>
-          my_useful_file.c<br/>
-          myusefulfile.c<br/>
-        </code>
+        <CODE_SNIPPET>
+          my_useful_file.c
+          getline_fix.c  // OK: getline refers to the glibc function.
+        </CODE_SNIPPET>
       </p>
       <p>
         C files should end in <code>.c</code> and header files
@@ -560,8 +583,16 @@ Revision 1
       Function names are all lowercase, with underscores between
       words.  For
       instance: <code>my_exceptional_function()</code>.
+      All functions in the same header file should have a common prefix.
     </SUMMARY>
     <BODY>
+      <p>
+        In <code>os_unix.h</code>:
+      </p>
+      <CODE_SNIPPET>
+        void unix_open(const char *path);
+        void unix_user_id(void);
+      </CODE_SNIPPET>
       <p>
         If your function crashes upon an error, you should append or_die to
         the function name. This only applies to functions which could be
@@ -614,10 +645,13 @@ Revision 1
   </p>
   <p>
     When writing your comments, write for your audience: the next
-    
     contributor
     who will need to understand your code.  Be generous — the next
     one may be you!
+  </p>
+  <p>
+    Neovim uses <a href="http://en.wikipedia.org/wiki/Doxygen">Doxygen</a>
+    comments.
   </p>
 
   <STYLEPOINT title="Comment Style">
@@ -626,13 +660,9 @@ Revision 1
     </SUMMARY>
     <BODY>
       <CODE_SNIPPET>
-        // This is a long comment
-        // spanning multiple lines.
-        void f(void) {
-          // We call `g()` because &lt;reasons&gt;
-          g();
-          ...
-        }
+        // This is a comment spanning
+        // multiple lines
+        f();
       </CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
@@ -645,7 +675,6 @@ Revision 1
     </SUMMARY>
     <BODY>
       <SUBSECTION title="Legal Notice and Author Line">
-        
         <p>
           Every file should contain license boilerplate.
           Choose the appropriate boilerplate for the license used by the project
@@ -662,7 +691,8 @@ Revision 1
           Every file should have a comment at the top describing its contents.
         </p>
         <p>
-          Generally a <code>.h</code> file will describe the classes
+          Generally a <code>.h</code> file will describe the variabels and
+          functions
           that are declared in the file with an overview of what they
           are for and how they are used. A <code>.c</code> file
           should contain more information about implementation details
@@ -678,25 +708,56 @@ Revision 1
           the <code>.c</code>. Duplicated comments diverge.
         </p>
       </SUBSECTION>
+      <CODE_SNIPPET>
+        FIXME: DO WE KEEP THE LICENSE?
+        // VIM - Vi IMproved    by Bram Moolenaar
+        //
+        // Do ":help uganda"  in Vim to read copying and usage conditions.
+        // Do ":help credits" in Vim to see a list of people who contributed.
+
+        /// A brief description of this file.
+        ///
+        /// A longer description of this file.
+        /// Be very generous here.
+      </CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
 
   <STYLEPOINT title="Struct Comments">
     <SUMMARY>
-      Every struct definition should have an accompanying comment that
+      Every struct definition should have accompanying comments that
       describes what it is for and how it should be used.
     </SUMMARY>
     <BODY>
       <CODE_SNIPPET>
-        // Window info stored with a buffer.
-        //
-        // Two types of info are kept for a buffer which are associated with a
-        // specific window:
-        // 1. Each window can have a different line number associated with a buffer.
-        // 2. The window-local options for a buffer work in a similar way.
-        // The window-info is kept in a list at b_wininfo.  It is kept in
-        // most-recently-used order.
+        /// Window info stored with a buffer.
+        ///
+        /// Two types of info are kept for a buffer which are associated with a
+        /// specific window:
+        /// 1. Each window can have a different line number associated with a
+        /// buffer.
+        /// 2. The window-local options for a buffer work in a similar way.
+        /// The window-info is kept in a list at b_wininfo.  It is kept in
+        /// most-recently-used order.
         struct wininfo_S {
+          /// Next entry or NULL for last entry.
+          wininfo_T *wi_next;
+          /// Previous entry or NULL for first entry.
+          wininfo_T *wi_prev;
+          /// Pointer to window that did the wi_fpos.
+          win_T *wi_win;
+          ...
+        };
+      </CODE_SNIPPET>
+      <p>
+        If the field comments are short, you can also put them next to the
+        field. But be consistent within one struct.
+      </p>
+      <CODE_SNIPPET>
+        struct wininfo_S {
+          wininfo_T *wi_next;  /// Next entry or NULL for last entry.
+          wininfo_T *wi_prev;  /// Previous entry or NULL for first entry.
+          win_T *wi_win;       /// Pointer to window that did the wi_fpos.
           ...
         };
       </CODE_SNIPPET>
@@ -737,8 +798,6 @@ Revision 1
           declaration:
         </p>
         <ul>
-          <li> What the inputs and outputs are.
-               </li>
           <li> If the function allocates memory that the caller
                must free.
                </li>
@@ -751,34 +810,18 @@ Revision 1
                synchronization assumptions?
                </li>
         </ul>
-        <p>
-          Here is an example:
-        </p>
         <CODE_SNIPPET>
-          // Returns an iterator for this table.  It is the client's
-          // responsibility to free the iterator when it is done with it,
-          // and it must not use the iterator once the GargantuanTable object
-          // on which the iterator was created has been freed.
-          //
-          // The iterator is initially positioned at the beginning of the table.
-          //
-          // This method is equivalent to:
-          //    Iterator* iter = new_iterator(table);
-          //    iterator_seek(iter, "");
-          //    return iter;
-          // If you are going to immediately seek to another place in the
-          // returned iterator, it will be faster to use new_iterator()
-          // and avoid the extra seek.
-          Iterator *get_iterator();
-        </CODE_SNIPPET>
-        <p>
-          However, do not be unnecessarily verbose or state the
-          completely obvious.  Notice below that it is not necessary
-          to say "returns false otherwise" because this is implied.
-        </p>
-        <CODE_SNIPPET>
-          // Returns true if the table cannot hold any more entries.
-          bool is_table_full();
+          /// Brief description of the function.
+          ///
+          /// Detailed description.
+          /// May span multiple paragraphs.
+          ///
+          /// @param arg1 Description of arg1
+          /// @param arg2 Description of arg2. May span
+          ///        multiple lines.
+          ///
+          /// @return Description of the return value.
+          Iterator *get_iterator(void *arg1, void *arg2);
         </CODE_SNIPPET>
       </SUBSECTION>
 
@@ -800,6 +843,13 @@ Revision 1
           wherever.  It's okay to recapitulate briefly what the function
           does, but the focus of the comments should be on how it does it.
         </p>
+        <CODE_SNIPPET>
+          // Note that we don't use Doxygen comments here.
+          Iterator *get_iterator(void *arg1, void *arg2)
+          {
+            ...
+          }
+        </CODE_SNIPPET>
       </SUBSECTION>
     </BODY>
   </STYLEPOINT>
@@ -818,8 +868,8 @@ Revision 1
           For example:
         </p>
         <CODE_SNIPPET>
-          // The total number of tests cases that we run
-          // through in this regression test.
+          /// The total number of tests cases that we run
+          /// through in this regression test.
           const int kNumTestCases = 6;
         </CODE_SNIPPET>
       </SUBSECTION>
@@ -1457,6 +1507,23 @@ Revision 1
         int x[] = {0};    // No spaces inside braces for braced-init-list.
         </CODE_SNIPPET>
       </SUBSECTION>
+      <SUBSECTION title="Variables">
+        <BAD_CODE_SNIPPET>
+          int long_variable = 0;  // Don't align assignments.
+          int i             = 1;
+        </BAD_CODE_SNIPPET>
+        <CODE_SNIPPET>
+          struct my_struct {  // Exception: struct arrays.
+            const char *boy;
+            const char *girl;
+            int pos;
+          } my_variable[] = {
+            {"Mia",       "Michael", 8},
+            {"Elizabeth", "Aiden",   10},
+            {"Emma",      "Mason",   2},
+          };
+        </CODE_SNIPPET>
+      </SUBSECTION>
       <SUBSECTION title="Loops and Conditionals">
         <CODE_SNIPPET>
         if (b) {              // Space after the keyword in condition.
@@ -1517,7 +1584,7 @@ Revision 1
 <HR/>
 
 <p align="right">
-Revision 1
+Revision 2
 </p>
 
 </GUIDE>
