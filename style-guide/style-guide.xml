@@ -195,6 +195,7 @@
         int j = ++i;  // OK: ++i is used as an expression.
       </CODE_SNIPPET>
       <BAD_CODE_SNIPPET>
+        for (int i = 0; i &lt; 3; ++i) { }
         ++i;  // BAD: ++i is used as a statement.
       </BAD_CODE_SNIPPET>
     </BODY>
@@ -313,6 +314,28 @@
           </TBODY>
         </table>
       </p>
+    </BODY>
+  </STYLEPOINT>
+
+  <STYLEPOINT title="Booleans">
+    <SUMMARY>
+        Use <code>bool</code> to represent boolean values.
+    </SUMMARY>
+    <BODY>
+      <BAD_CODE_SNIPPET>
+        int loaded = 1;  // BAD: loaded should have type bool.
+      </BAD_CODE_SNIPPET>
+    </BODY>
+  </STYLEPOINT>
+
+  <STYLEPOINT title="Variable declarations">
+    <SUMMARY>
+      Declare only one variable per line.
+    </SUMMARY>
+    <BODY>
+      <BAD_CODE_SNIPPET>
+        int i, j = 1
+      </BAD_CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
 
@@ -669,20 +692,12 @@
 
   <STYLEPOINT title="File Comments">
     <SUMMARY>
-      FIXME: 
-      Start each file with license boilerplate,
-      followed by a description of its contents.
+      Start each file with a description of its contents.
     </SUMMARY>
     <BODY>
-      <SUBSECTION title="Legal Notice and Author Line">
+      <SUBSECTION title="Legal Notice">
         <p>
-          Every file should contain license boilerplate.
-          Choose the appropriate boilerplate for the license used by the project
-          (for example, Apache 2.0, BSD, LGPL, GPL).
-        </p>
-        <p>
-          If you make significant changes to a file with an author line,
-          consider deleting the author line.
+          We have no such thing. These things are in COPYING and only there.
         </p>
       </SUBSECTION>
 
@@ -709,12 +724,6 @@
         </p>
       </SUBSECTION>
       <CODE_SNIPPET>
-        FIXME: DO WE KEEP THE LICENSE?
-        // VIM - Vi IMproved    by Bram Moolenaar
-        //
-        // Do ":help uganda"  in Vim to read copying and usage conditions.
-        // Do ":help credits" in Vim to see a list of people who contributed.
-
         /// A brief description of this file.
         ///
         /// A longer description of this file.
@@ -1142,7 +1151,8 @@
         Functions look like this:
       </p>
       <CODE_SNIPPET>
-        ReturnType function_name(Type par_name1, Type par_name2) {
+        ReturnType function_name(Type par_name1, Type par_name2)
+        {
           do_something();
           ...
         }
@@ -1152,19 +1162,21 @@
       </p>
       <CODE_SNIPPET>
         ReturnType really_long_function_name(Type par_name1, Type par_name2,
-                                             Type par_name3) {
+                                             Type par_name3)
+        {
           do_something();
           ...
         }
       </CODE_SNIPPET>
       <p>
-        or if you cannot fit even the first parameter:
+        or if you cannot fit even the first parameter (but only then):
       </p>
       <CODE_SNIPPET>
         ReturnType really_really_really_long_function_name(
             Type par_name1,  // 4 space indent
             Type par_name2,
-            Type par_name3) {
+            Type par_name3)
+        {
           do_something();  // 2 space indent
           ...
         }
@@ -1188,12 +1200,9 @@
         <li> There is never a space between the parentheses and the
              parameters.
              </li>
-        <li> The open curly brace is always at the end of the same
-             line as the last parameter.
+        <li> The open curly brace is always on the next line.
              </li>
-        <li> The close curly brace is either on the last line by itself
-             or (if other style rules permit) on the same line as the
-             open curly brace.
+        <li> The close curly brace is always on the last line by itself.
              </li>
         <li> There should be a space between the close parenthesis and
              the open curly brace.
@@ -1270,7 +1279,8 @@
   <STYLEPOINT title="Braced Initializer Lists">
     <SUMMARY>
       Format a braced list exactly like you would format a function call in its
-      place.
+      place but with one space after the <code>{</code> and one space before the
+      <code>}</code>
     </SUMMARY>
     <BODY>
       <p>
@@ -1282,9 +1292,9 @@
         struct my_struct m = {  // Here, you could also break before {.
             superlongvariablename1,
             superlongvariablename2,
-            {short, interior, list},
-            {interiorwrappinglist,
-             interiorwrappinglist2}};
+            { short, interior, list },
+            { interiorwrappinglist,
+              interiorwrappinglist2 } };
       </CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
@@ -1524,6 +1534,14 @@
           };
         </CODE_SNIPPET>
       </SUBSECTION>
+      <SUBSECTION title="Macros">
+        <BAD_CODE_SNIPPET>
+          #define FI(x) \  // Don't allign \'s in macro definitions.
+            foo();      \
+            bar();      \
+            ...
+        </BAD_CODE_SNIPPET>
+      </SUBSECTION>
       <SUBSECTION title="Loops and Conditionals">
         <CODE_SNIPPET>
         if (b) {              // Space after the keyword in condition.
@@ -1550,6 +1568,7 @@
           ...
         v = w*x + y/z;    // Use spaces to indicate operator precedence.
         v = w * (x + z);  // Parentheses should have no spaces inside them.
+        i = (int)d;       // No spaces after a cast operator.
         </CODE_SNIPPET>
       </SUBSECTION>
     </BODY>
@@ -1581,10 +1600,16 @@
   </STYLEPOINT>
 </CATEGORY>
 
+<PARTING_WORDS>
+  The style guide is supposed to make the code more readable. If you think you have
+  to violate its rules for the sake of clearity, do it! But please add a note to
+  your pull request explaining your reasoning.
+</PARTING_WORDS>
+
 <HR/>
 
 <p align="right">
-Revision 2
+Revision 3
 </p>
 
 </GUIDE>
