@@ -1514,7 +1514,7 @@
           ...
         }
         int i = 0;        // Semicolons usually have no space before them.
-        int x[] = {0};    // No spaces inside braces for braced-init-list.
+        int x[] = { 0 };  // No spaces inside braces for braced-init-list.
         </CODE_SNIPPET>
       </SUBSECTION>
       <SUBSECTION title="Variables">
@@ -1528,9 +1528,9 @@
             const char *girl;
             int pos;
           } my_variable[] = {
-            {"Mia",       "Michael", 8},
-            {"Elizabeth", "Aiden",   10},
-            {"Emma",      "Mason",   2},
+            { "Mia",       "Michael", 8  },
+            { "Elizabeth", "Aiden",   10 },
+            { "Emma",      "Mason",   2  },
           };
         </CODE_SNIPPET>
       </SUBSECTION>
@@ -1609,7 +1609,7 @@
 <HR/>
 
 <p align="right">
-Revision 3
+Revision 4
 </p>
 
 </GUIDE>
