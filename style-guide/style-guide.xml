@@ -339,6 +339,21 @@
     </BODY>
   </STYLEPOINT>
 
+  <STYLEPOINT title="Conditions">
+    <SUMMARY>
+      Don't use "yoda-conditions".
+      Use at most one assignment pre condition.
+    </SUMMARY>
+    <BODY>
+      <BAD_CODE_SNIPPET>
+        if (1 == x) {
+      </BAD_CODE_SNIPPET>
+      <BAD_CODE_SNIPPET>
+        if ((x = f()) &amp;&amp; (y = g())) {
+      </BAD_CODE_SNIPPET>
+    </BODY>
+  </STYLEPOINT>
+
   <STYLEPOINT title="Function declarations">
     <SUMMARY>
       Every function must have a declaration separate from its definition.
@@ -351,6 +366,24 @@
         {
           ...
         }
+      </CODE_SNIPPET>
+    </BODY>
+  </STYLEPOINT>
+
+  <STYLEPOINT title="General translation unit layout">
+    <SUMMARY>
+      Declarations of static functions precede the definitions of public functions
+      which in turn precede the definitions of static functions.
+    </SUMMARY>
+    <BODY>
+      <CODE_SNIPPET>
+        &lt;HEADER&gt;
+
+        &lt;STATIC FUNCTION DECLARATIONS&gt;
+
+        &lt;PUBLIC FUNCTION DEFINITIONS&gt;
+
+        &lt;STATIC FUNCTION DEFINITIONS&gt;
       </CODE_SNIPPET>
     </BODY>
   </STYLEPOINT>
