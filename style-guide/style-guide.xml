@@ -261,7 +261,7 @@
     <BODY>
       <p>
         Use care when converting integer types. Integer conversions and
-        promotions can cause non-intuitive behavior.  Note that the sign of
+        promotions can cause non-intuitive behavior.  Note that the signedness of
         <code>char</code> is implementation defined.
       </p>
       <p>
@@ -342,7 +342,7 @@
   <STYLEPOINT title="Conditions">
     <SUMMARY>
       Don't use "yoda-conditions".
-      Use at most one assignment pre condition.
+      Use at most one assignment per condition.
     </SUMMARY>
     <BODY>
       <BAD_CODE_SNIPPET>
@@ -459,7 +459,7 @@
       </BAD_CODE_SNIPPET>
       <CODE_SNIPPET>
         if (raw_size &lt; sizeof(int)) {
-          LOG(ERROR) &lt;&lt; "compressed record not big enough for count: " &lt;&lt; raw_size;
+          fprintf(stderr, "compressed record not big enough for count: %ju", raw_size);
           return false;
         }
       </CODE_SNIPPET>
@@ -712,7 +712,7 @@
 
   <STYLEPOINT title="Comment Style">
     <SUMMARY>
-      Use the <code>//</code> syntax only.
+      Use the <code>//</code>-style syntax only.
     </SUMMARY>
     <BODY>
       <CODE_SNIPPET>
@@ -779,15 +779,15 @@
         /// 1. Each window can have a different line number associated with a
         /// buffer.
         /// 2. The window-local options for a buffer work in a similar way.
-        /// The window-info is kept in a list at b_wininfo.  It is kept in
+        /// The window-info is kept in a list at g_wininfo.  It is kept in
         /// most-recently-used order.
-        struct wininfo_S {
+        struct win_info {
           /// Next entry or NULL for last entry.
-          wininfo_T *wi_next;
+          WinInfo *wi_next;
           /// Previous entry or NULL for first entry.
-          wininfo_T *wi_prev;
+          WinInfo *wi_prev;
           /// Pointer to window that did the wi_fpos.
-          win_T *wi_win;
+          Win *wi_win;
           ...
         };
       </CODE_SNIPPET>
@@ -797,9 +797,9 @@
       </p>
       <CODE_SNIPPET>
         struct wininfo_S {
-          wininfo_T *wi_next;  /// Next entry or NULL for last entry.
-          wininfo_T *wi_prev;  /// Previous entry or NULL for first entry.
-          win_T *wi_win;       /// Pointer to window that did the wi_fpos.
+          WinInfo *wi_next;  /// Next entry or NULL for last entry.
+          WinInfo *wi_prev;  /// Previous entry or NULL for first entry.
+          Win *wi_win;       /// Pointer to window that did the wi_fpos.
           ...
         };
       </CODE_SNIPPET>
@@ -1547,7 +1547,7 @@
           ...
         }
         int i = 0;        // Semicolons usually have no space before them.
-        int x[] = { 0 };  // No spaces inside braces for braced-init-list.
+        int x[] = { 0 };  // Spaces inside braces for braced-init-list.
         </CODE_SNIPPET>
       </SUBSECTION>
       <SUBSECTION title="Variables">
@@ -1569,7 +1569,7 @@
       </SUBSECTION>
       <SUBSECTION title="Macros">
         <BAD_CODE_SNIPPET>
-          #define FI(x) \  // Don't allign \'s in macro definitions.
+          #define FI(x) \  // Don't align \'s in macro definitions.
             foo();      \
             bar();      \
             ...
@@ -1635,7 +1635,7 @@
 
 <PARTING_WORDS>
   The style guide is supposed to make the code more readable. If you think you have
-  to violate its rules for the sake of clearity, do it! But please add a note to
+  to violate its rules for the sake of clarity, do it! But please add a note to
   your pull request explaining your reasoning.
 </PARTING_WORDS>
 
