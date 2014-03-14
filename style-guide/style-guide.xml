@@ -1543,7 +1543,7 @@
     <BODY>
       <SUBSECTION title="General">
         <CODE_SNIPPET>
-        if (x) {           // Open braces should always have a space before them.
+        if (x) {          // Open braces should always have a space before them.
           ...
         }
         int i = 0;        // Semicolons usually have no space before them.
