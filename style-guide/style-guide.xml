@@ -607,10 +607,8 @@
 
       <SUBSECTION title="Global Variables">
         <p>
-          There are no special requirements for global variables,
-          which should be rare in any case, but if you use one,
-          consider prefixing it with <code>g_</code> or some other
-          marker to easily distinguish it from local variables.
+          Don't use global variables unless absolutely necessary.
+          Prefix global variables with <code>g_</code>.
         </p>
       </SUBSECTION>
     </BODY>
