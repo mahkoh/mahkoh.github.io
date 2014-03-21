@@ -1216,12 +1216,6 @@
         Some points to note:
       </p>
       <ul>
-        <li> If you cannot fit the return type and the function name on a single
-             line, break between them.
-             </li>
-        <li> If you break after the return type of a function definition, do not
-             indent.
-             </li>
         <li> The open parenthesis is always on the same line as the
              function name.
              </li>
