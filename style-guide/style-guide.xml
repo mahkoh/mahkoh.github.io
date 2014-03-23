@@ -105,20 +105,15 @@
 
   <STYLEPOINT title="Constants">
     <SUMMARY>
-      Only use <code>enum</code> constants in header files.
-      Do not use macros.
+      Do not use macros to define constants in headers.
     </SUMMARY>
     <BODY>
       <p>
         Macro constants in header files cannot be used by unit tests.
       </p>
-      <CODE_SNIPPET>
-        enum {
-          kMyFirstConstant = 0;
-          kMySecondConstant = 1;
-          kMyThirdConstant = 0;
-        };
-      </CODE_SNIPPET>
+      <p>
+        However, you are allowed to define a macro that holds the same value as a non-enum constant (defined in the same header) if the value of the constant represents the size of an array.
+      </p>
     </BODY>
   </STYLEPOINT>
 </CATEGORY>
