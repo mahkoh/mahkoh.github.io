@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The tox library documentation.">
+
+    <title>tox::core::Tox - Rust</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    <section class="sidebar">
+        
+
+        <p class='location'><a href='../index.html'>tox</a>&#8203;::<a href='index.html'>core</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Address.html'>Address</a><br/><a class='struct ' href='struct.ClientId.html'>ClientId</a><br/><a class='struct ' href='struct.EventIter.html'>EventIter</a><br/><a class='struct current' href='struct.Tox.html'>Tox</a><br/></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.parse_hex.html'>parse_hex</a><br/></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Search documentation..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'>Struct <a href='../index.html'>tox</a>::<a href='index.html'>core</a>::<a class='struct' href=''>Tox</a><a class='source' id='src-10451' href='../../src/tox/core/mod.rs.html#209-212'>[src]</a></h1>
+<pre class='rust struct'>pub struct Tox {
+    // some fields omitted
+}</pre><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../../tox/core/struct.Tox.html' title='tox::core::Tox'>Tox</a></code></h3><div class='methods'><h4 id='method.get_address' class='method'><code>fn <a href='#method.get_address' class='fnname'>get_address</a>(&amp;self) -&gt; <a class='struct' href='../../tox/core/struct.Address.html' title='tox::core::Address'>Address</a></code></h4>
+<h4 id='method.add_friend' class='method'><code>fn <a href='#method.add_friend' class='fnname'>add_friend</a>(&amp;self, address: <a class='struct' href='http://doc.rust-lang.org/alloc/owned/struct.Box.html' title='alloc::owned::Box'>Box</a>&lt;<a class='struct' href='../../tox/core/struct.Address.html' title='tox::core::Address'>Address</a>&gt;, msg: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, <a class='type' href='../../tox/core/type.Faerr.html' title='tox::core::Faerr'>Faerr</a>&gt;</code></h4>
+<h4 id='method.add_friend_norequest' class='method'><code>fn <a href='#method.add_friend_norequest' class='fnname'>add_friend_norequest</a>(&amp;self, client_id: <a class='struct' href='http://doc.rust-lang.org/alloc/owned/struct.Box.html' title='alloc::owned::Box'>Box</a>&lt;<a class='struct' href='../../tox/core/struct.ClientId.html' title='tox::core::ClientId'>ClientId</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.get_friend_number' class='method'><code>fn <a href='#method.get_friend_number' class='fnname'>get_friend_number</a>(&amp;self, client_id: <a class='struct' href='http://doc.rust-lang.org/alloc/owned/struct.Box.html' title='alloc::owned::Box'>Box</a>&lt;<a class='struct' href='../../tox/core/struct.ClientId.html' title='tox::core::ClientId'>ClientId</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.get_client_id' class='method'><code>fn <a href='#method.get_client_id' class='fnname'>get_client_id</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/alloc/owned/struct.Box.html' title='alloc::owned::Box'>Box</a>&lt;<a class='struct' href='../../tox/core/struct.ClientId.html' title='tox::core::ClientId'>ClientId</a>&gt;, ()&gt;</code></h4>
+<h4 id='method.del_friend' class='method'><code>fn <a href='#method.del_friend' class='fnname'>del_friend</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.get_friend_connection_status' class='method'><code>fn <a href='#method.get_friend_connection_status' class='fnname'>get_friend_connection_status</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='type' href='../../tox/core/type.ConnectionStatus.html' title='tox::core::ConnectionStatus'>ConnectionStatus</a>, ()&gt;</code></h4>
+<h4 id='method.friend_exists' class='method'><code>fn <a href='#method.friend_exists' class='fnname'>friend_exists</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.send_message' class='method'><code>fn <a href='#method.send_message' class='fnname'>send_message</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, msg: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a>, ()&gt;</code></h4>
+<h4 id='method.send_message_withid' class='method'><code>fn <a href='#method.send_message_withid' class='fnname'>send_message_withid</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, theid: <a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a>, msg: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a>, ()&gt;</code></h4>
+<h4 id='method.send_action' class='method'><code>fn <a href='#method.send_action' class='fnname'>send_action</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, action: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a>, ()&gt;</code></h4>
+<h4 id='method.send_action_withid' class='method'><code>fn <a href='#method.send_action_withid' class='fnname'>send_action_withid</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, theid: <a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a>, action: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a>, ()&gt;</code></h4>
+<h4 id='method.set_name' class='method'><code>fn <a href='#method.set_name' class='fnname'>set_name</a>(&amp;self, name: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.get_self_name' class='method'><code>fn <a href='#method.get_self_name' class='fnname'>get_self_name</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>, ()&gt;</code></h4>
+<h4 id='method.get_name' class='method'><code>fn <a href='#method.get_name' class='fnname'>get_name</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>, ()&gt;</code></h4>
+<h4 id='method.set_status_message' class='method'><code>fn <a href='#method.set_status_message' class='fnname'>set_status_message</a>(&amp;self, status: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.set_user_status' class='method'><code>fn <a href='#method.set_user_status' class='fnname'>set_user_status</a>(&amp;self, userstatus: <a class='type' href='../../tox/core/type.UserStatus.html' title='tox::core::UserStatus'>UserStatus</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.get_status_message' class='method'><code>fn <a href='#method.get_status_message' class='fnname'>get_status_message</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>, ()&gt;</code></h4>
+<h4 id='method.get_self_status_message' class='method'><code>fn <a href='#method.get_self_status_message' class='fnname'>get_self_status_message</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>, ()&gt;</code></h4>
+<h4 id='method.get_user_status' class='method'><code>fn <a href='#method.get_user_status' class='fnname'>get_user_status</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='type' href='../../tox/core/type.UserStatus.html' title='tox::core::UserStatus'>UserStatus</a>, ()&gt;</code></h4>
+<h4 id='method.get_self_user_status' class='method'><code>fn <a href='#method.get_self_user_status' class='fnname'>get_self_user_status</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='type' href='../../tox/core/type.UserStatus.html' title='tox::core::UserStatus'>UserStatus</a>, ()&gt;</code></h4>
+<h4 id='method.get_last_online' class='method'><code>fn <a href='#method.get_last_online' class='fnname'>get_last_online</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u64.html'>u64</a>, ()&gt;</code></h4>
+<h4 id='method.set_user_is_typing' class='method'><code>fn <a href='#method.set_user_is_typing' class='fnname'>set_user_is_typing</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, is_typing: <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.get_is_typing' class='method'><code>fn <a href='#method.get_is_typing' class='fnname'>get_is_typing</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.set_sends_receipts' class='method'><code>fn <a href='#method.set_sends_receipts' class='fnname'>set_sends_receipts</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, yesno: <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a>)</code></h4>
+<h4 id='method.count_friendlist' class='method'><code>fn <a href='#method.count_friendlist' class='fnname'>count_friendlist</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a></code></h4>
+<h4 id='method.get_num_online_friends' class='method'><code>fn <a href='#method.get_num_online_friends' class='fnname'>get_num_online_friends</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/std/primitive.u32.html'>u32</a></code></h4>
+<h4 id='method.get_friendlist' class='method'><code>fn <a href='#method.get_friendlist' class='fnname'>get_friendlist</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>&gt;</code></h4>
+<h4 id='method.get_nospam' class='method'><code>fn <a href='#method.get_nospam' class='fnname'>get_nospam</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, ..4]</a></code></h4>
+<h4 id='method.set_nospam' class='method'><code>fn <a href='#method.set_nospam' class='fnname'>set_nospam</a>(&amp;self, nospam: <a href='http://doc.rust-lang.org/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, ..4]</a>)</code></h4>
+<h4 id='method.add_groupchat' class='method'><code>fn <a href='#method.add_groupchat' class='fnname'>add_groupchat</a>(&amp;self) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.del_groupchat' class='method'><code>fn <a href='#method.del_groupchat' class='fnname'>del_groupchat</a>(&amp;self, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.group_peername' class='method'><code>fn <a href='#method.group_peername' class='fnname'>group_peername</a>(&amp;self, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, peernumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>, ()&gt;</code></h4>
+<h4 id='method.invite_friend' class='method'><code>fn <a href='#method.invite_friend' class='fnname'>invite_friend</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.join_groupchat' class='method'><code>fn <a href='#method.join_groupchat' class='fnname'>join_groupchat</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, fgpk: <a class='struct' href='http://doc.rust-lang.org/alloc/owned/struct.Box.html' title='alloc::owned::Box'>Box</a>&lt;<a class='struct' href='../../tox/core/struct.ClientId.html' title='tox::core::ClientId'>ClientId</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.group_message_send' class='method'><code>fn <a href='#method.group_message_send' class='fnname'>group_message_send</a>(&amp;self, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, message: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.group_action_send' class='method'><code>fn <a href='#method.group_action_send' class='fnname'>group_action_send</a>(&amp;self, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, action: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.group_number_peers' class='method'><code>fn <a href='#method.group_number_peers' class='fnname'>group_number_peers</a>(&amp;self, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.group_get_names' class='method'><code>fn <a href='#method.group_get_names' class='fnname'>group_get_names</a>(&amp;self, groupnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a class='type' href='http://doc.rust-lang.org/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;&gt;, ()&gt;</code></h4>
+<h4 id='method.get_chatlist' class='method'><code>fn <a href='#method.get_chatlist' class='fnname'>get_chatlist</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>&gt;</code></h4>
+<h4 id='method.new_file_sender' class='method'><code>fn <a href='#method.new_file_sender' class='fnname'>new_file_sender</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, filesize: <a href='http://doc.rust-lang.org/std/primitive.u64.html'>u64</a>, filename: <a class='struct' href='http://doc.rust-lang.org/std/path/posix/struct.Path.html' title='std::path::posix::Path'>Path</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.file_send_control' class='method'><code>fn <a href='#method.file_send_control' class='fnname'>file_send_control</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, send_receive: <a class='type' href='../../tox/core/type.TransferType.html' title='tox::core::TransferType'>TransferType</a>, filenumber: <a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, message_id: <a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, data: <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.file_send_data' class='method'><code>fn <a href='#method.file_send_data' class='fnname'>file_send_data</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, filenumber: <a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, data: <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.file_data_size' class='method'><code>fn <a href='#method.file_data_size' class='fnname'>file_data_size</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, ()&gt;</code></h4>
+<h4 id='method.file_data_remaining' class='method'><code>fn <a href='#method.file_data_remaining' class='fnname'>file_data_remaining</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/std/primitive.i32.html'>i32</a>, filenumber: <a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>, send_receive: <a class='type' href='../../tox/core/type.TransferType.html' title='tox::core::TransferType'>TransferType</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u64.html'>u64</a>, ()&gt;</code></h4>
+<h4 id='method.bootstrap_from_address' class='method'><code>fn <a href='#method.bootstrap_from_address' class='fnname'>bootstrap_from_address</a>(&amp;self, address: <a class='struct' href='http://doc.rust-lang.org/collections/string/struct.String.html' title='collections::string::String'>String</a>, ipv6: <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a>, port: <a href='http://doc.rust-lang.org/std/primitive.u16.html'>u16</a>, public_key: <a class='struct' href='http://doc.rust-lang.org/alloc/owned/struct.Box.html' title='alloc::owned::Box'>Box</a>&lt;<a class='struct' href='../../tox/core/struct.ClientId.html' title='tox::core::ClientId'>ClientId</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.is_connected' class='method'><code>fn <a href='#method.is_connected' class='fnname'>is_connected</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.new' class='method'><code>fn <a href='#method.new' class='fnname'>new</a>(ipv6enabled: <a href='http://doc.rust-lang.org/std/primitive.bool.html'>bool</a>) -&gt; <a class='type' href='http://doc.rust-lang.org/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../tox/core/struct.Tox.html' title='tox::core::Tox'>Tox</a>&gt;</code></h4>
+<h4 id='method.save' class='method'><code>fn <a href='#method.save' class='fnname'>save</a>(&amp;self) -&gt; <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;</code></h4>
+<h4 id='method.load' class='method'><code>fn <a href='#method.load' class='fnname'>load</a>(&amp;self, data: <a class='struct' href='http://doc.rust-lang.org/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;<a href='http://doc.rust-lang.org/std/primitive.u8.html'>u8</a>&gt;) -&gt; <a class='type' href='http://doc.rust-lang.org/core/result/type.Result.html' title='core::result::Result'>Result</a>&lt;(), ()&gt;</code></h4>
+<h4 id='method.events' class='method'><code>fn <a href='#method.events' class='fnname'>events</a>&lt;'a&gt;(&amp;'a self) -&gt; <a class='struct' href='../../tox/core/struct.EventIter.html' title='tox::core::EventIter'>EventIter</a>&lt;'a&gt;</code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='http://doc.rust-lang.org/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../tox/core/struct.Tox.html' title='tox::core::Tox'>Tox</a></code></h3><div class='methods'><h4 id='method.drop' class='method'><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&uarr;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&darr;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "tox";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>
