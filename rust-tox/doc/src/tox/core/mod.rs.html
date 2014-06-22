@@ -23,7 +23,6 @@
 
     <section class="sidebar">
         
-
         
     </section>
 
@@ -528,6 +527,10 @@
 <span id='488'>488</span>
 <span id='489'>489</span>
 <span id='490'>490</span>
+<span id='491'>491</span>
+<span id='492'>492</span>
+<span id='493'>493</span>
+<span id='494'>494</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::{<span class='ident'>fmt</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>from_str</span>::{<span class='ident'>FromStr</span>};
@@ -738,7 +741,7 @@
 }
 
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Tox</span> {
-    <span class='ident'>events</span>: <span class='ident'>Receiver</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span>,
+    <span class='kw'>pub</span> <span class='ident'>events</span>: <span class='ident'>Receiver</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span>,
     <span class='ident'>control</span>: <span class='ident'>SyncSender</span><span class='op'>&lt;</span><span class='ident'>backend</span>::<span class='ident'>Control</span><span class='op'>&gt;</span>,
 }
 
@@ -884,6 +887,10 @@
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>count_friendlist</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>u32</span> {
         <span class='macro'>forward</span><span class='macro'>!</span>(<span class='ident'>backend</span>::<span class='ident'>CountFriendlist</span>, <span class='op'>-&gt;</span>)
+    }
+
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>count_chatlist</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>u32</span> {
+        <span class='macro'>forward</span><span class='macro'>!</span>(<span class='ident'>backend</span>::<span class='ident'>CountChatlist</span>, <span class='op'>-&gt;</span>)
     }
 
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_num_online_friends</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>u32</span> {
