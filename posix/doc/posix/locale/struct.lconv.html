@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The posix library documentation.">
+
+    <title>posix::locale::lconv - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>locale</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.lconv.html'>lconv</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.duplocale.html'>duplocale</a><a class='fn ' href='fn.freelocale.html'>freelocale</a><a class='fn ' href='fn.newlocale.html'>newlocale</a><a class='fn ' href='fn.uselocale.html'>uselocale</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'>Struct <a href='../index.html'>posix</a>::<a href='index.html'>locale</a>::<a class='struct' href=''>lconv</a><span class='out-of-band'><a id='src-6659' href='../../src/posix/src/locale/linux/x86_64.rs.html#2-27'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct lconv {
+    pub decimal_point: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub thousands_sep: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub grouping: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_curr_symbol: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub currency_symbol: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub mon_decimal_point: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub mon_thousands_sep: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub mon_grouping: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub positive_sign: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub negative_sign: *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_frac_digits: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub frac_digits: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub p_cs_precedes: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub p_sep_by_space: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub n_cs_precedes: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub n_sep_by_space: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub p_sign_posn: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub n_sign_posn: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_p_cs_precedes: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_p_sep_by_space: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_n_cs_precedes: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_n_sep_by_space: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_p_sign_posn: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+    pub int_n_sign_posn: <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.decimal_point'><a class='stability Unmarked' title='No stability level'></a><code>decimal_point</code></td><td></td></tr><tr><td id='structfield.thousands_sep'><a class='stability Unmarked' title='No stability level'></a><code>thousands_sep</code></td><td></td></tr><tr><td id='structfield.grouping'><a class='stability Unmarked' title='No stability level'></a><code>grouping</code></td><td></td></tr><tr><td id='structfield.int_curr_symbol'><a class='stability Unmarked' title='No stability level'></a><code>int_curr_symbol</code></td><td></td></tr><tr><td id='structfield.currency_symbol'><a class='stability Unmarked' title='No stability level'></a><code>currency_symbol</code></td><td></td></tr><tr><td id='structfield.mon_decimal_point'><a class='stability Unmarked' title='No stability level'></a><code>mon_decimal_point</code></td><td></td></tr><tr><td id='structfield.mon_thousands_sep'><a class='stability Unmarked' title='No stability level'></a><code>mon_thousands_sep</code></td><td></td></tr><tr><td id='structfield.mon_grouping'><a class='stability Unmarked' title='No stability level'></a><code>mon_grouping</code></td><td></td></tr><tr><td id='structfield.positive_sign'><a class='stability Unmarked' title='No stability level'></a><code>positive_sign</code></td><td></td></tr><tr><td id='structfield.negative_sign'><a class='stability Unmarked' title='No stability level'></a><code>negative_sign</code></td><td></td></tr><tr><td id='structfield.int_frac_digits'><a class='stability Unmarked' title='No stability level'></a><code>int_frac_digits</code></td><td></td></tr><tr><td id='structfield.frac_digits'><a class='stability Unmarked' title='No stability level'></a><code>frac_digits</code></td><td></td></tr><tr><td id='structfield.p_cs_precedes'><a class='stability Unmarked' title='No stability level'></a><code>p_cs_precedes</code></td><td></td></tr><tr><td id='structfield.p_sep_by_space'><a class='stability Unmarked' title='No stability level'></a><code>p_sep_by_space</code></td><td></td></tr><tr><td id='structfield.n_cs_precedes'><a class='stability Unmarked' title='No stability level'></a><code>n_cs_precedes</code></td><td></td></tr><tr><td id='structfield.n_sep_by_space'><a class='stability Unmarked' title='No stability level'></a><code>n_sep_by_space</code></td><td></td></tr><tr><td id='structfield.p_sign_posn'><a class='stability Unmarked' title='No stability level'></a><code>p_sign_posn</code></td><td></td></tr><tr><td id='structfield.n_sign_posn'><a class='stability Unmarked' title='No stability level'></a><code>n_sign_posn</code></td><td></td></tr><tr><td id='structfield.int_p_cs_precedes'><a class='stability Unmarked' title='No stability level'></a><code>int_p_cs_precedes</code></td><td></td></tr><tr><td id='structfield.int_p_sep_by_space'><a class='stability Unmarked' title='No stability level'></a><code>int_p_sep_by_space</code></td><td></td></tr><tr><td id='structfield.int_n_cs_precedes'><a class='stability Unmarked' title='No stability level'></a><code>int_n_cs_precedes</code></td><td></td></tr><tr><td id='structfield.int_n_sep_by_space'><a class='stability Unmarked' title='No stability level'></a><code>int_n_sep_by_space</code></td><td></td></tr><tr><td id='structfield.int_p_sign_posn'><a class='stability Unmarked' title='No stability level'></a><code>int_p_sign_posn</code></td><td></td></tr><tr><td id='structfield.int_n_sign_posn'><a class='stability Unmarked' title='No stability level'></a><code>int_n_sign_posn</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../posix/locale/struct.lconv.html' title='posix::locale::lconv'>lconv</a></code></h3><div class='impl-methods'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../posix/locale/struct.lconv.html' title='posix::locale::lconv'>lconv</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "posix";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

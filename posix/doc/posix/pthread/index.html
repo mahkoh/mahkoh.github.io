@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The posix library documentation.">
+
+    <title>posix::pthread - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html'>aio</a><a class='mod ' href='../arpa/index.html'>arpa</a><a class='mod ' href='../cpio/index.html'>cpio</a><a class='mod ' href='../ctype/index.html'>ctype</a><a class='mod ' href='../dirent/index.html'>dirent</a><a class='mod ' href='../dlfcn/index.html'>dlfcn</a><a class='mod ' href='../errno/index.html'>errno</a><a class='mod ' href='../fcntl/index.html'>fcntl</a><a class='mod ' href='../fenv/index.html'>fenv</a><a class='mod ' href='../float/index.html'>float</a><a class='mod ' href='../fmtmsg/index.html'>fmtmsg</a><a class='mod ' href='../fnmatch/index.html'>fnmatch</a><a class='mod ' href='../ftw/index.html'>ftw</a><a class='mod ' href='../glob/index.html'>glob</a><a class='mod ' href='../grp/index.html'>grp</a><a class='mod ' href='../iconv/index.html'>iconv</a><a class='mod ' href='../inttypes/index.html'>inttypes</a><a class='mod ' href='../langinfo/index.html'>langinfo</a><a class='mod ' href='../libgen/index.html'>libgen</a><a class='mod ' href='../limits/index.html'>limits</a><a class='mod ' href='../locale/index.html'>locale</a><a class='mod ' href='../monetary/index.html'>monetary</a><a class='mod ' href='../mqueue/index.html'>mqueue</a><a class='mod ' href='../ndbm/index.html'>ndbm</a><a class='mod ' href='../net/index.html'>net</a><a class='mod ' href='../netdb/index.html'>netdb</a><a class='mod ' href='../netinet/index.html'>netinet</a><a class='mod ' href='../nl_types/index.html'>nl_types</a><a class='mod ' href='../poll/index.html'>poll</a><a class='mod current' href='../pthread/index.html'>pthread</a><a class='mod ' href='../pwd/index.html'>pwd</a><a class='mod ' href='../regex/index.html'>regex</a><a class='mod ' href='../sched/index.html'>sched</a><a class='mod ' href='../search/index.html'>search</a><a class='mod ' href='../semaphore/index.html'>semaphore</a><a class='mod ' href='../setjmp/index.html'>setjmp</a><a class='mod ' href='../signal/index.html'>signal</a><a class='mod ' href='../spawn/index.html'>spawn</a><a class='mod ' href='../stddef/index.html'>stddef</a><a class='mod ' href='../stdint/index.html'>stdint</a><a class='mod ' href='../stdio/index.html'>stdio</a><a class='mod ' href='../stdlib/index.html'>stdlib</a><a class='mod ' href='../string/index.html'>string</a><a class='mod ' href='../strings/index.html'>strings</a><a class='mod ' href='../stropts/index.html'>stropts</a><a class='mod ' href='../sys/index.html'>sys</a><a class='mod ' href='../syslog/index.html'>syslog</a><a class='mod ' href='../tar/index.html'>tar</a><a class='mod ' href='../termios/index.html'>termios</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../ulimit/index.html'>ulimit</a><a class='mod ' href='../unistd/index.html'>unistd</a><a class='mod ' href='../utime/index.html'>utime</a><a class='mod ' href='../utmpx/index.html'>utmpx</a><a class='mod ' href='../wchar/index.html'>wchar</a><a class='mod ' href='../wctype/index.html'>wctype</a><a class='mod ' href='../wordexp/index.html'>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html'>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html'>NTStrOwned</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html'>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html'>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html'>AsSlice</a><a class='trait ' href='../trait.NTStr.html'>NTStr</a><a class='trait ' href='../trait.ToNTStr.html'>ToNTStr</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'>Module <a href='../index.html'>posix</a>::<a class='mod' href=''>pthread</a><span class='out-of-band'><a id='src-10030' href='../../src/posix/src/pthread/mod.rs.html#1-565'>[src]</a></span></h1>
+<h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_BARRIER_SERIAL_THREAD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CANCELED: *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a></code><code> = </code><code>-1 as *mut _</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CANCEL_ASYNCHRONOUS: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CANCEL_DEFERRED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CANCEL_DISABLE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CANCEL_ENABLE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CREATE_DETACHED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_CREATE_JOINABLE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_EXPLICIT_SCHED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_INHERIT_SCHED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_MUTEX_DEFAULT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_MUTEX_ERRORCHECK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_MUTEX_NORMAL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_MUTEX_RECURSIVE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_MUTEX_ROBUST: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_MUTEX_STALLED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_ONCE_INIT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_PRIO_INHERIT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_PRIO_NONE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_PRIO_PROTECT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_PROCESS_PRIVATE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_PROCESS_SHARED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_SCOPE_PROCESS: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PTHREAD_SCOPE_SYSTEM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                </table><h2 id='ffi-fns' class='section-header'><a href="#ffi-fns">Foreign Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_attr_getstack.html'
+                               title='posix::pthread::pthread_attr_getstack'>pthread_attr_getstack</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_attr_setstack.html'
+                               title='posix::pthread::pthread_attr_setstack'>pthread_attr_setstack</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_create.html'
+                               title='posix::pthread::pthread_create'>pthread_create</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_exit.html'
+                               title='posix::pthread::pthread_exit'>pthread_exit</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_getspecific.html'
+                               title='posix::pthread::pthread_getspecific'>pthread_getspecific</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_join.html'
+                               title='posix::pthread::pthread_join'>pthread_join</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.pthread_setspecific.html'
+                               title='posix::pthread::pthread_setspecific'>pthread_setspecific</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.PTHREAD_COND_INITIALIZER.html'
+                               title='posix::pthread::PTHREAD_COND_INITIALIZER'>PTHREAD_COND_INITIALIZER</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.PTHREAD_MUTEX_INITIALIZER.html'
+                               title='posix::pthread::PTHREAD_MUTEX_INITIALIZER'>PTHREAD_MUTEX_INITIALIZER</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.PTHREAD_RWLOCK_INITIALIZER.html'
+                               title='posix::pthread::PTHREAD_RWLOCK_INITIALIZER'>PTHREAD_RWLOCK_INITIALIZER</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.muteximedlock.html'
+                               title='posix::pthread::muteximedlock'>muteximedlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mutexrylock.html'
+                               title='posix::pthread::mutexrylock'>mutexrylock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_atfork.html'
+                               title='posix::pthread::pthread_atfork'>pthread_atfork</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_destroy.html'
+                               title='posix::pthread::pthread_attr_destroy'>pthread_attr_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getdetachstate.html'
+                               title='posix::pthread::pthread_attr_getdetachstate'>pthread_attr_getdetachstate</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getguardsize.html'
+                               title='posix::pthread::pthread_attr_getguardsize'>pthread_attr_getguardsize</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getinheritsched.html'
+                               title='posix::pthread::pthread_attr_getinheritsched'>pthread_attr_getinheritsched</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getschedparam.html'
+                               title='posix::pthread::pthread_attr_getschedparam'>pthread_attr_getschedparam</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getschedpolicy.html'
+                               title='posix::pthread::pthread_attr_getschedpolicy'>pthread_attr_getschedpolicy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getscope.html'
+                               title='posix::pthread::pthread_attr_getscope'>pthread_attr_getscope</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_getstacksize.html'
+                               title='posix::pthread::pthread_attr_getstacksize'>pthread_attr_getstacksize</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_init.html'
+                               title='posix::pthread::pthread_attr_init'>pthread_attr_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setdetachstate.html'
+                               title='posix::pthread::pthread_attr_setdetachstate'>pthread_attr_setdetachstate</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setguardsize.html'
+                               title='posix::pthread::pthread_attr_setguardsize'>pthread_attr_setguardsize</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setinheritsched.html'
+                               title='posix::pthread::pthread_attr_setinheritsched'>pthread_attr_setinheritsched</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setschedparam.html'
+                               title='posix::pthread::pthread_attr_setschedparam'>pthread_attr_setschedparam</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setschedpolicy.html'
+                               title='posix::pthread::pthread_attr_setschedpolicy'>pthread_attr_setschedpolicy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setscope.html'
+                               title='posix::pthread::pthread_attr_setscope'>pthread_attr_setscope</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_attr_setstacksize.html'
+                               title='posix::pthread::pthread_attr_setstacksize'>pthread_attr_setstacksize</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrier_destroy.html'
+                               title='posix::pthread::pthread_barrier_destroy'>pthread_barrier_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrier_init.html'
+                               title='posix::pthread::pthread_barrier_init'>pthread_barrier_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrier_wait.html'
+                               title='posix::pthread::pthread_barrier_wait'>pthread_barrier_wait</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrierattr_destroy.html'
+                               title='posix::pthread::pthread_barrierattr_destroy'>pthread_barrierattr_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrierattr_getpshared.html'
+                               title='posix::pthread::pthread_barrierattr_getpshared'>pthread_barrierattr_getpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrierattr_init.html'
+                               title='posix::pthread::pthread_barrierattr_init'>pthread_barrierattr_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_barrierattr_setpshared.html'
+                               title='posix::pthread::pthread_barrierattr_setpshared'>pthread_barrierattr_setpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cancel.html'
+                               title='posix::pthread::pthread_cancel'>pthread_cancel</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cond_broadcast.html'
+                               title='posix::pthread::pthread_cond_broadcast'>pthread_cond_broadcast</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cond_destroy.html'
+                               title='posix::pthread::pthread_cond_destroy'>pthread_cond_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cond_init.html'
+                               title='posix::pthread::pthread_cond_init'>pthread_cond_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cond_signal.html'
+                               title='posix::pthread::pthread_cond_signal'>pthread_cond_signal</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cond_timedwait.html'
+                               title='posix::pthread::pthread_cond_timedwait'>pthread_cond_timedwait</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_cond_wait.html'
+                               title='posix::pthread::pthread_cond_wait'>pthread_cond_wait</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_condattr_destroy.html'
+                               title='posix::pthread::pthread_condattr_destroy'>pthread_condattr_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_condattr_getclock.html'
+                               title='posix::pthread::pthread_condattr_getclock'>pthread_condattr_getclock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_condattr_getpshared.html'
+                               title='posix::pthread::pthread_condattr_getpshared'>pthread_condattr_getpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_condattr_init.html'
+                               title='posix::pthread::pthread_condattr_init'>pthread_condattr_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_condattr_setclock.html'
+                               title='posix::pthread::pthread_condattr_setclock'>pthread_condattr_setclock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_condattr_setpshared.html'
+                               title='posix::pthread::pthread_condattr_setpshared'>pthread_condattr_setpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_detach.html'
+                               title='posix::pthread::pthread_detach'>pthread_detach</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_equal.html'
+                               title='posix::pthread::pthread_equal'>pthread_equal</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_getcpuclockid.html'
+                               title='posix::pthread::pthread_getcpuclockid'>pthread_getcpuclockid</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_getschedparam.html'
+                               title='posix::pthread::pthread_getschedparam'>pthread_getschedparam</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_key_create.html'
+                               title='posix::pthread::pthread_key_create'>pthread_key_create</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_key_delete.html'
+                               title='posix::pthread::pthread_key_delete'>pthread_key_delete</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_consistent.html'
+                               title='posix::pthread::pthread_mutex_consistent'>pthread_mutex_consistent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_destroy.html'
+                               title='posix::pthread::pthread_mutex_destroy'>pthread_mutex_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_getprioceiling.html'
+                               title='posix::pthread::pthread_mutex_getprioceiling'>pthread_mutex_getprioceiling</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_init.html'
+                               title='posix::pthread::pthread_mutex_init'>pthread_mutex_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_lock.html'
+                               title='posix::pthread::pthread_mutex_lock'>pthread_mutex_lock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_setprioceiling.html'
+                               title='posix::pthread::pthread_mutex_setprioceiling'>pthread_mutex_setprioceiling</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutex_unlock.html'
+                               title='posix::pthread::pthread_mutex_unlock'>pthread_mutex_unlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_destroy.html'
+                               title='posix::pthread::pthread_mutexattr_destroy'>pthread_mutexattr_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_getprioceiling.html'
+                               title='posix::pthread::pthread_mutexattr_getprioceiling'>pthread_mutexattr_getprioceiling</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_getprotocol.html'
+                               title='posix::pthread::pthread_mutexattr_getprotocol'>pthread_mutexattr_getprotocol</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_getpshared.html'
+                               title='posix::pthread::pthread_mutexattr_getpshared'>pthread_mutexattr_getpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_getrobust.html'
+                               title='posix::pthread::pthread_mutexattr_getrobust'>pthread_mutexattr_getrobust</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_gettype.html'
+                               title='posix::pthread::pthread_mutexattr_gettype'>pthread_mutexattr_gettype</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_init.html'
+                               title='posix::pthread::pthread_mutexattr_init'>pthread_mutexattr_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_setprioceiling.html'
+                               title='posix::pthread::pthread_mutexattr_setprioceiling'>pthread_mutexattr_setprioceiling</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_setprotocol.html'
+                               title='posix::pthread::pthread_mutexattr_setprotocol'>pthread_mutexattr_setprotocol</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_setpshared.html'
+                               title='posix::pthread::pthread_mutexattr_setpshared'>pthread_mutexattr_setpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_setrobust.html'
+                               title='posix::pthread::pthread_mutexattr_setrobust'>pthread_mutexattr_setrobust</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_mutexattr_settype.html'
+                               title='posix::pthread::pthread_mutexattr_settype'>pthread_mutexattr_settype</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_once.html'
+                               title='posix::pthread::pthread_once'>pthread_once</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlock_destroy.html'
+                               title='posix::pthread::pthread_rwlock_destroy'>pthread_rwlock_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlock_init.html'
+                               title='posix::pthread::pthread_rwlock_init'>pthread_rwlock_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlock_rdlock.html'
+                               title='posix::pthread::pthread_rwlock_rdlock'>pthread_rwlock_rdlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlock_unlock.html'
+                               title='posix::pthread::pthread_rwlock_unlock'>pthread_rwlock_unlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlock_wrlock.html'
+                               title='posix::pthread::pthread_rwlock_wrlock'>pthread_rwlock_wrlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlockattr_destroy.html'
+                               title='posix::pthread::pthread_rwlockattr_destroy'>pthread_rwlockattr_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlockattr_getpshared.html'
+                               title='posix::pthread::pthread_rwlockattr_getpshared'>pthread_rwlockattr_getpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlockattr_init.html'
+                               title='posix::pthread::pthread_rwlockattr_init'>pthread_rwlockattr_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_rwlockattr_setpshared.html'
+                               title='posix::pthread::pthread_rwlockattr_setpshared'>pthread_rwlockattr_setpshared</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_self.html'
+                               title='posix::pthread::pthread_self'>pthread_self</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_setcancelstate.html'
+                               title='posix::pthread::pthread_setcancelstate'>pthread_setcancelstate</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_setcanceltype.html'
+                               title='posix::pthread::pthread_setcanceltype'>pthread_setcanceltype</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_setschedparam.html'
+                               title='posix::pthread::pthread_setschedparam'>pthread_setschedparam</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_setschedprio.html'
+                               title='posix::pthread::pthread_setschedprio'>pthread_setschedprio</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_spin_destroy.html'
+                               title='posix::pthread::pthread_spin_destroy'>pthread_spin_destroy</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_spin_init.html'
+                               title='posix::pthread::pthread_spin_init'>pthread_spin_init</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_spin_lock.html'
+                               title='posix::pthread::pthread_spin_lock'>pthread_spin_lock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_spin_trylock.html'
+                               title='posix::pthread::pthread_spin_trylock'>pthread_spin_trylock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.pthread_spin_unlock.html'
+                               title='posix::pthread::pthread_spin_unlock'>pthread_spin_unlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.rwlockimedrdlock.html'
+                               title='posix::pthread::rwlockimedrdlock'>rwlockimedrdlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.rwlockimedwrlock.html'
+                               title='posix::pthread::rwlockimedwrlock'>rwlockimedwrlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.rwlockryrdlock.html'
+                               title='posix::pthread::rwlockryrdlock'>rwlockryrdlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.rwlockrywrlock.html'
+                               title='posix::pthread::rwlockrywrlock'>rwlockrywrlock</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.threadestcancel.html'
+                               title='posix::pthread::threadestcancel'>threadestcancel</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "posix";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The posix library documentation.">
+
+    <title>posix::netdb - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html'>aio</a><a class='mod ' href='../arpa/index.html'>arpa</a><a class='mod ' href='../cpio/index.html'>cpio</a><a class='mod ' href='../ctype/index.html'>ctype</a><a class='mod ' href='../dirent/index.html'>dirent</a><a class='mod ' href='../dlfcn/index.html'>dlfcn</a><a class='mod ' href='../errno/index.html'>errno</a><a class='mod ' href='../fcntl/index.html'>fcntl</a><a class='mod ' href='../fenv/index.html'>fenv</a><a class='mod ' href='../float/index.html'>float</a><a class='mod ' href='../fmtmsg/index.html'>fmtmsg</a><a class='mod ' href='../fnmatch/index.html'>fnmatch</a><a class='mod ' href='../ftw/index.html'>ftw</a><a class='mod ' href='../glob/index.html'>glob</a><a class='mod ' href='../grp/index.html'>grp</a><a class='mod ' href='../iconv/index.html'>iconv</a><a class='mod ' href='../inttypes/index.html'>inttypes</a><a class='mod ' href='../langinfo/index.html'>langinfo</a><a class='mod ' href='../libgen/index.html'>libgen</a><a class='mod ' href='../limits/index.html'>limits</a><a class='mod ' href='../locale/index.html'>locale</a><a class='mod ' href='../monetary/index.html'>monetary</a><a class='mod ' href='../mqueue/index.html'>mqueue</a><a class='mod ' href='../ndbm/index.html'>ndbm</a><a class='mod ' href='../net/index.html'>net</a><a class='mod current' href='../netdb/index.html'>netdb</a><a class='mod ' href='../netinet/index.html'>netinet</a><a class='mod ' href='../nl_types/index.html'>nl_types</a><a class='mod ' href='../poll/index.html'>poll</a><a class='mod ' href='../pthread/index.html'>pthread</a><a class='mod ' href='../pwd/index.html'>pwd</a><a class='mod ' href='../regex/index.html'>regex</a><a class='mod ' href='../sched/index.html'>sched</a><a class='mod ' href='../search/index.html'>search</a><a class='mod ' href='../semaphore/index.html'>semaphore</a><a class='mod ' href='../setjmp/index.html'>setjmp</a><a class='mod ' href='../signal/index.html'>signal</a><a class='mod ' href='../spawn/index.html'>spawn</a><a class='mod ' href='../stddef/index.html'>stddef</a><a class='mod ' href='../stdint/index.html'>stdint</a><a class='mod ' href='../stdio/index.html'>stdio</a><a class='mod ' href='../stdlib/index.html'>stdlib</a><a class='mod ' href='../string/index.html'>string</a><a class='mod ' href='../strings/index.html'>strings</a><a class='mod ' href='../stropts/index.html'>stropts</a><a class='mod ' href='../sys/index.html'>sys</a><a class='mod ' href='../syslog/index.html'>syslog</a><a class='mod ' href='../tar/index.html'>tar</a><a class='mod ' href='../termios/index.html'>termios</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../ulimit/index.html'>ulimit</a><a class='mod ' href='../unistd/index.html'>unistd</a><a class='mod ' href='../utime/index.html'>utime</a><a class='mod ' href='../utmpx/index.html'>utmpx</a><a class='mod ' href='../wchar/index.html'>wchar</a><a class='mod ' href='../wctype/index.html'>wctype</a><a class='mod ' href='../wordexp/index.html'>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html'>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html'>NTStrOwned</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html'>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html'>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html'>AsSlice</a><a class='trait ' href='../trait.NTStr.html'>NTStr</a><a class='trait ' href='../trait.ToNTStr.html'>ToNTStr</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'>Module <a href='../index.html'>posix</a>::<a class='mod' href=''>netdb</a><span class='out-of-band'><a id='src-8120' href='../../src/posix/src/netdb/mod.rs.html#1-128'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.addrinfo.html'
+                               title='posix::netdb::addrinfo'>addrinfo</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.hostent.html'
+                               title='posix::netdb::hostent'>hostent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.netent.html'
+                               title='posix::netdb::netent'>netent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.protoent.html'
+                               title='posix::netdb::protoent'>protoent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.servent.html'
+                               title='posix::netdb::servent'>servent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_ADDRCONFIG: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>32</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_ALL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>16</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_CANONNAME: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_NUMERICHOST: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_NUMERICSERV: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1024</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_PASSIVE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AI_V4MAPPED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_AGAIN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-3</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_BADFLAGS: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_FAIL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-4</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_FAMILY: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-6</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_MEMORY: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-10</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_NONAME: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_OVERFLOW: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-12</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_SERVICE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-8</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_SOCKTYPE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-7</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static EAI_SYSTEM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-11</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static IPPORT_RESERVED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1024</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static NI_DGRAM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>16</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static NI_NAMEREQD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static NI_NOFQDN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static NI_NUMERICHOST: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static NI_NUMERICSERV: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                </table><h2 id='ffi-fns' class='section-header'><a href="#ffi-fns">Foreign Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.gethostent.html'
+                               title='posix::netdb::gethostent'>gethostent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.getnetent.html'
+                               title='posix::netdb::getnetent'>getnetent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.getprotoent.html'
+                               title='posix::netdb::getprotoent'>getprotoent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.getservent.html'
+                               title='posix::netdb::getservent'>getservent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.sethostent.html'
+                               title='posix::netdb::sethostent'>sethostent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.setnetent.html'
+                               title='posix::netdb::setnetent'>setnetent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.setprotoent.html'
+                               title='posix::netdb::setprotoent'>setprotoent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.setservent.html'
+                               title='posix::netdb::setservent'>setservent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.endhostent.html'
+                               title='posix::netdb::endhostent'>endhostent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.endnetent.html'
+                               title='posix::netdb::endnetent'>endnetent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.endprotoent.html'
+                               title='posix::netdb::endprotoent'>endprotoent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.endservent.html'
+                               title='posix::netdb::endservent'>endservent</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.freeaddrinfo.html'
+                               title='posix::netdb::freeaddrinfo'>freeaddrinfo</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.gai_strerror.html'
+                               title='posix::netdb::gai_strerror'>gai_strerror</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getaddrinfo.html'
+                               title='posix::netdb::getaddrinfo'>getaddrinfo</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getnameinfo.html'
+                               title='posix::netdb::getnameinfo'>getnameinfo</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getnetbyaddr.html'
+                               title='posix::netdb::getnetbyaddr'>getnetbyaddr</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getnetbyname.html'
+                               title='posix::netdb::getnetbyname'>getnetbyname</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getprotobyname.html'
+                               title='posix::netdb::getprotobyname'>getprotobyname</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getprotobynumber.html'
+                               title='posix::netdb::getprotobynumber'>getprotobynumber</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.getservbyname.html'
+                               title='posix::netdb::getservbyname'>getservbyname</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "posix";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

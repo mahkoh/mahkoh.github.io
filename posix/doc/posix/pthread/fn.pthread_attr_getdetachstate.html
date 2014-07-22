@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The posix library documentation.">
+
+    <title>posix::pthread::pthread_attr_getdetachstate - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>pthread</a></p><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.PTHREAD_COND_INITIALIZER.html'>PTHREAD_COND_INITIALIZER</a><a class='fn ' href='fn.PTHREAD_MUTEX_INITIALIZER.html'>PTHREAD_MUTEX_INITIALIZER</a><a class='fn ' href='fn.PTHREAD_RWLOCK_INITIALIZER.html'>PTHREAD_RWLOCK_INITIALIZER</a><a class='fn ' href='fn.muteximedlock.html'>muteximedlock</a><a class='fn ' href='fn.mutexrylock.html'>mutexrylock</a><a class='fn ' href='fn.pthread_atfork.html'>pthread_atfork</a><a class='fn ' href='fn.pthread_attr_destroy.html'>pthread_attr_destroy</a><a class='fn current' href='fn.pthread_attr_getdetachstate.html'>pthread_attr_getdetachstate</a><a class='fn ' href='fn.pthread_attr_getguardsize.html'>pthread_attr_getguardsize</a><a class='fn ' href='fn.pthread_attr_getinheritsched.html'>pthread_attr_getinheritsched</a><a class='fn ' href='fn.pthread_attr_getschedparam.html'>pthread_attr_getschedparam</a><a class='fn ' href='fn.pthread_attr_getschedpolicy.html'>pthread_attr_getschedpolicy</a><a class='fn ' href='fn.pthread_attr_getscope.html'>pthread_attr_getscope</a><a class='fn ' href='fn.pthread_attr_getstacksize.html'>pthread_attr_getstacksize</a><a class='fn ' href='fn.pthread_attr_init.html'>pthread_attr_init</a><a class='fn ' href='fn.pthread_attr_setdetachstate.html'>pthread_attr_setdetachstate</a><a class='fn ' href='fn.pthread_attr_setguardsize.html'>pthread_attr_setguardsize</a><a class='fn ' href='fn.pthread_attr_setinheritsched.html'>pthread_attr_setinheritsched</a><a class='fn ' href='fn.pthread_attr_setschedparam.html'>pthread_attr_setschedparam</a><a class='fn ' href='fn.pthread_attr_setschedpolicy.html'>pthread_attr_setschedpolicy</a><a class='fn ' href='fn.pthread_attr_setscope.html'>pthread_attr_setscope</a><a class='fn ' href='fn.pthread_attr_setstacksize.html'>pthread_attr_setstacksize</a><a class='fn ' href='fn.pthread_barrier_destroy.html'>pthread_barrier_destroy</a><a class='fn ' href='fn.pthread_barrier_init.html'>pthread_barrier_init</a><a class='fn ' href='fn.pthread_barrier_wait.html'>pthread_barrier_wait</a><a class='fn ' href='fn.pthread_barrierattr_destroy.html'>pthread_barrierattr_destroy</a><a class='fn ' href='fn.pthread_barrierattr_getpshared.html'>pthread_barrierattr_getpshared</a><a class='fn ' href='fn.pthread_barrierattr_init.html'>pthread_barrierattr_init</a><a class='fn ' href='fn.pthread_barrierattr_setpshared.html'>pthread_barrierattr_setpshared</a><a class='fn ' href='fn.pthread_cancel.html'>pthread_cancel</a><a class='fn ' href='fn.pthread_cond_broadcast.html'>pthread_cond_broadcast</a><a class='fn ' href='fn.pthread_cond_destroy.html'>pthread_cond_destroy</a><a class='fn ' href='fn.pthread_cond_init.html'>pthread_cond_init</a><a class='fn ' href='fn.pthread_cond_signal.html'>pthread_cond_signal</a><a class='fn ' href='fn.pthread_cond_timedwait.html'>pthread_cond_timedwait</a><a class='fn ' href='fn.pthread_cond_wait.html'>pthread_cond_wait</a><a class='fn ' href='fn.pthread_condattr_destroy.html'>pthread_condattr_destroy</a><a class='fn ' href='fn.pthread_condattr_getclock.html'>pthread_condattr_getclock</a><a class='fn ' href='fn.pthread_condattr_getpshared.html'>pthread_condattr_getpshared</a><a class='fn ' href='fn.pthread_condattr_init.html'>pthread_condattr_init</a><a class='fn ' href='fn.pthread_condattr_setclock.html'>pthread_condattr_setclock</a><a class='fn ' href='fn.pthread_condattr_setpshared.html'>pthread_condattr_setpshared</a><a class='fn ' href='fn.pthread_detach.html'>pthread_detach</a><a class='fn ' href='fn.pthread_equal.html'>pthread_equal</a><a class='fn ' href='fn.pthread_getcpuclockid.html'>pthread_getcpuclockid</a><a class='fn ' href='fn.pthread_getschedparam.html'>pthread_getschedparam</a><a class='fn ' href='fn.pthread_key_create.html'>pthread_key_create</a><a class='fn ' href='fn.pthread_key_delete.html'>pthread_key_delete</a><a class='fn ' href='fn.pthread_mutex_consistent.html'>pthread_mutex_consistent</a><a class='fn ' href='fn.pthread_mutex_destroy.html'>pthread_mutex_destroy</a><a class='fn ' href='fn.pthread_mutex_getprioceiling.html'>pthread_mutex_getprioceiling</a><a class='fn ' href='fn.pthread_mutex_init.html'>pthread_mutex_init</a><a class='fn ' href='fn.pthread_mutex_lock.html'>pthread_mutex_lock</a><a class='fn ' href='fn.pthread_mutex_setprioceiling.html'>pthread_mutex_setprioceiling</a><a class='fn ' href='fn.pthread_mutex_unlock.html'>pthread_mutex_unlock</a><a class='fn ' href='fn.pthread_mutexattr_destroy.html'>pthread_mutexattr_destroy</a><a class='fn ' href='fn.pthread_mutexattr_getprioceiling.html'>pthread_mutexattr_getprioceiling</a><a class='fn ' href='fn.pthread_mutexattr_getprotocol.html'>pthread_mutexattr_getprotocol</a><a class='fn ' href='fn.pthread_mutexattr_getpshared.html'>pthread_mutexattr_getpshared</a><a class='fn ' href='fn.pthread_mutexattr_getrobust.html'>pthread_mutexattr_getrobust</a><a class='fn ' href='fn.pthread_mutexattr_gettype.html'>pthread_mutexattr_gettype</a><a class='fn ' href='fn.pthread_mutexattr_init.html'>pthread_mutexattr_init</a><a class='fn ' href='fn.pthread_mutexattr_setprioceiling.html'>pthread_mutexattr_setprioceiling</a><a class='fn ' href='fn.pthread_mutexattr_setprotocol.html'>pthread_mutexattr_setprotocol</a><a class='fn ' href='fn.pthread_mutexattr_setpshared.html'>pthread_mutexattr_setpshared</a><a class='fn ' href='fn.pthread_mutexattr_setrobust.html'>pthread_mutexattr_setrobust</a><a class='fn ' href='fn.pthread_mutexattr_settype.html'>pthread_mutexattr_settype</a><a class='fn ' href='fn.pthread_once.html'>pthread_once</a><a class='fn ' href='fn.pthread_rwlock_destroy.html'>pthread_rwlock_destroy</a><a class='fn ' href='fn.pthread_rwlock_init.html'>pthread_rwlock_init</a><a class='fn ' href='fn.pthread_rwlock_rdlock.html'>pthread_rwlock_rdlock</a><a class='fn ' href='fn.pthread_rwlock_unlock.html'>pthread_rwlock_unlock</a><a class='fn ' href='fn.pthread_rwlock_wrlock.html'>pthread_rwlock_wrlock</a><a class='fn ' href='fn.pthread_rwlockattr_destroy.html'>pthread_rwlockattr_destroy</a><a class='fn ' href='fn.pthread_rwlockattr_getpshared.html'>pthread_rwlockattr_getpshared</a><a class='fn ' href='fn.pthread_rwlockattr_init.html'>pthread_rwlockattr_init</a><a class='fn ' href='fn.pthread_rwlockattr_setpshared.html'>pthread_rwlockattr_setpshared</a><a class='fn ' href='fn.pthread_self.html'>pthread_self</a><a class='fn ' href='fn.pthread_setcancelstate.html'>pthread_setcancelstate</a><a class='fn ' href='fn.pthread_setcanceltype.html'>pthread_setcanceltype</a><a class='fn ' href='fn.pthread_setschedparam.html'>pthread_setschedparam</a><a class='fn ' href='fn.pthread_setschedprio.html'>pthread_setschedprio</a><a class='fn ' href='fn.pthread_spin_destroy.html'>pthread_spin_destroy</a><a class='fn ' href='fn.pthread_spin_init.html'>pthread_spin_init</a><a class='fn ' href='fn.pthread_spin_lock.html'>pthread_spin_lock</a><a class='fn ' href='fn.pthread_spin_trylock.html'>pthread_spin_trylock</a><a class='fn ' href='fn.pthread_spin_unlock.html'>pthread_spin_unlock</a><a class='fn ' href='fn.rwlockimedrdlock.html'>rwlockimedrdlock</a><a class='fn ' href='fn.rwlockimedwrlock.html'>rwlockimedwrlock</a><a class='fn ' href='fn.rwlockryrdlock.html'>rwlockryrdlock</a><a class='fn ' href='fn.rwlockrywrlock.html'>rwlockrywrlock</a><a class='fn ' href='fn.threadestcancel.html'>threadestcancel</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content fn">
+<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>pthread</a>::<a class='fn' href=''>pthread_attr_getdetachstate</a><span class='out-of-band'><a id='src-10370' href='../../src/posix/src/pthread/mod.rs.html#64-68'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn pthread_attr_getdetachstate(attr: &amp;<a class='struct' href='../../posix/sys/types/struct.pthread_attr_t.html' title='posix::sys::types::pthread_attr_t'>attr</a>, detachstate: &amp;mut <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "posix";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

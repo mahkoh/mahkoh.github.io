@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The posix library documentation.">
+
+    <title>posix::sys::shm::shmid_ds - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a>&#8203;::<a href='index.html'>shm</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.shmid_ds.html'>shmid_ds</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.SHMLBA.html'>SHMLBA</a><a class='fn ' href='fn.shmat.html'>shmat</a><a class='fn ' href='fn.shmctl.html'>shmctl</a><a class='fn ' href='fn.shmdt.html'>shmdt</a><a class='fn ' href='fn.shmget.html'>shmget</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'>Struct <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a href='index.html'>shm</a>::<a class='struct' href=''>shmid_ds</a><span class='out-of-band'><a id='src-24673' href='../../../src/posix/src/sys/shm/linux/x86_64.rs.html#4-15'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct shmid_ds {
+    pub shm_perm: <a class='struct' href='../../../posix/sys/ipc/struct.ipc_perm.html' title='posix::sys::ipc::ipc_perm'>ipc_perm</a>,
+    pub shm_segsz: <a class='type' href='../../../posix/stddef/type.size_t.html' title='posix::stddef::size_t'>size_t</a>,
+    pub shm_atime: <a class='type' href='../../../posix/sys/types/type.time_t.html' title='posix::sys::types::time_t'>time_t</a>,
+    pub shm_dtime: <a class='type' href='../../../posix/sys/types/type.time_t.html' title='posix::sys::types::time_t'>time_t</a>,
+    pub shm_ctime: <a class='type' href='../../../posix/sys/types/type.time_t.html' title='posix::sys::types::time_t'>time_t</a>,
+    pub shm_cpid: <a class='type' href='../../../posix/sys/types/type.pid_t.html' title='posix::sys::types::pid_t'>pid_t</a>,
+    pub shm_lpid: <a class='type' href='../../../posix/sys/types/type.pid_t.html' title='posix::sys::types::pid_t'>pid_t</a>,
+    pub shm_nattch: <a class='type' href='../../../posix/sys/shm/type.shmatt_t.html' title='posix::sys::shm::shmatt_t'>shmatt_t</a>,
+    // some fields omitted
+}</pre><h2 class='fields'>Fields</h2>
+<table><tr><td id='structfield.shm_perm'><a class='stability Unmarked' title='No stability level'></a><code>shm_perm</code></td><td></td></tr><tr><td id='structfield.shm_segsz'><a class='stability Unmarked' title='No stability level'></a><code>shm_segsz</code></td><td></td></tr><tr><td id='structfield.shm_atime'><a class='stability Unmarked' title='No stability level'></a><code>shm_atime</code></td><td></td></tr><tr><td id='structfield.shm_dtime'><a class='stability Unmarked' title='No stability level'></a><code>shm_dtime</code></td><td></td></tr><tr><td id='structfield.shm_ctime'><a class='stability Unmarked' title='No stability level'></a><code>shm_ctime</code></td><td></td></tr><tr><td id='structfield.shm_cpid'><a class='stability Unmarked' title='No stability level'></a><code>shm_cpid</code></td><td></td></tr><tr><td id='structfield.shm_lpid'><a class='stability Unmarked' title='No stability level'></a><code>shm_lpid</code></td><td></td></tr><tr><td id='structfield.shm_nattch'><a class='stability Unmarked' title='No stability level'></a><code>shm_nattch</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../../posix/sys/shm/struct.shmid_ds.html' title='posix::sys::shm::shmid_ds'>shmid_ds</a></code></h3><div class='impl-methods'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../../posix/sys/shm/struct.shmid_ds.html' title='posix::sys::shm::shmid_ds'>shmid_ds</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "posix";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>

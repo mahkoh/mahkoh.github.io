@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The posix library documentation.">
+
+    <title>posix::sys::stat - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body>
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../ipc/index.html'>ipc</a><a class='mod ' href='../mman/index.html'>mman</a><a class='mod ' href='../msg/index.html'>msg</a><a class='mod ' href='../resource/index.html'>resource</a><a class='mod ' href='../select/index.html'>select</a><a class='mod ' href='../sem/index.html'>sem</a><a class='mod ' href='../shm/index.html'>shm</a><a class='mod ' href='../socket/index.html'>socket</a><a class='mod current' href='../stat/index.html'>stat</a><a class='mod ' href='../statvfs/index.html'>statvfs</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../times/index.html'>times</a><a class='mod ' href='../types/index.html'>types</a><a class='mod ' href='../uio/index.html'>uio</a><a class='mod ' href='../un/index.html'>un</a><a class='mod ' href='../utsname/index.html'>utsname</a><a class='mod ' href='../wait/index.html'>wait</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'>Module <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a class='mod' href=''>stat</a><span class='out-of-band'><a id='src-26405' href='../../../src/posix/src/sys/stat/mod.rs.html#1-125'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.stat.html'
+                               title='posix::sys::stat::stat'>stat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFBLK: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>24576</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFCHR: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>8192</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFDIR: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>16384</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFIFO: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>4096</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFLNK: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>40960</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFMT: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>61440</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFREG: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>32768</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IFSOCK: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>49152</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IRGRP: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o40</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IROTH: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o4</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IRUSR: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o400</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IRWXG: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o70</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IRWXO: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o7</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IRWXU: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o700</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_ISGID: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o2000</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_ISUID: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o4000</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_ISVTX: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o1000</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IWGRP: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o20</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IWOTH: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IWUSR: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o200</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IXGRP: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o10</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IXOTH: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static S_IXUSR: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a></code><code> = </code><code>0o100</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static UTIME_NOW: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>(1 << 30) - 1</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static UTIME_OMIT: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>(1 << 30) - 2</code></td>
+                        <td class='docblock'>&nbsp;</td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISBLK.html'
+                               title='posix::sys::stat::S_ISBLK'>S_ISBLK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISCHR.html'
+                               title='posix::sys::stat::S_ISCHR'>S_ISCHR</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISDIR.html'
+                               title='posix::sys::stat::S_ISDIR'>S_ISDIR</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISFIFO.html'
+                               title='posix::sys::stat::S_ISFIFO'>S_ISFIFO</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISLNK.html'
+                               title='posix::sys::stat::S_ISLNK'>S_ISLNK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISREG.html'
+                               title='posix::sys::stat::S_ISREG'>S_ISREG</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_ISSOCK.html'
+                               title='posix::sys::stat::S_ISSOCK'>S_ISSOCK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_TYPEISMQ.html'
+                               title='posix::sys::stat::S_TYPEISMQ'>S_TYPEISMQ</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_TYPEISSEM.html'
+                               title='posix::sys::stat::S_TYPEISSEM'>S_TYPEISSEM</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.S_TYPEISSHM.html'
+                               title='posix::sys::stat::S_TYPEISSHM'>S_TYPEISSHM</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.chmod.html'
+                               title='posix::sys::stat::chmod'>chmod</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.fchmod.html'
+                               title='posix::sys::stat::fchmod'>fchmod</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.fchmodat.html'
+                               title='posix::sys::stat::fchmodat'>fchmodat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.fstat.html'
+                               title='posix::sys::stat::fstat'>fstat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.fstatat.html'
+                               title='posix::sys::stat::fstatat'>fstatat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.futimens.html'
+                               title='posix::sys::stat::futimens'>futimens</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.lstat.html'
+                               title='posix::sys::stat::lstat'>lstat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mkdir.html'
+                               title='posix::sys::stat::mkdir'>mkdir</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mkdirat.html'
+                               title='posix::sys::stat::mkdirat'>mkdirat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mkfifo.html'
+                               title='posix::sys::stat::mkfifo'>mkfifo</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mkfifoat.html'
+                               title='posix::sys::stat::mkfifoat'>mkfifoat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mknod.html'
+                               title='posix::sys::stat::mknod'>mknod</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.mknodat.html'
+                               title='posix::sys::stat::mknodat'>mknodat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.stat.html'
+                               title='posix::sys::stat::stat'>stat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.umask.html'
+                               title='posix::sys::stat::umask'>umask</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.utimensat.html'
+                               title='posix::sys::stat::utimensat'>utimensat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "posix";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>
