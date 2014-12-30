@@ -735,12 +735,6 @@
 <span id='693'>693</span>
 <span id='694'>694</span>
 <span id='695'>695</span>
-<span id='696'>696</span>
-<span id='697'>697</span>
-<span id='698'>698</span>
-<span id='699'>699</span>
-<span id='700'>700</span>
-<span id='701'>701</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! The core rust-tox module.</span>
 <span class='doccomment'>//!</span>
@@ -754,25 +748,21 @@
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//! fn main() {</span>
 <span class='doccomment'>//!     let tox = Tox::new(ToxOptions::new()).unwrap();</span>
-<span class='doccomment'>//!     let bootkey = box from_str(&quot;951C88B7E75C867418ACDB5D273821372BB5BD652740BCDF623A4FA293E75D2F&quot;).unwrap();</span>
+<span class='doccomment'>//!     let bootkey = box &quot;951C88B7E75C867418ACDB5D273821372BB5BD652740BCDF623A4FA293E75D2F&quot;.parse().unwrap();</span>
 <span class='doccomment'>//!     tox.bootstrap_from_address(&quot;192.254.75.98&quot;.to_string(), 33445, bootkey).unwrap();</span>
 <span class='doccomment'>//! </span>
 <span class='doccomment'>//!     println!(&quot;Bot key: {}&quot;, tox.get_address());</span>
 <span class='doccomment'>//! </span>
-<span class='doccomment'>//!     loop {</span>
-<span class='doccomment'>//!         for ev in tox.events() {</span>
-<span class='doccomment'>//!             match ev {</span>
-<span class='doccomment'>//!                 FriendRequest(fnum, _) =&gt; {</span>
-<span class='doccomment'>//!                     tox.add_friend_norequest(fnum).unwrap();</span>
-<span class='doccomment'>//!                 },</span>
-<span class='doccomment'>//!                 FriendMessage(fnum, msg) =&gt; {</span>
-<span class='doccomment'>//!                     tox.send_message(fnum, msg).unwrap();</span>
-<span class='doccomment'>//!                 },</span>
-<span class='doccomment'>//!                 _ =&gt; (),</span>
-<span class='doccomment'>//!             }</span>
+<span class='doccomment'>//!     for ev in tox.events().iter() {</span>
+<span class='doccomment'>//!         match ev {</span>
+<span class='doccomment'>//!             FriendRequest(fnum, _) =&gt; {</span>
+<span class='doccomment'>//!                 tox.add_friend_norequest(fnum).unwrap();</span>
+<span class='doccomment'>//!             },</span>
+<span class='doccomment'>//!             FriendMessage(fnum, msg) =&gt; {</span>
+<span class='doccomment'>//!                 tox.send_message(fnum, msg).unwrap();</span>
+<span class='doccomment'>//!             },</span>
+<span class='doccomment'>//!             _ =&gt; (),</span>
 <span class='doccomment'>//!         }</span>
-<span class='doccomment'>//! </span>
-<span class='doccomment'>//!         std::io::timer::sleep(std::time::Duration::milliseconds(50));</span>
 <span class='doccomment'>//!     }</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//! ```</span>
@@ -787,13 +777,14 @@
 <span class='kw'>mod</span> <span class='ident'>backend</span>;
 <span class='kw'>mod</span> <span class='ident'>ll</span>;
 
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MAX_NAME_LENGTH</span>:          <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>128u</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MAX_MESSAGE_LENGTH</span>:       <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>1368u</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MAX_STATUSMESSAGE_LENGTH</span>: <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>1007u</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>ID_CLIENT_SIZE</span>:           <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>32u</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>ADDRESS_SIZE</span>:             <span class='ident'>uint</span> <span class='op'>=</span> <span class='ident'>ID_CLIENT_SIZE</span> <span class='op'>+</span> <span class='number'>6u</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>AVATAR_MAX_DATA_LENGTH</span>:   <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>16384u</span>;
-<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>HASH_LENGTH</span>:              <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>32u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MAX_NAME_LENGTH</span>:              <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>128u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MAX_MESSAGE_LENGTH</span>:           <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>1368u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>MAX_STATUSMESSAGE_LENGTH</span>:     <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>1007u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>TOX_MAX_FRIENDREQUEST_LENGTH</span>: <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>1016u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>ID_CLIENT_SIZE</span>:               <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>32u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>ADDRESS_SIZE</span>:                 <span class='ident'>uint</span> <span class='op'>=</span> <span class='ident'>ID_CLIENT_SIZE</span> <span class='op'>+</span> <span class='number'>6u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>AVATAR_MAX_DATA_LENGTH</span>:       <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>16384u</span>;
+<span class='kw'>pub</span> <span class='kw'>const</span> <span class='ident'>HASH_LENGTH</span>:                  <span class='ident'>uint</span> <span class='op'>=</span> <span class='number'>32u</span>;
 
 <span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>Copy</span>, <span class='ident'>Clone</span>, <span class='ident'>Eq</span>, <span class='ident'>PartialEq</span>)]</span>
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>u8</span>)]</span>
@@ -855,7 +846,7 @@
 
 <span class='doccomment'>/// A Tox address consist of `ClientId`, nospam and checksum</span>
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
-<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>PartialEq</span>, <span class='ident'>Clone</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Address</span> {
     <span class='ident'>id</span>: <span class='ident'>ClientId</span>,
     <span class='ident'>nospam</span>: [<span class='ident'>u8</span>, ..<span class='number'>4</span>],
@@ -864,6 +855,9 @@
 }
 
 <span class='kw'>impl</span> <span class='ident'>Address</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>client_id</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='ident'>ClientId</span> {
+        <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>id</span>
+    }
     <span class='kw'>fn</span> <span class='ident'>checksum</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> [<span class='ident'>u8</span>, ..<span class='number'>2</span>] {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>check</span> <span class='op'>=</span> [<span class='number'>0u8</span>, <span class='number'>0u8</span>];
         <span class='kw'>for</span> (<span class='ident'>i</span>, <span class='kw-2'>&amp;</span><span class='ident'>x</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>id</span>.<span class='ident'>raw</span>.<span class='ident'>iter</span>().<span class='ident'>enumerate</span>() {
@@ -939,7 +933,7 @@
 
 <span class='doccomment'>/// `ClientId` is the main part of tox `Address`. Other two are nospam and checksum.</span>
 <span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>C</span>)]</span>
-<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>Clone</span>)]</span>
+<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>PartialEq</span>, <span class='ident'>Clone</span>)]</span>
 <span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>missing_copy_implementations</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ClientId</span> {
     <span class='kw'>pub</span> <span class='ident'>raw</span>: [<span class='ident'>u8</span>, ..<span class='ident'>ID_CLIENT_SIZE</span>],
@@ -1053,6 +1047,14 @@
     <span class='ident'>txo</span>: <span class='ident'>ll</span>::<span class='ident'>Tox_Options</span>
 }
 
+<span class='attribute'>#[<span class='ident'>repr</span>(<span class='ident'>u8</span>)]</span>
+<span class='attribute'>#[<span class='ident'>deriving</span>(<span class='ident'>Copy</span>)]</span>
+<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>ProxyType</span> {
+    <span class='prelude-val'>None</span>,
+    <span class='ident'>Socks5</span>,
+    <span class='ident'>HTTP</span>,
+}
+
 <span class='kw'>impl</span> <span class='ident'>ToxOptions</span> {
     <span class='doccomment'>/// Create a default ToxOptions struct</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>() <span class='op'>-&gt;</span> <span class='ident'>ToxOptions</span> {
@@ -1060,7 +1062,7 @@
             <span class='ident'>txo</span>: <span class='ident'>ll</span>::<span class='ident'>Tox_Options</span> {
                 <span class='ident'>ipv6enabled</span>: <span class='number'>0</span>,
                 <span class='ident'>udp_disabled</span>: <span class='number'>0</span>,
-                <span class='ident'>proxy_enabled</span>: <span class='number'>0</span>,
+                <span class='ident'>proxy_type</span>: <span class='number'>0</span>,
                 <span class='ident'>proxy_address</span>: [<span class='number'>0</span>, ..<span class='number'>256u</span>],
                 <span class='ident'>proxy_port</span>: <span class='number'>0</span>,
             }
@@ -1080,7 +1082,7 @@
     }
 
     <span class='doccomment'>/// Use a proxy</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>proxy</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>addr</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>port</span>: <span class='ident'>u16</span>) <span class='op'>-&gt;</span> <span class='ident'>ToxOptions</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>proxy</span>(<span class='kw-2'>mut</span> <span class='self'>self</span>, <span class='ident'>ty</span>: <span class='ident'>ProxyType</span>, <span class='ident'>addr</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>port</span>: <span class='ident'>u16</span>) <span class='op'>-&gt;</span> <span class='ident'>ToxOptions</span> {
         <span class='kw'>if</span> <span class='ident'>addr</span>.<span class='ident'>len</span>() <span class='op'>&gt;=</span> <span class='number'>256</span> {
             <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;proxy address is too long&quot;</span>);
         }
@@ -1088,7 +1090,7 @@
         <span class='self'>self</span>.<span class='ident'>txo</span>.<span class='ident'>proxy_address</span>.<span class='ident'>as_mut_slice</span>()
                               .<span class='ident'>as_unsigned_mut</span>()
                               .<span class='ident'>clone_from_slice</span>(<span class='ident'>addr</span>.<span class='ident'>as_bytes</span>());
-        <span class='self'>self</span>.<span class='ident'>txo</span>.<span class='ident'>proxy_enabled</span> <span class='op'>=</span> <span class='number'>1</span>;
+        <span class='self'>self</span>.<span class='ident'>txo</span>.<span class='ident'>proxy_type</span> <span class='op'>=</span> <span class='ident'>ty</span> <span class='kw'>as</span> <span class='ident'>u8</span>;
         <span class='self'>self</span>.<span class='ident'>txo</span>.<span class='ident'>proxy_port</span> <span class='op'>=</span> <span class='ident'>port</span>;
         <span class='self'>self</span>
     }
@@ -1424,23 +1426,9 @@
         <span class='macro'>forward</span><span class='macro'>!</span>(<span class='self'>self</span>, <span class='ident'>backend</span>::<span class='ident'>Control</span>::<span class='ident'>Load</span>, (<span class='ident'>data</span>), <span class='op'>-&gt;</span>)
     }
 
-    <span class='doccomment'>/// Return an events iterator</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>events</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>EventIter</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-        <span class='ident'>EventIter</span> { <span class='ident'>events</span>: <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>events</span> }
-    }
-}
-
-<span class='doccomment'>/// Tox events iterator</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>EventIter</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-    <span class='ident'>events</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Receiver</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span>,
-}
-
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>Iterator</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>EventIter</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-    <span class='kw'>fn</span> <span class='ident'>next</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span> {
-        <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>events</span>.<span class='ident'>try_recv</span>() {
-            <span class='prelude-val'>Ok</span>(<span class='ident'>t</span>) <span class='op'>=&gt;</span> <span class='prelude-val'>Some</span>(<span class='ident'>t</span>),
-            _ <span class='op'>=&gt;</span> <span class='prelude-val'>None</span>,
-        }
+    <span class='doccomment'>/// Return an events receiver</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>events</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='ident'>Receiver</span><span class='op'>&lt;</span><span class='ident'>Event</span><span class='op'>&gt;</span> {
+        <span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>events</span>
     }
 }
 </pre>

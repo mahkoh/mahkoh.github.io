@@ -1,1 +1,1 @@
-{"name":"tox","counts":{"deprecated":0,"experimental":0,"unstable":0,"stable":0,"frozen":0,"locked":0,"unmarked":176},"submodules":[{"name":"core","counts":{"deprecated":0,"experimental":0,"unstable":0,"stable":0,"frozen":0,"locked":0,"unmarked":175},"submodules":[]}]}
+{"name":"tox","counts":{"deprecated":0,"experimental":10,"unstable":24,"stable":12,"frozen":0,"locked":0,"unmarked":138},"submodules":[{"name":"core","counts":{"deprecated":0,"experimental":10,"unstable":24,"stable":12,"frozen":0,"locked":0,"unmarked":137},"submodules":[]}]}
