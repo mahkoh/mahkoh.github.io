@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ll` mod in crate `tox`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ll">
+
+    <title>tox::core::ll - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../../index.html'>tox</a>::<wbr><a href='../index.html'>core</a></p><div class='block mod'><h2>Modules</h2><a class='mod current' href='../ll/index.html'>ll</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.Address.html'>Address</a><a class='struct ' href='../struct.ClientId.html'>ClientId</a><a class='struct ' href='../struct.Hash.html'>Hash</a><a class='struct ' href='../struct.Tox.html'>Tox</a><a class='struct ' href='../struct.ToxOptions.html'>ToxOptions</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='../enum.AvatarFormat.html'>AvatarFormat</a><a class='enum ' href='../enum.ChatChange.html'>ChatChange</a><a class='enum ' href='../enum.ConnectionStatus.html'>ConnectionStatus</a><a class='enum ' href='../enum.ControlType.html'>ControlType</a><a class='enum ' href='../enum.Event.html'>Event</a><a class='enum ' href='../enum.Faerr.html'>Faerr</a><a class='enum ' href='../enum.GroupchatType.html'>GroupchatType</a><a class='enum ' href='../enum.ProxyType.html'>ProxyType</a><a class='enum ' href='../enum.TransferType.html'>TransferType</a><a class='enum ' href='../enum.UserStatus.html'>UserStatus</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>tox</a>::<wbr><a href='../index.html'>core</a>::<wbr><a class='mod' href=''>ll</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-5965' href='../../../src/tox/core/ll.rs.html#1-353'>[src]</a></span></h1>
+<h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Tox.html'
+                               title='tox::core::ll::Tox'>Tox</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Tox_Options.html'
+                               title='tox::core::ll::Tox_Options'>Tox_Options</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_AVATAR_FORMAT_NONE.html'
+                               title='tox::core::ll::TOX_AVATAR_FORMAT_NONE'>TOX_AVATAR_FORMAT_NONE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_AVATAR_FORMAT_PNG.html'
+                               title='tox::core::ll::TOX_AVATAR_FORMAT_PNG'>TOX_AVATAR_FORMAT_PNG</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_CHAT_CHANGE_PEER_ADD.html'
+                               title='tox::core::ll::TOX_CHAT_CHANGE_PEER_ADD'>TOX_CHAT_CHANGE_PEER_ADD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_CHAT_CHANGE_PEER_DEL.html'
+                               title='tox::core::ll::TOX_CHAT_CHANGE_PEER_DEL'>TOX_CHAT_CHANGE_PEER_DEL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_CHAT_CHANGE_PEER_NAME.html'
+                               title='tox::core::ll::TOX_CHAT_CHANGE_PEER_NAME'>TOX_CHAT_CHANGE_PEER_NAME</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_ALREADYSENT.html'
+                               title='tox::core::ll::TOX_FAERR_ALREADYSENT'>TOX_FAERR_ALREADYSENT</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_BADCHECKSUM.html'
+                               title='tox::core::ll::TOX_FAERR_BADCHECKSUM'>TOX_FAERR_BADCHECKSUM</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_NOMEM.html'
+                               title='tox::core::ll::TOX_FAERR_NOMEM'>TOX_FAERR_NOMEM</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_NOMESSAGE.html'
+                               title='tox::core::ll::TOX_FAERR_NOMESSAGE'>TOX_FAERR_NOMESSAGE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_OWNKEY.html'
+                               title='tox::core::ll::TOX_FAERR_OWNKEY'>TOX_FAERR_OWNKEY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_SETNEWNOSPAM.html'
+                               title='tox::core::ll::TOX_FAERR_SETNEWNOSPAM'>TOX_FAERR_SETNEWNOSPAM</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_TOOLONG.html'
+                               title='tox::core::ll::TOX_FAERR_TOOLONG'>TOX_FAERR_TOOLONG</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FAERR_UNKNOWN.html'
+                               title='tox::core::ll::TOX_FAERR_UNKNOWN'>TOX_FAERR_UNKNOWN</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FILECONTROL_ACCEPT.html'
+                               title='tox::core::ll::TOX_FILECONTROL_ACCEPT'>TOX_FILECONTROL_ACCEPT</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FILECONTROL_FINISHED.html'
+                               title='tox::core::ll::TOX_FILECONTROL_FINISHED'>TOX_FILECONTROL_FINISHED</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FILECONTROL_KILL.html'
+                               title='tox::core::ll::TOX_FILECONTROL_KILL'>TOX_FILECONTROL_KILL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FILECONTROL_PAUSE.html'
+                               title='tox::core::ll::TOX_FILECONTROL_PAUSE'>TOX_FILECONTROL_PAUSE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_FILECONTROL_RESUME_BROKEN.html'
+                               title='tox::core::ll::TOX_FILECONTROL_RESUME_BROKEN'>TOX_FILECONTROL_RESUME_BROKEN</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_GROUPCHAT_TYPE_AV.html'
+                               title='tox::core::ll::TOX_GROUPCHAT_TYPE_AV'>TOX_GROUPCHAT_TYPE_AV</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_GROUPCHAT_TYPE_TEXT.html'
+                               title='tox::core::ll::TOX_GROUPCHAT_TYPE_TEXT'>TOX_GROUPCHAT_TYPE_TEXT</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_USERSTATUS_AWAY.html'
+                               title='tox::core::ll::TOX_USERSTATUS_AWAY'>TOX_USERSTATUS_AWAY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_USERSTATUS_BUSY.html'
+                               title='tox::core::ll::TOX_USERSTATUS_BUSY'>TOX_USERSTATUS_BUSY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_USERSTATUS_INVALID.html'
+                               title='tox::core::ll::TOX_USERSTATUS_INVALID'>TOX_USERSTATUS_INVALID</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TOX_USERSTATUS_NONE.html'
+                               title='tox::core::ll::TOX_USERSTATUS_NONE'>TOX_USERSTATUS_NONE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_add_friend.html'
+                               title='tox::core::ll::tox_add_friend'>tox_add_friend</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_add_friend_norequest.html'
+                               title='tox::core::ll::tox_add_friend_norequest'>tox_add_friend_norequest</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_add_groupchat.html'
+                               title='tox::core::ll::tox_add_groupchat'>tox_add_groupchat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_add_tcp_relay.html'
+                               title='tox::core::ll::tox_add_tcp_relay'>tox_add_tcp_relay</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_bootstrap_from_address.html'
+                               title='tox::core::ll::tox_bootstrap_from_address'>tox_bootstrap_from_address</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_avatar_data.html'
+                               title='tox::core::ll::tox_callback_avatar_data'>tox_callback_avatar_data</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_avatar_info.html'
+                               title='tox::core::ll::tox_callback_avatar_info'>tox_callback_avatar_info</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_connection_status.html'
+                               title='tox::core::ll::tox_callback_connection_status'>tox_callback_connection_status</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_file_control.html'
+                               title='tox::core::ll::tox_callback_file_control'>tox_callback_file_control</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_file_data.html'
+                               title='tox::core::ll::tox_callback_file_data'>tox_callback_file_data</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_file_send_request.html'
+                               title='tox::core::ll::tox_callback_file_send_request'>tox_callback_file_send_request</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_friend_action.html'
+                               title='tox::core::ll::tox_callback_friend_action'>tox_callback_friend_action</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_friend_message.html'
+                               title='tox::core::ll::tox_callback_friend_message'>tox_callback_friend_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_friend_request.html'
+                               title='tox::core::ll::tox_callback_friend_request'>tox_callback_friend_request</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_group_action.html'
+                               title='tox::core::ll::tox_callback_group_action'>tox_callback_group_action</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_group_invite.html'
+                               title='tox::core::ll::tox_callback_group_invite'>tox_callback_group_invite</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_group_message.html'
+                               title='tox::core::ll::tox_callback_group_message'>tox_callback_group_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_group_namelist_change.html'
+                               title='tox::core::ll::tox_callback_group_namelist_change'>tox_callback_group_namelist_change</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_group_title.html'
+                               title='tox::core::ll::tox_callback_group_title'>tox_callback_group_title</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_name_change.html'
+                               title='tox::core::ll::tox_callback_name_change'>tox_callback_name_change</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_read_receipt.html'
+                               title='tox::core::ll::tox_callback_read_receipt'>tox_callback_read_receipt</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_status_message.html'
+                               title='tox::core::ll::tox_callback_status_message'>tox_callback_status_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_typing_change.html'
+                               title='tox::core::ll::tox_callback_typing_change'>tox_callback_typing_change</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_callback_user_status.html'
+                               title='tox::core::ll::tox_callback_user_status'>tox_callback_user_status</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_count_chatlist.html'
+                               title='tox::core::ll::tox_count_chatlist'>tox_count_chatlist</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_count_friendlist.html'
+                               title='tox::core::ll::tox_count_friendlist'>tox_count_friendlist</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_del_friend.html'
+                               title='tox::core::ll::tox_del_friend'>tox_del_friend</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_del_groupchat.html'
+                               title='tox::core::ll::tox_del_groupchat'>tox_del_groupchat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_do.html'
+                               title='tox::core::ll::tox_do'>tox_do</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_do_interval.html'
+                               title='tox::core::ll::tox_do_interval'>tox_do_interval</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_file_data_remaining.html'
+                               title='tox::core::ll::tox_file_data_remaining'>tox_file_data_remaining</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_file_data_size.html'
+                               title='tox::core::ll::tox_file_data_size'>tox_file_data_size</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_file_send_control.html'
+                               title='tox::core::ll::tox_file_send_control'>tox_file_send_control</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_file_send_data.html'
+                               title='tox::core::ll::tox_file_send_data'>tox_file_send_data</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_friend_exists.html'
+                               title='tox::core::ll::tox_friend_exists'>tox_friend_exists</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_address.html'
+                               title='tox::core::ll::tox_get_address'>tox_get_address</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_chatlist.html'
+                               title='tox::core::ll::tox_get_chatlist'>tox_get_chatlist</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_client_id.html'
+                               title='tox::core::ll::tox_get_client_id'>tox_get_client_id</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_friend_connection_status.html'
+                               title='tox::core::ll::tox_get_friend_connection_status'>tox_get_friend_connection_status</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_friend_number.html'
+                               title='tox::core::ll::tox_get_friend_number'>tox_get_friend_number</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_friendlist.html'
+                               title='tox::core::ll::tox_get_friendlist'>tox_get_friendlist</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_is_typing.html'
+                               title='tox::core::ll::tox_get_is_typing'>tox_get_is_typing</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_keys.html'
+                               title='tox::core::ll::tox_get_keys'>tox_get_keys</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_last_online.html'
+                               title='tox::core::ll::tox_get_last_online'>tox_get_last_online</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_name.html'
+                               title='tox::core::ll::tox_get_name'>tox_get_name</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_name_size.html'
+                               title='tox::core::ll::tox_get_name_size'>tox_get_name_size</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_nospam.html'
+                               title='tox::core::ll::tox_get_nospam'>tox_get_nospam</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_num_online_friends.html'
+                               title='tox::core::ll::tox_get_num_online_friends'>tox_get_num_online_friends</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_self_avatar.html'
+                               title='tox::core::ll::tox_get_self_avatar'>tox_get_self_avatar</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_self_name.html'
+                               title='tox::core::ll::tox_get_self_name'>tox_get_self_name</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_self_name_size.html'
+                               title='tox::core::ll::tox_get_self_name_size'>tox_get_self_name_size</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_self_status_message.html'
+                               title='tox::core::ll::tox_get_self_status_message'>tox_get_self_status_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_self_status_message_size.html'
+                               title='tox::core::ll::tox_get_self_status_message_size'>tox_get_self_status_message_size</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_self_user_status.html'
+                               title='tox::core::ll::tox_get_self_user_status'>tox_get_self_user_status</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_status_message.html'
+                               title='tox::core::ll::tox_get_status_message'>tox_get_status_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_status_message_size.html'
+                               title='tox::core::ll::tox_get_status_message_size'>tox_get_status_message_size</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_get_user_status.html'
+                               title='tox::core::ll::tox_get_user_status'>tox_get_user_status</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_action_send.html'
+                               title='tox::core::ll::tox_group_action_send'>tox_group_action_send</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_get_names.html'
+                               title='tox::core::ll::tox_group_get_names'>tox_group_get_names</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_get_title.html'
+                               title='tox::core::ll::tox_group_get_title'>tox_group_get_title</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_get_type.html'
+                               title='tox::core::ll::tox_group_get_type'>tox_group_get_type</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_message_send.html'
+                               title='tox::core::ll::tox_group_message_send'>tox_group_message_send</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_number_peers.html'
+                               title='tox::core::ll::tox_group_number_peers'>tox_group_number_peers</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_peer_pubkey.html'
+                               title='tox::core::ll::tox_group_peer_pubkey'>tox_group_peer_pubkey</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_peername.html'
+                               title='tox::core::ll::tox_group_peername'>tox_group_peername</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_peernumber_is_ours.html'
+                               title='tox::core::ll::tox_group_peernumber_is_ours'>tox_group_peernumber_is_ours</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_group_set_title.html'
+                               title='tox::core::ll::tox_group_set_title'>tox_group_set_title</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_hash.html'
+                               title='tox::core::ll::tox_hash'>tox_hash</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_invite_friend.html'
+                               title='tox::core::ll::tox_invite_friend'>tox_invite_friend</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_isconnected.html'
+                               title='tox::core::ll::tox_isconnected'>tox_isconnected</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_join_groupchat.html'
+                               title='tox::core::ll::tox_join_groupchat'>tox_join_groupchat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_kill.html'
+                               title='tox::core::ll::tox_kill'>tox_kill</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_load.html'
+                               title='tox::core::ll::tox_load'>tox_load</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_lossless_packet_registerhandler.html'
+                               title='tox::core::ll::tox_lossless_packet_registerhandler'>tox_lossless_packet_registerhandler</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_lossy_packet_registerhandler.html'
+                               title='tox::core::ll::tox_lossy_packet_registerhandler'>tox_lossy_packet_registerhandler</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_new.html'
+                               title='tox::core::ll::tox_new'>tox_new</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_new_file_sender.html'
+                               title='tox::core::ll::tox_new_file_sender'>tox_new_file_sender</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_request_avatar_data.html'
+                               title='tox::core::ll::tox_request_avatar_data'>tox_request_avatar_data</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_request_avatar_info.html'
+                               title='tox::core::ll::tox_request_avatar_info'>tox_request_avatar_info</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_save.html'
+                               title='tox::core::ll::tox_save'>tox_save</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_send_action.html'
+                               title='tox::core::ll::tox_send_action'>tox_send_action</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_send_avatar_info.html'
+                               title='tox::core::ll::tox_send_avatar_info'>tox_send_avatar_info</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_send_lossless_packet.html'
+                               title='tox::core::ll::tox_send_lossless_packet'>tox_send_lossless_packet</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_send_lossy_packet.html'
+                               title='tox::core::ll::tox_send_lossy_packet'>tox_send_lossy_packet</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_send_message.html'
+                               title='tox::core::ll::tox_send_message'>tox_send_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_set_avatar.html'
+                               title='tox::core::ll::tox_set_avatar'>tox_set_avatar</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_set_name.html'
+                               title='tox::core::ll::tox_set_name'>tox_set_name</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_set_nospam.html'
+                               title='tox::core::ll::tox_set_nospam'>tox_set_nospam</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_set_status_message.html'
+                               title='tox::core::ll::tox_set_status_message'>tox_set_status_message</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_set_user_is_typing.html'
+                               title='tox::core::ll::tox_set_user_is_typing'>tox_set_user_is_typing</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_set_user_status.html'
+                               title='tox::core::ll::tox_set_user_status'>tox_set_user_status</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_size.html'
+                               title='tox::core::ll::tox_size'>tox_size</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.tox_unset_avatar.html'
+                               title='tox::core::ll::tox_unset_avatar'>tox_unset_avatar</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../../";
+        window.currentCrate = "tox";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../../jquery.js"></script>
+    <script src="../../../main.js"></script>
+    
+    <script async src="../../../search-index.js"></script>
+</body>
+</html>
