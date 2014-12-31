@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>tox</a>::<wbr><a href='index.html'>core</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Address.html'>Address</a><a class='struct ' href='struct.ClientId.html'>ClientId</a><a class='struct ' href='struct.Hash.html'>Hash</a><a class='struct current' href='struct.Tox.html'>Tox</a><a class='struct ' href='struct.ToxOptions.html'>ToxOptions</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.AvatarFormat.html'>AvatarFormat</a><a class='enum ' href='enum.ChatChange.html'>ChatChange</a><a class='enum ' href='enum.ConnectionStatus.html'>ConnectionStatus</a><a class='enum ' href='enum.ControlType.html'>ControlType</a><a class='enum ' href='enum.Event.html'>Event</a><a class='enum ' href='enum.Faerr.html'>Faerr</a><a class='enum ' href='enum.GroupchatType.html'>GroupchatType</a><a class='enum ' href='enum.ProxyType.html'>ProxyType</a><a class='enum ' href='enum.TransferType.html'>TransferType</a><a class='enum ' href='enum.UserStatus.html'>UserStatus</a></div>
+        <p class='location'><a href='../index.html'>tox</a>::<wbr><a href='index.html'>core</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='ll/index.html'>ll</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Address.html'>Address</a><a class='struct ' href='struct.ClientId.html'>ClientId</a><a class='struct ' href='struct.Hash.html'>Hash</a><a class='struct current' href='struct.Tox.html'>Tox</a><a class='struct ' href='struct.ToxOptions.html'>ToxOptions</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='enum.AvatarFormat.html'>AvatarFormat</a><a class='enum ' href='enum.ChatChange.html'>ChatChange</a><a class='enum ' href='enum.ConnectionStatus.html'>ConnectionStatus</a><a class='enum ' href='enum.ControlType.html'>ControlType</a><a class='enum ' href='enum.Event.html'>Event</a><a class='enum ' href='enum.Faerr.html'>Faerr</a><a class='enum ' href='enum.GroupchatType.html'>GroupchatType</a><a class='enum ' href='enum.ProxyType.html'>ProxyType</a><a class='enum ' href='enum.TransferType.html'>TransferType</a><a class='enum ' href='enum.UserStatus.html'>UserStatus</a></div>
     </section>
 
     <nav class="sub">
@@ -44,7 +44,7 @@
 <h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>tox</a>::<wbr><a href='index.html'>core</a>::<wbr><a class='struct' href=''>Tox</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-12159' href='../../src/tox/core/mod.rs.html#362-365'>[src]</a></span></h1>
+        </span><a id='src-12467' href='../../src/tox/core/mod.rs.html#364-367'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Tox {
     pub events: <a class='struct' href='http://doc.rust-lang.org/nightly/std/comm/struct.Receiver.html' title='std::comm::Receiver'>Receiver</a>&lt;<a class='enum' href='../../tox/core/enum.Event.html' title='tox::core::Event'>Event</a>&gt;,
     // some fields omitted
@@ -97,8 +97,7 @@ only if he added you too</p>
 off</p>
 </div><h4 id='method.get_is_typing' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.get_is_typing' class='fnname'>get_is_typing</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Get typing status of the given friend</p>
-</div><h4 id='method.set_sends_receipts' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_sends_receipts' class='fnname'>set_sends_receipts</a>(&amp;self, friendnumber: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>, yesno: <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>)</code></h4>
-<h4 id='method.count_friendlist' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.count_friendlist' class='fnname'>count_friendlist</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
+</div><h4 id='method.count_friendlist' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.count_friendlist' class='fnname'>count_friendlist</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
 <div class='docblock'><p>Returns the number of friends</p>
 </div><h4 id='method.count_chatlist' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.count_chatlist' class='fnname'>count_chatlist</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a></code></h4>
 <div class='docblock'><p>Returns the number of chats</p>
@@ -153,7 +152,8 @@ off</p>
 <div class='docblock'><p>Load instance data from Vec</p>
 </div><h4 id='method.events' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.events' class='fnname'>events</a>(&amp;self) -&gt; &amp;<a class='struct' href='http://doc.rust-lang.org/nightly/std/comm/struct.Receiver.html' title='std::comm::Receiver'>Receiver</a>&lt;<a class='enum' href='../../tox/core/enum.Event.html' title='tox::core::Event'>Event</a>&gt;</code></h4>
 <div class='docblock'><p>Return an events receiver</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Experimental' title='Experimental'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../tox/core/struct.Tox.html' title='tox::core::Tox'>Tox</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><a class='stability Experimental' title='Experimental'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div><h4 id='method.raw' class='method'><a class='stability Unmarked' title='No stability level'></a><code>unsafe fn <a href='#method.raw' class='fnname'>raw</a>(&amp;self) -&gt; *mut <a class='struct' href='../../tox/core/ll/struct.Tox.html' title='tox::core::ll::Tox'>Tox</a></code></h4>
+<h4 id='method.av' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.av' class='fnname'>av</a>(&amp;self, max_calls: <a href='http://doc.rust-lang.org/nightly/std/primitive.i32.html'>i32</a>) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='../../tox/av/struct.Av.html' title='tox::av::Av'>Av</a>&gt;</code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 
