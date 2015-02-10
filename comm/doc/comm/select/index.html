@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `select` mod in crate `comm`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, select">
+
+    <title>comm::select - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'><a href='../index.html'>comm</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../arc/index.html' title='Fork of the `arc` module in the rust stdlib.'>arc</a><a class='mod ' href='../mpmc/index.html' title='Multiple-producers multiple-consumers (MPMC) channels.'>mpmc</a><a class='mod ' href='../mpsc/index.html' title='Multiple-producers single-consumer (MPSC) channels.'>mpsc</a><a class='mod current' href='../select/index.html' title='A structure for polling channels and other objects.'>select</a><a class='mod ' href='../spmc/index.html' title='Single-producer multiple-consumers (SPMC) channels.'>spmc</a><a class='mod ' href='../spsc/index.html' title='Single-producer single-consumer (SPSC) channels.'>spsc</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='../enum.Error.html' title='Errors that can happen during receiving and sending.'>Error</a></div>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>comm</a>::<wbr><a class='mod' href=''>select</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1712' href='../../src/comm/select/mod.rs.html#1-99'>[src]</a></span></h1>
+<div class='docblock'><p>A structure for polling channels and other objects.</p>
+
+<p>This structure makes it possible to suspend the current task until at least one of
+several objects we&#39;re waiting for is ready.</p>
+
+<h3 id="example" class='section-header'><a
+                           href="#example">Example</a></h3><pre id='rust-example-rendered' class='rust '>
+<span class='kw'>let</span> <span class='ident'>user_input_chan</span> <span class='op'>=</span> ...
+<span class='kw'>let</span> <span class='ident'>network_event_chan</span> <span class='op'>=</span> ...
+
+<span class='kw'>let</span> <span class='ident'>select</span> <span class='op'>=</span> <span class='ident'>Select</span>::<span class='ident'>new</span>();
+<span class='ident'>select</span>.<span class='ident'>add</span>(<span class='kw-2'>&amp;</span><span class='ident'>user_input_chan</span>);
+<span class='ident'>select</span>.<span class='ident'>add</span>(<span class='kw-2'>&amp;</span><span class='ident'>network_event_chan</span>);
+
+<span class='kw'>loop</span> {
+    <span class='kw'>for</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>id</span> <span class='kw'>in</span> <span class='ident'>select</span>.<span class='ident'>wait</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> [<span class='number'>0</span>, <span class='number'>0</span>]) {
+        <span class='kw'>if</span> <span class='ident'>id</span> <span class='op'>==</span> <span class='ident'>user_input_chan</span>.<span class='ident'>id</span>() {
+            <span class='comment'>// handle user input</span>
+        } <span class='kw'>else</span> <span class='kw'>if</span> <span class='ident'>id</span> <span class='op'>==</span> <span class='ident'>network_event_chan</span>.<span class='ident'>id</span>() {
+            <span class='comment'>// handle network events</span>
+        }
+    }
+}
+</pre>
+
+<p>An arbitrary number of targets can be added to the <code>Select</code> object without affecting
+the <code>wait</code> performance. The performance of <code>wait</code> only depends on the number of
+objects that are ready. On the other hand, creating a <code>Select</code> object and adding
+targets to the <code>Select</code> objects are non-trivial operations.</p>
+
+<p>The same <code>Select</code> object can be shared and sent between multiple threads. If multiple
+threads are waiting on the same <code>Select</code> object, exactly one of them will be woken
+when a target becomes ready. The others will continue to sleep until another target
+becomes ready.</p>
+
+<p><code>wait</code> will return an increasing number of unique ids that should be compared to the
+return values of the <code>id</code> functions of <code>Selectable</code> objects. Therefore, all ready
+targets can be found in <code>O(number_of_targets)</code> or
+<code>number_of_ready_targets*O(log(number_of_targets))</code>. </p>
+
+<h3 id="implementation" class='section-header'><a
+                           href="#implementation">Implementation</a></h3>
+<p>The following strategy (very similar to epoll) is used in the implementation;</p>
+
+<p>Each <code>Select</code> object stores two lists: <code>wait_list</code> and <code>ready_list</code>. The <code>wait_list</code>
+contains all targets that are currently in the <code>Select</code> object. The <code>ready_list</code>
+contains targets that were at some point ready.</p>
+
+<p>When a target is added to the <code>Select</code> object, it first tells the target that it wants
+to be notified when the target becomes ready. Then it checks if the target is ready
+and, if so, adds it to the <code>ready_list</code>. If a target becomes ready while it&#39;s
+registered with the <code>Select</code> object, the target adds itself to the <code>ready_list</code>.</p>
+
+<p>When <code>wait</code> is called, the <code>Select</code> object first removes all elements from the
+<code>ready_list</code> that are no longer ready. If the list isn&#39;t empty afterwards, the
+<code>Select</code> object copies a prefix of the <code>ready_list</code> into the user-supplied buffer and
+returns immediately. Otherwise it suspends the current thread until one of the targets
+adds itself to the <code>ready_list</code> and wakes the thread up. Then the <code>Select</code> object
+copies a prefix of the <code>ready_list</code> into the user-supplied buffer and returns.</p>
+
+<p>To keep the API simple, this module also provides a <code>WaitQueue</code> structure which the
+targets have to store to interact with <code>Select</code> objects.</p>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Payload.html'
+                               title='comm::select::Payload'>Payload</a></td>
+                        <td class='docblock short'><p>Container passed from the <code>Select</code> object to a <code>WaitQueue</code>.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Select.html'
+                               title='comm::select::Select'>Select</a></td>
+                        <td class='docblock short'><p>Container for all targets being selected on.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.WaitQueue.html'
+                               title='comm::select::WaitQueue'>WaitQueue</a></td>
+                        <td class='docblock short'><p>A structure stored by <code>Selectable</code> objects to interact with <code>Select</code> objects that want
+to be notified when the <code>Selectable</code> object becomes ready.</p>
+</td>
+                    </tr>
+                </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait.Selectable.html'
+                               title='comm::select::Selectable'>Selectable</a></td>
+                        <td class='docblock short'><p>An object that can be selected on.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='trait' href='trait._Selectable.html'
+                               title='comm::select::_Selectable'>_Selectable</a></td>
+                        <td class='docblock short'><p>The object that will be stored in a <code>Select</code> structure while the <code>Selectable</code> object
+is registered.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "comm";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script async src="../../search-index.js"></script>
+</body>
+</html>

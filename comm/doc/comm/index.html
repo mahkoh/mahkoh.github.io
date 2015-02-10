@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `comm` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, comm">
+
+    <title>comm - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <section class="sidebar">
+        
+        <p class='location'></p>
+    </section>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press 'S' to search, '?' for more options..."
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>comm</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
+            <a id="collapse-all" href="#">[-]
+            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-0' href='../src/comm/lib.rs.html#1-109'>[src]</a></span></h1>
+<div class='docblock'><p>Communication primitives.</p>
+
+<p>This library provides types for message passing between threads and polling.
+Concretely, it provides</p>
+
+<ul>
+<li>Single-producer single-consumer (SPSC),</li>
+<li>Single-producer multiple-consumers (SPMC),</li>
+<li>Multiple-producers single-consumer (MPSC), and</li>
+<li>Multiple-producers multiple-consumers (MPMC)</li>
+</ul>
+
+<p>channels of different flavors and a <code>Select</code> object which can poll the consuming ends
+of these channels for readiness.</p>
+
+<h3 id="examples" class='section-header'><a
+                           href="#examples">Examples</a></h3>
+<p>Simple usage:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::{<span class='ident'>Thread</span>};
+<span class='kw'>use</span> <span class='ident'>comm</span>::{<span class='ident'>spsc</span>};
+ 
+<span class='comment'>// Create a bounded SPSC channel.</span>
+<span class='kw'>let</span> (<span class='ident'>send</span>, <span class='ident'>recv</span>) <span class='op'>=</span> <span class='ident'>spsc</span>::<span class='ident'>bounded</span>::<span class='ident'>new</span>(<span class='number'>10</span>);
+<span class='ident'>Thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
+    <span class='ident'>send</span>.<span class='ident'>send_sync</span>(<span class='number'>10</span>).<span class='ident'>unwrap</span>();
+});
+<span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>recv</span>.<span class='ident'>recv_sync</span>().<span class='ident'>unwrap</span>(), <span class='number'>10</span>);
+</pre>
+
+<p>Shared usage:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::{<span class='ident'>Thread</span>};
+<span class='kw'>use</span> <span class='ident'>comm</span>::{<span class='ident'>mpsc</span>};
+ 
+<span class='comment'>// Create an unbounded MPSC channel.</span>
+<span class='kw'>let</span> (<span class='ident'>send</span>, <span class='ident'>recv</span>) <span class='op'>=</span> <span class='ident'>mpsc</span>::<span class='ident'>unbounded</span>::<span class='ident'>new</span>();
+<span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>10</span> {
+    <span class='kw'>let</span> <span class='ident'>send</span> <span class='op'>=</span> <span class='ident'>send</span>.<span class='ident'>clone</span>();
+    <span class='ident'>Thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
+        <span class='ident'>send</span>.<span class='ident'>send</span>(<span class='ident'>i</span>).<span class='ident'>unwrap</span>();
+    });
+}
+<span class='ident'>drop</span>(<span class='ident'>send</span>);
+<span class='kw'>while</span> <span class='kw'>let</span> <span class='prelude-val'>Ok</span>(<span class='ident'>n</span>) <span class='op'>=</span> <span class='ident'>recv</span>.<span class='ident'>recv_sync</span>() {
+    <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>n</span>);
+}
+</pre>
+
+<p>Selecting:</p>
+<pre id='rust-example-rendered' class='rust '>
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::{<span class='ident'>Thread</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::{<span class='ident'>timer</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>time</span>::<span class='ident'>duration</span>::{<span class='ident'>Duration</span>};
+<span class='kw'>use</span> <span class='ident'>comm</span>::{<span class='ident'>spsc</span>};
+<span class='kw'>use</span> <span class='ident'>comm</span>::<span class='ident'>select</span>::{<span class='ident'>Select</span>, <span class='ident'>Selectable</span>};
+ 
+<span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>channels</span> <span class='op'>=</span> <span class='macro'>vec</span><span class='macro'>!</span>();
+<span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>10</span> {
+    <span class='kw'>let</span> (<span class='ident'>send</span>, <span class='ident'>recv</span>) <span class='op'>=</span> <span class='ident'>spsc</span>::<span class='ident'>one_space</span>::<span class='ident'>new</span>();
+    <span class='ident'>channels</span>.<span class='ident'>push</span>(<span class='ident'>recv</span>);
+    <span class='ident'>Thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
+        <span class='ident'>timer</span>::<span class='ident'>sleep</span>(<span class='ident'>Duration</span>::<span class='ident'>milliseconds</span>(<span class='number'>100</span>));
+        <span class='ident'>send</span>.<span class='ident'>send</span>(<span class='ident'>i</span>).<span class='ident'>ok</span>();
+    });
+}
+<span class='kw'>let</span> <span class='ident'>select</span> <span class='op'>=</span> <span class='ident'>Select</span>::<span class='ident'>new</span>();
+<span class='kw'>for</span> <span class='ident'>recv</span> <span class='kw'>in</span> <span class='kw-2'>&amp;</span><span class='ident'>channels</span> {
+    <span class='ident'>select</span>.<span class='ident'>add</span>(<span class='ident'>recv</span>);
+}
+<span class='kw'>let</span> <span class='ident'>first_ready</span> <span class='op'>=</span> <span class='ident'>select</span>.<span class='ident'>wait</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> [<span class='number'>0</span>])[<span class='number'>0</span>];
+<span class='kw'>for</span> <span class='ident'>recv</span> <span class='kw'>in</span> <span class='kw-2'>&amp;</span><span class='ident'>channels</span> {
+    <span class='kw'>if</span> <span class='ident'>first_ready</span> <span class='op'>==</span> <span class='ident'>recv</span>.<span class='ident'>id</span>() {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;First ready: {}&quot;</span>, <span class='ident'>recv</span>.<span class='ident'>recv_sync</span>().<span class='ident'>unwrap</span>());
+        <span class='kw'>return</span>;
+    }
+}
+</pre>
+</div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='arc/index.html'
+                               title='comm::arc'>arc</a></td>
+                        <td class='docblock short'><p>Fork of the <code>arc</code> module in the rust stdlib.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='mpmc/index.html'
+                               title='comm::mpmc'>mpmc</a></td>
+                        <td class='docblock short'><p>Multiple-producers multiple-consumers (MPMC) channels.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='mpsc/index.html'
+                               title='comm::mpsc'>mpsc</a></td>
+                        <td class='docblock short'><p>Multiple-producers single-consumer (MPSC) channels.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='select/index.html'
+                               title='comm::select'>select</a></td>
+                        <td class='docblock short'><p>A structure for polling channels and other objects.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='spmc/index.html'
+                               title='comm::spmc'>spmc</a></td>
+                        <td class='docblock short'><p>Single-producer multiple-consumers (SPMC) channels.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='mod' href='spsc/index.html'
+                               title='comm::spsc'>spsc</a></td>
+                        <td class='docblock short'><p>Single-producer single-consumer (SPSC) channels.</p>
+</td>
+                    </tr>
+                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='enum' href='enum.Error.html'
+                               title='comm::Error'>Error</a></td>
+                        <td class='docblock short'><p>Errors that can happen during receiving and sending.</p>
+</td>
+                    </tr>
+                </table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <div id="help" class="hidden">
+        <div class="shortcuts">
+            <h1>Keyboard shortcuts</h1>
+            <dl>
+                <dt>?</dt>
+                <dd>Show this help dialog</dd>
+                <dt>S</dt>
+                <dd>Focus the search field</dd>
+                <dt>&larrb;</dt>
+                <dd>Move up in search results</dd>
+                <dt>&rarrb;</dt>
+                <dd>Move down in search results</dd>
+                <dt>&#9166;</dt>
+                <dd>Go to active search result</dd>
+            </dl>
+        </div>
+        <div class="infos">
+            <h1>Search tricks</h1>
+            <p>
+                Prefix searches with a type followed by a colon (e.g.
+                <code>fn:</code>) to restrict the search to a given type.
+            </p>
+            <p>
+                Accepted types are: <code>fn</code>, <code>mod</code>,
+                <code>struct</code>, <code>enum</code>,
+                <code>trait</code>, <code>typedef</code> (or
+                <code>tdef</code>).
+            </p>
+        </div>
+    </div>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "comm";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
