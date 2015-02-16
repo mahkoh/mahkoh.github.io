@@ -149,11 +149,14 @@
 <span id="107">107</span>
 <span id="108">108</span>
 <span id="109">109</span>
+<span id="110">110</span>
+<span id="111">111</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_type</span> <span class='op'>=</span> <span class='string'>&quot;lib&quot;</span>]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_name</span> <span class='op'>=</span> <span class='string'>&quot;comm&quot;</span>]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>box_syntax</span>, <span class='ident'>core</span>, <span class='ident'>alloc</span>, <span class='ident'>collections</span>, <span class='ident'>hash</span>, <span class='ident'>std_misc</span>)]</span>
-<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>cfg_attr</span>(<span class='ident'>test</span>, <span class='ident'>feature</span>(<span class='ident'>io</span>))]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>unsafe_destructor</span>, <span class='ident'>box_syntax</span>, <span class='ident'>core</span>, <span class='ident'>alloc</span>, <span class='ident'>collections</span>, <span class='ident'>hash</span>,
+           <span class='ident'>std_misc</span>, <span class='ident'>unsafe_no_drop_flag</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>cfg_attr</span>(<span class='ident'>test</span>, <span class='ident'>feature</span>(<span class='ident'>io</span>, <span class='ident'>test</span>))]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>allow</span>(<span class='ident'>dead_code</span>)]</span>
 
 <span class='doccomment'>//! Communication primitives.</span>
@@ -176,7 +179,7 @@
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//! use std::thread::{Thread};</span>
 <span class='doccomment'>//! use comm::{spsc};</span>
-<span class='doccomment'>//! </span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! // Create a bounded SPSC channel.</span>
 <span class='doccomment'>//! let (send, recv) = spsc::bounded::new(10);</span>
 <span class='doccomment'>//! Thread::spawn(move || {</span>
@@ -190,7 +193,7 @@
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//! use std::thread::{Thread};</span>
 <span class='doccomment'>//! use comm::{mpsc};</span>
-<span class='doccomment'>//! </span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! // Create an unbounded MPSC channel.</span>
 <span class='doccomment'>//! let (send, recv) = mpsc::unbounded::new();</span>
 <span class='doccomment'>//! for i in 0..10 {</span>
@@ -213,7 +216,7 @@
 <span class='doccomment'>//! use std::time::duration::{Duration};</span>
 <span class='doccomment'>//! use comm::{spsc};</span>
 <span class='doccomment'>//! use comm::select::{Select, Selectable};</span>
-<span class='doccomment'>//! </span>
+<span class='doccomment'>//!</span>
 <span class='doccomment'>//! let mut channels = vec!();</span>
 <span class='doccomment'>//! for i in 0..10 {</span>
 <span class='doccomment'>//!     let (send, recv) = spsc::one_space::new();</span>
@@ -238,6 +241,7 @@
 
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>core</span>;
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>alloc</span>;
+<span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>test</span>;
 
 <span class='kw'>mod</span> <span class='ident'>sortedvec</span>;
 
@@ -252,7 +256,7 @@
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// See the individual functions for a list of errors they can return and the specific</span>
 <span class='doccomment'>/// meaning.</span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Copy</span>, <span class='ident'>PartialEq</span>)]</span>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>, <span class='ident'>Copy</span>, <span class='ident'>Clone</span>, <span class='ident'>PartialEq</span>, <span class='ident'>Eq</span>)]</span>
 <span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>Error</span> {
     <span class='ident'>Disconnected</span>,
     <span class='ident'>Full</span>,

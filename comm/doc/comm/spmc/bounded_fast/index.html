@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `bounded` mod in crate `comm`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, bounded">
+    <meta name="description" content="API documentation for the Rust `bounded_fast` mod in crate `comm`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, bounded_fast">
 
-    <title>comm::mpmc::bounded - Rust</title>
+    <title>comm::spmc::bounded_fast - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>mpmc</a></p><div class='block mod'><h2>Modules</h2><a class='mod current' href='../bounded/index.html' title='A bounded MPMC channel.'>bounded</a></div>
+        <p class='location'><a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>spmc</a></p><div class='block mod'><h2>Modules</h2><a class='mod current' href='../bounded_fast/index.html' title='A bounded SPMC channel.'>bounded_fast</a><a class='mod ' href='../unbounded/index.html' title='An unbounded SPMC channel.'>unbounded</a></div>
     </section>
 
     <nav class="sub">
@@ -41,24 +41,32 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>mpmc</a>::<wbr><a class='mod' href=''>bounded</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>spmc</a>::<wbr><a class='mod' href=''>bounded_fast</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-10418' href='../../../src/comm/mpmc/bounded/mod.rs.html#1-101'>[src]</a></span></h1>
-<div class='docblock'><p>A bounded MPMC channel.</p>
-
-<p>See the documentation of the parent module and the bounded SPSC docs for details.</p>
-
-<h3 id="performance" class='section-header'><a
-                           href="#performance">Performance</a></h3>
-<p>This implementation suffers from some performance problems when the number of active
-endpoints is larger than the number of cpu cores.</p>
+        </span><a id='src-7971' href='../../../src/comm/spmc/bounded_fast/mod.rs.html#1-108'>[src]</a></span></h1>
+<div class='docblock'><p>A bounded SPMC channel.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Channel.html'
-                               title='comm::mpmc::bounded::Channel'>Channel</a></td>
-                        <td class='docblock short'><p>An endpoint of a bounded MPMC channel.</p>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Consumer.html'
+                               title='comm::spmc::bounded_fast::Consumer'>Consumer</a></td>
+                        <td class='docblock short'><p>A consumer of a bounded SPMC channel.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Producer.html'
+                               title='comm::spmc::bounded_fast::Producer'>Producer</a></td>
+                        <td class='docblock short'><p>A producer of a bounded SPMC channel.</p>
+</td>
+                    </tr>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.new.html'
+                               title='comm::spmc::bounded_fast::new'>new</a></td>
+                        <td class='docblock short'><p>Creates a new bounded MPMC channel with capacity at least <code>cap</code>.</p>
 </td>
                     </tr>
                 </table></section>

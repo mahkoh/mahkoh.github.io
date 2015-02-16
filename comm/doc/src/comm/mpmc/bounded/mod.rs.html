@@ -172,7 +172,7 @@
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// - `sizeof(usize) == 4 &amp;&amp; cap &gt; 2^15`,</span>
     <span class='doccomment'>/// - `sizeof(usize) == 8 &amp;&amp; cap &gt; 2^31`,</span>
-    <span class='doccomment'>/// - `next_power_of_two(cap) * max(sizeof(T), 1) &gt;= isize::MAX`.</span>
+    <span class='doccomment'>/// - `next_power_of_two(cap) * sizeof(T) &gt;= isize::MAX`.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>cap</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> <span class='ident'>Channel</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='ident'>packet</span> <span class='op'>=</span> <span class='ident'>Arc</span>::<span class='ident'>new</span>(<span class='ident'>imp</span>::<span class='ident'>Packet</span>::<span class='ident'>new</span>(<span class='ident'>cap</span>));
         <span class='ident'>packet</span>.<span class='ident'>set_id</span>(<span class='ident'>packet</span>.<span class='ident'>unique_id</span>());

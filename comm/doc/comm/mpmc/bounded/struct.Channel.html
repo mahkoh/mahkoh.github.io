@@ -44,7 +44,7 @@
 <h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>mpmc</a>::<wbr><a href='index.html'>bounded</a>::<wbr><a class='struct' href=''>Channel</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-10196' href='../../../src/comm/mpmc/bounded/mod.rs.html#18-20'>[src]</a></span></h1>
+        </span><a id='src-11750' href='../../../src/comm/mpmc/bounded/mod.rs.html#18-20'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Channel&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a>&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>An endpoint of a bounded MPMC channel.</p>
@@ -58,7 +58,7 @@
 <ul>
 <li><code>sizeof(usize) == 4 &amp;&amp; cap &gt; 2^15</code>,</li>
 <li><code>sizeof(usize) == 8 &amp;&amp; cap &gt; 2^31</code>,</li>
-<li><code>next_power_of_two(cap) * max(sizeof(T), 1) &gt;= isize::MAX</code>.</li>
+<li><code>next_power_of_two(cap) * sizeof(T) &gt;= isize::MAX</code>.</li>
 </ul>
 </div><h4 id='method.send_sync' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.send_sync' class='fnname'>send_sync</a>(&amp;self, val: T) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>, <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(T, <a class='enum' href='../../../comm/enum.Error.html' title='comm::Error'>Error</a>)</a>&gt;</code></h4>
 <div class='docblock'><p>Sends a message over the channel. Blocks if the channel is full.</p>

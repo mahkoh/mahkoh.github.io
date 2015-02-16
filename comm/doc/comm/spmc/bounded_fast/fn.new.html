@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `bounded` mod in crate `comm`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, bounded">
+    <meta name="description" content="API documentation for the Rust `new` fn in crate `comm`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, new">
 
-    <title>comm::mpmc::bounded - Rust</title>
+    <title>comm::spmc::bounded_fast::new - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../../../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>mpmc</a></p><div class='block mod'><h2>Modules</h2><a class='mod current' href='../bounded/index.html' title='A bounded MPMC channel.'>bounded</a></div>
+        <p class='location'><a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>spmc</a>::<wbr><a href='index.html'>bounded_fast</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.Consumer.html' title='A consumer of a bounded SPMC channel.'>Consumer</a><a class='struct ' href='struct.Producer.html' title='A producer of a bounded SPMC channel.'>Producer</a></div><div class='block fn'><h2>Functions</h2><a class='fn current' href='fn.new.html' title='Creates a new bounded MPMC channel with capacity at least `cap`.'>new</a></div>
     </section>
 
     <nav class="sub">
@@ -40,28 +40,19 @@
         </form>
     </nav>
 
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>mpmc</a>::<wbr><a class='mod' href=''>bounded</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+    <section id='main' class="content fn">
+<h1 class='fqn'><span class='in-band'>Function <a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>spmc</a>::<wbr><a href='index.html'>bounded_fast</a>::<wbr><a class='fn' href=''>new</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]
             </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-10418' href='../../../src/comm/mpmc/bounded/mod.rs.html#1-101'>[src]</a></span></h1>
-<div class='docblock'><p>A bounded MPMC channel.</p>
+        </span><a id='src-9194' href='../../../src/comm/spmc/bounded_fast/mod.rs.html#17-21'>[src]</a></span></h1>
+<pre class='rust fn'>pub unsafe fn new&lt;T: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a>&gt;(cap: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.tuple.html'>(<a class='struct' href='../../../comm/spmc/bounded_fast/struct.Producer.html' title='comm::spmc::bounded_fast::Producer'>Producer</a>&lt;T&gt;, <a class='struct' href='../../../comm/spmc/bounded_fast/struct.Consumer.html' title='comm::spmc::bounded_fast::Consumer'>Consumer</a>&lt;T&gt;)</a></pre><div class='docblock'><p>Creates a new bounded MPMC channel with capacity at least <code>cap</code>.</p>
 
-<p>See the documentation of the parent module and the bounded SPSC docs for details.</p>
-
-<h3 id="performance" class='section-header'><a
-                           href="#performance">Performance</a></h3>
-<p>This implementation suffers from some performance problems when the number of active
-endpoints is larger than the number of cpu cores.</p>
-</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Channel.html'
-                               title='comm::mpmc::bounded::Channel'>Channel</a></td>
-                        <td class='docblock short'><p>An endpoint of a bounded MPMC channel.</p>
-</td>
-                    </tr>
-                </table></section>
+<h1 id="safety" class='section-header'><a
+                           href="#safety">Safety</a></h1>
+<p>This is unsafe because under just the right circumstances this implementation can lead
+to undefined behavior. Note that these circumstances are extremely rare and almost
+impossible on 64 bit systems.</p>
+</div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

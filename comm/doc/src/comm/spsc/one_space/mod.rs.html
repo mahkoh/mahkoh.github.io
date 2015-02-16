@@ -140,6 +140,7 @@
 <span id="98"> 98</span>
 <span id="99"> 99</span>
 <span id="100">100</span>
+<span id="101">101</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! An SPSC channel with a buffer size of one.</span>
 <span class='doccomment'>//!</span>
@@ -158,6 +159,7 @@
 
 <span class='kw'>mod</span> <span class='ident'>imp</span>;
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span> <span class='kw'>mod</span> <span class='ident'>test</span>;
+<span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span> <span class='kw'>mod</span> <span class='ident'>bench</span>;
 
 <span class='doccomment'>/// Creates a new SPSC one space channel.</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Send</span><span class='op'>&gt;</span>() <span class='op'>-&gt;</span> (<span class='ident'>Producer</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>, <span class='ident'>Consumer</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>) {

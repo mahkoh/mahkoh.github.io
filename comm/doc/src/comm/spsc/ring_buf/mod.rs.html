@@ -157,7 +157,7 @@
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// ### Panic</span>
 <span class='doccomment'>///</span>
-<span class='doccomment'>/// Panics if `next_power_of_two(cap) * max(sizeof(T), 1) &gt;= isize::MAX`.</span>
+<span class='doccomment'>/// Panics if `next_power_of_two(cap) * sizeof(T) &gt;= isize::MAX`.</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span><span class='op'>&lt;</span><span class='ident'>T</span>: <span class='ident'>Send</span><span class='op'>&gt;</span>(<span class='ident'>cap</span>: <span class='ident'>usize</span>) <span class='op'>-&gt;</span> (<span class='ident'>Producer</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>, <span class='ident'>Consumer</span><span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>) {
     <span class='kw'>let</span> <span class='ident'>packet</span> <span class='op'>=</span> <span class='ident'>Arc</span>::<span class='ident'>new</span>(<span class='ident'>imp</span>::<span class='ident'>Packet</span>::<span class='ident'>new</span>(<span class='ident'>cap</span>));
     <span class='ident'>packet</span>.<span class='ident'>set_id</span>(<span class='ident'>packet</span>.<span class='ident'>unique_id</span>());

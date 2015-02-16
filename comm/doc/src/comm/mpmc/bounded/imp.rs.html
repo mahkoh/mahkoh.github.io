@@ -436,6 +436,12 @@
 <span id="394">394</span>
 <span id="395">395</span>
 <span id="396">396</span>
+<span id="397">397</span>
+<span id="398">398</span>
+<span id="399">399</span>
+<span id="400">400</span>
+<span id="401">401</span>
+<span id="402">402</span>
 </pre><pre class='rust '>
 <span class='doccomment'>//! This code might still contain bugs. In either case it&#39;s very inefficient because we</span>
 <span class='doccomment'>//! want to avoid reading invalid memory at all costs. Note that the implementation from</span>
@@ -525,7 +531,11 @@
         <span class='kw'>if</span> <span class='ident'>size</span> <span class='op'>&gt;</span> <span class='op'>!</span><span class='number'>0</span> <span class='op'>&gt;&gt;</span> <span class='number'>1</span> {
             <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;capacity overflow&quot;</span>);
         }
-        <span class='kw'>let</span> <span class='ident'>buf</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>allocate</span>(<span class='ident'>size</span>, <span class='ident'>mem</span>::<span class='ident'>min_align_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>()) };
+        <span class='kw'>let</span> <span class='ident'>buf</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>mem</span>::<span class='ident'>size_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>() <span class='op'>==</span> <span class='number'>0</span> {
+            <span class='number'>1</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>u8</span>
+        } <span class='kw'>else</span> {
+            <span class='kw'>unsafe</span> { <span class='ident'>allocate</span>(<span class='ident'>size</span>, <span class='ident'>mem</span>::<span class='ident'>min_align_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>()) }
+        };
         <span class='kw'>if</span> <span class='ident'>buf</span>.<span class='ident'>is_null</span>() {
             <span class='ident'>oom</span>();
         }
@@ -805,9 +815,11 @@
                 <span class='self'>self</span>.<span class='ident'>get_mem</span>(<span class='ident'>read_start</span> <span class='op'>+</span> <span class='ident'>i</span>);
             }
 
-            <span class='ident'>deallocate</span>(<span class='self'>self</span>.<span class='ident'>buf</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>u8</span>,
-                       (<span class='self'>self</span>.<span class='ident'>cap_mask</span> <span class='kw'>as</span> <span class='ident'>usize</span> <span class='op'>+</span> <span class='number'>1</span>) <span class='op'>*</span> <span class='ident'>mem</span>::<span class='ident'>size_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(),
-                       <span class='ident'>mem</span>::<span class='ident'>min_align_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>());
+            <span class='kw'>if</span> <span class='ident'>mem</span>::<span class='ident'>size_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>() <span class='op'>&gt;</span> <span class='number'>0</span> {
+                <span class='ident'>deallocate</span>(<span class='self'>self</span>.<span class='ident'>buf</span> <span class='kw'>as</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>u8</span>,
+                           (<span class='self'>self</span>.<span class='ident'>cap_mask</span> <span class='kw'>as</span> <span class='ident'>usize</span> <span class='op'>+</span> <span class='number'>1</span>) <span class='op'>*</span> <span class='ident'>mem</span>::<span class='ident'>size_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>(),
+                           <span class='ident'>mem</span>::<span class='ident'>min_align_of</span>::<span class='op'>&lt;</span><span class='ident'>T</span><span class='op'>&gt;</span>());
+            }
         }
     }
 }
