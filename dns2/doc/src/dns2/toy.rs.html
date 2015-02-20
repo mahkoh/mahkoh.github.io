@@ -238,7 +238,7 @@
     <span class='prelude-val'>Ok</span>(<span class='ident'>res</span>)
 }
 
-<span class='doccomment'>/// Retreives a list of nameservers from the OS.</span>
+<span class='doccomment'>/// Retrieves a list of nameservers from the OS.</span>
 <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>nameservers</span>() <span class='op'>-&gt;</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>IpAddr</span><span class='op'>&gt;</span> {
     <span class='kw'>match</span> <span class='ident'>nameservers_int</span>() {
         <span class='prelude-val'>Ok</span>(<span class='ident'>v</span>) <span class='op'>=&gt;</span> <span class='ident'>v</span>,
