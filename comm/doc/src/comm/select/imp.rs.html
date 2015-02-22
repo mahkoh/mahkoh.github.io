@@ -332,11 +332,39 @@
 <span id="290">290</span>
 <span id="291">291</span>
 <span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
+<span id="298">298</span>
+<span id="299">299</span>
+<span id="300">300</span>
+<span id="301">301</span>
+<span id="302">302</span>
+<span id="303">303</span>
+<span id="304">304</span>
+<span id="305">305</span>
+<span id="306">306</span>
+<span id="307">307</span>
+<span id="308">308</span>
+<span id="309">309</span>
+<span id="310">310</span>
+<span id="311">311</span>
+<span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
 </pre><pre class='rust '>
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::{<span class='ident'>HashMap</span>};
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>, <span class='ident'>Hasher</span>, <span class='ident'>Writer</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>hash</span>::{<span class='ident'>Hash</span>, <span class='ident'>Hasher</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>sync</span>::{<span class='ident'>Mutex</span>, <span class='ident'>Condvar</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cmp</span>::{<span class='self'>self</span>, <span class='ident'>Ordering</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>time</span>::{<span class='ident'>Duration</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::{<span class='ident'>mem</span>};
 
 <span class='kw'>use</span> <span class='ident'>arc</span>::{<span class='ident'>Arc</span>, <span class='ident'>Weak</span>, <span class='ident'>WeakTrait</span>};
@@ -428,20 +456,46 @@
         <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ready</span>[..<span class='ident'>min</span>]
     }
 
-    <span class='doccomment'>/// Checks if any of the targets are ready and, if so, copies them into the array.</span>
-    <span class='doccomment'>/// Does not block if no target is ready.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>check_ready_list</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>ready</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> [<span class='ident'>usize</span>]) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> [<span class='ident'>usize</span>] {
+    <span class='doccomment'>/// Waits for any of the targets in the `Select` object to become ready. The semantics</span>
+    <span class='doccomment'>/// are as for the `wait` function except that</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// - if `duration` is some duration, then it will sleep for at most `duration`, and</span>
+    <span class='doccomment'>/// - if `duration` is none, then it will only check if at the time of the call any</span>
+    <span class='doccomment'>///   targets are ready and return immediately.</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// # Return value</span>
+    <span class='doccomment'>///</span>
+    <span class='doccomment'>/// Returns `None` if the timeout expired.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>wait_timeout</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>ready</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> [<span class='ident'>usize</span>],
+                            <span class='ident'>duration</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Duration</span><span class='op'>&gt;</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='kw-2'>mut</span> [<span class='ident'>usize</span>]<span class='op'>&gt;</span> {
         <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>inner</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>inner</span>.<span class='ident'>lock</span>().<span class='ident'>unwrap</span>();
 
         <span class='kw'>if</span> <span class='ident'>inner</span>.<span class='ident'>wait_list</span>.<span class='ident'>is_empty</span>() {
-            <span class='kw'>return</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> [];
+            <span class='kw'>return</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> []);
         }
 
         <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>n</span>) <span class='op'>=</span> <span class='ident'>inner</span>.<span class='ident'>check_ready_list</span>(<span class='ident'>ready</span>) {
-            <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ready</span>[..<span class='ident'>n</span>]
-        } <span class='kw'>else</span> {
-            <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> []
+            <span class='kw'>return</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ready</span>[..<span class='ident'>n</span>]);
         }
+
+        <span class='kw'>let</span> <span class='ident'>duration</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>duration</span> {
+            <span class='prelude-val'>Some</span>(<span class='ident'>d</span>) <span class='op'>=&gt;</span> <span class='ident'>d</span>,
+            _ <span class='op'>=&gt;</span> <span class='kw'>return</span> <span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> []),
+        };
+
+        <span class='kw'>let</span> (<span class='ident'>inner</span>, <span class='ident'>notified</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>condvar</span>.<span class='ident'>wait_timeout_with</span>(<span class='ident'>inner</span>, <span class='ident'>duration</span>, <span class='op'>|</span><span class='ident'>inner</span><span class='op'>|</span> {
+            <span class='ident'>inner</span>.<span class='ident'>unwrap</span>().<span class='ident'>ready_list</span>.<span class='ident'>len</span>() <span class='op'>&gt;</span> <span class='number'>0</span>
+        }).<span class='ident'>unwrap</span>();
+
+        <span class='kw'>if</span> <span class='op'>!</span><span class='ident'>notified</span> {
+            <span class='kw'>return</span> <span class='prelude-val'>None</span>;
+        }
+
+        <span class='kw'>let</span> <span class='ident'>min</span> <span class='op'>=</span> <span class='ident'>cmp</span>::<span class='ident'>min</span>(<span class='ident'>ready</span>.<span class='ident'>len</span>(), <span class='ident'>inner</span>.<span class='ident'>ready_list</span>.<span class='ident'>len</span>());
+        <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='ident'>min</span> {
+            <span class='ident'>ready</span>[<span class='ident'>i</span>] <span class='op'>=</span> <span class='ident'>inner</span>.<span class='ident'>ready_list</span>[<span class='ident'>i</span>];
+        }
+        <span class='prelude-val'>Some</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ready</span>[..<span class='ident'>min</span>])
     }
 }
 
@@ -536,8 +590,8 @@
     }
 }
 
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='ident'>H</span>: <span class='ident'>Hasher</span><span class='op'>+</span><span class='ident'>Writer</span><span class='op'>&gt;</span> <span class='ident'>Hash</span><span class='op'>&lt;</span><span class='ident'>H</span><span class='op'>&gt;</span> <span class='kw'>for</span> <span class='ident'>Entry</span> {
-    <span class='kw'>fn</span> <span class='ident'>hash</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>state</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>H</span>) {
+<span class='kw'>impl</span> <span class='ident'>Hash</span> <span class='kw'>for</span> <span class='ident'>Entry</span> {
+    <span class='kw'>fn</span> <span class='ident'>hash</span><span class='op'>&lt;</span><span class='ident'>H</span>: <span class='ident'>Hasher</span><span class='op'>&gt;</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>state</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>H</span>) {
         <span class='self'>self</span>.<span class='ident'>data</span>.<span class='ident'>unique_id</span>().<span class='ident'>hash</span>(<span class='ident'>state</span>);
     }
 }

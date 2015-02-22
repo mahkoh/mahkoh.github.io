@@ -42,9 +42,8 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>comm</a>::<wbr><a class='mod' href=''>arc</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]
-            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-358' href='../../src/comm/arc.rs.html#1-514'>[src]</a></span></h1>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-358' href='../../src/comm/arc.rs.html#1-529'>[src]</a></span></h1>
 <div class='docblock'><p>Fork of the <code>arc</code> module in the rust stdlib.</p>
 
 <p>Only the changes are documented here. See the stdlib for the rest.</p>
@@ -72,7 +71,7 @@ contain trait objects.</p>
 
 <span class='kw'>let</span> <span class='ident'>arc_trait</span>: <span class='ident'>ArcTrait</span><span class='op'>&lt;</span><span class='ident'>Y</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
     <span class='kw'>let</span> <span class='ident'>arc</span> <span class='op'>=</span> <span class='ident'>Arc</span>::<span class='ident'>new</span>(<span class='ident'>X</span> { <span class='ident'>x</span>: <span class='number'>3</span> });
-    <span class='ident'>arc</span>.<span class='ident'>as_trait</span>(<span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>arc</span> <span class='kw'>as</span> <span class='kw-2'>&amp;</span><span class='ident'>Y</span>)
+    <span class='ident'>arc</span>.<span class='ident'>as_trait</span>(<span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>arc</span> <span class='kw'>as</span> <span class='kw-2'>&amp;</span>(<span class='ident'>Y</span><span class='op'>+</span><span class='lifetime'>&#39;static</span>))
 };
 
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>arc_trait</span>.<span class='ident'>f</span>(), <span class='number'>3</span>);

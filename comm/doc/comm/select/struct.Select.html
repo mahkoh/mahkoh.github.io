@@ -42,9 +42,8 @@
 
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>comm</a>::<wbr><a href='index.html'>select</a>::<wbr><a class='struct' href=''>Select</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]
-            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-1745' href='../../src/comm/select/imp.rs.html#12-15'>[src]</a></span></h1>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1798' href='../../src/comm/select/imp.rs.html#13-16'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Select {
     // some fields omitted
 }</pre><div class='docblock'><p>Container for all targets being selected on.</p>
@@ -61,10 +60,20 @@ the ready targets will be stored in <code>ready</code>. Returns the prefix conta
 of stored <code>ids</code>.</p>
 
 <p>If the select object is empty, an empty slice is returned immediately.</p>
-</div><h4 id='method.check_ready_list' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.check_ready_list' class='fnname'>check_ready_list</a>&lt;'a&gt;(&amp;self, ready: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a mut [</a><a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a mut [</a><a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a></code></h4>
-<div class='docblock'><p>Checks if any of the targets are ready and, if so, copies them into the array.
-Does not block if no target is ready.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Unstable' title='Unstable: will be overhauled with new lifetime rules; see RFC 458'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> for <a class='struct' href='../../comm/select/struct.Select.html' title='comm::select::Select'>Select</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Unstable' title='Unstable: will be overhauled with new lifetime rules; see RFC 458'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> for <a class='struct' href='../../comm/select/struct.Select.html' title='comm::select::Select'>Select</a></code></h3><div class='impl-items'></div></section>
+</div><h4 id='method.wait_timeout' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.wait_timeout' class='fnname'>wait_timeout</a>&lt;'a&gt;(&amp;self, ready: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a mut [</a><a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, duration: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a class='struct' href='http://doc.rust-lang.org/nightly/std/time/duration/struct.Duration.html' title='std::time::duration::Duration'>Duration</a>&gt;) -&gt; <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;<a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a mut [</a><a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>&gt;</code></h4>
+<div class='docblock'><p>Waits for any of the targets in the <code>Select</code> object to become ready. The semantics
+are as for the <code>wait</code> function except that</p>
+
+<ul>
+<li>if <code>duration</code> is some duration, then it will sleep for at most <code>duration</code>, and</li>
+<li>if <code>duration</code> is none, then it will only check if at the time of the call any
+targets are ready and return immediately.</li>
+</ul>
+
+<h1 id="return-value" class='section-header'><a
+                           href="#return-value">Return value</a></h1>
+<p>Returns <code>None</code> if the timeout expired.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> for <a class='struct' href='../../comm/select/struct.Select.html' title='comm::select::Select'>Select</a></code></h3><div class='impl-items'></div><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> for <a class='struct' href='../../comm/select/struct.Select.html' title='comm::select::Select'>Select</a></code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>

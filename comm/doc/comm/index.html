@@ -42,8 +42,7 @@
 
     <section id='main' class="content mod">
 <h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>comm</a><wbr></span><span class='out-of-band'><a href='stability.html'>[stability]</a> <span id='render-detail'>
-            <a id="collapse-all" href="#">[-]
-            </a>&nbsp;<a id="expand-all" href="#">[+]</a>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
         </span><a id='src-0' href='../src/comm/lib.rs.html#1-111'>[src]</a></span></h1>
 <div class='docblock'><p>Communication primitives.</p>
 
@@ -64,12 +63,12 @@ of these channels for readiness.</p>
                            href="#examples">Examples</a></h3>
 <p>Simple usage:</p>
 <pre id='rust-example-rendered' class='rust '>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::{<span class='ident'>Thread</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::{<span class='ident'>thread</span>};
 <span class='kw'>use</span> <span class='ident'>comm</span>::{<span class='ident'>spsc</span>};
 
 <span class='comment'>// Create a bounded SPSC channel.</span>
 <span class='kw'>let</span> (<span class='ident'>send</span>, <span class='ident'>recv</span>) <span class='op'>=</span> <span class='ident'>spsc</span>::<span class='ident'>bounded</span>::<span class='ident'>new</span>(<span class='number'>10</span>);
-<span class='ident'>Thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
+<span class='ident'>thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
     <span class='ident'>send</span>.<span class='ident'>send_sync</span>(<span class='number'>10</span>).<span class='ident'>unwrap</span>();
 });
 <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>recv</span>.<span class='ident'>recv_sync</span>().<span class='ident'>unwrap</span>(), <span class='number'>10</span>);
@@ -77,14 +76,14 @@ of these channels for readiness.</p>
 
 <p>Shared usage:</p>
 <pre id='rust-example-rendered' class='rust '>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::{<span class='ident'>Thread</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::{<span class='ident'>thread</span>};
 <span class='kw'>use</span> <span class='ident'>comm</span>::{<span class='ident'>mpsc</span>};
 
 <span class='comment'>// Create an unbounded MPSC channel.</span>
 <span class='kw'>let</span> (<span class='ident'>send</span>, <span class='ident'>recv</span>) <span class='op'>=</span> <span class='ident'>mpsc</span>::<span class='ident'>unbounded</span>::<span class='ident'>new</span>();
 <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>10</span> {
     <span class='kw'>let</span> <span class='ident'>send</span> <span class='op'>=</span> <span class='ident'>send</span>.<span class='ident'>clone</span>();
-    <span class='ident'>Thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
+    <span class='ident'>thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
         <span class='ident'>send</span>.<span class='ident'>send</span>(<span class='ident'>i</span>).<span class='ident'>unwrap</span>();
     });
 }
@@ -96,7 +95,7 @@ of these channels for readiness.</p>
 
 <p>Selecting:</p>
 <pre id='rust-example-rendered' class='rust '>
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>thread</span>::{<span class='ident'>Thread</span>};
+<span class='kw'>use</span> <span class='ident'>std</span>::{<span class='ident'>thread</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>old_io</span>::{<span class='ident'>timer</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>time</span>::<span class='ident'>duration</span>::{<span class='ident'>Duration</span>};
 <span class='kw'>use</span> <span class='ident'>comm</span>::{<span class='ident'>spsc</span>};
@@ -106,7 +105,7 @@ of these channels for readiness.</p>
 <span class='kw'>for</span> <span class='ident'>i</span> <span class='kw'>in</span> <span class='number'>0</span>..<span class='number'>10</span> {
     <span class='kw'>let</span> (<span class='ident'>send</span>, <span class='ident'>recv</span>) <span class='op'>=</span> <span class='ident'>spsc</span>::<span class='ident'>one_space</span>::<span class='ident'>new</span>();
     <span class='ident'>channels</span>.<span class='ident'>push</span>(<span class='ident'>recv</span>);
-    <span class='ident'>Thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
+    <span class='ident'>thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
         <span class='ident'>timer</span>::<span class='ident'>sleep</span>(<span class='ident'>Duration</span>::<span class='ident'>milliseconds</span>(<span class='number'>100</span>));
         <span class='ident'>send</span>.<span class='ident'>send</span>(<span class='ident'>i</span>).<span class='ident'>ok</span>();
     });
