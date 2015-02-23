@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `ispunct_l` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, ispunct_l">
 
     <title>posix::ctype::ispunct_l - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>ctype</a></p><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.isalnum.html'>isalnum</a><a class='fn ' href='fn.isalnum_l.html'>isalnum_l</a><a class='fn ' href='fn.isalpha.html'>isalpha</a><a class='fn ' href='fn.isalpha_l.html'>isalpha_l</a><a class='fn ' href='fn.isascii.html'>isascii</a><a class='fn ' href='fn.isblank.html'>isblank</a><a class='fn ' href='fn.isblank_l.html'>isblank_l</a><a class='fn ' href='fn.iscntrl.html'>iscntrl</a><a class='fn ' href='fn.iscntrl_l.html'>iscntrl_l</a><a class='fn ' href='fn.isdigit.html'>isdigit</a><a class='fn ' href='fn.isdigit_l.html'>isdigit_l</a><a class='fn ' href='fn.isgraph.html'>isgraph</a><a class='fn ' href='fn.isgraph_l.html'>isgraph_l</a><a class='fn ' href='fn.islower.html'>islower</a><a class='fn ' href='fn.islower_l.html'>islower_l</a><a class='fn ' href='fn.isprint.html'>isprint</a><a class='fn ' href='fn.isprint_l.html'>isprint_l</a><a class='fn ' href='fn.ispunct.html'>ispunct</a><a class='fn current' href='fn.ispunct_l.html'>ispunct_l</a><a class='fn ' href='fn.isspace.html'>isspace</a><a class='fn ' href='fn.isspace_l.html'>isspace_l</a><a class='fn ' href='fn.isupper.html'>isupper</a><a class='fn ' href='fn.isupper_l.html'>isupper_l</a><a class='fn ' href='fn.isxdigit.html'>isxdigit</a><a class='fn ' href='fn.isxdigit_l.html'>isxdigit_l</a><a class='fn ' href='fn.toascii.html'>toascii</a><a class='fn ' href='fn.tolower.html'>tolower</a><a class='fn ' href='fn.tolower_l.html'>tolower_l</a><a class='fn ' href='fn.toupper.html'>toupper</a><a class='fn ' href='fn.toupper_l.html'>toupper_l</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>ctype</a></p><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.isalnum.html' title=''>isalnum</a><a class='fn ' href='fn.isalnum_l.html' title=''>isalnum_l</a><a class='fn ' href='fn.isalpha.html' title=''>isalpha</a><a class='fn ' href='fn.isalpha_l.html' title=''>isalpha_l</a><a class='fn ' href='fn.isascii.html' title=''>isascii</a><a class='fn ' href='fn.isblank.html' title=''>isblank</a><a class='fn ' href='fn.isblank_l.html' title=''>isblank_l</a><a class='fn ' href='fn.iscntrl.html' title=''>iscntrl</a><a class='fn ' href='fn.iscntrl_l.html' title=''>iscntrl_l</a><a class='fn ' href='fn.isdigit.html' title=''>isdigit</a><a class='fn ' href='fn.isdigit_l.html' title=''>isdigit_l</a><a class='fn ' href='fn.isgraph.html' title=''>isgraph</a><a class='fn ' href='fn.isgraph_l.html' title=''>isgraph_l</a><a class='fn ' href='fn.islower.html' title=''>islower</a><a class='fn ' href='fn.islower_l.html' title=''>islower_l</a><a class='fn ' href='fn.isprint.html' title=''>isprint</a><a class='fn ' href='fn.isprint_l.html' title=''>isprint_l</a><a class='fn ' href='fn.ispunct.html' title=''>ispunct</a><a class='fn current' href='fn.ispunct_l.html' title=''>ispunct_l</a><a class='fn ' href='fn.isspace.html' title=''>isspace</a><a class='fn ' href='fn.isspace_l.html' title=''>isspace_l</a><a class='fn ' href='fn.isupper.html' title=''>isupper</a><a class='fn ' href='fn.isupper_l.html' title=''>isupper_l</a><a class='fn ' href='fn.isxdigit.html' title=''>isxdigit</a><a class='fn ' href='fn.isxdigit_l.html' title=''>isxdigit_l</a><a class='fn ' href='fn.toascii.html' title=''>toascii</a><a class='fn ' href='fn.tolower.html' title=''>tolower</a><a class='fn ' href='fn.tolower_l.html' title=''>tolower_l</a><a class='fn ' href='fn.toupper.html' title=''>toupper</a><a class='fn ' href='fn.toupper_l.html' title=''>toupper_l</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>ctype</a>::<a class='fn' href=''>ispunct_l</a><span class='out-of-band'><a id='src-1348' href='../../src/posix/src/ctype/mod.rs.html#94-97'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>posix</a>::<wbr><a href='index.html'>ctype</a>::<wbr><a class='fn' href=''>ispunct_l</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-1431' href='../../src/posix/ctype/mod.rs.html#94-97'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn ispunct_l(arg1: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>, arg2: <a class='type' href='../../posix/locale/type.locale_t.html' title='posix::locale::locale_t'>locale_t</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `mknodat` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, mknodat">
 
     <title>posix::sys::stat::mknodat - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a>&#8203;::<a href='index.html'>stat</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.stat.html'>stat</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.S_ISBLK.html'>S_ISBLK</a><a class='fn ' href='fn.S_ISCHR.html'>S_ISCHR</a><a class='fn ' href='fn.S_ISDIR.html'>S_ISDIR</a><a class='fn ' href='fn.S_ISFIFO.html'>S_ISFIFO</a><a class='fn ' href='fn.S_ISLNK.html'>S_ISLNK</a><a class='fn ' href='fn.S_ISREG.html'>S_ISREG</a><a class='fn ' href='fn.S_ISSOCK.html'>S_ISSOCK</a><a class='fn ' href='fn.S_TYPEISMQ.html'>S_TYPEISMQ</a><a class='fn ' href='fn.S_TYPEISSEM.html'>S_TYPEISSEM</a><a class='fn ' href='fn.S_TYPEISSHM.html'>S_TYPEISSHM</a><a class='fn ' href='fn.chmod.html'>chmod</a><a class='fn ' href='fn.fchmod.html'>fchmod</a><a class='fn ' href='fn.fchmodat.html'>fchmodat</a><a class='fn ' href='fn.fstat.html'>fstat</a><a class='fn ' href='fn.fstatat.html'>fstatat</a><a class='fn ' href='fn.futimens.html'>futimens</a><a class='fn ' href='fn.lstat.html'>lstat</a><a class='fn ' href='fn.mkdir.html'>mkdir</a><a class='fn ' href='fn.mkdirat.html'>mkdirat</a><a class='fn ' href='fn.mkfifo.html'>mkfifo</a><a class='fn ' href='fn.mkfifoat.html'>mkfifoat</a><a class='fn ' href='fn.mknod.html'>mknod</a><a class='fn current' href='fn.mknodat.html'>mknodat</a><a class='fn ' href='fn.stat.html'>stat</a><a class='fn ' href='fn.umask.html'>umask</a><a class='fn ' href='fn.utimensat.html'>utimensat</a></div>
+        <p class='location'><a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>stat</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.stat.html' title=''>stat</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.S_ISBLK.html' title=''>S_ISBLK</a><a class='fn ' href='fn.S_ISCHR.html' title=''>S_ISCHR</a><a class='fn ' href='fn.S_ISDIR.html' title=''>S_ISDIR</a><a class='fn ' href='fn.S_ISFIFO.html' title=''>S_ISFIFO</a><a class='fn ' href='fn.S_ISLNK.html' title=''>S_ISLNK</a><a class='fn ' href='fn.S_ISREG.html' title=''>S_ISREG</a><a class='fn ' href='fn.S_ISSOCK.html' title=''>S_ISSOCK</a><a class='fn ' href='fn.S_TYPEISMQ.html' title=''>S_TYPEISMQ</a><a class='fn ' href='fn.S_TYPEISSEM.html' title=''>S_TYPEISSEM</a><a class='fn ' href='fn.S_TYPEISSHM.html' title=''>S_TYPEISSHM</a><a class='fn ' href='fn.chmod.html' title=''>chmod</a><a class='fn ' href='fn.fchmod.html' title=''>fchmod</a><a class='fn ' href='fn.fchmodat.html' title=''>fchmodat</a><a class='fn ' href='fn.fstat.html' title=''>fstat</a><a class='fn ' href='fn.fstatat.html' title=''>fstatat</a><a class='fn ' href='fn.futimens.html' title=''>futimens</a><a class='fn ' href='fn.lstat.html' title=''>lstat</a><a class='fn ' href='fn.mkdir.html' title=''>mkdir</a><a class='fn ' href='fn.mkdirat.html' title=''>mkdirat</a><a class='fn ' href='fn.mkfifo.html' title=''>mkfifo</a><a class='fn ' href='fn.mkfifoat.html' title=''>mkfifoat</a><a class='fn ' href='fn.mknod.html' title=''>mknod</a><a class='fn current' href='fn.mknodat.html' title=''>mknodat</a><a class='fn ' href='fn.stat.html' title=''>stat</a><a class='fn ' href='fn.umask.html' title=''>umask</a><a class='fn ' href='fn.utimensat.html' title=''>utimensat</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a href='index.html'>stat</a>::<a class='fn' href=''>mknodat</a><span class='out-of-band'><a id='src-27294' href='../../../src/posix/src/sys/stat/mod.rs.html#107-110'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Function <a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>stat</a>::<wbr><a class='fn' href=''>mknodat</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-28862' href='../../../src/posix/sys/stat/mod.rs.html#107-110'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn mknodat&lt;T: <a class='trait' href='../../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>&gt;(fd: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a>, path: &amp;T, mode: <a class='type' href='../../../posix/sys/types/type.mode_t.html' title='posix::sys::types::mode_t'>mode_t</a>, dev: <a class='type' href='../../../posix/sys/types/type.dev_t.html' title='posix::sys::types::dev_t'>dev_t</a>) -&gt; <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

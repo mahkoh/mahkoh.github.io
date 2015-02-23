@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `langinfo` mod in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, langinfo">
 
     <title>posix::langinfo - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html'>aio</a><a class='mod ' href='../arpa/index.html'>arpa</a><a class='mod ' href='../cpio/index.html'>cpio</a><a class='mod ' href='../ctype/index.html'>ctype</a><a class='mod ' href='../dirent/index.html'>dirent</a><a class='mod ' href='../dlfcn/index.html'>dlfcn</a><a class='mod ' href='../errno/index.html'>errno</a><a class='mod ' href='../fcntl/index.html'>fcntl</a><a class='mod ' href='../fenv/index.html'>fenv</a><a class='mod ' href='../float/index.html'>float</a><a class='mod ' href='../fmtmsg/index.html'>fmtmsg</a><a class='mod ' href='../fnmatch/index.html'>fnmatch</a><a class='mod ' href='../ftw/index.html'>ftw</a><a class='mod ' href='../glob/index.html'>glob</a><a class='mod ' href='../grp/index.html'>grp</a><a class='mod ' href='../iconv/index.html'>iconv</a><a class='mod ' href='../inttypes/index.html'>inttypes</a><a class='mod current' href='../langinfo/index.html'>langinfo</a><a class='mod ' href='../libgen/index.html'>libgen</a><a class='mod ' href='../limits/index.html'>limits</a><a class='mod ' href='../locale/index.html'>locale</a><a class='mod ' href='../monetary/index.html'>monetary</a><a class='mod ' href='../mqueue/index.html'>mqueue</a><a class='mod ' href='../ndbm/index.html'>ndbm</a><a class='mod ' href='../net/index.html'>net</a><a class='mod ' href='../netdb/index.html'>netdb</a><a class='mod ' href='../netinet/index.html'>netinet</a><a class='mod ' href='../nl_types/index.html'>nl_types</a><a class='mod ' href='../poll/index.html'>poll</a><a class='mod ' href='../pthread/index.html'>pthread</a><a class='mod ' href='../pwd/index.html'>pwd</a><a class='mod ' href='../regex/index.html'>regex</a><a class='mod ' href='../sched/index.html'>sched</a><a class='mod ' href='../search/index.html'>search</a><a class='mod ' href='../semaphore/index.html'>semaphore</a><a class='mod ' href='../setjmp/index.html'>setjmp</a><a class='mod ' href='../signal/index.html'>signal</a><a class='mod ' href='../spawn/index.html'>spawn</a><a class='mod ' href='../stddef/index.html'>stddef</a><a class='mod ' href='../stdint/index.html'>stdint</a><a class='mod ' href='../stdio/index.html'>stdio</a><a class='mod ' href='../stdlib/index.html'>stdlib</a><a class='mod ' href='../string/index.html'>string</a><a class='mod ' href='../strings/index.html'>strings</a><a class='mod ' href='../stropts/index.html'>stropts</a><a class='mod ' href='../sys/index.html'>sys</a><a class='mod ' href='../syslog/index.html'>syslog</a><a class='mod ' href='../tar/index.html'>tar</a><a class='mod ' href='../termios/index.html'>termios</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../ulimit/index.html'>ulimit</a><a class='mod ' href='../unistd/index.html'>unistd</a><a class='mod ' href='../utime/index.html'>utime</a><a class='mod ' href='../utmpx/index.html'>utmpx</a><a class='mod ' href='../wchar/index.html'>wchar</a><a class='mod ' href='../wctype/index.html'>wctype</a><a class='mod ' href='../wordexp/index.html'>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html'>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html'>NTStrOwned</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html'>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html'>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html'>AsSlice</a><a class='trait ' href='../trait.NTStr.html'>NTStr</a><a class='trait ' href='../trait.ToNTStr.html'>ToNTStr</a></div>
+        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html' title=''>aio</a><a class='mod ' href='../arpa/index.html' title=''>arpa</a><a class='mod ' href='../cpio/index.html' title=''>cpio</a><a class='mod ' href='../ctype/index.html' title=''>ctype</a><a class='mod ' href='../dirent/index.html' title=''>dirent</a><a class='mod ' href='../dlfcn/index.html' title=''>dlfcn</a><a class='mod ' href='../errno/index.html' title=''>errno</a><a class='mod ' href='../fcntl/index.html' title=''>fcntl</a><a class='mod ' href='../fenv/index.html' title=''>fenv</a><a class='mod ' href='../float/index.html' title=''>float</a><a class='mod ' href='../fmtmsg/index.html' title=''>fmtmsg</a><a class='mod ' href='../fnmatch/index.html' title=''>fnmatch</a><a class='mod ' href='../ftw/index.html' title=''>ftw</a><a class='mod ' href='../glob/index.html' title=''>glob</a><a class='mod ' href='../grp/index.html' title=''>grp</a><a class='mod ' href='../iconv/index.html' title=''>iconv</a><a class='mod ' href='../inttypes/index.html' title=''>inttypes</a><a class='mod current' href='../langinfo/index.html' title=''>langinfo</a><a class='mod ' href='../libgen/index.html' title=''>libgen</a><a class='mod ' href='../limits/index.html' title=''>limits</a><a class='mod ' href='../locale/index.html' title=''>locale</a><a class='mod ' href='../monetary/index.html' title=''>monetary</a><a class='mod ' href='../mqueue/index.html' title=''>mqueue</a><a class='mod ' href='../ndbm/index.html' title=''>ndbm</a><a class='mod ' href='../net/index.html' title=''>net</a><a class='mod ' href='../netdb/index.html' title=''>netdb</a><a class='mod ' href='../netinet/index.html' title=''>netinet</a><a class='mod ' href='../nl_types/index.html' title=''>nl_types</a><a class='mod ' href='../poll/index.html' title=''>poll</a><a class='mod ' href='../pthread/index.html' title=''>pthread</a><a class='mod ' href='../pwd/index.html' title=''>pwd</a><a class='mod ' href='../regex/index.html' title=''>regex</a><a class='mod ' href='../sched/index.html' title=''>sched</a><a class='mod ' href='../search/index.html' title=''>search</a><a class='mod ' href='../semaphore/index.html' title=''>semaphore</a><a class='mod ' href='../setjmp/index.html' title=''>setjmp</a><a class='mod ' href='../signal/index.html' title=''>signal</a><a class='mod ' href='../spawn/index.html' title=''>spawn</a><a class='mod ' href='../stddef/index.html' title=''>stddef</a><a class='mod ' href='../stdint/index.html' title=''>stdint</a><a class='mod ' href='../stdio/index.html' title=''>stdio</a><a class='mod ' href='../stdlib/index.html' title=''>stdlib</a><a class='mod ' href='../string/index.html' title=''>string</a><a class='mod ' href='../strings/index.html' title=''>strings</a><a class='mod ' href='../stropts/index.html' title=''>stropts</a><a class='mod ' href='../sys/index.html' title=''>sys</a><a class='mod ' href='../syslog/index.html' title=''>syslog</a><a class='mod ' href='../tar/index.html' title=''>tar</a><a class='mod ' href='../termios/index.html' title=''>termios</a><a class='mod ' href='../time/index.html' title=''>time</a><a class='mod ' href='../ulimit/index.html' title=''>ulimit</a><a class='mod ' href='../unistd/index.html' title=''>unistd</a><a class='mod ' href='../utime/index.html' title=''>utime</a><a class='mod ' href='../utmpx/index.html' title=''>utmpx</a><a class='mod ' href='../wchar/index.html' title=''>wchar</a><a class='mod ' href='../wctype/index.html' title=''>wctype</a><a class='mod ' href='../wordexp/index.html' title=''>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html' title=''>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html' title=''>NTStrOwned</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='../enum.void_t.html' title=''>void_t</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html' title=''>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html' title=''>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html' title=''>AsSlice</a><a class='trait ' href='../trait.NTStr.html' title=''>NTStr</a><a class='trait ' href='../trait.ToNTStr.html' title=''>ToNTStr</a></div>
     </section>
 
     <nav class="sub">
@@ -39,293 +41,350 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Module <a href='../index.html'>posix</a>::<a class='mod' href=''>langinfo</a><span class='out-of-band'><a id='src-5672' href='../../src/posix/src/langinfo/mod.rs.html#1-68'>[src]</a></span></h1>
-<h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>posix</a>::<wbr><a class='mod' href=''>langinfo</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-5960' href='../../src/posix/langinfo/mod.rs.html#1-68'>[src]</a></span></h1>
+<h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_1: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131072</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_1.html'
+                               title='posix::langinfo::ABDAY_1'>ABDAY_1</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_2: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131073</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_2.html'
+                               title='posix::langinfo::ABDAY_2'>ABDAY_2</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_3: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131074</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_3.html'
+                               title='posix::langinfo::ABDAY_3'>ABDAY_3</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_4: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131075</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_4.html'
+                               title='posix::langinfo::ABDAY_4'>ABDAY_4</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_5: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131076</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_5.html'
+                               title='posix::langinfo::ABDAY_5'>ABDAY_5</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_6: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131077</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_6.html'
+                               title='posix::langinfo::ABDAY_6'>ABDAY_6</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABDAY_7: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131078</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABDAY_7.html'
+                               title='posix::langinfo::ABDAY_7'>ABDAY_7</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_1: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131086</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_1.html'
+                               title='posix::langinfo::ABMON_1'>ABMON_1</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_10: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131095</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_10.html'
+                               title='posix::langinfo::ABMON_10'>ABMON_10</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_11: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131096</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_11.html'
+                               title='posix::langinfo::ABMON_11'>ABMON_11</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_12: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131097</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_12.html'
+                               title='posix::langinfo::ABMON_12'>ABMON_12</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_2: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131087</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_2.html'
+                               title='posix::langinfo::ABMON_2'>ABMON_2</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_3: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131088</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_3.html'
+                               title='posix::langinfo::ABMON_3'>ABMON_3</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_4: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131089</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_4.html'
+                               title='posix::langinfo::ABMON_4'>ABMON_4</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_5: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131090</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_5.html'
+                               title='posix::langinfo::ABMON_5'>ABMON_5</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_6: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131091</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_6.html'
+                               title='posix::langinfo::ABMON_6'>ABMON_6</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_7: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131092</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_7.html'
+                               title='posix::langinfo::ABMON_7'>ABMON_7</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_8: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131093</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_8.html'
+                               title='posix::langinfo::ABMON_8'>ABMON_8</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ABMON_9: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131094</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ABMON_9.html'
+                               title='posix::langinfo::ABMON_9'>ABMON_9</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ALT_DIGITS: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131119</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ALT_DIGITS.html'
+                               title='posix::langinfo::ALT_DIGITS'>ALT_DIGITS</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AM_STR: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131110</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AM_STR.html'
+                               title='posix::langinfo::AM_STR'>AM_STR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CODESET: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>14</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CODESET.html'
+                               title='posix::langinfo::CODESET'>CODESET</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CRNCYSTR: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>262159</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CRNCYSTR.html'
+                               title='posix::langinfo::CRNCYSTR'>CRNCYSTR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_1: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131079</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_1.html'
+                               title='posix::langinfo::DAY_1'>DAY_1</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_2: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131080</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_2.html'
+                               title='posix::langinfo::DAY_2'>DAY_2</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_3: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131081</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_3.html'
+                               title='posix::langinfo::DAY_3'>DAY_3</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_4: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131082</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_4.html'
+                               title='posix::langinfo::DAY_4'>DAY_4</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_5: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131083</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_5.html'
+                               title='posix::langinfo::DAY_5'>DAY_5</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_6: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131084</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_6.html'
+                               title='posix::langinfo::DAY_6'>DAY_6</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static DAY_7: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131085</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.DAY_7.html'
+                               title='posix::langinfo::DAY_7'>DAY_7</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static D_FMT: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131113</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.D_FMT.html'
+                               title='posix::langinfo::D_FMT'>D_FMT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static D_T_FMT: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131112</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.D_T_FMT.html'
+                               title='posix::langinfo::D_T_FMT'>D_T_FMT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ERA: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131116</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ERA.html'
+                               title='posix::langinfo::ERA'>ERA</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ERA_D_FMT: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131118</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ERA_D_FMT.html'
+                               title='posix::langinfo::ERA_D_FMT'>ERA_D_FMT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ERA_D_T_FMT: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131120</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ERA_D_T_FMT.html'
+                               title='posix::langinfo::ERA_D_T_FMT'>ERA_D_T_FMT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ERA_T_FMT: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131121</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ERA_T_FMT.html'
+                               title='posix::langinfo::ERA_T_FMT'>ERA_T_FMT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_1: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131098</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_1.html'
+                               title='posix::langinfo::MON_1'>MON_1</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_10: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131107</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_10.html'
+                               title='posix::langinfo::MON_10'>MON_10</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_11: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131108</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_11.html'
+                               title='posix::langinfo::MON_11'>MON_11</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_12: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131109</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_12.html'
+                               title='posix::langinfo::MON_12'>MON_12</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_2: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131099</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_2.html'
+                               title='posix::langinfo::MON_2'>MON_2</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_3: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131100</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_3.html'
+                               title='posix::langinfo::MON_3'>MON_3</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_4: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131101</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_4.html'
+                               title='posix::langinfo::MON_4'>MON_4</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_5: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131102</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_5.html'
+                               title='posix::langinfo::MON_5'>MON_5</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_6: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131103</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_6.html'
+                               title='posix::langinfo::MON_6'>MON_6</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_7: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131104</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_7.html'
+                               title='posix::langinfo::MON_7'>MON_7</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_8: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131105</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_8.html'
+                               title='posix::langinfo::MON_8'>MON_8</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MON_9: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131106</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MON_9.html'
+                               title='posix::langinfo::MON_9'>MON_9</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static NOEXPR: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>327681</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.NOEXPR.html'
+                               title='posix::langinfo::NOEXPR'>NOEXPR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PM_STR: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131111</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PM_STR.html'
+                               title='posix::langinfo::PM_STR'>PM_STR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RADIXCHAR: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>65536</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RADIXCHAR.html'
+                               title='posix::langinfo::RADIXCHAR'>RADIXCHAR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static THOUSEP: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>65537</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.THOUSEP.html'
+                               title='posix::langinfo::THOUSEP'>THOUSEP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static T_FMT: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131114</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.T_FMT.html'
+                               title='posix::langinfo::T_FMT'>T_FMT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static T_FMT_AMPM: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>131115</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.T_FMT_AMPM.html'
+                               title='posix::langinfo::T_FMT_AMPM'>T_FMT_AMPM</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static YESEXPR: <a class='type' href='../../posix/nl_types/type.nl_item.html' title='posix::nl_types::nl_item'>nl_item</a></code><code> = </code><code>327680</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.YESEXPR.html'
+                               title='posix::langinfo::YESEXPR'>YESEXPR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
-                </table><h2 id='ffi-fns' class='section-header'><a href="#ffi-fns">Foreign Functions</a></h2>
+                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.nl_langinfo.html'
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.nl_langinfo.html'
                                title='posix::langinfo::nl_langinfo'>nl_langinfo</a></td>
                         <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.nl_langinfo_l.html'
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.nl_langinfo_l.html'
                                title='posix::langinfo::nl_langinfo_l'>nl_langinfo_l</a></td>
                         <td class='docblock short'></td>
                     </tr>
@@ -358,7 +417,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

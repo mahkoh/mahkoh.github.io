@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `utimes` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, utimes">
 
     <title>posix::sys::time::utimes - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a>&#8203;::<a href='index.html'>time</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.itimerval.html'>itimerval</a><a class='struct ' href='struct.timeval.html'>timeval</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.getitimer.html'>getitimer</a><a class='fn ' href='fn.gettimeofday.html'>gettimeofday</a><a class='fn ' href='fn.setitimer.html'>setitimer</a><a class='fn current' href='fn.utimes.html'>utimes</a></div>
+        <p class='location'><a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>time</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.itimerval.html' title=''>itimerval</a><a class='struct ' href='struct.timeval.html' title=''>timeval</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.getitimer.html' title=''>getitimer</a><a class='fn ' href='fn.gettimeofday.html' title=''>gettimeofday</a><a class='fn ' href='fn.setitimer.html' title=''>setitimer</a><a class='fn current' href='fn.utimes.html' title=''>utimes</a></div>
     </section>
 
     <nav class="sub">
@@ -39,8 +41,10 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a href='index.html'>time</a>::<a class='fn' href=''>utimes</a><span class='out-of-band'><a id='src-27848' href='../../../src/posix/src/sys/time/mod.rs.html#31-37'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn utimes&lt;T: <a class='trait' href='../../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>&gt;(file: &amp;T, tvp: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a class='struct' href='../../../posix/sys/time/struct.timeval.html' title='posix::sys::time::timeval'>timeval</a>]</a>) -&gt; <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
+<h1 class='fqn'><span class='in-band'>Function <a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>time</a>::<wbr><a class='fn' href=''>utimes</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-29456' href='../../../src/posix/sys/time/mod.rs.html#31-37'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn utimes&lt;T: <a class='trait' href='../../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>&gt;(file: &amp;T, tvp: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a class='struct' href='../../../posix/sys/time/struct.timeval.html' title='posix::sys::time::timeval'>timeval</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>) -&gt; <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

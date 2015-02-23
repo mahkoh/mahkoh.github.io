@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `timespec` struct in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, timespec">
 
     <title>posix::time::timespec - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>time</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.itimerspec.html'>itimerspec</a><a class='struct current' href='struct.timespec.html'>timespec</a><a class='struct ' href='struct.tm.html'>tm</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.clock.html'>clock</a><a class='fn ' href='fn.clock_getcpuclockid.html'>clock_getcpuclockid</a><a class='fn ' href='fn.clock_getres.html'>clock_getres</a><a class='fn ' href='fn.clock_gettime.html'>clock_gettime</a><a class='fn ' href='fn.clock_nanosleep.html'>clock_nanosleep</a><a class='fn ' href='fn.clock_settime.html'>clock_settime</a><a class='fn ' href='fn.difftime.html'>difftime</a><a class='fn ' href='fn.getdate_err.html'>getdate_err</a><a class='fn ' href='fn.gmtime_r.html'>gmtime_r</a><a class='fn ' href='fn.localtime_r.html'>localtime_r</a><a class='fn ' href='fn.mktime.html'>mktime</a><a class='fn ' href='fn.nanosleep.html'>nanosleep</a><a class='fn ' href='fn.strftime.html'>strftime</a><a class='fn ' href='fn.strftime_l.html'>strftime_l</a><a class='fn ' href='fn.strptime.html'>strptime</a><a class='fn ' href='fn.time.html'>time</a><a class='fn ' href='fn.timer_create.html'>timer_create</a><a class='fn ' href='fn.timer_delete.html'>timer_delete</a><a class='fn ' href='fn.timer_getoverrun.html'>timer_getoverrun</a><a class='fn ' href='fn.timer_gettime.html'>timer_gettime</a><a class='fn ' href='fn.timre_settime.html'>timre_settime</a><a class='fn ' href='fn.tzset.html'>tzset</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>time</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.itimerspec.html' title=''>itimerspec</a><a class='struct current' href='struct.timespec.html' title=''>timespec</a><a class='struct ' href='struct.tm.html' title=''>tm</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.clock.html' title=''>clock</a><a class='fn ' href='fn.clock_getcpuclockid.html' title=''>clock_getcpuclockid</a><a class='fn ' href='fn.clock_getres.html' title=''>clock_getres</a><a class='fn ' href='fn.clock_gettime.html' title=''>clock_gettime</a><a class='fn ' href='fn.clock_nanosleep.html' title=''>clock_nanosleep</a><a class='fn ' href='fn.clock_settime.html' title=''>clock_settime</a><a class='fn ' href='fn.difftime.html' title=''>difftime</a><a class='fn ' href='fn.getdate_err.html' title=''>getdate_err</a><a class='fn ' href='fn.gmtime_r.html' title=''>gmtime_r</a><a class='fn ' href='fn.localtime_r.html' title=''>localtime_r</a><a class='fn ' href='fn.mktime.html' title=''>mktime</a><a class='fn ' href='fn.nanosleep.html' title=''>nanosleep</a><a class='fn ' href='fn.strftime.html' title=''>strftime</a><a class='fn ' href='fn.strftime_l.html' title=''>strftime_l</a><a class='fn ' href='fn.strptime.html' title=''>strptime</a><a class='fn ' href='fn.time.html' title=''>time</a><a class='fn ' href='fn.timer_create.html' title=''>timer_create</a><a class='fn ' href='fn.timer_delete.html' title=''>timer_delete</a><a class='fn ' href='fn.timer_getoverrun.html' title=''>timer_getoverrun</a><a class='fn ' href='fn.timer_gettime.html' title=''>timer_gettime</a><a class='fn ' href='fn.timre_settime.html' title=''>timre_settime</a><a class='fn ' href='fn.tzset.html' title=''>tzset</a></div>
     </section>
 
     <nav class="sub">
@@ -39,13 +41,15 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='../index.html'>posix</a>::<a href='index.html'>time</a>::<a class='struct' href=''>timespec</a><span class='out-of-band'><a id='src-30667' href='../../src/posix/src/time/linux/x86_64.rs.html#2-5'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>posix</a>::<wbr><a href='index.html'>time</a>::<wbr><a class='struct' href=''>timespec</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-32463' href='../../src/posix/time/linux/x86_64.rs.html#3-6'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct timespec {
     pub tv_sec: <a class='type' href='../../posix/sys/types/type.time_t.html' title='posix::sys::types::time_t'>time_t</a>,
-    pub tv_nsec: <a href='http://doc.rust-lang.org/master/std/primitive.i64.html'>i64</a>,
+    pub tv_nsec: <a href='http://doc.rust-lang.org/nightly/std/primitive.i64.html'>i64</a>,
 }</pre><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.tv_sec'><a class='stability Unmarked' title='No stability level'></a><code>tv_sec</code></td><td></td></tr><tr><td id='structfield.tv_nsec'><a class='stability Unmarked' title='No stability level'></a><code>tv_nsec</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../posix/time/struct.timespec.html' title='posix::time::timespec'>timespec</a></code></h3><div class='impl-methods'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../posix/time/struct.timespec.html' title='posix::time::timespec'>timespec</a></code></h4>
-</div></section>
+<table><tr><td id='structfield.tv_sec'><a class='stability Unmarked' title='No stability level'></a><code>tv_sec</code></td><td></td></tr><tr><td id='structfield.tv_nsec'><a class='stability Unmarked' title='No stability level'></a><code>tv_nsec</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../posix/time/struct.timespec.html' title='posix::time::timespec'>timespec</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../posix/time/struct.timespec.html' title='posix::time::timespec'>timespec</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../posix/time/struct.timespec.html' title='posix::time::timespec'>timespec</a></code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -74,7 +78,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

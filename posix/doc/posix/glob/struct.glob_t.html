@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `glob_t` struct in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, glob_t">
 
     <title>posix::glob::glob_t - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>glob</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.glob_t.html'>glob_t</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.glob.html'>glob</a><a class='fn ' href='fn.globfree.html'>globfree</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>glob</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.glob_t.html' title=''>glob_t</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.glob.html' title=''>glob</a><a class='fn ' href='fn.globfree.html' title=''>globfree</a></div>
     </section>
 
     <nav class="sub">
@@ -39,19 +41,21 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='../index.html'>posix</a>::<a href='index.html'>glob</a>::<a class='struct' href=''>glob_t</a><span class='out-of-band'><a id='src-4942' href='../../src/posix/src/glob/linux/x86_64.rs.html#2-19'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>posix</a>::<wbr><a href='index.html'>glob</a>::<wbr><a class='struct' href=''>glob_t</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-5175' href='../../src/posix/glob/linux/x86_64.rs.html#3-20'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct glob_t {
-    pub gl_pathc: <a class='type' href='../../posix/stddef/type.size_t.html' title='posix::stddef::size_t'>size_t</a>,
+    pub gl_pathc: <a class='type' href='../../posix/type.size_t.html' title='posix::size_t'>size_t</a>,
     pub gl_pathv: *mut *mut <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>,
-    pub gl_offs: <a class='type' href='../../posix/stddef/type.size_t.html' title='posix::stddef::size_t'>size_t</a>,
+    pub gl_offs: <a class='type' href='../../posix/type.size_t.html' title='posix::size_t'>size_t</a>,
     pub gl_flags: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>,
-    pub gl_closedir: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>)&gt;,
-    pub gl_readdir: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>) -&gt; *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>&gt;,
-    pub gl_opendir: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *const <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>) -&gt; *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>&gt;,
-    pub gl_lstat: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *const <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>, arg2: *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>&gt;,
-    pub gl_stat: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *const <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>, arg2: *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>&gt;,
+    pub gl_closedir: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>)&gt;,
+    pub gl_readdir: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>) -&gt; *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>&gt;,
+    pub gl_opendir: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *const <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>) -&gt; *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>&gt;,
+    pub gl_lstat: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *const <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>, arg2: *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>&gt;,
+    pub gl_stat: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt; extern "C" fn(arg1: *const <a class='type' href='../../posix/type.char_t.html' title='posix::char_t'>char_t</a>, arg2: *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>&gt;,
 }</pre><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.gl_pathc'><a class='stability Unmarked' title='No stability level'></a><code>gl_pathc</code></td><td></td></tr><tr><td id='structfield.gl_pathv'><a class='stability Unmarked' title='No stability level'></a><code>gl_pathv</code></td><td></td></tr><tr><td id='structfield.gl_offs'><a class='stability Unmarked' title='No stability level'></a><code>gl_offs</code></td><td></td></tr><tr><td id='structfield.gl_flags'><a class='stability Unmarked' title='No stability level'></a><code>gl_flags</code></td><td></td></tr><tr><td id='structfield.gl_closedir'><a class='stability Unmarked' title='No stability level'></a><code>gl_closedir</code></td><td></td></tr><tr><td id='structfield.gl_readdir'><a class='stability Unmarked' title='No stability level'></a><code>gl_readdir</code></td><td></td></tr><tr><td id='structfield.gl_opendir'><a class='stability Unmarked' title='No stability level'></a><code>gl_opendir</code></td><td></td></tr><tr><td id='structfield.gl_lstat'><a class='stability Unmarked' title='No stability level'></a><code>gl_lstat</code></td><td></td></tr><tr><td id='structfield.gl_stat'><a class='stability Unmarked' title='No stability level'></a><code>gl_stat</code></td><td></td></tr></table></section>
+<table><tr><td id='structfield.gl_pathc'><a class='stability Unmarked' title='No stability level'></a><code>gl_pathc</code></td><td></td></tr><tr><td id='structfield.gl_pathv'><a class='stability Unmarked' title='No stability level'></a><code>gl_pathv</code></td><td></td></tr><tr><td id='structfield.gl_offs'><a class='stability Unmarked' title='No stability level'></a><code>gl_offs</code></td><td></td></tr><tr><td id='structfield.gl_flags'><a class='stability Unmarked' title='No stability level'></a><code>gl_flags</code></td><td></td></tr><tr><td id='structfield.gl_closedir'><a class='stability Unmarked' title='No stability level'></a><code>gl_closedir</code></td><td></td></tr><tr><td id='structfield.gl_readdir'><a class='stability Unmarked' title='No stability level'></a><code>gl_readdir</code></td><td></td></tr><tr><td id='structfield.gl_opendir'><a class='stability Unmarked' title='No stability level'></a><code>gl_opendir</code></td><td></td></tr><tr><td id='structfield.gl_lstat'><a class='stability Unmarked' title='No stability level'></a><code>gl_lstat</code></td><td></td></tr><tr><td id='structfield.gl_stat'><a class='stability Unmarked' title='No stability level'></a><code>gl_stat</code></td><td></td></tr></table><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../posix/glob/struct.glob_t.html' title='posix::glob::glob_t'>glob_t</a></code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -80,7 +84,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

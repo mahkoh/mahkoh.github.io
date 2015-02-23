@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `tms` struct in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, tms">
 
     <title>posix::sys::times::tms - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a>&#8203;::<a href='index.html'>times</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.tms.html'>tms</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.times.html'>times</a></div>
+        <p class='location'><a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>times</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.tms.html' title=''>tms</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.times.html' title=''>times</a></div>
     </section>
 
     <nav class="sub">
@@ -39,15 +41,17 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a href='index.html'>times</a>::<a class='struct' href=''>tms</a><span class='out-of-band'><a id='src-27911' href='../../../src/posix/src/sys/times/linux/x86_64.rs.html#2-7'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>times</a>::<wbr><a class='struct' href=''>tms</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-29521' href='../../../src/posix/sys/times/linux/x86_64.rs.html#3-8'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct tms {
     pub tms_utime: <a class='type' href='../../../posix/sys/types/type.clock_t.html' title='posix::sys::types::clock_t'>clock_t</a>,
     pub tms_stime: <a class='type' href='../../../posix/sys/types/type.clock_t.html' title='posix::sys::types::clock_t'>clock_t</a>,
     pub tms_cutime: <a class='type' href='../../../posix/sys/types/type.clock_t.html' title='posix::sys::types::clock_t'>clock_t</a>,
     pub tms_cstime: <a class='type' href='../../../posix/sys/types/type.clock_t.html' title='posix::sys::types::clock_t'>clock_t</a>,
 }</pre><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.tms_utime'><a class='stability Unmarked' title='No stability level'></a><code>tms_utime</code></td><td></td></tr><tr><td id='structfield.tms_stime'><a class='stability Unmarked' title='No stability level'></a><code>tms_stime</code></td><td></td></tr><tr><td id='structfield.tms_cutime'><a class='stability Unmarked' title='No stability level'></a><code>tms_cutime</code></td><td></td></tr><tr><td id='structfield.tms_cstime'><a class='stability Unmarked' title='No stability level'></a><code>tms_cstime</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../../posix/sys/times/struct.tms.html' title='posix::sys::times::tms'>tms</a></code></h3><div class='impl-methods'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../../posix/sys/times/struct.tms.html' title='posix::sys::times::tms'>tms</a></code></h4>
-</div></section>
+<table><tr><td id='structfield.tms_utime'><a class='stability Unmarked' title='No stability level'></a><code>tms_utime</code></td><td></td></tr><tr><td id='structfield.tms_stime'><a class='stability Unmarked' title='No stability level'></a><code>tms_stime</code></td><td></td></tr><tr><td id='structfield.tms_cutime'><a class='stability Unmarked' title='No stability level'></a><code>tms_cutime</code></td><td></td></tr><tr><td id='structfield.tms_cstime'><a class='stability Unmarked' title='No stability level'></a><code>tms_cstime</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../../posix/sys/times/struct.tms.html' title='posix::sys::times::tms'>tms</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../../posix/sys/times/struct.tms.html' title='posix::sys::times::tms'>tms</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../../posix/sys/times/struct.tms.html' title='posix::sys::times::tms'>tms</a></code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -76,7 +80,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

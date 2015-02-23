@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `resource` mod in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, resource">
 
     <title>posix::sys::resource - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../ipc/index.html'>ipc</a><a class='mod ' href='../mman/index.html'>mman</a><a class='mod ' href='../msg/index.html'>msg</a><a class='mod current' href='../resource/index.html'>resource</a><a class='mod ' href='../select/index.html'>select</a><a class='mod ' href='../sem/index.html'>sem</a><a class='mod ' href='../shm/index.html'>shm</a><a class='mod ' href='../socket/index.html'>socket</a><a class='mod ' href='../stat/index.html'>stat</a><a class='mod ' href='../statvfs/index.html'>statvfs</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../times/index.html'>times</a><a class='mod ' href='../types/index.html'>types</a><a class='mod ' href='../uio/index.html'>uio</a><a class='mod ' href='../un/index.html'>un</a><a class='mod ' href='../utsname/index.html'>utsname</a><a class='mod ' href='../wait/index.html'>wait</a></div>
+        <p class='location'><a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../ipc/index.html' title=''>ipc</a><a class='mod ' href='../mman/index.html' title=''>mman</a><a class='mod ' href='../msg/index.html' title=''>msg</a><a class='mod current' href='../resource/index.html' title=''>resource</a><a class='mod ' href='../select/index.html' title=''>select</a><a class='mod ' href='../sem/index.html' title=''>sem</a><a class='mod ' href='../shm/index.html' title=''>shm</a><a class='mod ' href='../socket/index.html' title=''>socket</a><a class='mod ' href='../stat/index.html' title=''>stat</a><a class='mod ' href='../statvfs/index.html' title=''>statvfs</a><a class='mod ' href='../time/index.html' title=''>time</a><a class='mod ' href='../times/index.html' title=''>times</a><a class='mod ' href='../types/index.html' title=''>types</a><a class='mod ' href='../uio/index.html' title=''>uio</a><a class='mod ' href='../un/index.html' title=''>un</a><a class='mod ' href='../utsname/index.html' title=''>utsname</a><a class='mod ' href='../wait/index.html' title=''>wait</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Module <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a class='mod' href=''>resource</a><span class='out-of-band'><a id='src-23509' href='../../../src/posix/src/sys/resource/mod.rs.html#1-50'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a class='mod' href=''>resource</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-24887' href='../../../src/posix/sys/resource/mod.rs.html#1-50'>[src]</a></span></h1>
 <h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
@@ -53,81 +57,96 @@
                                title='posix::sys::resource::rusage'>rusage</a></td>
                         <td class='docblock short'></td>
                     </tr>
-                </table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PRIO_PGRP: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PRIO_PGRP.html'
+                               title='posix::sys::resource::PRIO_PGRP'>PRIO_PGRP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PRIO_PROCESS: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PRIO_PROCESS.html'
+                               title='posix::sys::resource::PRIO_PROCESS'>PRIO_PROCESS</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PRIO_USER: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PRIO_USER.html'
+                               title='posix::sys::resource::PRIO_USER'>PRIO_USER</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_AS: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>9</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_AS.html'
+                               title='posix::sys::resource::RLIMIT_AS'>RLIMIT_AS</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_CORE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_CORE.html'
+                               title='posix::sys::resource::RLIMIT_CORE'>RLIMIT_CORE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_CPU: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_CPU.html'
+                               title='posix::sys::resource::RLIMIT_CPU'>RLIMIT_CPU</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_DATA: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_DATA.html'
+                               title='posix::sys::resource::RLIMIT_DATA'>RLIMIT_DATA</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_FSIZE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_FSIZE.html'
+                               title='posix::sys::resource::RLIMIT_FSIZE'>RLIMIT_FSIZE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_NOFILE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>7</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_NOFILE.html'
+                               title='posix::sys::resource::RLIMIT_NOFILE'>RLIMIT_NOFILE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIMIT_STACK: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIMIT_STACK.html'
+                               title='posix::sys::resource::RLIMIT_STACK'>RLIMIT_STACK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIM_INFINITY: <a class='type' href='../../../posix/sys/resource/type.rlim_t.html' title='posix::sys::resource::rlim_t'>rlim_t</a></code><code> = </code><code>-1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIM_INFINITY.html'
+                               title='posix::sys::resource::RLIM_INFINITY'>RLIM_INFINITY</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIM_SAVED_CUR: <a class='type' href='../../../posix/sys/resource/type.rlim_t.html' title='posix::sys::resource::rlim_t'>rlim_t</a></code><code> = </code><code>-1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIM_SAVED_CUR.html'
+                               title='posix::sys::resource::RLIM_SAVED_CUR'>RLIM_SAVED_CUR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RLIM_SAVED_MAX: <a class='type' href='../../../posix/sys/resource/type.rlim_t.html' title='posix::sys::resource::rlim_t'>rlim_t</a></code><code> = </code><code>-1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RLIM_SAVED_MAX.html'
+                               title='posix::sys::resource::RLIM_SAVED_MAX'>RLIM_SAVED_MAX</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RUSAGE_CHILDREN: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RUSAGE_CHILDREN.html'
+                               title='posix::sys::resource::RUSAGE_CHILDREN'>RUSAGE_CHILDREN</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static RUSAGE_SELF: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.RUSAGE_SELF.html'
+                               title='posix::sys::resource::RUSAGE_SELF'>RUSAGE_SELF</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -196,7 +215,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

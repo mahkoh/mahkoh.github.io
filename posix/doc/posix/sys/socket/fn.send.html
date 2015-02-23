@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `send` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, send">
 
     <title>posix::sys::socket::send - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a>&#8203;::<a href='index.html'>socket</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.cmsghdr.html'>cmsghdr</a><a class='struct ' href='struct.linger.html'>linger</a><a class='struct ' href='struct.msghdr.html'>msghdr</a><a class='struct ' href='struct.sockaddr.html'>sockaddr</a><a class='struct ' href='struct.sockaddr_storage.html'>sockaddr_storage</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.CMSG_DATA.html'>CMSG_DATA</a><a class='fn ' href='fn.CMSG_FIRSTHDR.html'>CMSG_FIRSTHDR</a><a class='fn ' href='fn.CMSG_NXTHDR.html'>CMSG_NXTHDR</a><a class='fn ' href='fn.accept.html'>accept</a><a class='fn ' href='fn.bind.html'>bind</a><a class='fn ' href='fn.connect.html'>connect</a><a class='fn ' href='fn.getpeername.html'>getpeername</a><a class='fn ' href='fn.getsockname.html'>getsockname</a><a class='fn ' href='fn.getsockopt.html'>getsockopt</a><a class='fn ' href='fn.listen.html'>listen</a><a class='fn ' href='fn.recv.html'>recv</a><a class='fn ' href='fn.recvfrom.html'>recvfrom</a><a class='fn current' href='fn.send.html'>send</a><a class='fn ' href='fn.sendto.html'>sendto</a><a class='fn ' href='fn.setsockopt.html'>setsockopt</a><a class='fn ' href='fn.shutdown.html'>shutdown</a><a class='fn ' href='fn.sockatmark.html'>sockatmark</a><a class='fn ' href='fn.socket.html'>socket</a><a class='fn ' href='fn.socketpair.html'>socketpair</a></div>
+        <p class='location'><a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>socket</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.cmsghdr.html' title=''>cmsghdr</a><a class='struct ' href='struct.linger.html' title=''>linger</a><a class='struct ' href='struct.msghdr.html' title=''>msghdr</a><a class='struct ' href='struct.sockaddr.html' title=''>sockaddr</a><a class='struct ' href='struct.sockaddr_storage.html' title=''>sockaddr_storage</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.CMSG_DATA.html' title=''>CMSG_DATA</a><a class='fn ' href='fn.CMSG_FIRSTHDR.html' title=''>CMSG_FIRSTHDR</a><a class='fn ' href='fn.CMSG_NXTHDR.html' title=''>CMSG_NXTHDR</a><a class='fn ' href='fn.accept.html' title=''>accept</a><a class='fn ' href='fn.bind.html' title=''>bind</a><a class='fn ' href='fn.connect.html' title=''>connect</a><a class='fn ' href='fn.getpeername.html' title=''>getpeername</a><a class='fn ' href='fn.getsockname.html' title=''>getsockname</a><a class='fn ' href='fn.getsockopt.html' title=''>getsockopt</a><a class='fn ' href='fn.listen.html' title=''>listen</a><a class='fn ' href='fn.recv.html' title=''>recv</a><a class='fn ' href='fn.recvfrom.html' title=''>recvfrom</a><a class='fn current' href='fn.send.html' title=''>send</a><a class='fn ' href='fn.sendto.html' title=''>sendto</a><a class='fn ' href='fn.setsockopt.html' title=''>setsockopt</a><a class='fn ' href='fn.shutdown.html' title=''>shutdown</a><a class='fn ' href='fn.sockatmark.html' title=''>sockatmark</a><a class='fn ' href='fn.socket.html' title=''>socket</a><a class='fn ' href='fn.socketpair.html' title=''>socketpair</a></div>
     </section>
 
     <nav class="sub">
@@ -39,8 +41,10 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a href='index.html'>socket</a>::<a class='fn' href=''>send</a><span class='out-of-band'><a id='src-26023' href='../../../src/posix/src/sys/socket/mod.rs.html#126-132'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn send(fd: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a>, buf: &amp;<a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a>, flags: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a>) -&gt; <a class='type' href='../../../posix/type.ssize_t.html' title='posix::ssize_t'>ssize_t</a></pre></section>
+<h1 class='fqn'><span class='in-band'>Function <a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a href='index.html'>socket</a>::<wbr><a class='fn' href=''>send</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-27533' href='../../../src/posix/sys/socket/mod.rs.html#126-132'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn send(fd: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a>, buf: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;[</a><a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, flags: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a>) -&gt; <a class='type' href='../../../posix/type.ssize_t.html' title='posix::ssize_t'>ssize_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

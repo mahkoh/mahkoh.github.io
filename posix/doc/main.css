@@ -1,256 +1,189 @@
-/**
- * Copyright 2013 The Rust Project Developers. See the COPYRIGHT
- * file at the top-level directory of this distribution and at
- * http://rust-lang.org/COPYRIGHT.
- *
- * Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
- * http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
- * <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
- * option. This file may not be copied, modified, or distributed
- * except according to those terms.
- */
-@font-face {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Fira Sans'), url("FiraSans-Regular.woff") format('woff');
-}
-@font-face {
-    font-family: 'Fira Sans';
-    font-style: normal;
-    font-weight: 500;
-    src: local('Fira Sans Medium'), url("FiraSans-Medium.woff") format('woff');
-}
-@font-face {
-    font-family: 'Source Serif Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Source Serif Pro'), url("SourceSerifPro-Regular.woff") format('woff');
-}
-@font-face {
-    font-family: 'Source Serif Pro';
-    font-style: italic;
-    font-weight: 400;
-    src: url("Heuristica-Italic.woff") format('woff');
-}
-@font-face {
-    font-family: 'Source Serif Pro';
-    font-style: normal;
-    font-weight: 700;
-    src: local('Source Serif Pro Bold'), url("SourceSerifPro-Bold.woff") format('woff');
-}
-@font-face {
-    font-family: 'Source Code Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Source Code Pro'), url("SourceCodePro-Regular.woff") format('woff');
-}
-@font-face {
-    font-family: 'Source Code Pro';
-    font-style: normal;
-    font-weight: 600;
-    src: local('Source Code Pro Semibold'), url("SourceCodePro-Semibold.woff") format('woff');
-}
-
-@import "normalize.css";
-
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-/* General structure and fonts */
-
 body {
-    color: #333;
-    min-width: 500px;
-    font: 16px/1.4 "Source Serif Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin: 0;
-    position: relative;
-    padding: 10px 15px 20px 15px;
+  min-width: 500px;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    font-size: 1.5em;
+  font-size: 1.4em;
 }
+
 h2 {
-    font-size: 1.4em;
+  font-size: 1.3em;
 }
+
 h3 {
-    font-size: 1.3em;
+  font-size: 1.2em;
 }
+
 h1, h2, h3:not(.impl):not(.method), h4:not(.method) {
-    color: black;
-    font-weight: 500;
-    margin: 20px 0 15px 0;
-    padding-bottom: 6px;
+  margin: 10px 0 5px 0;
+  padding-bottom: 6px;
 }
+
 h1.fqn {
-    border-bottom: 1px dashed #D5D5D5;
-    margin-top: 0;
+  border-bottom: 1px solid black;
+  margin-top: 0;
 }
+
 h2, h3:not(.impl):not(.method), h4:not(.method) {
-    border-bottom: 1px solid #DDDDDD;
+  border-bottom: 1px solid black;
 }
+
 h3.impl, h3.method, h4.method {
-    font-weight: 600;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
 h3.impl, h3.method {
-    margin-top: 15px;
-}
-h1, h2, h3, h4, section.sidebar, a.source, .search-input, .content table a {
-    font-family: "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 15px;
 }
 
 ol, ul {
-    padding-left: 25px;
+  overflow-x: hidden;
+  padding-left: 25px;
 }
+
 ul ul, ol ul, ul ol, ol ol {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 p {
-    margin: 0 0 .6em 0;
+  margin: 0 0 .6em 0;
 }
 
 code, pre {
-    font-family: "Source Code Pro", Menlo, Monaco, Consolas, "DejaVu Sans Mono", Inconsolata, monospace;
-    white-space: pre-wrap;
+  font-family: monospace;
+  white-space: pre-wrap;
 }
+
 pre {
-    background-color: #F5F5F5;
-    padding: 14px;
+  border: 1px solid black;
+  background-color: #F5F5F5;
+  padding: 14px;
 }
 
-.source pre {
-    padding: 20px;
-}
-
-nav.sub {
-    font-size: 16px;
-    text-transform: uppercase;
+.content.source {
+    margin: 0;
+    padding: 0;
 }
 
 .sidebar {
-    width: 200px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    min-height: 100%;
+  background-color: #F0F0F0;
+  float: left;
+  border-style: solid;
+  border-color: black;
+  border-left-width: 0;
+  border-top-width: 0;
+  margin-right: 10px;
 }
 
-.content, nav { max-width: 960px; }
-
-/* Everything else */
-
-.js-only, .hidden { display: none; }
-
-.sidebar {
-    padding: 10px;
+.content, nav {
+  max-width: 960px;
+  margin-right: 10px;
 }
+
+.js-only, .hidden {
+  display: none;
+}
+
 .sidebar img {
-    margin: 20px auto;
-    display: block;
+  display: none;
 }
 
 .sidebar .location {
-    font-size: 17px;
-    margin: 30px 0 20px 0;
-    background: #e1e1e1;
-    text-align: center;
-    color: #333;
+  padding-top: 5px;
+  height: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+  background: #e1e1e1;
+  text-align: center;
+  color: #333;
 }
 
 .block {
-    padding: 0 10px;
-    margin-bottom: 14px;
+  padding: 0 10px;
+  margin-bottom: 14px;
 }
+
 .block h2 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    text-align: center;
+  margin-top: 0;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .block a {
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    line-height: 15px;
-    padding: 7px 5px;
-    font-size: 14px;
-    font-weight: 300;
-    transition: border 500ms ease-out;
+  display: block;
+  padding: 7px 5px;
 }
 
 .block a:hover {
-    background: #F5F5F5;
-}
-
-.content {
-    padding: 15px 0;
+  background: #DDDDDD;
 }
 
 .content.source pre.rust {
     white-space: pre;
-    overflow: auto;
     padding-left: 0;
 }
-.content pre.line-numbers { float: left; border: none; }
-.line-numbers span { color: #c67e2d; }
+.content pre.line-numbers {   
+    float: left; 
+    border: none; 
+}
+
+.line-numbers span { 
+    color: #c67e2d;
+}
+
 .line-numbers .line-highlighted {
     background-color: #f6fdb0;
 }
 
-.content .highlighted {
-    cursor: pointer;
-    color: #000 !important;
-    background-color: #ccc;
-}
-.content .highlighted a { color: #000 !important; }
-.content .highlighted.trait { background-color: #fece7e; }
-.content .highlighted.mod { background-color: #afc6e4; }
-.content .highlighted.enum { background-color: #b4d1b9; }
-.content .highlighted.struct { background-color: #e7b1a0; }
-.content .highlighted.fn { background-color: #c6afb3; }
-
-.docblock.short.nowrap {
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
 .docblock.short p {
-    overflow: hidden;
-    text-overflow: ellipsis;
     margin: 0;
 }
 .docblock.short code { white-space: nowrap; }
 
 .docblock h1, .docblock h2, .docblock h3, .docblock h4, .docblock h5 {
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid black;
 }
 
-.docblock h1 { font-size: 1.3em; }
-.docblock h2 { font-size: 1.15em; }
-.docblock h3, .docblock h4, .docblock h5 { font-size: 1em; }
+.docblock h1 {
+  font-size: 1.3em;
+}
+
+.docblock h2 {
+  font-size: 1.15em;
+}
+
+.docblock h3, .docblock h4, .docblock h5 {
+  font-size: 1em;
+}
 
 .content .out-of-band {
     float: right;
-    font-size: 23px;
+    font-size: 14px;
 }
 
 .content table {
     border-spacing: 0 5px;
     border-collapse: separate;
 }
-.content td { vertical-align: top; }
-.content td:first-child { padding-right: 20px; }
-.content td p:first-child { margin-top: 0; }
-.content td h1, .content td h2 { margin-left: 0; font-size: 1.1em; }
+
+.content td:first-child {
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.content td {
+  vertical-align: top;
+}
+
+.content td h1, .content td h2 {
+  margin-left: 0;
+  font-size: 1.1em;
+}
 
 .content .item-list {
     list-style-type: none;
@@ -276,8 +209,9 @@ nav.sub {
 
 nav {
     border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     margin-bottom: 10px;
+    overflow: hidden;
 }
 nav.main {
     padding: 20px 0;
@@ -294,11 +228,8 @@ nav.main .separator {
     margin: 0 20px;
 }
 nav.sum { text-align: right; }
-nav.sub form { display: inline; }
 
-nav, .content {
-    margin-left: 230px;
-}
+#main { padding-left: 10px; }
 
 a {
     text-decoration: none;
@@ -317,37 +248,19 @@ p a:hover { text-decoration: underline; }
 
 .search-input {
     width: 100%;
-    /* Override Normalize.css: we have margins and do
-     not want to overflow - the `moz` attribute is necessary
-     until Firefox 29, too early to drop at this point */
-    -moz-box-sizing: border-box !important;
-    box-sizing: border-box !important;
     outline: none;
-    border: none;
-    border-radius: 1px;
+    border: 2px solid black;
     color: #555;
     margin-top: 5px;
-    padding: 10px 16px;
-    font-size: 17px;
-    box-shadow: 0 0 0 1px #e0e0e0, 0 0 0 2px transparent;
-    transition: border-color 300ms ease;
-    transition: border-radius 300ms ease-in-out;
-    transition: box-shadow 300ms ease-in-out;
+    padding: 5px 5px;
 }
 
 .search-input:focus {
     border-color: #66afe9;
-    border-radius: 2px;
-    border: 0;
-    outline: 0;
-    box-shadow: 0 0 8px #078dd8;
 }
 
-.search-results .desc {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: block;
+#search {
+    overflow: auto;
 }
 
 #help {
@@ -386,13 +299,11 @@ p a:hover { text-decoration: underline; }
 
 .stability {
     border-left: 6px solid;
-    padding: 3px 6px;
-    border-radius: 3px;
+    padding: 0 6px;
 }
 
 h1 .stability {
     text-transform: lowercase;
-    font-weight: 400;
     margin-left: 14px;
     padding: 4px 10px;
 }
@@ -407,7 +318,7 @@ h1 .stability {
 .stability.Stable { border-color: #54A759; color: #2D8632; }
 .stability.Frozen { border-color: #009431; color: #007726; }
 .stability.Locked { border-color: #0084B6; color: #00668c; }
-.stability.Unmarked { border-color: #FFFFFF; }
+.stability.Unmarked { border-color: #BBBBBB; }
 
 .summary {
     padding-right: 0px;
@@ -416,9 +327,14 @@ h1 .stability {
 .summary.Experimental { background-color: #D46D6A; }
 .summary.Unstable { background-color: #D4B16A; }
 .summary.Stable { background-color: #54A759; }
-.summary.Unmarked { background-color: #FFFFFF; }
+.summary.Unmarked { background-color: #BBBBBB; }
 
 :target { background: #FDFFD3; }
+
+.docblock > pre.rust, #main > pre.rust {
+  border: 1px solid black;
+  overflow-x: hidden;
+}
 
 /* Code highlighting */
 pre.rust .kw { color: #8959A8; }
@@ -432,8 +348,11 @@ pre.rust .macro, pre.rust .macro-nonterminal { color: #3E999F; }
 pre.rust .lifetime { color: #B76514; }
 
 .rusttest { display: none; }
-pre.rust { position: relative; }
-pre.rust a { transform: scaleX(-1); }
+
+pre.rust a {
+  transform: scaleX(-1);
+}
+
 .test-arrow {
     display: inline-block;
     position: absolute;
@@ -449,22 +368,7 @@ pre.rust a { transform: scaleX(-1); }
     margin: 0 0 -5px;
     padding: 0;
 }
+
 .section-header:hover a:after {
     content: '\2002\00a7\2002';
-}
-
-/* Media Queries */
-
-@media (max-width: 700px) {
-    .sidebar {
-        display: none;
-    }
-
-    .content {
-        margin-left: 0px;
-    }
-
-    nav.sub {
-        margin: 0 auto;
-    }
 }

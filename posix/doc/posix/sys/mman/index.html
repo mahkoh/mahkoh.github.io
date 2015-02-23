@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `mman` mod in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, mman">
 
     <title>posix::sys::mman - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>posix</a>&#8203;::<a href='../index.html'>sys</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../ipc/index.html'>ipc</a><a class='mod current' href='../mman/index.html'>mman</a><a class='mod ' href='../msg/index.html'>msg</a><a class='mod ' href='../resource/index.html'>resource</a><a class='mod ' href='../select/index.html'>select</a><a class='mod ' href='../sem/index.html'>sem</a><a class='mod ' href='../shm/index.html'>shm</a><a class='mod ' href='../socket/index.html'>socket</a><a class='mod ' href='../stat/index.html'>stat</a><a class='mod ' href='../statvfs/index.html'>statvfs</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../times/index.html'>times</a><a class='mod ' href='../types/index.html'>types</a><a class='mod ' href='../uio/index.html'>uio</a><a class='mod ' href='../un/index.html'>un</a><a class='mod ' href='../utsname/index.html'>utsname</a><a class='mod ' href='../wait/index.html'>wait</a></div>
+        <p class='location'><a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../ipc/index.html' title=''>ipc</a><a class='mod current' href='../mman/index.html' title=''>mman</a><a class='mod ' href='../msg/index.html' title=''>msg</a><a class='mod ' href='../resource/index.html' title=''>resource</a><a class='mod ' href='../select/index.html' title=''>select</a><a class='mod ' href='../sem/index.html' title=''>sem</a><a class='mod ' href='../shm/index.html' title=''>shm</a><a class='mod ' href='../socket/index.html' title=''>socket</a><a class='mod ' href='../stat/index.html' title=''>stat</a><a class='mod ' href='../statvfs/index.html' title=''>statvfs</a><a class='mod ' href='../time/index.html' title=''>time</a><a class='mod ' href='../times/index.html' title=''>times</a><a class='mod ' href='../types/index.html' title=''>types</a><a class='mod ' href='../uio/index.html' title=''>uio</a><a class='mod ' href='../un/index.html' title=''>un</a><a class='mod ' href='../utsname/index.html' title=''>utsname</a><a class='mod ' href='../wait/index.html' title=''>wait</a></div>
     </section>
 
     <nav class="sub">
@@ -39,97 +41,117 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Module <a href='../../index.html'>posix</a>::<a href='../index.html'>sys</a>::<a class='mod' href=''>mman</a><span class='out-of-band'><a id='src-22598' href='../../../src/posix/src/sys/mman/mod.rs.html#1-85'>[src]</a></span></h1>
-<h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>posix</a>::<wbr><a href='../index.html'>sys</a>::<wbr><a class='mod' href=''>mman</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-23928' href='../../../src/posix/sys/mman/mod.rs.html#1-85'>[src]</a></span></h1>
+<h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MAP_FAILED: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MAP_FAILED.html'
+                               title='posix::sys::mman::MAP_FAILED'>MAP_FAILED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MAP_FIXED: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>16</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MAP_FIXED.html'
+                               title='posix::sys::mman::MAP_FIXED'>MAP_FIXED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MAP_PRIVATE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MAP_PRIVATE.html'
+                               title='posix::sys::mman::MAP_PRIVATE'>MAP_PRIVATE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MAP_SHARED: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MAP_SHARED.html'
+                               title='posix::sys::mman::MAP_SHARED'>MAP_SHARED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MCL_CURRENT: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MCL_CURRENT.html'
+                               title='posix::sys::mman::MCL_CURRENT'>MCL_CURRENT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MCL_FUTURE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MCL_FUTURE.html'
+                               title='posix::sys::mman::MCL_FUTURE'>MCL_FUTURE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MS_ASYNC: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MS_ASYNC.html'
+                               title='posix::sys::mman::MS_ASYNC'>MS_ASYNC</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MS_INVALIDATE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MS_INVALIDATE.html'
+                               title='posix::sys::mman::MS_INVALIDATE'>MS_INVALIDATE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MS_SYNC: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MS_SYNC.html'
+                               title='posix::sys::mman::MS_SYNC'>MS_SYNC</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_MADV_DONTNEED: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_MADV_DONTNEED.html'
+                               title='posix::sys::mman::POSIX_MADV_DONTNEED'>POSIX_MADV_DONTNEED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_MADV_NORMAL: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_MADV_NORMAL.html'
+                               title='posix::sys::mman::POSIX_MADV_NORMAL'>POSIX_MADV_NORMAL</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_MADV_RANDOM: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_MADV_RANDOM.html'
+                               title='posix::sys::mman::POSIX_MADV_RANDOM'>POSIX_MADV_RANDOM</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_MADV_SEQUENTIAL: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_MADV_SEQUENTIAL.html'
+                               title='posix::sys::mman::POSIX_MADV_SEQUENTIAL'>POSIX_MADV_SEQUENTIAL</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_MADV_WILLNEED: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_MADV_WILLNEED.html'
+                               title='posix::sys::mman::POSIX_MADV_WILLNEED'>POSIX_MADV_WILLNEED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PROT_EXEC: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PROT_EXEC.html'
+                               title='posix::sys::mman::PROT_EXEC'>PROT_EXEC</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PROT_NONE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PROT_NONE.html'
+                               title='posix::sys::mman::PROT_NONE'>PROT_NONE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PROT_READ: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PROT_READ.html'
+                               title='posix::sys::mman::PROT_READ'>PROT_READ</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static PROT_WRITE: <a class='type' href='../../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.PROT_WRITE.html'
+                               title='posix::sys::mman::PROT_WRITE'>PROT_WRITE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -227,7 +249,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

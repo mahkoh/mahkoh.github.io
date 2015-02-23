@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `getdate_err` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, getdate_err">
 
     <title>posix::time::getdate_err - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>time</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.itimerspec.html'>itimerspec</a><a class='struct ' href='struct.timespec.html'>timespec</a><a class='struct ' href='struct.tm.html'>tm</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.clock.html'>clock</a><a class='fn ' href='fn.clock_getcpuclockid.html'>clock_getcpuclockid</a><a class='fn ' href='fn.clock_getres.html'>clock_getres</a><a class='fn ' href='fn.clock_gettime.html'>clock_gettime</a><a class='fn ' href='fn.clock_nanosleep.html'>clock_nanosleep</a><a class='fn ' href='fn.clock_settime.html'>clock_settime</a><a class='fn ' href='fn.difftime.html'>difftime</a><a class='fn current' href='fn.getdate_err.html'>getdate_err</a><a class='fn ' href='fn.gmtime_r.html'>gmtime_r</a><a class='fn ' href='fn.localtime_r.html'>localtime_r</a><a class='fn ' href='fn.mktime.html'>mktime</a><a class='fn ' href='fn.nanosleep.html'>nanosleep</a><a class='fn ' href='fn.strftime.html'>strftime</a><a class='fn ' href='fn.strftime_l.html'>strftime_l</a><a class='fn ' href='fn.strptime.html'>strptime</a><a class='fn ' href='fn.time.html'>time</a><a class='fn ' href='fn.timer_create.html'>timer_create</a><a class='fn ' href='fn.timer_delete.html'>timer_delete</a><a class='fn ' href='fn.timer_getoverrun.html'>timer_getoverrun</a><a class='fn ' href='fn.timer_gettime.html'>timer_gettime</a><a class='fn ' href='fn.timre_settime.html'>timre_settime</a><a class='fn ' href='fn.tzset.html'>tzset</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>time</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.itimerspec.html' title=''>itimerspec</a><a class='struct ' href='struct.timespec.html' title=''>timespec</a><a class='struct ' href='struct.tm.html' title=''>tm</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.clock.html' title=''>clock</a><a class='fn ' href='fn.clock_getcpuclockid.html' title=''>clock_getcpuclockid</a><a class='fn ' href='fn.clock_getres.html' title=''>clock_getres</a><a class='fn ' href='fn.clock_gettime.html' title=''>clock_gettime</a><a class='fn ' href='fn.clock_nanosleep.html' title=''>clock_nanosleep</a><a class='fn ' href='fn.clock_settime.html' title=''>clock_settime</a><a class='fn ' href='fn.difftime.html' title=''>difftime</a><a class='fn current' href='fn.getdate_err.html' title=''>getdate_err</a><a class='fn ' href='fn.gmtime_r.html' title=''>gmtime_r</a><a class='fn ' href='fn.localtime_r.html' title=''>localtime_r</a><a class='fn ' href='fn.mktime.html' title=''>mktime</a><a class='fn ' href='fn.nanosleep.html' title=''>nanosleep</a><a class='fn ' href='fn.strftime.html' title=''>strftime</a><a class='fn ' href='fn.strftime_l.html' title=''>strftime_l</a><a class='fn ' href='fn.strptime.html' title=''>strptime</a><a class='fn ' href='fn.time.html' title=''>time</a><a class='fn ' href='fn.timer_create.html' title=''>timer_create</a><a class='fn ' href='fn.timer_delete.html' title=''>timer_delete</a><a class='fn ' href='fn.timer_getoverrun.html' title=''>timer_getoverrun</a><a class='fn ' href='fn.timer_gettime.html' title=''>timer_gettime</a><a class='fn ' href='fn.timre_settime.html' title=''>timre_settime</a><a class='fn ' href='fn.tzset.html' title=''>tzset</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>time</a>::<a class='fn' href=''>getdate_err</a><span class='out-of-band'><a id='src-30773' href='../../src/posix/src/time/linux/x86_64.rs.html#43-46'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>posix</a>::<wbr><a href='index.html'>time</a>::<wbr><a class='fn' href=''>getdate_err</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-32593' href='../../src/posix/time/linux/x86_64.rs.html#46-49'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn getdate_err() -&gt; &amp;'static mut <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

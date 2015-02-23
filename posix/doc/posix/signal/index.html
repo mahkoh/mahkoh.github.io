@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `signal` mod in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, signal">
 
     <title>posix::signal - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html'>aio</a><a class='mod ' href='../arpa/index.html'>arpa</a><a class='mod ' href='../cpio/index.html'>cpio</a><a class='mod ' href='../ctype/index.html'>ctype</a><a class='mod ' href='../dirent/index.html'>dirent</a><a class='mod ' href='../dlfcn/index.html'>dlfcn</a><a class='mod ' href='../errno/index.html'>errno</a><a class='mod ' href='../fcntl/index.html'>fcntl</a><a class='mod ' href='../fenv/index.html'>fenv</a><a class='mod ' href='../float/index.html'>float</a><a class='mod ' href='../fmtmsg/index.html'>fmtmsg</a><a class='mod ' href='../fnmatch/index.html'>fnmatch</a><a class='mod ' href='../ftw/index.html'>ftw</a><a class='mod ' href='../glob/index.html'>glob</a><a class='mod ' href='../grp/index.html'>grp</a><a class='mod ' href='../iconv/index.html'>iconv</a><a class='mod ' href='../inttypes/index.html'>inttypes</a><a class='mod ' href='../langinfo/index.html'>langinfo</a><a class='mod ' href='../libgen/index.html'>libgen</a><a class='mod ' href='../limits/index.html'>limits</a><a class='mod ' href='../locale/index.html'>locale</a><a class='mod ' href='../monetary/index.html'>monetary</a><a class='mod ' href='../mqueue/index.html'>mqueue</a><a class='mod ' href='../ndbm/index.html'>ndbm</a><a class='mod ' href='../net/index.html'>net</a><a class='mod ' href='../netdb/index.html'>netdb</a><a class='mod ' href='../netinet/index.html'>netinet</a><a class='mod ' href='../nl_types/index.html'>nl_types</a><a class='mod ' href='../poll/index.html'>poll</a><a class='mod ' href='../pthread/index.html'>pthread</a><a class='mod ' href='../pwd/index.html'>pwd</a><a class='mod ' href='../regex/index.html'>regex</a><a class='mod ' href='../sched/index.html'>sched</a><a class='mod ' href='../search/index.html'>search</a><a class='mod ' href='../semaphore/index.html'>semaphore</a><a class='mod ' href='../setjmp/index.html'>setjmp</a><a class='mod current' href='../signal/index.html'>signal</a><a class='mod ' href='../spawn/index.html'>spawn</a><a class='mod ' href='../stddef/index.html'>stddef</a><a class='mod ' href='../stdint/index.html'>stdint</a><a class='mod ' href='../stdio/index.html'>stdio</a><a class='mod ' href='../stdlib/index.html'>stdlib</a><a class='mod ' href='../string/index.html'>string</a><a class='mod ' href='../strings/index.html'>strings</a><a class='mod ' href='../stropts/index.html'>stropts</a><a class='mod ' href='../sys/index.html'>sys</a><a class='mod ' href='../syslog/index.html'>syslog</a><a class='mod ' href='../tar/index.html'>tar</a><a class='mod ' href='../termios/index.html'>termios</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../ulimit/index.html'>ulimit</a><a class='mod ' href='../unistd/index.html'>unistd</a><a class='mod ' href='../utime/index.html'>utime</a><a class='mod ' href='../utmpx/index.html'>utmpx</a><a class='mod ' href='../wchar/index.html'>wchar</a><a class='mod ' href='../wctype/index.html'>wctype</a><a class='mod ' href='../wordexp/index.html'>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html'>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html'>NTStrOwned</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html'>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html'>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html'>AsSlice</a><a class='trait ' href='../trait.NTStr.html'>NTStr</a><a class='trait ' href='../trait.ToNTStr.html'>ToNTStr</a></div>
+        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html' title=''>aio</a><a class='mod ' href='../arpa/index.html' title=''>arpa</a><a class='mod ' href='../cpio/index.html' title=''>cpio</a><a class='mod ' href='../ctype/index.html' title=''>ctype</a><a class='mod ' href='../dirent/index.html' title=''>dirent</a><a class='mod ' href='../dlfcn/index.html' title=''>dlfcn</a><a class='mod ' href='../errno/index.html' title=''>errno</a><a class='mod ' href='../fcntl/index.html' title=''>fcntl</a><a class='mod ' href='../fenv/index.html' title=''>fenv</a><a class='mod ' href='../float/index.html' title=''>float</a><a class='mod ' href='../fmtmsg/index.html' title=''>fmtmsg</a><a class='mod ' href='../fnmatch/index.html' title=''>fnmatch</a><a class='mod ' href='../ftw/index.html' title=''>ftw</a><a class='mod ' href='../glob/index.html' title=''>glob</a><a class='mod ' href='../grp/index.html' title=''>grp</a><a class='mod ' href='../iconv/index.html' title=''>iconv</a><a class='mod ' href='../inttypes/index.html' title=''>inttypes</a><a class='mod ' href='../langinfo/index.html' title=''>langinfo</a><a class='mod ' href='../libgen/index.html' title=''>libgen</a><a class='mod ' href='../limits/index.html' title=''>limits</a><a class='mod ' href='../locale/index.html' title=''>locale</a><a class='mod ' href='../monetary/index.html' title=''>monetary</a><a class='mod ' href='../mqueue/index.html' title=''>mqueue</a><a class='mod ' href='../ndbm/index.html' title=''>ndbm</a><a class='mod ' href='../net/index.html' title=''>net</a><a class='mod ' href='../netdb/index.html' title=''>netdb</a><a class='mod ' href='../netinet/index.html' title=''>netinet</a><a class='mod ' href='../nl_types/index.html' title=''>nl_types</a><a class='mod ' href='../poll/index.html' title=''>poll</a><a class='mod ' href='../pthread/index.html' title=''>pthread</a><a class='mod ' href='../pwd/index.html' title=''>pwd</a><a class='mod ' href='../regex/index.html' title=''>regex</a><a class='mod ' href='../sched/index.html' title=''>sched</a><a class='mod ' href='../search/index.html' title=''>search</a><a class='mod ' href='../semaphore/index.html' title=''>semaphore</a><a class='mod ' href='../setjmp/index.html' title=''>setjmp</a><a class='mod current' href='../signal/index.html' title=''>signal</a><a class='mod ' href='../spawn/index.html' title=''>spawn</a><a class='mod ' href='../stddef/index.html' title=''>stddef</a><a class='mod ' href='../stdint/index.html' title=''>stdint</a><a class='mod ' href='../stdio/index.html' title=''>stdio</a><a class='mod ' href='../stdlib/index.html' title=''>stdlib</a><a class='mod ' href='../string/index.html' title=''>string</a><a class='mod ' href='../strings/index.html' title=''>strings</a><a class='mod ' href='../stropts/index.html' title=''>stropts</a><a class='mod ' href='../sys/index.html' title=''>sys</a><a class='mod ' href='../syslog/index.html' title=''>syslog</a><a class='mod ' href='../tar/index.html' title=''>tar</a><a class='mod ' href='../termios/index.html' title=''>termios</a><a class='mod ' href='../time/index.html' title=''>time</a><a class='mod ' href='../ulimit/index.html' title=''>ulimit</a><a class='mod ' href='../unistd/index.html' title=''>unistd</a><a class='mod ' href='../utime/index.html' title=''>utime</a><a class='mod ' href='../utmpx/index.html' title=''>utmpx</a><a class='mod ' href='../wchar/index.html' title=''>wchar</a><a class='mod ' href='../wctype/index.html' title=''>wctype</a><a class='mod ' href='../wordexp/index.html' title=''>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html' title=''>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html' title=''>NTStrOwned</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='../enum.void_t.html' title=''>void_t</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html' title=''>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html' title=''>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html' title=''>AsSlice</a><a class='trait ' href='../trait.NTStr.html' title=''>NTStr</a><a class='trait ' href='../trait.ToNTStr.html' title=''>ToNTStr</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Module <a href='../index.html'>posix</a>::<a class='mod' href=''>signal</a><span class='out-of-band'><a id='src-19984' href='../../src/posix/src/signal/mod.rs.html#1-242'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>posix</a>::<wbr><a class='mod' href=''>signal</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-21160' href='../../src/posix/signal/mod.rs.html#1-242'>[src]</a></span></h1>
 <h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
@@ -89,431 +93,516 @@
                                title='posix::signal::ucontext'>ucontext</a></td>
                         <td class='docblock short'></td>
                     </tr>
-                </table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static BUS_ADRALN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.BUS_ADRALN.html'
+                               title='posix::signal::BUS_ADRALN'>BUS_ADRALN</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static BUS_ADRERR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.BUS_ADRERR.html'
+                               title='posix::signal::BUS_ADRERR'>BUS_ADRERR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static BUS_OBJERR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.BUS_OBJERR.html'
+                               title='posix::signal::BUS_OBJERR'>BUS_OBJERR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CLD_CONTINUED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>6</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLD_CONTINUED.html'
+                               title='posix::signal::CLD_CONTINUED'>CLD_CONTINUED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CLD_DUMPED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLD_DUMPED.html'
+                               title='posix::signal::CLD_DUMPED'>CLD_DUMPED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CLD_EXITED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLD_EXITED.html'
+                               title='posix::signal::CLD_EXITED'>CLD_EXITED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CLD_KILLED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLD_KILLED.html'
+                               title='posix::signal::CLD_KILLED'>CLD_KILLED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CLD_STOPPED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLD_STOPPED.html'
+                               title='posix::signal::CLD_STOPPED'>CLD_STOPPED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static CLD_TRAPPED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.CLD_TRAPPED.html'
+                               title='posix::signal::CLD_TRAPPED'>CLD_TRAPPED</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_FLTDIV: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_FLTDIV.html'
+                               title='posix::signal::FPE_FLTDIV'>FPE_FLTDIV</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_FLTINV: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>7</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_FLTINV.html'
+                               title='posix::signal::FPE_FLTINV'>FPE_FLTINV</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_FLTOVF: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_FLTOVF.html'
+                               title='posix::signal::FPE_FLTOVF'>FPE_FLTOVF</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_FLTRES: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>6</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_FLTRES.html'
+                               title='posix::signal::FPE_FLTRES'>FPE_FLTRES</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_FLTSUB: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_FLTSUB.html'
+                               title='posix::signal::FPE_FLTSUB'>FPE_FLTSUB</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_FLTUND: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_FLTUND.html'
+                               title='posix::signal::FPE_FLTUND'>FPE_FLTUND</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_INTDIV: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_INTDIV.html'
+                               title='posix::signal::FPE_INTDIV'>FPE_INTDIV</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FPE_INTOVF: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FPE_INTOVF.html'
+                               title='posix::signal::FPE_INTOVF'>FPE_INTOVF</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_BADSTK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_BADSTK.html'
+                               title='posix::signal::ILL_BADSTK'>ILL_BADSTK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_COPROC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>7</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_COPROC.html'
+                               title='posix::signal::ILL_COPROC'>ILL_COPROC</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_ILLADR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_ILLADR.html'
+                               title='posix::signal::ILL_ILLADR'>ILL_ILLADR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_ILLOPC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_ILLOPC.html'
+                               title='posix::signal::ILL_ILLOPC'>ILL_ILLOPC</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_ILLOPN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_ILLOPN.html'
+                               title='posix::signal::ILL_ILLOPN'>ILL_ILLOPN</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_ILLTRP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_ILLTRP.html'
+                               title='posix::signal::ILL_ILLTRP'>ILL_ILLTRP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_PRVOPC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_PRVOPC.html'
+                               title='posix::signal::ILL_PRVOPC'>ILL_PRVOPC</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static ILL_PRVREG: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>6</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.ILL_PRVREG.html'
+                               title='posix::signal::ILL_PRVREG'>ILL_PRVREG</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static MINSIGSTKSZ: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2048</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.MINSIGSTKSZ.html'
+                               title='posix::signal::MINSIGSTKSZ'>MINSIGSTKSZ</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POLL_ERR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POLL_ERR.html'
+                               title='posix::signal::POLL_ERR'>POLL_ERR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POLL_HUP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>6</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POLL_HUP.html'
+                               title='posix::signal::POLL_HUP'>POLL_HUP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POLL_IN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POLL_IN.html'
+                               title='posix::signal::POLL_IN'>POLL_IN</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POLL_MSG: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POLL_MSG.html'
+                               title='posix::signal::POLL_MSG'>POLL_MSG</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POLL_OUT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POLL_OUT.html'
+                               title='posix::signal::POLL_OUT'>POLL_OUT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POLL_PRI: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POLL_PRI.html'
+                               title='posix::signal::POLL_PRI'>POLL_PRI</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_NOCLDSTOP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_NOCLDSTOP.html'
+                               title='posix::signal::SA_NOCLDSTOP'>SA_NOCLDSTOP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_NOCLDWAIT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_NOCLDWAIT.html'
+                               title='posix::signal::SA_NOCLDWAIT'>SA_NOCLDWAIT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_NODEFER: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1073741824</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_NODEFER.html'
+                               title='posix::signal::SA_NODEFER'>SA_NODEFER</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_ONSTACK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>134217728</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_ONSTACK.html'
+                               title='posix::signal::SA_ONSTACK'>SA_ONSTACK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_RESETHAND: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-2147483648</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_RESETHAND.html'
+                               title='posix::signal::SA_RESETHAND'>SA_RESETHAND</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_RESTART: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>268435456</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_RESTART.html'
+                               title='posix::signal::SA_RESTART'>SA_RESTART</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SA_SIGINFO: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SA_SIGINFO.html'
+                               title='posix::signal::SA_SIGINFO'>SA_SIGINFO</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SEGV_ACCERR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SEGV_ACCERR.html'
+                               title='posix::signal::SEGV_ACCERR'>SEGV_ACCERR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SEGV_MAPERR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SEGV_MAPERR.html'
+                               title='posix::signal::SEGV_MAPERR'>SEGV_MAPERR</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGABRT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>6</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGABRT.html'
+                               title='posix::signal::SIGABRT'>SIGABRT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGALRM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>14</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGALRM.html'
+                               title='posix::signal::SIGALRM'>SIGALRM</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGBUS: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>7</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGBUS.html'
+                               title='posix::signal::SIGBUS'>SIGBUS</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGCHLD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>17</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGCHLD.html'
+                               title='posix::signal::SIGCHLD'>SIGCHLD</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGCONT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>18</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGCONT.html'
+                               title='posix::signal::SIGCONT'>SIGCONT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGEV_NONE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGEV_NONE.html'
+                               title='posix::signal::SIGEV_NONE'>SIGEV_NONE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGEV_SIGNAL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGEV_SIGNAL.html'
+                               title='posix::signal::SIGEV_SIGNAL'>SIGEV_SIGNAL</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGEV_THREAD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGEV_THREAD.html'
+                               title='posix::signal::SIGEV_THREAD'>SIGEV_THREAD</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGFPE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGFPE.html'
+                               title='posix::signal::SIGFPE'>SIGFPE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGHUP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGHUP.html'
+                               title='posix::signal::SIGHUP'>SIGHUP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGILL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGILL.html'
+                               title='posix::signal::SIGILL'>SIGILL</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGINT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGINT.html'
+                               title='posix::signal::SIGINT'>SIGINT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGKILL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>9</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGKILL.html'
+                               title='posix::signal::SIGKILL'>SIGKILL</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGPIPE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>13</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGPIPE.html'
+                               title='posix::signal::SIGPIPE'>SIGPIPE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGPOLL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>29</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGPOLL.html'
+                               title='posix::signal::SIGPOLL'>SIGPOLL</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGPROF: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>27</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGPROF.html'
+                               title='posix::signal::SIGPROF'>SIGPROF</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGQUIT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGQUIT.html'
+                               title='posix::signal::SIGQUIT'>SIGQUIT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGSEGV: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>11</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGSEGV.html'
+                               title='posix::signal::SIGSEGV'>SIGSEGV</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGSTKSZ: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8192</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGSTKSZ.html'
+                               title='posix::signal::SIGSTKSZ'>SIGSTKSZ</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGSTOP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>19</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGSTOP.html'
+                               title='posix::signal::SIGSTOP'>SIGSTOP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGSYS: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>31</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGSYS.html'
+                               title='posix::signal::SIGSYS'>SIGSYS</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGTERM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>15</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGTERM.html'
+                               title='posix::signal::SIGTERM'>SIGTERM</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGTRAP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGTRAP.html'
+                               title='posix::signal::SIGTRAP'>SIGTRAP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGTSTP: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>20</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGTSTP.html'
+                               title='posix::signal::SIGTSTP'>SIGTSTP</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGTTIN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>21</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGTTIN.html'
+                               title='posix::signal::SIGTTIN'>SIGTTIN</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGTTOU: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>22</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGTTOU.html'
+                               title='posix::signal::SIGTTOU'>SIGTTOU</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGURG: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>23</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGURG.html'
+                               title='posix::signal::SIGURG'>SIGURG</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGUSR1: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>10</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGUSR1.html'
+                               title='posix::signal::SIGUSR1'>SIGUSR1</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGUSR2: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>12</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGUSR2.html'
+                               title='posix::signal::SIGUSR2'>SIGUSR2</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGVTALRM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>26</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGVTALRM.html'
+                               title='posix::signal::SIGVTALRM'>SIGVTALRM</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGXCPU: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>24</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGXCPU.html'
+                               title='posix::signal::SIGXCPU'>SIGXCPU</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIGXFSZ: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>25</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIGXFSZ.html'
+                               title='posix::signal::SIGXFSZ'>SIGXFSZ</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIG_BLOCK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIG_BLOCK.html'
+                               title='posix::signal::SIG_BLOCK'>SIG_BLOCK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIG_SETMASK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIG_SETMASK.html'
+                               title='posix::signal::SIG_SETMASK'>SIG_SETMASK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SIG_UNBLOCK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SIG_UNBLOCK.html'
+                               title='posix::signal::SIG_UNBLOCK'>SIG_UNBLOCK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SI_ASYNCIO: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-4</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SI_ASYNCIO.html'
+                               title='posix::signal::SI_ASYNCIO'>SI_ASYNCIO</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SI_MESGQ: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-3</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SI_MESGQ.html'
+                               title='posix::signal::SI_MESGQ'>SI_MESGQ</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SI_QUEUE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SI_QUEUE.html'
+                               title='posix::signal::SI_QUEUE'>SI_QUEUE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SI_TIMER: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SI_TIMER.html'
+                               title='posix::signal::SI_TIMER'>SI_TIMER</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SI_USER: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SI_USER.html'
+                               title='posix::signal::SI_USER'>SI_USER</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SS_DISABLE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SS_DISABLE.html'
+                               title='posix::signal::SS_DISABLE'>SS_DISABLE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static SS_ONSTACK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.SS_ONSTACK.html'
+                               title='posix::signal::SS_ONSTACK'>SS_ONSTACK</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static TRAP_BRKPT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TRAP_BRKPT.html'
+                               title='posix::signal::TRAP_BRKPT'>TRAP_BRKPT</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static TRAP_TRACE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.TRAP_TRACE.html'
+                               title='posix::signal::TRAP_TRACE'>TRAP_TRACE</a></td>
+                        <td class='docblock short'></td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
@@ -708,7 +797,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `getaddrinfo` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, getaddrinfo">
 
     <title>posix::netdb::getaddrinfo - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>netdb</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.addrinfo.html'>addrinfo</a><a class='struct ' href='struct.hostent.html'>hostent</a><a class='struct ' href='struct.netent.html'>netent</a><a class='struct ' href='struct.protoent.html'>protoent</a><a class='struct ' href='struct.servent.html'>servent</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.endhostent.html'>endhostent</a><a class='fn ' href='fn.endnetent.html'>endnetent</a><a class='fn ' href='fn.endprotoent.html'>endprotoent</a><a class='fn ' href='fn.endservent.html'>endservent</a><a class='fn ' href='fn.freeaddrinfo.html'>freeaddrinfo</a><a class='fn ' href='fn.gai_strerror.html'>gai_strerror</a><a class='fn current' href='fn.getaddrinfo.html'>getaddrinfo</a><a class='fn ' href='fn.getnameinfo.html'>getnameinfo</a><a class='fn ' href='fn.getnetbyaddr.html'>getnetbyaddr</a><a class='fn ' href='fn.getnetbyname.html'>getnetbyname</a><a class='fn ' href='fn.getprotobyname.html'>getprotobyname</a><a class='fn ' href='fn.getprotobynumber.html'>getprotobynumber</a><a class='fn ' href='fn.getservbyname.html'>getservbyname</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>netdb</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.addrinfo.html' title=''>addrinfo</a><a class='struct ' href='struct.hostent.html' title=''>hostent</a><a class='struct ' href='struct.netent.html' title=''>netent</a><a class='struct ' href='struct.protoent.html' title=''>protoent</a><a class='struct ' href='struct.servent.html' title=''>servent</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.endhostent.html' title=''>endhostent</a><a class='fn ' href='fn.endnetent.html' title=''>endnetent</a><a class='fn ' href='fn.endprotoent.html' title=''>endprotoent</a><a class='fn ' href='fn.endservent.html' title=''>endservent</a><a class='fn ' href='fn.freeaddrinfo.html' title=''>freeaddrinfo</a><a class='fn ' href='fn.gai_strerror.html' title=''>gai_strerror</a><a class='fn current' href='fn.getaddrinfo.html' title=''>getaddrinfo</a><a class='fn ' href='fn.getnameinfo.html' title=''>getnameinfo</a><a class='fn ' href='fn.getnetbyaddr.html' title=''>getnetbyaddr</a><a class='fn ' href='fn.getnetbyname.html' title=''>getnetbyname</a><a class='fn ' href='fn.getprotobyname.html' title=''>getprotobyname</a><a class='fn ' href='fn.getprotobynumber.html' title=''>getprotobynumber</a><a class='fn ' href='fn.getservbyname.html' title=''>getservbyname</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>netdb</a>::<a class='fn' href=''>getaddrinfo</a><span class='out-of-band'><a id='src-8534' href='../../src/posix/src/netdb/mod.rs.html#68-74'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>posix</a>::<wbr><a href='index.html'>netdb</a>::<wbr><a class='fn' href=''>getaddrinfo</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-8932' href='../../src/posix/netdb/mod.rs.html#68-74'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn getaddrinfo&lt;T: <a class='trait' href='../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>, U: <a class='trait' href='../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>&gt;(name: &amp;T, service: &amp;U, req: &amp;<a class='struct' href='../../posix/netdb/struct.addrinfo.html' title='posix::netdb::addrinfo'>addrinfo</a>, pai: &amp;mut *mut <a class='struct' href='../../posix/netdb/struct.addrinfo.html' title='posix::netdb::addrinfo'>addrinfo</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

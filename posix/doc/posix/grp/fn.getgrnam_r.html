@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `getgrnam_r` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, getgrnam_r">
 
     <title>posix::grp::getgrnam_r - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>grp</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.group.html'>group</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.getgrgid_r.html'>getgrgid_r</a><a class='fn current' href='fn.getgrnam_r.html'>getgrnam_r</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>grp</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.group.html' title=''>group</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.getgrgid_r.html' title=''>getgrgid_r</a><a class='fn current' href='fn.getgrnam_r.html' title=''>getgrnam_r</a></div>
     </section>
 
     <nav class="sub">
@@ -39,8 +41,10 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>grp</a>::<a class='fn' href=''>getgrnam_r</a><span class='out-of-band'><a id='src-5298' href='../../src/posix/src/grp/mod.rs.html#20-28'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn getgrnam_r&lt;'a, T: <a class='trait' href='../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>&gt;(name: &amp;T, dst: &amp;'a mut <a class='struct' href='../../posix/grp/struct.group.html' title='posix::grp::group'>group</a>, buf: &amp;'a mut <a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a>, res: &amp;mut <a href='http://doc.rust-lang.org/master/std/primitive.uint.html'>uint</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>posix</a>::<wbr><a href='index.html'>grp</a>::<wbr><a class='fn' href=''>getgrnam_r</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-5548' href='../../src/posix/grp/mod.rs.html#20-28'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn getgrnam_r&lt;'a, T: <a class='trait' href='../../posix/trait.NTStr.html' title='posix::NTStr'>NTStr</a>&gt;(name: &amp;T, dst: &amp;'a mut <a class='struct' href='../../posix/grp/struct.group.html' title='posix::grp::group'>group</a>, buf: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;'a mut [</a><a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, res: &amp;mut <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

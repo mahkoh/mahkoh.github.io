@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `mq_receive` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, mq_receive">
 
     <title>posix::mqueue::mq_receive - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>mqueue</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.mq_attr.html'>mq_attr</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.mq_close.html'>mq_close</a><a class='fn ' href='fn.mq_getattr.html'>mq_getattr</a><a class='fn ' href='fn.mq_notify.html'>mq_notify</a><a class='fn ' href='fn.mq_open.html'>mq_open</a><a class='fn current' href='fn.mq_receive.html'>mq_receive</a><a class='fn ' href='fn.mq_send.html'>mq_send</a><a class='fn ' href='fn.mq_setattr.html'>mq_setattr</a><a class='fn ' href='fn.mq_timedreceive.html'>mq_timedreceive</a><a class='fn ' href='fn.mq_timedsend.html'>mq_timedsend</a><a class='fn ' href='fn.mq_unlink.html'>mq_unlink</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>mqueue</a></p><div class='block struct'><h2>Structs</h2><a class='struct ' href='struct.mq_attr.html' title=''>mq_attr</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.mq_close.html' title=''>mq_close</a><a class='fn ' href='fn.mq_getattr.html' title=''>mq_getattr</a><a class='fn ' href='fn.mq_notify.html' title=''>mq_notify</a><a class='fn ' href='fn.mq_open.html' title=''>mq_open</a><a class='fn current' href='fn.mq_receive.html' title=''>mq_receive</a><a class='fn ' href='fn.mq_send.html' title=''>mq_send</a><a class='fn ' href='fn.mq_setattr.html' title=''>mq_setattr</a><a class='fn ' href='fn.mq_timedreceive.html' title=''>mq_timedreceive</a><a class='fn ' href='fn.mq_timedsend.html' title=''>mq_timedsend</a><a class='fn ' href='fn.mq_unlink.html' title=''>mq_unlink</a></div>
     </section>
 
     <nav class="sub">
@@ -39,8 +41,10 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>mqueue</a>::<a class='fn' href=''>mq_receive</a><span class='out-of-band'><a id='src-7157' href='../../src/posix/src/mqueue/mod.rs.html#29-35'>[src]</a></span></h1>
-<pre class='rust fn'>pub fn mq_receive(mqdes: <a class='type' href='../../posix/mqueue/type.mqd_t.html' title='posix::mqueue::mqd_t'>mqd_t</a>, buf: &amp;mut <a href='http://doc.rust-lang.org/master/std/primitive.slice.html'>[<a href='http://doc.rust-lang.org/master/std/primitive.u8.html'>u8</a>]</a>, msg_prio: <a class='type' href='http://doc.rust-lang.org/master/core/option/type.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='type' href='../../posix/type.uint_t.html' title='posix::uint_t'>uint_t</a>&gt;) -&gt; <a class='type' href='../../posix/type.ssize_t.html' title='posix::ssize_t'>ssize_t</a></pre></section>
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>posix</a>::<wbr><a href='index.html'>mqueue</a>::<wbr><a class='fn' href=''>mq_receive</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-7484' href='../../src/posix/mqueue/mod.rs.html#29-35'>[src]</a></span></h1>
+<pre class='rust fn'>pub fn mq_receive(mqdes: <a class='type' href='../../posix/mqueue/type.mqd_t.html' title='posix::mqueue::mqd_t'>mqd_t</a>, buf: <a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>&amp;mut [</a><a href='http://doc.rust-lang.org/nightly/std/primitive.u8.html'>u8</a><a href='http://doc.rust-lang.org/nightly/std/primitive.slice.html'>]</a>, msg_prio: <a class='enum' href='http://doc.rust-lang.org/nightly/core/option/enum.Option.html' title='core::option::Option'>Option</a>&lt;&amp;mut <a class='type' href='../../posix/type.uint_t.html' title='posix::uint_t'>uint_t</a>&gt;) -&gt; <a class='type' href='../../posix/type.ssize_t.html' title='posix::ssize_t'>ssize_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

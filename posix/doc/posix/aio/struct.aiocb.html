@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `aiocb` struct in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, aiocb">
 
     <title>posix::aio::aiocb - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>aio</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.aiocb.html'>aiocb</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.aio_cancel.html'>aio_cancel</a><a class='fn ' href='fn.aio_error.html'>aio_error</a><a class='fn ' href='fn.aio_fsync.html'>aio_fsync</a><a class='fn ' href='fn.aio_read.html'>aio_read</a><a class='fn ' href='fn.aio_return.html'>aio_return</a><a class='fn ' href='fn.aio_suspend.html'>aio_suspend</a><a class='fn ' href='fn.aio_write.html'>aio_write</a><a class='fn ' href='fn.lio_listio.html'>lio_listio</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>aio</a></p><div class='block struct'><h2>Structs</h2><a class='struct current' href='struct.aiocb.html' title=''>aiocb</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.aio_cancel.html' title=''>aio_cancel</a><a class='fn ' href='fn.aio_error.html' title=''>aio_error</a><a class='fn ' href='fn.aio_fsync.html' title=''>aio_fsync</a><a class='fn ' href='fn.aio_read.html' title=''>aio_read</a><a class='fn ' href='fn.aio_return.html' title=''>aio_return</a><a class='fn ' href='fn.aio_suspend.html' title=''>aio_suspend</a><a class='fn ' href='fn.aio_write.html' title=''>aio_write</a><a class='fn ' href='fn.lio_listio.html' title=''>lio_listio</a></div>
     </section>
 
     <nav class="sub">
@@ -39,19 +41,21 @@
     </nav>
 
     <section id='main' class="content struct">
-<h1 class='fqn'>Struct <a href='../index.html'>posix</a>::<a href='index.html'>aio</a>::<a class='struct' href=''>aiocb</a><span class='out-of-band'><a id='src-71' href='../../src/posix/src/aio/linux/x86_64.rs.html#2-17'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>posix</a>::<wbr><a href='index.html'>aio</a>::<wbr><a class='struct' href=''>aiocb</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-78' href='../../src/posix/aio/linux/x86_64.rs.html#3-18'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct aiocb {
     pub aio_fildes: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>,
     pub aio_lio_opcode: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>,
     pub aio_reqprio: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a>,
-    pub aio_buf: *mut <a class='type' href='../../posix/type.void_t.html' title='posix::void_t'>void_t</a>,
-    pub aio_nbytes: <a class='type' href='../../posix/stddef/type.size_t.html' title='posix::stddef::size_t'>size_t</a>,
+    pub aio_buf: *mut <a class='enum' href='../../posix/enum.void_t.html' title='posix::void_t'>void_t</a>,
+    pub aio_nbytes: <a class='type' href='../../posix/type.size_t.html' title='posix::size_t'>size_t</a>,
     pub aio_sigevent: <a class='struct' href='../../posix/signal/struct.sigevent.html' title='posix::signal::sigevent'>sigevent</a>,
     pub aio_offset: <a class='type' href='../../posix/sys/types/type.off_t.html' title='posix::sys::types::off_t'>off_t</a>,
     // some fields omitted
 }</pre><h2 class='fields'>Fields</h2>
-<table><tr><td id='structfield.aio_fildes'><a class='stability Unmarked' title='No stability level'></a><code>aio_fildes</code></td><td></td></tr><tr><td id='structfield.aio_lio_opcode'><a class='stability Unmarked' title='No stability level'></a><code>aio_lio_opcode</code></td><td></td></tr><tr><td id='structfield.aio_reqprio'><a class='stability Unmarked' title='No stability level'></a><code>aio_reqprio</code></td><td></td></tr><tr><td id='structfield.aio_buf'><a class='stability Unmarked' title='No stability level'></a><code>aio_buf</code></td><td></td></tr><tr><td id='structfield.aio_nbytes'><a class='stability Unmarked' title='No stability level'></a><code>aio_nbytes</code></td><td></td></tr><tr><td id='structfield.aio_sigevent'><a class='stability Unmarked' title='No stability level'></a><code>aio_sigevent</code></td><td></td></tr><tr><td id='structfield.aio_offset'><a class='stability Unmarked' title='No stability level'></a><code>aio_offset</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../posix/aio/struct.aiocb.html' title='posix::aio::aiocb'>aiocb</a></code></h3><div class='impl-methods'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../posix/aio/struct.aiocb.html' title='posix::aio::aiocb'>aiocb</a></code></h4>
-</div></section>
+<table><tr><td id='structfield.aio_fildes'><a class='stability Unmarked' title='No stability level'></a><code>aio_fildes</code></td><td></td></tr><tr><td id='structfield.aio_lio_opcode'><a class='stability Unmarked' title='No stability level'></a><code>aio_lio_opcode</code></td><td></td></tr><tr><td id='structfield.aio_reqprio'><a class='stability Unmarked' title='No stability level'></a><code>aio_reqprio</code></td><td></td></tr><tr><td id='structfield.aio_buf'><a class='stability Unmarked' title='No stability level'></a><code>aio_buf</code></td><td></td></tr><tr><td id='structfield.aio_nbytes'><a class='stability Unmarked' title='No stability level'></a><code>aio_nbytes</code></td><td></td></tr><tr><td id='structfield.aio_sigevent'><a class='stability Unmarked' title='No stability level'></a><code>aio_sigevent</code></td><td></td></tr><tr><td id='structfield.aio_offset'><a class='stability Unmarked' title='No stability level'></a><code>aio_offset</code></td><td></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../posix/aio/struct.aiocb.html' title='posix::aio::aiocb'>aiocb</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../posix/aio/struct.aiocb.html' title='posix::aio::aiocb'>aiocb</a></code></h4>
+</div><h2 id='implementations'>Trait Implementations</h2><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Copy.html' title='core::marker::Copy'>Copy</a> for <a class='struct' href='../../posix/aio/struct.aiocb.html' title='posix::aio::aiocb'>aiocb</a></code></h3><div class='impl-items'></div></section>
     <section id='search' class="content hidden"></section>
 
     <section class="footer"></section>
@@ -80,7 +84,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

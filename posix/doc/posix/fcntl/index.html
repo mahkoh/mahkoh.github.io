@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `fcntl` mod in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, fcntl">
 
     <title>posix::fcntl - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html'>aio</a><a class='mod ' href='../arpa/index.html'>arpa</a><a class='mod ' href='../cpio/index.html'>cpio</a><a class='mod ' href='../ctype/index.html'>ctype</a><a class='mod ' href='../dirent/index.html'>dirent</a><a class='mod ' href='../dlfcn/index.html'>dlfcn</a><a class='mod ' href='../errno/index.html'>errno</a><a class='mod current' href='../fcntl/index.html'>fcntl</a><a class='mod ' href='../fenv/index.html'>fenv</a><a class='mod ' href='../float/index.html'>float</a><a class='mod ' href='../fmtmsg/index.html'>fmtmsg</a><a class='mod ' href='../fnmatch/index.html'>fnmatch</a><a class='mod ' href='../ftw/index.html'>ftw</a><a class='mod ' href='../glob/index.html'>glob</a><a class='mod ' href='../grp/index.html'>grp</a><a class='mod ' href='../iconv/index.html'>iconv</a><a class='mod ' href='../inttypes/index.html'>inttypes</a><a class='mod ' href='../langinfo/index.html'>langinfo</a><a class='mod ' href='../libgen/index.html'>libgen</a><a class='mod ' href='../limits/index.html'>limits</a><a class='mod ' href='../locale/index.html'>locale</a><a class='mod ' href='../monetary/index.html'>monetary</a><a class='mod ' href='../mqueue/index.html'>mqueue</a><a class='mod ' href='../ndbm/index.html'>ndbm</a><a class='mod ' href='../net/index.html'>net</a><a class='mod ' href='../netdb/index.html'>netdb</a><a class='mod ' href='../netinet/index.html'>netinet</a><a class='mod ' href='../nl_types/index.html'>nl_types</a><a class='mod ' href='../poll/index.html'>poll</a><a class='mod ' href='../pthread/index.html'>pthread</a><a class='mod ' href='../pwd/index.html'>pwd</a><a class='mod ' href='../regex/index.html'>regex</a><a class='mod ' href='../sched/index.html'>sched</a><a class='mod ' href='../search/index.html'>search</a><a class='mod ' href='../semaphore/index.html'>semaphore</a><a class='mod ' href='../setjmp/index.html'>setjmp</a><a class='mod ' href='../signal/index.html'>signal</a><a class='mod ' href='../spawn/index.html'>spawn</a><a class='mod ' href='../stddef/index.html'>stddef</a><a class='mod ' href='../stdint/index.html'>stdint</a><a class='mod ' href='../stdio/index.html'>stdio</a><a class='mod ' href='../stdlib/index.html'>stdlib</a><a class='mod ' href='../string/index.html'>string</a><a class='mod ' href='../strings/index.html'>strings</a><a class='mod ' href='../stropts/index.html'>stropts</a><a class='mod ' href='../sys/index.html'>sys</a><a class='mod ' href='../syslog/index.html'>syslog</a><a class='mod ' href='../tar/index.html'>tar</a><a class='mod ' href='../termios/index.html'>termios</a><a class='mod ' href='../time/index.html'>time</a><a class='mod ' href='../ulimit/index.html'>ulimit</a><a class='mod ' href='../unistd/index.html'>unistd</a><a class='mod ' href='../utime/index.html'>utime</a><a class='mod ' href='../utmpx/index.html'>utmpx</a><a class='mod ' href='../wchar/index.html'>wchar</a><a class='mod ' href='../wctype/index.html'>wctype</a><a class='mod ' href='../wordexp/index.html'>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html'>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html'>NTStrOwned</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html'>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html'>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html'>AsSlice</a><a class='trait ' href='../trait.NTStr.html'>NTStr</a><a class='trait ' href='../trait.ToNTStr.html'>ToNTStr</a></div>
+        <p class='location'><a href='../index.html'>posix</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../aio/index.html' title=''>aio</a><a class='mod ' href='../arpa/index.html' title=''>arpa</a><a class='mod ' href='../cpio/index.html' title=''>cpio</a><a class='mod ' href='../ctype/index.html' title=''>ctype</a><a class='mod ' href='../dirent/index.html' title=''>dirent</a><a class='mod ' href='../dlfcn/index.html' title=''>dlfcn</a><a class='mod ' href='../errno/index.html' title=''>errno</a><a class='mod current' href='../fcntl/index.html' title=''>fcntl</a><a class='mod ' href='../fenv/index.html' title=''>fenv</a><a class='mod ' href='../float/index.html' title=''>float</a><a class='mod ' href='../fmtmsg/index.html' title=''>fmtmsg</a><a class='mod ' href='../fnmatch/index.html' title=''>fnmatch</a><a class='mod ' href='../ftw/index.html' title=''>ftw</a><a class='mod ' href='../glob/index.html' title=''>glob</a><a class='mod ' href='../grp/index.html' title=''>grp</a><a class='mod ' href='../iconv/index.html' title=''>iconv</a><a class='mod ' href='../inttypes/index.html' title=''>inttypes</a><a class='mod ' href='../langinfo/index.html' title=''>langinfo</a><a class='mod ' href='../libgen/index.html' title=''>libgen</a><a class='mod ' href='../limits/index.html' title=''>limits</a><a class='mod ' href='../locale/index.html' title=''>locale</a><a class='mod ' href='../monetary/index.html' title=''>monetary</a><a class='mod ' href='../mqueue/index.html' title=''>mqueue</a><a class='mod ' href='../ndbm/index.html' title=''>ndbm</a><a class='mod ' href='../net/index.html' title=''>net</a><a class='mod ' href='../netdb/index.html' title=''>netdb</a><a class='mod ' href='../netinet/index.html' title=''>netinet</a><a class='mod ' href='../nl_types/index.html' title=''>nl_types</a><a class='mod ' href='../poll/index.html' title=''>poll</a><a class='mod ' href='../pthread/index.html' title=''>pthread</a><a class='mod ' href='../pwd/index.html' title=''>pwd</a><a class='mod ' href='../regex/index.html' title=''>regex</a><a class='mod ' href='../sched/index.html' title=''>sched</a><a class='mod ' href='../search/index.html' title=''>search</a><a class='mod ' href='../semaphore/index.html' title=''>semaphore</a><a class='mod ' href='../setjmp/index.html' title=''>setjmp</a><a class='mod ' href='../signal/index.html' title=''>signal</a><a class='mod ' href='../spawn/index.html' title=''>spawn</a><a class='mod ' href='../stddef/index.html' title=''>stddef</a><a class='mod ' href='../stdint/index.html' title=''>stdint</a><a class='mod ' href='../stdio/index.html' title=''>stdio</a><a class='mod ' href='../stdlib/index.html' title=''>stdlib</a><a class='mod ' href='../string/index.html' title=''>string</a><a class='mod ' href='../strings/index.html' title=''>strings</a><a class='mod ' href='../stropts/index.html' title=''>stropts</a><a class='mod ' href='../sys/index.html' title=''>sys</a><a class='mod ' href='../syslog/index.html' title=''>syslog</a><a class='mod ' href='../tar/index.html' title=''>tar</a><a class='mod ' href='../termios/index.html' title=''>termios</a><a class='mod ' href='../time/index.html' title=''>time</a><a class='mod ' href='../ulimit/index.html' title=''>ulimit</a><a class='mod ' href='../unistd/index.html' title=''>unistd</a><a class='mod ' href='../utime/index.html' title=''>utime</a><a class='mod ' href='../utmpx/index.html' title=''>utmpx</a><a class='mod ' href='../wchar/index.html' title=''>wchar</a><a class='mod ' href='../wctype/index.html' title=''>wctype</a><a class='mod ' href='../wordexp/index.html' title=''>wordexp</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.NTStrBorrowed.html' title=''>NTStrBorrowed</a><a class='struct ' href='../struct.NTStrOwned.html' title=''>NTStrOwned</a></div><div class='block enum'><h2>Enums</h2><a class='enum ' href='../enum.void_t.html' title=''>void_t</a></div><div class='block trait'><h2>Traits</h2><a class='trait ' href='../trait.AsMutSlice.html' title=''>AsMutSlice</a><a class='trait ' href='../trait.AsNTStr.html' title=''>AsNTStr</a><a class='trait ' href='../trait.AsSlice.html' title=''>AsSlice</a><a class='trait ' href='../trait.NTStr.html' title=''>NTStr</a><a class='trait ' href='../trait.ToNTStr.html' title=''>ToNTStr</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'>Module <a href='../index.html'>posix</a>::<a class='mod' href=''>fcntl</a><span class='out-of-band'><a id='src-2864' href='../../src/posix/src/fcntl/mod.rs.html#1-73'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>posix</a>::<wbr><a class='mod' href=''>fcntl</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-3006' href='../../src/posix/fcntl/mod.rs.html#1-77'>[src]</a></span></h1>
 <h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
@@ -47,234 +51,257 @@
                                title='posix::fcntl::flock'>flock</a></td>
                         <td class='docblock short'></td>
                     </tr>
-                </table><h2 id='statics' class='section-header'><a href="#statics">Statics</a></h2>
+                </table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
 <table>
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AT_EACCESS: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>512</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AT_FDCWD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>-100</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AT_REMOVEDIR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>512</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AT_SYMLINK_FOLLOW: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1024</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static AT_SYMLINK_NOFOLLOW: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>256</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static FD_CLOEXEC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_DUPFD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_DUPFD_CLOEXEC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1030</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_GETFD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_GETFL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_GETLK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_GETOWN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>9</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_RDLCK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_SETFD: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_SETFL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_SETLK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>6</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_SETLKW: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>7</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_SETOWN: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>8</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_UNLCK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static F_WRLCK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_ACCMODE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_APPEND: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1024</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_CLOEXEC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>524288</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_CREAT: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>64</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_DIRECTORY: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>65536</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_DSYNC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4096</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_EXCL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>128</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_NOCTTY: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>256</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_NOFOLLOW: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>131072</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_NONBLOCK: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2048</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_RDONLY: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_RDWR: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_RSYNC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1052672</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_SYNC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1052672</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_TRUNC: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>512</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static O_WRONLY: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_FADV_DONTNEED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>4</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_FADV_NOREUSE: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>5</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_FADV_NORMAL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>0</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_FADV_RANDOM: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>1</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_FADV_SEQUENTIAL: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>2</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><code>pub static POSIX_FADV_WILLNEED: <a class='type' href='../../posix/type.int_t.html' title='posix::int_t'>int_t</a></code><code> = </code><code>3</code></td>
-                        <td class='docblock'>&nbsp;</td>
-                    </tr>
-                </table><h2 id='ffi-fns' class='section-header'><a href="#ffi-fns">Foreign Functions</a></h2>
-<table>
-                    <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.fcntl.html'
-                               title='posix::fcntl::fcntl'>fcntl</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AT_EACCESS.html'
+                               title='posix::fcntl::AT_EACCESS'>AT_EACCESS</a></td>
                         <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.open.html'
-                               title='posix::fcntl::open'>open</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AT_FDCWD.html'
+                               title='posix::fcntl::AT_FDCWD'>AT_FDCWD</a></td>
                         <td class='docblock short'></td>
                     </tr>
                 
                     <tr>
-                        <td><a class='stability Unmarked' title='No stability level'></a><a class='ffi' href='ffi.openat.html'
-                               title='posix::fcntl::openat'>openat</a></td>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AT_REMOVEDIR.html'
+                               title='posix::fcntl::AT_REMOVEDIR'>AT_REMOVEDIR</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AT_SYMLINK_FOLLOW.html'
+                               title='posix::fcntl::AT_SYMLINK_FOLLOW'>AT_SYMLINK_FOLLOW</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.AT_SYMLINK_NOFOLLOW.html'
+                               title='posix::fcntl::AT_SYMLINK_NOFOLLOW'>AT_SYMLINK_NOFOLLOW</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.FD_CLOEXEC.html'
+                               title='posix::fcntl::FD_CLOEXEC'>FD_CLOEXEC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_DUPFD.html'
+                               title='posix::fcntl::F_DUPFD'>F_DUPFD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_DUPFD_CLOEXEC.html'
+                               title='posix::fcntl::F_DUPFD_CLOEXEC'>F_DUPFD_CLOEXEC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_GETFD.html'
+                               title='posix::fcntl::F_GETFD'>F_GETFD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_GETFL.html'
+                               title='posix::fcntl::F_GETFL'>F_GETFL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_GETLK.html'
+                               title='posix::fcntl::F_GETLK'>F_GETLK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_GETOWN.html'
+                               title='posix::fcntl::F_GETOWN'>F_GETOWN</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_RDLCK.html'
+                               title='posix::fcntl::F_RDLCK'>F_RDLCK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_SETFD.html'
+                               title='posix::fcntl::F_SETFD'>F_SETFD</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_SETFL.html'
+                               title='posix::fcntl::F_SETFL'>F_SETFL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_SETLK.html'
+                               title='posix::fcntl::F_SETLK'>F_SETLK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_SETLKW.html'
+                               title='posix::fcntl::F_SETLKW'>F_SETLKW</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_SETOWN.html'
+                               title='posix::fcntl::F_SETOWN'>F_SETOWN</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_UNLCK.html'
+                               title='posix::fcntl::F_UNLCK'>F_UNLCK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.F_WRLCK.html'
+                               title='posix::fcntl::F_WRLCK'>F_WRLCK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_ACCMODE.html'
+                               title='posix::fcntl::O_ACCMODE'>O_ACCMODE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_APPEND.html'
+                               title='posix::fcntl::O_APPEND'>O_APPEND</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_CLOEXEC.html'
+                               title='posix::fcntl::O_CLOEXEC'>O_CLOEXEC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_CREAT.html'
+                               title='posix::fcntl::O_CREAT'>O_CREAT</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_DIRECTORY.html'
+                               title='posix::fcntl::O_DIRECTORY'>O_DIRECTORY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_DSYNC.html'
+                               title='posix::fcntl::O_DSYNC'>O_DSYNC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_EXCL.html'
+                               title='posix::fcntl::O_EXCL'>O_EXCL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_NOCTTY.html'
+                               title='posix::fcntl::O_NOCTTY'>O_NOCTTY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_NOFOLLOW.html'
+                               title='posix::fcntl::O_NOFOLLOW'>O_NOFOLLOW</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_NONBLOCK.html'
+                               title='posix::fcntl::O_NONBLOCK'>O_NONBLOCK</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_RDONLY.html'
+                               title='posix::fcntl::O_RDONLY'>O_RDONLY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_RDWR.html'
+                               title='posix::fcntl::O_RDWR'>O_RDWR</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_RSYNC.html'
+                               title='posix::fcntl::O_RSYNC'>O_RSYNC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_SYNC.html'
+                               title='posix::fcntl::O_SYNC'>O_SYNC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_TRUNC.html'
+                               title='posix::fcntl::O_TRUNC'>O_TRUNC</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.O_WRONLY.html'
+                               title='posix::fcntl::O_WRONLY'>O_WRONLY</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_FADV_DONTNEED.html'
+                               title='posix::fcntl::POSIX_FADV_DONTNEED'>POSIX_FADV_DONTNEED</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_FADV_NOREUSE.html'
+                               title='posix::fcntl::POSIX_FADV_NOREUSE'>POSIX_FADV_NOREUSE</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_FADV_NORMAL.html'
+                               title='posix::fcntl::POSIX_FADV_NORMAL'>POSIX_FADV_NORMAL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_FADV_RANDOM.html'
+                               title='posix::fcntl::POSIX_FADV_RANDOM'>POSIX_FADV_RANDOM</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_FADV_SEQUENTIAL.html'
+                               title='posix::fcntl::POSIX_FADV_SEQUENTIAL'>POSIX_FADV_SEQUENTIAL</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='constant' href='constant.POSIX_FADV_WILLNEED.html'
+                               title='posix::fcntl::POSIX_FADV_WILLNEED'>POSIX_FADV_WILLNEED</a></td>
                         <td class='docblock short'></td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
@@ -282,6 +309,30 @@
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.creat.html'
                                title='posix::fcntl::creat'>creat</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.fcntl.html'
+                               title='posix::fcntl::fcntl'>fcntl</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.open.html'
+                               title='posix::fcntl::open'>open</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.open1.html'
+                               title='posix::fcntl::open1'>open1</a></td>
+                        <td class='docblock short'></td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.openat.html'
+                               title='posix::fcntl::openat'>openat</a></td>
                         <td class='docblock short'></td>
                     </tr>
                 
@@ -325,7 +376,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>

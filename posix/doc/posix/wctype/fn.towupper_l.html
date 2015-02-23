@@ -3,7 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The posix library documentation.">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `towupper_l` fn in crate `posix`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, towupper_l">
 
     <title>posix::wctype::towupper_l - Rust</title>
 
@@ -12,7 +14,7 @@
     
     
 </head>
-<body>
+<body class="rustdoc">
     <!--[if lte IE 8]>
     <div class="warning">
         This old browser is unsupported and will most likely display funky
@@ -24,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../index.html'>posix</a>&#8203;::<a href='index.html'>wctype</a></p><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.iswalnum.html'>iswalnum</a><a class='fn ' href='fn.iswalnum_l.html'>iswalnum_l</a><a class='fn ' href='fn.iswalpha.html'>iswalpha</a><a class='fn ' href='fn.iswalpha_l.html'>iswalpha_l</a><a class='fn ' href='fn.iswblank.html'>iswblank</a><a class='fn ' href='fn.iswblank_l.html'>iswblank_l</a><a class='fn ' href='fn.iswcntrl.html'>iswcntrl</a><a class='fn ' href='fn.iswcntrl_l.html'>iswcntrl_l</a><a class='fn ' href='fn.iswctype.html'>iswctype</a><a class='fn ' href='fn.iswctype_l.html'>iswctype_l</a><a class='fn ' href='fn.iswdigit.html'>iswdigit</a><a class='fn ' href='fn.iswdigit_l.html'>iswdigit_l</a><a class='fn ' href='fn.iswgraph.html'>iswgraph</a><a class='fn ' href='fn.iswgraph_l.html'>iswgraph_l</a><a class='fn ' href='fn.iswlower.html'>iswlower</a><a class='fn ' href='fn.iswlower_l.html'>iswlower_l</a><a class='fn ' href='fn.iswprint.html'>iswprint</a><a class='fn ' href='fn.iswprint_l.html'>iswprint_l</a><a class='fn ' href='fn.iswpunct.html'>iswpunct</a><a class='fn ' href='fn.iswpunct_l.html'>iswpunct_l</a><a class='fn ' href='fn.iswspace.html'>iswspace</a><a class='fn ' href='fn.iswspace_l.html'>iswspace_l</a><a class='fn ' href='fn.iswupper.html'>iswupper</a><a class='fn ' href='fn.iswupper_l.html'>iswupper_l</a><a class='fn ' href='fn.iswxdigit.html'>iswxdigit</a><a class='fn ' href='fn.iswxdigit_l.html'>iswxdigit_l</a><a class='fn ' href='fn.towctrans.html'>towctrans</a><a class='fn ' href='fn.towctrans_l.html'>towctrans_l</a><a class='fn ' href='fn.towlower.html'>towlower</a><a class='fn ' href='fn.towlower_l.html'>towlower_l</a><a class='fn ' href='fn.towupper.html'>towupper</a><a class='fn current' href='fn.towupper_l.html'>towupper_l</a></div>
+        <p class='location'><a href='../index.html'>posix</a>::<wbr><a href='index.html'>wctype</a></p><div class='block fn'><h2>Functions</h2><a class='fn ' href='fn.iswalnum.html' title=''>iswalnum</a><a class='fn ' href='fn.iswalnum_l.html' title=''>iswalnum_l</a><a class='fn ' href='fn.iswalpha.html' title=''>iswalpha</a><a class='fn ' href='fn.iswalpha_l.html' title=''>iswalpha_l</a><a class='fn ' href='fn.iswblank.html' title=''>iswblank</a><a class='fn ' href='fn.iswblank_l.html' title=''>iswblank_l</a><a class='fn ' href='fn.iswcntrl.html' title=''>iswcntrl</a><a class='fn ' href='fn.iswcntrl_l.html' title=''>iswcntrl_l</a><a class='fn ' href='fn.iswctype.html' title=''>iswctype</a><a class='fn ' href='fn.iswctype_l.html' title=''>iswctype_l</a><a class='fn ' href='fn.iswdigit.html' title=''>iswdigit</a><a class='fn ' href='fn.iswdigit_l.html' title=''>iswdigit_l</a><a class='fn ' href='fn.iswgraph.html' title=''>iswgraph</a><a class='fn ' href='fn.iswgraph_l.html' title=''>iswgraph_l</a><a class='fn ' href='fn.iswlower.html' title=''>iswlower</a><a class='fn ' href='fn.iswlower_l.html' title=''>iswlower_l</a><a class='fn ' href='fn.iswprint.html' title=''>iswprint</a><a class='fn ' href='fn.iswprint_l.html' title=''>iswprint_l</a><a class='fn ' href='fn.iswpunct.html' title=''>iswpunct</a><a class='fn ' href='fn.iswpunct_l.html' title=''>iswpunct_l</a><a class='fn ' href='fn.iswspace.html' title=''>iswspace</a><a class='fn ' href='fn.iswspace_l.html' title=''>iswspace_l</a><a class='fn ' href='fn.iswupper.html' title=''>iswupper</a><a class='fn ' href='fn.iswupper_l.html' title=''>iswupper_l</a><a class='fn ' href='fn.iswxdigit.html' title=''>iswxdigit</a><a class='fn ' href='fn.iswxdigit_l.html' title=''>iswxdigit_l</a><a class='fn ' href='fn.towctrans.html' title=''>towctrans</a><a class='fn ' href='fn.towctrans_l.html' title=''>towctrans_l</a><a class='fn ' href='fn.towlower.html' title=''>towlower</a><a class='fn ' href='fn.towlower_l.html' title=''>towlower_l</a><a class='fn ' href='fn.towupper.html' title=''>towupper</a><a class='fn current' href='fn.towupper_l.html' title=''>towupper_l</a></div>
     </section>
 
     <nav class="sub">
@@ -39,7 +41,9 @@
     </nav>
 
     <section id='main' class="content fn">
-<h1 class='fqn'>Function <a href='../index.html'>posix</a>::<a href='index.html'>wctype</a>::<a class='fn' href=''>towupper_l</a><span class='out-of-band'><a id='src-36807' href='../../src/posix/src/wctype/mod.rs.html#161-164'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'>Function <a href='../index.html'>posix</a>::<wbr><a href='index.html'>wctype</a>::<wbr><a class='fn' href=''>towupper_l</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
+        </span><a id='src-38912' href='../../src/posix/wctype/mod.rs.html#161-164'>[src]</a></span></h1>
 <pre class='rust fn'>pub fn towupper_l(wc: <a class='type' href='../../posix/wchar/type.wint_t.html' title='posix::wchar::wint_t'>wint_t</a>, locale: <a class='type' href='../../posix/locale/type.locale_t.html' title='posix::locale::locale_t'>locale_t</a>) -&gt; <a class='type' href='../../posix/wchar/type.wint_t.html' title='posix::wchar::wint_t'>wint_t</a></pre></section>
     <section id='search' class="content hidden"></section>
 
@@ -69,7 +73,7 @@
             </p>
             <p>
                 Accepted types are: <code>fn</code>, <code>mod</code>,
-                <code>struct</code> (or <code>str</code>), <code>enum</code>,
+                <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
             </p>
