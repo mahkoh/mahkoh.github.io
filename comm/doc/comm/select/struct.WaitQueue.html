@@ -43,18 +43,18 @@
     <section id='main' class="content struct">
 <h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>comm</a>::<wbr><a href='index.html'>select</a>::<wbr><a class='struct' href=''>WaitQueue</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-2647' href='../../src/comm/select/imp.rs.html#239-242'>[src]</a></span></h1>
-<pre class='rust struct'>pub struct WaitQueue {
+        </span><a id='src-2417' href='../../src/comm/select/imp.rs.html#241-244'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct WaitQueue&lt;'a&gt; {
     // some fields omitted
 }</pre><div class='docblock'><p>A structure stored by <code>Selectable</code> objects to interact with <code>Select</code> objects that want
 to be notified when the <code>Selectable</code> object becomes ready.</p>
-</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl <a class='struct' href='../../comm/select/struct.WaitQueue.html' title='comm::select::WaitQueue'>WaitQueue</a></code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../comm/select/struct.WaitQueue.html' title='comm::select::WaitQueue'>WaitQueue</a></code></h4>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><a class='stability Unmarked' title='No stability level'></a><code>impl&lt;'a&gt; <a class='struct' href='../../comm/select/struct.WaitQueue.html' title='comm::select::WaitQueue'>WaitQueue</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.new' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class='struct' href='../../comm/select/struct.WaitQueue.html' title='comm::select::WaitQueue'>WaitQueue</a>&lt;'a&gt;</code></h4>
 <div class='docblock'><p>Creates a new <code>WaitQueue</code>. This function does not allocate.</p>
 </div><h4 id='method.set_id' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.set_id' class='fnname'>set_id</a>(&amp;mut self, id: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></h4>
 <div class='docblock'><p>Sets the <code>id</code> of the <code>Selectable</code> object containing the <code>WaitQueue</code>. This id must
 be the id returned by <code>Selectable::as_selectable().unique_id()</code>. This function
 must be called with the correct id before any other functions are called.</p>
-</div><h4 id='method.add' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add' class='fnname'>add</a>(&amp;mut self, load: <a class='struct' href='../../comm/select/struct.Payload.html' title='comm::select::Payload'>Payload</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
+</div><h4 id='method.add' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.add' class='fnname'>add</a>(&amp;mut self, load: <a class='struct' href='../../comm/select/struct.Payload.html' title='comm::select::Payload'>Payload</a>&lt;'a&gt;) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
 <div class='docblock'><p>Add a <code>Select</code> object to the <code>WaitQueue</code>. Returns the number of <code>Select</code> objects
 contained in the <code>WaitQueue</code> after this call.</p>
 </div><h4 id='method.remove' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#method.remove' class='fnname'>remove</a>(&amp;mut self, id: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a></code></h4>
@@ -69,7 +69,7 @@ object has become ready. Returns the number of <code>Select</code> objects conta
 <div class='docblock'><p>Removes all <code>Select</code> objects from this wait queue and signals them that the
 <code>Selectable</code> object will no longer be available. This happens automatically when
 the <code>WaitQueue</code> is dropped.</p>
-</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../comm/select/struct.WaitQueue.html' title='comm::select::WaitQueue'>WaitQueue</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><a class='stability Stable' title='Stable'></a><code>impl&lt;'a&gt; <a class='trait' href='http://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../../comm/select/struct.WaitQueue.html' title='comm::select::WaitQueue'>WaitQueue</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.drop' class='method'><a class='stability Stable' title='Stable'></a><code>fn <a href='#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
 

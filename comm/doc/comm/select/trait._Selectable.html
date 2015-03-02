@@ -43,10 +43,10 @@
     <section id='main' class="content trait">
 <h1 class='fqn'><span class='in-band'>Trait <a href='../index.html'>comm</a>::<wbr><a href='index.html'>select</a>::<wbr><a class='trait' href=''>_Selectable</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-2910' href='../../src/comm/select/mod.rs.html#87-99'>[src]</a></span></h1>
-<pre class='rust trait'>pub unsafe trait _Selectable: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> {
+        </span><a id='src-2673' href='../../src/comm/select/mod.rs.html#87-99'>[src]</a></span></h1>
+<pre class='rust trait'>pub unsafe trait _Selectable&lt;'a&gt;: <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Sync.html' title='core::marker::Sync'>Sync</a> + <a class='trait' href='http://doc.rust-lang.org/nightly/core/marker/trait.Send.html' title='core::marker::Send'>Send</a> {
     fn <a href='#tymethod.ready' class='fnname'>ready</a>(&amp;self) -&gt; <a href='http://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a>;
-    fn <a href='#tymethod.register' class='fnname'>register</a>(&amp;self, <a class='struct' href='../../comm/select/struct.Payload.html' title='comm::select::Payload'>Payload</a>);
+    fn <a href='#tymethod.register' class='fnname'>register</a>(&amp;self, <a class='struct' href='../../comm/select/struct.Payload.html' title='comm::select::Payload'>Payload</a>&lt;'a&gt;);
     fn <a href='#tymethod.unregister' class='fnname'>unregister</a>(&amp;self, id: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>);
 }</pre><div class='docblock'><p>The object that will be stored in a <code>Select</code> structure while the <code>Selectable</code> object
 is registered.</p>
@@ -60,7 +60,7 @@ implementation doesn&#39;t follow the rules below.</p>
 
 <p>This function must not try to acquire any locks that are also held while the
 implementation interacts with the <code>WaitQueue</code> object.</p>
-</div><h3 id='tymethod.register' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.register' class='fnname'>register</a>(&amp;self, <a class='struct' href='../../comm/select/struct.Payload.html' title='comm::select::Payload'>Payload</a>)</code></h3><div class='docblock'><p>Registers a <code>Select</code> object with the <code>Selectable</code> object. The payload must be
+</div><h3 id='tymethod.register' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.register' class='fnname'>register</a>(&amp;self, <a class='struct' href='../../comm/select/struct.Payload.html' title='comm::select::Payload'>Payload</a>&lt;'a&gt;)</code></h3><div class='docblock'><p>Registers a <code>Select</code> object with the <code>Selectable</code> object. The payload must be
 passed to the <code>WaitQueue</code>.</p>
 </div><h3 id='tymethod.unregister' class='method'><a class='stability Unmarked' title='No stability level'></a><code>fn <a href='#tymethod.unregister' class='fnname'>unregister</a>(&amp;self, id: <a href='http://doc.rust-lang.org/nightly/std/primitive.usize.html'>usize</a>)</code></h3><div class='docblock'><p>Unregisters a <code>Select</code> objects from the <code>Selectable</code> object. The id must be passed
 to the <code>WaitQueue</code>.</p>

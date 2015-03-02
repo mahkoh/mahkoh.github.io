@@ -209,16 +209,16 @@
 <span class='kw'>use</span> <span class='ident'>arc</span>::{<span class='ident'>ArcTrait</span>};
 
 <span class='kw'>mod</span> <span class='ident'>imp</span>;
-<span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span> <span class='kw'>mod</span> <span class='ident'>test</span>;
+<span class='comment'>//#[cfg(test)] mod test;</span>
 
 <span class='comment'>// Traits are here because https://github.com/rust-lang/rust/issues/16264</span>
 
 <span class='doccomment'>/// An object that can be selected on.</span>
-<span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>Selectable</span> {
+<span class='kw'>pub</span> <span class='kw'>trait</span> <span class='ident'>Selectable</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
     <span class='doccomment'>/// Returns the id stored by `Select::wait` when this object is ready.</span>
     <span class='kw'>fn</span> <span class='ident'>id</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>usize</span>;
     <span class='doccomment'>/// Returns the interior object that will be stored in the `Select` object.</span>
-    <span class='kw'>fn</span> <span class='ident'>as_selectable</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ArcTrait</span><span class='op'>&lt;</span><span class='ident'>_Selectable</span><span class='op'>&gt;</span>;
+    <span class='kw'>fn</span> <span class='ident'>as_selectable</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>ArcTrait</span><span class='op'>&lt;</span><span class='ident'>_Selectable</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span><span class='op'>+</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>;
 }
 
 <span class='doccomment'>/// The object that will be stored in a `Select` structure while the `Selectable` object</span>
@@ -226,7 +226,7 @@
 <span class='doccomment'>///</span>
 <span class='doccomment'>/// Implementing this trait is unsafe because the behavior is undefined if the</span>
 <span class='doccomment'>/// implementation doesn&#39;t follow the rules below.</span>
-<span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>trait</span> <span class='ident'>_Selectable</span>: <span class='ident'>Sync</span><span class='op'>+</span><span class='ident'>Send</span> {
+<span class='kw'>pub</span> <span class='kw'>unsafe</span> <span class='kw'>trait</span> <span class='ident'>_Selectable</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>: <span class='ident'>Sync</span><span class='op'>+</span><span class='ident'>Send</span> {
     <span class='doccomment'>/// Returns `true` if the object is ready, `false` otherwise.</span>
     <span class='doccomment'>///</span>
     <span class='doccomment'>/// This function must not try to acquire any locks that are also held while the</span>
@@ -234,7 +234,7 @@
     <span class='kw'>fn</span> <span class='ident'>ready</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span>;
     <span class='doccomment'>/// Registers a `Select` object with the `Selectable` object. The payload must be</span>
     <span class='doccomment'>/// passed to the `WaitQueue`.</span>
-    <span class='kw'>fn</span> <span class='ident'>register</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>Payload</span>);
+    <span class='kw'>fn</span> <span class='ident'>register</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>Payload</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span>);
     <span class='doccomment'>/// Unregisters a `Select` objects from the `Selectable` object. The id must be passed</span>
     <span class='doccomment'>/// to the `WaitQueue`.</span>
     <span class='kw'>fn</span> <span class='ident'>unregister</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>id</span>: <span class='ident'>usize</span>);
