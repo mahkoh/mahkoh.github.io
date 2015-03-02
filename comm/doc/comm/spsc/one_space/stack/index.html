@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `ring_buf` mod in crate `comm`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, ring_buf">
+    <meta name="description" content="API documentation for the Rust `stack` mod in crate `comm`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, stack">
 
-    <title>comm::spsc::ring_buf - Rust</title>
+    <title>comm::spsc::one_space::stack - Rust</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../main.css">
+    <link rel="stylesheet" type="text/css" href="../../../../main.css">
 
     
     
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>spsc</a></p><div class='block mod'><h2>Modules</h2><a class='mod ' href='../bounded/index.html' title='A bounded SPSC channel.'>bounded</a><a class='mod ' href='../one_space/index.html' title='An SPSC channel with a buffer size of one.'>one_space</a><a class='mod current' href='../ring_buf/index.html' title='A bounded SPSC channel that overwrites older messages when the buffer is full.'>ring_buf</a><a class='mod ' href='../unbounded/index.html' title='An unbounded SPSC channel.'>unbounded</a></div>
+        <p class='location'><a href='../../../index.html'>comm</a>::<wbr><a href='../../index.html'>spsc</a>::<wbr><a href='../index.html'>one_space</a></p><div class='block mod'><h2>Modules</h2><a class='mod current' href='../stack/index.html' title='An SPSC channel with a buffer size of one stored on the stack.'>stack</a></div><div class='block struct'><h2>Structs</h2><a class='struct ' href='../struct.Consumer.html' title='The consuming half of an SPSC one space channel.'>Consumer</a><a class='struct ' href='../struct.Producer.html' title='The producing half of an SPSC one space channel.'>Producer</a></div><div class='block fn'><h2>Functions</h2><a class='fn ' href='../fn.new.html' title='Creates a new SPSC one space channel.'>new</a></div>
     </section>
 
     <nav class="sub">
@@ -41,38 +41,38 @@
     </nav>
 
     <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../../index.html'>comm</a>::<wbr><a href='../index.html'>spsc</a>::<wbr><a class='mod' href=''>ring_buf</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'>Module <a href='../../../index.html'>comm</a>::<wbr><a href='../../index.html'>spsc</a>::<wbr><a href='../index.html'>one_space</a>::<wbr><a class='mod' href=''>stack</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-5136' href='../../../src/comm/spsc/ring_buf/mod.rs.html#1-96'>[src]</a></span></h1>
-<div class='docblock'><p>A bounded SPSC channel that overwrites older messages when the buffer is full.</p>
-
-<h3 id="example" class='section-header'><a
-                           href="#example">Example</a></h3>
-<p>Consider the case of an audio producer and consumer. If, at some point, the consumer
-is slow, you might not want to block the producer and instead overwrite older,
-unconsumed audio samples so that the delay between producer and consumer is bounded
-above by the buffer size of the channel.</p>
+        </span><a id='src-3509' href='../../../../src/comm/spsc/one_space/stack.rs.html#1-87'>[src]</a></span></h1>
+<div class='docblock'><p>An SPSC channel with a buffer size of one stored on the stack.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Consumer.html'
-                               title='comm::spsc::ring_buf::Consumer'>Consumer</a></td>
-                        <td class='docblock short'><p>The sending half of an SPSC channel.</p>
+                               title='comm::spsc::one_space::stack::Consumer'>Consumer</a></td>
+                        <td class='docblock short'><p>The consuming half of an SPSC one space channel.</p>
 </td>
                     </tr>
                 
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Producer.html'
-                               title='comm::spsc::ring_buf::Producer'>Producer</a></td>
-                        <td class='docblock short'><p>The producing half of an SPSC ring buffer channel.</p>
+                               title='comm::spsc::one_space::stack::Producer'>Producer</a></td>
+                        <td class='docblock short'><p>The producing half of an SPSC one space channel.</p>
+</td>
+                    </tr>
+                
+                    <tr>
+                        <td><a class='stability Unmarked' title='No stability level'></a><a class='struct' href='struct.Slot.html'
+                               title='comm::spsc::one_space::stack::Slot'>Slot</a></td>
+                        <td class='docblock short'><p>Storage for an SPSC one space channel.</p>
 </td>
                     </tr>
                 </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
 <table>
                     <tr>
                         <td><a class='stability Unmarked' title='No stability level'></a><a class='fn' href='fn.new.html'
-                               title='comm::spsc::ring_buf::new'>new</a></td>
-                        <td class='docblock short'><p>Creates a new SPSC ring buffer channel.</p>
+                               title='comm::spsc::one_space::stack::new'>new</a></td>
+                        <td class='docblock short'><p>Creates a new SPSC one space channel.</p>
 </td>
                     </tr>
                 </table></section>
@@ -114,13 +114,13 @@ above by the buffer size of the channel.</p>
     
 
     <script>
-        window.rootPath = "../../../";
+        window.rootPath = "../../../../";
         window.currentCrate = "comm";
         window.playgroundUrl = "";
     </script>
-    <script src="../../../jquery.js"></script>
-    <script src="../../../main.js"></script>
+    <script src="../../../../jquery.js"></script>
+    <script src="../../../../main.js"></script>
     
-    <script async src="../../../search-index.js"></script>
+    <script async src="../../../../search-index.js"></script>
 </body>
 </html>
