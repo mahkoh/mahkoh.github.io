@@ -151,6 +151,9 @@
 <span id="109">109</span>
 <span id="110">110</span>
 <span id="111">111</span>
+<span id="112">112</span>
+<span id="113">113</span>
+<span id="114">114</span>
 </pre><pre class='rust '>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_type</span> <span class='op'>=</span> <span class='string'>&quot;lib&quot;</span>]</span>
 <span class='attribute'>#<span class='op'>!</span>[<span class='ident'>crate_name</span> <span class='op'>=</span> <span class='string'>&quot;comm&quot;</span>]</span>
@@ -243,7 +246,10 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>alloc</span>;
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span> <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>test</span>;
 
+<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>marker</span>::{<span class='ident'>Sendable</span>};
+
 <span class='kw'>mod</span> <span class='ident'>sortedvec</span>;
+<span class='kw'>mod</span> <span class='ident'>marker</span>;
 
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>arc</span>;
 <span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>select</span>;
