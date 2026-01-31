@@ -1,0 +1,1737 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Wayland</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-b64e8b16.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Wayland</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+                        <a href="https://gitlab.freedesktop.org/wayland/wayland" title="Git repository" aria-label="Git repository">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="preface"><a class="header" href="#preface">Preface</a></h1>
+<p>This document describes the Wayland architecture and Wayland model of operation.
+This document is aimed primarily at Wayland developers and those looking to
+program with it; it does not cover application development.</p>
+<p>There have been many contributors to this document and since this is only the
+first edition many errors are expected to be found. We appreciate corrections.</p>
+<p>Yours, the Wayland open-source community November 2012</p>
+<h2 id="protocol-documentation"><a class="header" href="#protocol-documentation">Protocol Documentation</a></h2>
+<p>This document does not describe the semantics of individual messages sent
+between compositors and clients. Consult the following documents to learn about
+concrete Wayland interfaces, requests, and events.</p>
+<ul>
+<li><a href="https://gitlab.freedesktop.org/wayland/wayland/-/blob/main/protocol/wayland.xml">wayland.xml</a> - The official documentation of the core protocol.</li>
+<li><a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a> - Standardized Wayland extension protocols.</li>
+<li><a href="https://wayland.app">wayland.app</a> - A community-maintained website that renders these protocols,
+and many more, as easily accessible HTML pages.</li>
+</ul>
+<h2 id="copyright"><a class="header" href="#copyright">Copyright</a></h2>
+<p>Copyright © 2012 Kristian Høgsberg</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the “Software”),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:</p>
+<p>The above copyright notice and this permission notice (including the next
+paragraph) shall be included in all copies or substantial portions of the
+Software.</p>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
+<p>Most Linux and Unix-based systems rely on the X Window System (or simply <em>X</em>)
+as the low-level protocol for building bitmap graphics interfaces. On these
+systems, the X stack has grown to encompass functionality arguably belonging
+in client libraries, helper libraries, or the host operating system kernel.
+Support for things like PCI resource management, display configuration
+management, direct rendering, and memory management has been integrated into the
+X stack, imposing limitations like limited support for standalone applications,
+duplication in other projects (e.g. the Linux fb layer or the DirectFB project),
+and high levels of complexity for systems combining multiple elements (for
+example radeon memory map handling between the fb driver and X driver, or VT
+switching).</p>
+<p>Moreover, X has grown to incorporate modern features like offscreen rendering
+and scene composition, but subject to the limitations of the X architecture. For
+example, the X implementation of composition adds additional context switches
+and makes things like input redirection difficult.</p>
+<p><img src="images/x-architecture.png" alt=""></p>
+<p>The diagram above illustrates the central role of the X server and compositor in
+operations, and the steps required to get contents on to the screen.</p>
+<p>Over time, X developers came to understand the shortcomings of this approach and
+worked to split things up. Over the past several years, a lot of functionality
+has moved out of the X server and into client-side libraries or kernel drivers.
+One of the first components to move out was font rendering, with freetype and
+fontconfig providing an alternative to the core X fonts. Direct rendering OpenGL
+as a graphics driver in a client side library went through some iterations,
+ending up as DRI2, which abstracted most of the direct rendering buffer
+management from client code. Then cairo came along and provided a modern 2D
+rendering library independent of X, and compositing managers took over control
+of the rendering of the desktop as toolkits like GTK+ and Qt moved away from
+using X APIs for rendering. Recently, memory and display management have moved
+to the Linux kernel, further reducing the scope of X and its driver stack. The
+end result is a highly modular graphics stack.</p>
+<h2 id="the-compositing-manager-as-the-display-server"><a class="header" href="#the-compositing-manager-as-the-display-server">The compositing manager as the display server</a></h2>
+<p>Wayland is a new display server and compositing protocol, and Weston is the
+implementation of this protocol which builds on top of all the components
+above. We are trying to distill out the functionality in the X server that is
+still used by the modern Linux desktop. This turns out to be not a whole lot.
+Applications can allocate their own off-screen buffers and render their window
+contents directly, using hardware accelerated libraries like libGL, or high
+quality software implementations like those found in Cairo. In the end, what’s
+needed is a way to present the resulting window surface for display, and a way
+to receive and arbitrate input among multiple clients. This is what Wayland
+provides, by piecing together the components already in the eco-system in a
+slightly different way.</p>
+<p>X will always be relevant, in the same way Fortran compilers and VRML browsers
+are, but it’s time that we think about moving it out of the critical path and
+provide it as an optional component for legacy applications.</p>
+<p>Overall, the philosophy of Wayland is to provide clients with a way to manage
+windows and how their contents are displayed. Rendering is left to clients, and
+system wide memory management interfaces are used to pass buffer handles between
+clients and the compositing manager.</p>
+<p><img src="images/wayland-architecture.png" alt=""></p>
+<p>The figure above illustrates how Wayland clients interact with a Wayland
+server. Note that window management and composition are handled entirely in the
+server, significantly reducing complexity while marginally improving performance
+through reduced context switching. The resulting system is easier to build and
+extend than a similar X system, because often changes need only be made in one
+place. Or in the case of protocol extensions, two (rather than 3 or 4 in the
+X case where window management and/or composition handling may also need to
+be updated).</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="types-of-compositors"><a class="header" href="#types-of-compositors">Types of Compositors</a></h1>
+<p>Compositors come in different types, depending on which role they
+play in the overall architecture of the OS. For instance, a <a href="#system-compositor">system
+compositor</a> can be used for booting the system, handling
+multiple user switching, a possible console terminal emulator and so forth. A
+different compositor, a <a href="#session-compositor">session compositor</a> would provide
+the actual desktop environment. There are many ways for different types of
+compositors to co-exist.</p>
+<p>In this section, we introduce three types of Wayland compositors relying on
+<a href="https://gitlab.freedesktop.org/wayland/wayland">libwayland-server</a>.</p>
+<h2 id="system-compositor"><a class="header" href="#system-compositor">System Compositor</a></h2>
+<p>A system compositor can run from early boot until shutdown. It effectively
+replaces the kernel vt system, and can tie in with the systems graphical boot
+setup and multiseat support.</p>
+<p>A system compositor can host different types of session compositors, and let
+us switch between multiple sessions (fast user switching, or secure/personal
+desktop switching).</p>
+<p>A linux implementation of a system compositor will typically use libudev, egl,
+kms, evdev and cairo.</p>
+<p>For fullscreen clients, the system compositor can reprogram the video scanout
+address to read directly from the client provided buffer.</p>
+<h2 id="session-compositor"><a class="header" href="#session-compositor">Session Compositor</a></h2>
+<p>A session compositor is responsible for a single user session. If a system
+compositor is present, the session compositor will run nested under the system
+compositor. Nesting is feasible because the protocol is asynchronous; roundtrips
+would be too expensive when nesting is involved. If no system compositor is
+present, a session compositor can run directly on the hardware.</p>
+<p>X applications can continue working under a session compositor by means of a
+root-less X server that is activated on demand.</p>
+<p>Possible examples for session compositors include</p>
+<ul>
+<li>
+<p>gnome-shell</p>
+</li>
+<li>
+<p>moblin</p>
+</li>
+<li>
+<p>kwin</p>
+</li>
+<li>
+<p>kmscon</p>
+</li>
+<li>
+<p>rdp session</p>
+</li>
+<li>
+<p>Weston with X11 or Wayland backend is a session compositor nested in another
+session compositor.</p>
+</li>
+<li>
+<p>fullscreen X session under Wayland</p>
+</li>
+</ul>
+<h2 id="embedding-compositor"><a class="header" href="#embedding-compositor">Embedding Compositor</a></h2>
+<p>X11 lets clients embed windows from other clients, or lets clients copy pixmap
+contents rendered by another client into their window. This is often used for
+applets in a panel, browser plugins and similar. Wayland doesn’t directly allow
+this, but clients can communicate GEM buffer names out-of-band, for example,
+using D-Bus, or command line arguments when the panel launches the applet.
+Another option is to use a nested Wayland instance. For this, the Wayland
+server will have to be a library that the host application links to. The host
+application will then pass the Wayland server socket name to the embedded
+application, and will need to implement the Wayland compositor interface. The
+host application composites the client surfaces as part of it’s window, that
+is, in the web page or in the panel. The benefit of nesting the Wayland server
+is that it provides the requests the embedded client needs to inform the host
+about buffer updates and a mechanism for forwarding input events from the host
+application.</p>
+<p>An example for this kind of setup is firefox embedding the flash player as a
+kind of special-purpose compositor.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="wayland-architecture"><a class="header" href="#wayland-architecture">Wayland Architecture</a></h1>
+<h2 id="x-vs-wayland-architecture"><a class="header" href="#x-vs-wayland-architecture">X vs. Wayland Architecture</a></h2>
+<p>A good way to understand the Wayland architecture and how it is different from
+X is to follow an event from the input device to the point where the change it
+affects appears on screen.</p>
+<p>This is where we are now with X:</p>
+<p><strong>X architecture diagram</strong></p>
+<p><img src="images/x-architecture.png" alt=""></p>
+<ol>
+<li>
+<p>The kernel gets an event from an input device and sends it to X through the
+evdev input driver. The kernel does all the hard work here by driving the
+device and translating the different device specific event protocols to the
+linux evdev input event standard.</p>
+</li>
+<li>
+<p>The X server determines which window the event affects and sends it to the
+clients that have selected for the event in question on that window. The X
+server doesn’t actually know how to do this right, since the window location
+on screen is controlled by the compositor and may be transformed in a number
+of ways that the X server doesn’t understand (scaled down, rotated, wobbling,
+etc).</p>
+</li>
+<li>
+<p>The client looks at the event and decides what to do. Often the UI will have
+to change in response to the event - perhaps a check box was clicked or the
+pointer entered a button that must be highlighted. Thus the client sends a
+rendering request back to the X server.</p>
+</li>
+<li>
+<p>When the X server receives the rendering request, it sends it to the driver
+to let it program the hardware to do the rendering. The X server also
+calculates the bounding region of the rendering, and sends that to the
+compositor as a damage event.</p>
+</li>
+<li>
+<p>The damage event tells the compositor that something changed in the window
+and that it has to recomposite the part of the screen where that window
+is visible. The compositor is responsible for rendering the entire screen
+contents based on its scenegraph and the contents of the X windows. Yet, it
+has to go through the X server to render this.</p>
+</li>
+<li>
+<p>The X server receives the rendering requests from the compositor and either
+copies the compositor back buffer to the front buffer or does a pageflip.
+In the general case, the X server has to do this step so it can account for
+overlapping windows, which may require clipping and determine whether or not
+it can page flip. However, for a compositor, which is always fullscreen, this
+is another unnecessary context switch.</p>
+</li>
+</ol>
+<p>As suggested above, there are a few problems with this approach. The X server
+doesn’t have the information to decide which window should receive the event,
+nor can it transform the screen coordinates to window-local coordinates. And
+even though X has handed responsibility for the final painting of the screen
+to the compositing manager, X still controls the front buffer and modesetting.
+Most of the complexity that the X server used to handle is now available in
+the kernel or self contained libraries (KMS, evdev, mesa, fontconfig, freetype,
+cairo, Qt etc). In general, the X server is now just a middle man that
+introduces an extra step between applications and the compositor and an extra
+step between the compositor and the hardware.</p>
+<p>In Wayland the compositor is the display server. We transfer the control of KMS
+and evdev to the compositor. The Wayland protocol lets the compositor send the
+input events directly to the clients and lets the client send the damage event
+directly to the compositor:</p>
+<p><strong>Wayland architecture diagram</strong></p>
+<p><img src="images/wayland-architecture.png" alt=""></p>
+<ol>
+<li>
+<p>The kernel gets an event and sends it to the compositor. This is similar to
+the X case, which is great, since we get to reuse all the input drivers in
+the kernel.</p>
+</li>
+<li>
+<p>The compositor looks through its scenegraph to determine which window should
+receive the event. The scenegraph corresponds to what’s on screen and the
+compositor understands the transformations that it may have applied to the
+elements in the scenegraph. Thus, the compositor can pick the right window
+and transform the screen coordinates to window-local coordinates, by applying
+the inverse transformations. The types of transformation that can be applied
+to a window is only restricted to what the compositor can do, as long as it
+can compute the inverse transformation for the input events.</p>
+</li>
+<li>
+<p>As in the X case, when the client receives the event, it updates the UI in
+response. But in the Wayland case, the rendering happens in the client, and
+the client just sends a request to the compositor to indicate the region that
+was updated.</p>
+</li>
+<li>
+<p>The compositor collects damage requests from its clients and then
+recomposites the screen. The compositor can then directly issue an ioctl to
+schedule a pageflip with KMS.</p>
+</li>
+</ol>
+<h2 id="wayland-rendering"><a class="header" href="#wayland-rendering">Wayland Rendering</a></h2>
+<p>One of the details I left out in the above overview is how clients actually
+render under Wayland. By removing the X server from the picture we also removed
+the mechanism by which X clients typically render. But there’s another mechanism
+that we’re already using with DRI2 under X: direct rendering. With direct
+rendering, the client and the server share a video memory buffer. The client
+links to a rendering library such as OpenGL that knows how to program the
+hardware and renders directly into the buffer. The compositor in turn can take
+the buffer and use it as a texture when it composites the desktop. After the
+initial setup, the client only needs to tell the compositor which buffer to use
+and when and where it has rendered new content into it.</p>
+<p>This leaves an application with two ways to update its window contents:</p>
+<ol>
+<li>
+<p>Render the new content into a new buffer and tell the compositor to use that
+instead of the old buffer. The application can allocate a new buffer every
+time it needs to update the window contents or it can keep two (or more)
+buffers around and cycle between them. The buffer management is entirely
+under application control.</p>
+</li>
+<li>
+<p>Render the new content into the buffer that it previously told the compositor
+to to use. While it’s possible to just render directly into the buffer shared
+with the compositor, this might race with the compositor. What can happen is
+that repainting the window contents could be interrupted by the compositor
+repainting the desktop. If the application gets interrupted just after
+clearing the window but before rendering the contents, the compositor will
+texture from a blank buffer. The result is that the application window will
+flicker between a blank window or half-rendered content. The traditional way
+to avoid this is to render the new content into a back buffer and then copy
+from there into the compositor surface. The back buffer can be allocated on
+the fly and just big enough to hold the new content, or the application can
+keep a buffer around. Again, this is under application control.</p>
+</li>
+</ol>
+<p>In either case, the application must tell the compositor which area of the
+surface holds new contents. When the application renders directly to the shared
+buffer, the compositor needs to be noticed that there is new content. But also
+when exchanging buffers, the compositor doesn’t assume anything changed, and
+needs a request from the application before it will repaint the desktop. The
+idea that even if an application passes a new buffer to the compositor, only a
+small part of the buffer may be different, like a blinking cursor or a spinner.</p>
+<h2 id="accelerated-gpu-buffer-exchange"><a class="header" href="#accelerated-gpu-buffer-exchange">Accelerated GPU Buffer Exchange</a></h2>
+<p>Clients
+<a href="https://docs.kernel.org/userspace-api/dma-buf-alloc-exchange.html">exchange</a>
+GPU buffers with the compositor as dma-buf file descriptors,
+which are universal handles that are independent of
+any particular rendering API or memory allocator. The
+<a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/stable/linux-dmabuf/linux-dmabuf-v1.xml">linux-dmabuf-v1</a>
+protocol is used to turn one or more dma-buf FDs into a
+<a href="https://wayland.app/protocols/wayland#wl_buffer">wl_buffer</a>.</p>
+<p>If the client uses the
+<a href="https://docs.vulkan.org/spec/latest/chapters/VK_KHR_surface/wsi.html">Vulkan</a> or
+<a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_platform_wayland.txt">EGL</a>
+(via
+<a href="https://gitlab.freedesktop.org/wayland/wayland/-/tree/main/egl">wayland-egl</a>)
+window-system integration (WSI), this is done transparently by the WSI.</p>
+<p>Clients can alternatively allocate and import dma-bufs themselves using the GBM
+library, Vulkan, udmabuf, or dma-buf heaps.</p>
+<ul>
+<li>
+<p>Using GBM, the client can allocate a gbm_bo and export one or more dma-buf FDs
+from it.</p>
+</li>
+<li>
+<p>Using Vulkan, the client can create a VkDeviceMemory object and use
+<a href="https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_external_memory_dma_buf.html">VK_EXT_external_memory_dma_buf</a>
+and
+<a href="https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_image_drm_format_modifier.html">VK_EXT_image_drm_format_modifier</a>
+to export a dma-buf FD from it.</p>
+</li>
+<li>
+<p><a href="https://lwn.net/Articles/749206/">udmabuf</a> can be used to create dma-buf FDs
+from linear host memory.</p>
+</li>
+<li>
+<p><a href="https://docs.kernel.org/userspace-api/dma-buf-heaps.html">Dma-buf heaps</a> can
+be used by privileged applications to create dma-buf FDs on embedded devices.</p>
+</li>
+</ul>
+<p>Compositors use
+<a href="https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_external_memory_dma_buf.html">VK_EXT_external_memory_dma_buf</a>
+and
+<a href="https://docs.vulkan.org/refpages/latest/refpages/source/VK_EXT_image_drm_format_modifier.html">VK_EXT_image_drm_format_modifier</a>
+or
+<a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_image_dma_buf_import.txt">EGL_EXT_image_dma_buf_import</a>
+and
+<a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_image_dma_buf_import_modifiers.txt">EGL_EXT_image_dma_buf_import_modifiers</a>
+to import the dma-bufs provided by the client into their own Vulkan or EGL
+renderers.</p>
+<p>Clients do not need to wait for the GPU to finish rendering
+before submitting dma-bufs to the compositor. Clients can use the
+<a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/staging/linux-drm-syncobj/linux-drm-syncobj-v1.xml">linux-drm-syncobj-v1</a>
+protocol to exchange DRM synchronization objects with the compositor. These
+objects are used to asynchronously signal ownership transfer of buffers from
+clients to the compositor and vice versa. The WSIs do this transparently.</p>
+<p>If the linux-drm-syncobj-v1 protocol is not supported
+by the compositor, clients and compositors can use the
+<a href="https://docs.kernel.org/driver-api/dma-buf.html#c.dma_buf_export_sync_file">DMA_BUF_IOCTL_EXPORT_SYNC_FILE</a>
+and
+<a href="https://docs.kernel.org/driver-api/dma-buf.html#c.dma_buf_import_sync_file">DMA_BUF_IOCTL_IMPORT_SYNC_FILE</a>
+ioctls to access and create implicit synchronization barriers.</p>
+<h2 id="display-programming"><a class="header" href="#display-programming">Display Programming</a></h2>
+<p>Compositors enumerate DRM KMS devices using
+<a href="https://en.wikipedia.org/wiki/Udev">udev</a>. Udev also notifies compositors of
+KMS device and display hotplug events.</p>
+<p>Access to DRM KMS device ioctls is privileged. Since
+compositors usually run as unprivileged applications, they
+typically gain access to a privileged file descriptor using the
+<a href="https://www.freedesktop.org/software/systemd/man/latest/org.freedesktop.login1.html#Session%20Objects">TakeDevice</a>
+method provided by logind.</p>
+<p>Using the file descriptor, compositors use KMS
+<a href="https://docs.kernel.org/gpu/drm-kms.html">ioctls</a> to enumerate the available
+displays.</p>
+<p>Compositors use <a href="https://docs.kernel.org/gpu/drm-kms.html#atomic-mode-setting">atomic mode
+setting</a> to change
+the buffer shown by the display, to change the display’s resolution, to enable
+or disable HDR, and so on.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="wayland-protocol-and-model-of-operation"><a class="header" href="#wayland-protocol-and-model-of-operation">Wayland Protocol and Model of Operation</a></h1>
+<h2 id="basic-principles"><a class="header" href="#basic-principles">Basic Principles</a></h2>
+<p>The Wayland protocol is an asynchronous object oriented protocol. All requests
+are method invocations on some object. The requests include an object ID that
+uniquely identifies an object on the server. Each object implements an interface
+and the requests include an opcode that identifies which method in the interface
+to invoke.</p>
+<p>The protocol is message-based. A message sent by a client to the server is
+called request. A message from the server to a client is called event. A
+message has a number of arguments, each of which has a certain type (see <a href="#wire-format">Wire
+Format</a> for a list of argument types).</p>
+<p>Additionally, the protocol can specify <code>enum</code>s which associate names to specific
+numeric enumeration values. These are primarily just descriptive in nature: at
+the wire format level enums are just integers. But they also serve a secondary
+purpose to enhance type safety or otherwise add context for use in language
+bindings or other such code. This latter usage is only supported so long as
+code written before these attributes were introduced still works after; in
+other words, adding an enum should not break API, otherwise it puts backwards
+compatibility at risk.</p>
+<p><code>enum</code>s can be defined as just a set of integers, or as bitfields. This is
+specified via the <code>bitfield</code> boolean attribute in the <code>enum</code> definition. If this
+attribute is true, the enum is intended to be accessed primarily using bitwise
+operations, for example when arbitrarily many choices of the enum can be ORed
+together; if it is false, or the attribute is omitted, then the enum arguments
+are a just a sequence of numerical values.</p>
+<p>The <code>enum</code> attribute can be used on either <code>uint</code> or <code>int</code> arguments, however if
+the <code>enum</code> is defined as a <code>bitfield</code>, it can only be used on <code>uint</code> args.</p>
+<p>The server sends back events to the client, each event is emitted from an
+object. Events can be error conditions. The event includes the object ID and the
+event opcode, from which the client can determine the type of event. Events are
+generated both in response to requests (in which case the request and the event
+constitutes a round trip) or spontaneously when the server state changes.</p>
+<ul>
+<li>
+<p>State is broadcast on connect, events are sent out when state changes. Clients
+must listen for these changes and cache the state. There is no need (or
+mechanism) to query server state.</p>
+</li>
+<li>
+<p>The server will broadcast the presence of a number of global objects, which in
+turn will broadcast their current state.</p>
+</li>
+</ul>
+<h2 id="code-generation"><a class="header" href="#code-generation">Code Generation</a></h2>
+<p>The interfaces, requests and events are defined in
+<a href="https://gitlab.freedesktop.org/wayland/wayland/-/blob/main/protocol/wayland.xml">protocol/wayland.xml</a>.
+This xml is used to generate the function prototypes that can be used by clients
+and compositors.</p>
+<p>The protocol entry points are generated as inline functions which just wrap the
+<code>wl_proxy_*</code> functions. The inline functions aren’t part of the library ABI and
+language bindings should generate their own stubs for the protocol entry points
+from the xml.</p>
+<h2 id="wire-format"><a class="header" href="#wire-format">Wire Format</a></h2>
+<p>The protocol is sent over a UNIX domain stream socket, where the endpoint
+usually is named <code>wayland-0</code> (although it can be changed via <em>WAYLAND_DISPLAY</em>
+in the environment). Beginning in Wayland 1.15, implementations can optionally
+support server socket endpoints located at arbitrary locations in the filesystem
+by setting <em>WAYLAND_DISPLAY</em> to the absolute path at which the server endpoint
+listens. The socket may also be provided through file descriptor inheritance, in
+which case <em>WAYLAND_SOCKET</em> is set.</p>
+<p>Every message is structured as 32-bit words; values are represented in the
+host’s byte-order. The message header has 2 words in it:</p>
+<ul>
+<li>
+<p>The first word is the sender’s object ID (32-bit).</p>
+</li>
+<li>
+<p>The second has 2 parts of 16-bit. The upper 16-bits are the message size in
+bytes, starting at the header (i.e. it has a minimum value of 8).The lower is
+the request/event opcode.</p>
+</li>
+</ul>
+<p>The payload describes the request/event arguments. Every argument is always
+aligned to 32-bits. Where padding is required, the value of padding bytes
+is undefined. There is no prefix that describes the type, but it is inferred
+implicitly from the xml specification.</p>
+<p>The representation of argument types are as follows:</p>
+<dl>
+<dt id="int-uint"><a class="header" href="#int-uint">int
+uint</a></dt>
+<dd>The value is the 32-bit value of the signed/unsigned int.</dd>
+<dt id="fixed"><a class="header" href="#fixed">fixed</a></dt>
+<dd>Signed 24.8 decimal numbers. It is a signed decimal type which offers a sign
+bit, 23 bits of integer precision and 8 bits of decimal precision. This is
+exposed as an opaque struct with conversion helpers to and from double and
+int on the C API side.</dd>
+<dt id="string"><a class="header" href="#string">string</a></dt>
+<dd>Starts with an unsigned 32-bit length (including null terminator), followed
+by the UTF-8 encoded string contents, including terminating null byte, then
+padding to a 32-bit boundary. A null value is represented with a length of
+0. Interior null bytes are not permitted.</dd>
+<dt id="object"><a class="header" href="#object">object</a></dt>
+<dd>32-bit object ID. A null value is represented with an ID of 0.</dd>
+<dt id="new_id"><a class="header" href="#new_id">new_id</a></dt>
+<dd>The 32-bit object ID. Generally, the interface used for the new object is
+inferred from the xml, but in the case where it’s not specified, a new_id
+is preceded by a <code>string</code> specifying the interface name, and a <code>uint</code>
+specifying the version.</dd>
+<dt id="array"><a class="header" href="#array">array</a></dt>
+<dd>Starts with 32-bit array size in bytes, followed by the array contents
+verbatim, and finally padding to a 32-bit boundary.</dd>
+<dt id="fd"><a class="header" href="#fd">fd</a></dt>
+<dd>The file descriptor is not stored in the message buffer, but in the
+ancillary data of the UNIX domain socket message (msg_control).</dd>
+</dl>
+<p>The protocol does not specify the exact position of the ancillary data in the
+stream, except that the order of file descriptors is the same as the order of
+messages and <code>fd</code> arguments within messages on the wire.</p>
+<p>In particular, it means that any byte of the stream, even the message header,
+may carry the ancillary data with file descriptors.</p>
+<p>Clients and compositors should queue incoming data until they have whole
+messages to process, as file descriptors may arrive earlier or later than the
+corresponding data bytes.</p>
+<h2 id="versioning"><a class="header" href="#versioning">Versioning</a></h2>
+<p>Every interface is versioned and every protocol object implements a particular
+version of its interface. For global objects, the maximum version supported
+by the server is advertised with the global and the actual version of the
+created protocol object is determined by the version argument passed to
+wl_registry.bind(). For objects that are not globals, their version is inferred
+from the object that created them.</p>
+<p>In order to keep things sane, this has a few implications for interface
+versions:</p>
+<ul>
+<li>
+<p>The object creation hierarchy must be a tree. Otherwise, inferring object
+versions from the parent object becomes a much more difficult to properly
+track.</p>
+</li>
+<li>
+<p>When the version of an interface increases, so does the version of its parent
+(recursively until you get to a global interface)</p>
+</li>
+<li>
+<p>A global interface’s version number acts like a counter for all of its child
+interfaces. Whenever a child interface gets modified, the global parent’s
+interface version number also increases (see above). The child interface
+then takes on the same version number as the new version of its parent global
+interface.</p>
+</li>
+</ul>
+<p>To illustrate the above, consider the wl_compositor interface. It has two
+children, wl_surface and wl_region. As of wayland version 1.2, wl_surface and
+wl_compositor are both at version 3. If something is added to the wl_region
+interface, both wl_region and wl_compositor will get bumpped to version 4. If,
+afterwards, wl_surface is changed, both wl_compositor and wl_surface will be
+at version 5. In this way the global interface version is used as a sort of
+“counter” for all of its child interfaces. This makes it very simple to know
+the version of the child given the version of its parent. The child is at the
+highest possible interface version that is less than or equal to its parent’s
+version.</p>
+<p>It is worth noting a particular exception to the above versioning scheme. The
+wl_display (and, by extension, wl_registry) interface cannot change because it
+is the core protocol object and its version is never advertised nor is there a
+mechanism to request a different version.</p>
+<h2 id="connect-time"><a class="header" href="#connect-time">Connect Time</a></h2>
+<p>There is no fixed connection setup information, the server emits multiple events
+at connect time, to indicate the presence and properties of global objects:
+outputs, compositor, input devices.</p>
+<h2 id="security-and-authentication"><a class="header" href="#security-and-authentication">Security and Authentication</a></h2>
+<ul>
+<li>
+<p>mostly about access to underlying buffers, need new drm auth mechanism (the
+grant-to ioctl idea), need to check the cmd stream?</p>
+</li>
+<li>
+<p>getting the server socket depends on the compositor type, could be a system
+wide name, through fd passing on the session dbus. or the client is forked by
+the compositor and the fd is already opened.</p>
+</li>
+</ul>
+<h2 id="creating-objects"><a class="header" href="#creating-objects">Creating Objects</a></h2>
+<p>Each object has a unique ID. The IDs are allocated by the entity creating the
+object (either client or server). IDs allocated by the client are in the range
+[1, 0xfeffffff] while IDs allocated by the server are in the range [0xff000000,
+0xffffffff]. The 0 ID is reserved to represent a null or non-existent object.
+For efficiency purposes, the IDs are densely packed in the sense that the
+ID N will not be used until N-1 has been used. This ordering is not merely
+a guideline, but a strict requirement, and there are implementations of the
+protocol that rigorously enforce this rule, including the ubiquitous libwayland.</p>
+<h2 id="compositor"><a class="header" href="#compositor">Compositor</a></h2>
+<p>The compositor is a global object, advertised at connect time.</p>
+<p>See <a href="https://wayland.app/protocols/wayland#wl_compositor">wl_compositor</a> for the
+protocol description.</p>
+<h2 id="surfaces"><a class="header" href="#surfaces">Surfaces</a></h2>
+<p>A surface manages a rectangular grid of pixels that clients create for
+displaying their content to the screen. Clients don’t know the global position
+of their surfaces, and cannot access other clients’ surfaces.</p>
+<p>Once the client has finished writing pixels, it ‘commits’ the buffer; this
+permits the compositor to access the buffer and read the pixels. When the
+compositor is finished, it releases the buffer back to the client.</p>
+<p>See <a href="https://wayland.app/protocols/wayland#wl_surface">wl_surface</a> for the
+protocol description.</p>
+<h2 id="input"><a class="header" href="#input">Input</a></h2>
+<p>A seat represents a group of input devices including mice, keyboards and
+touchscreens. It has a keyboard and pointer focus. Seats are global objects.
+Pointer events are delivered in surface-local coordinates.</p>
+<p>The compositor maintains an implicit grab when a button is pressed, to ensure
+that the corresponding button release event gets delivered to the same surface.
+But there is no way for clients to take an explicit grab. Instead, surfaces can
+be mapped as ‘popup’, which combines transient window semantics with a pointer
+grab.</p>
+<p>To avoid race conditions, input events that are likely to trigger further
+requests (such as button presses, key events, pointer motions) carry
+serial numbers, and requests such as wl_surface.set_popup require that the
+serial number of the triggering event is specified. The server maintains a
+monotonically increasing counter for these serial numbers.</p>
+<p>Input events also carry timestamps with millisecond granularity. Their base
+is undefined, so they can’t be compared against system time (as obtained with
+clock_gettime or gettimeofday). They can be compared with each other though,
+and for instance be used to identify sequences of button presses as double or
+triple clicks.</p>
+<p>See <a href="https://wayland.app/protocols/wayland#wl_seat">wl_seat</a> for the protocol
+description.</p>
+<p>Talk about:</p>
+<ul>
+<li>
+<p>keyboard map, change events</p>
+</li>
+<li>
+<p>xkb on Wayland</p>
+</li>
+<li>
+<p>multi pointer Wayland</p>
+</li>
+</ul>
+<p>A surface can change the pointer image when the surface is the pointer focus of
+the input device. Wayland doesn’t automatically change the pointer image when a
+pointer enters a surface, but expects the application to set the cursor it wants
+in response to the pointer focus and motion events. The rationale is that a
+client has to manage changing pointer images for UI elements within the surface
+in response to motion events anyway, so we’ll make that the only mechanism for
+setting or changing the pointer image. If the server receives a request to set
+the pointer image after the surface loses pointer focus, the request is ignored.
+To the client this will look like it successfully set the pointer image.</p>
+<p>Setting the pointer image to NULL causes the cursor to be hidden.</p>
+<p>The compositor will revert the pointer image back to a default image when no
+surface has the pointer focus for that device.</p>
+<p>What if the pointer moves from one window which has set a special pointer image
+to a surface that doesn’t set an image in response to the motion event? The
+new surface will be stuck with the special pointer image. We can’t just revert
+the pointer image on leaving a surface, since if we immediately enter a surface
+that sets a different image, the image will flicker. If a client does not set
+a pointer image when the pointer enters a surface, the pointer stays with the
+image set by the last surface that changed it, possibly even hidden. Such a
+client is likely just broken.</p>
+<h2 id="output"><a class="header" href="#output">Output</a></h2>
+<p>An output is a global object, advertised at connect time or as it comes and
+goes.</p>
+<p>See <a href="https://wayland.app/protocols/wayland#wl_output">wl_output</a> for the
+protocol description.</p>
+<ul>
+<li>
+<p>laid out in a big (compositor) coordinate system</p>
+</li>
+<li>
+<p>basically xrandr over Wayland</p>
+</li>
+<li>
+<p>geometry needs position in compositor coordinate system</p>
+</li>
+<li>
+<p>events to advertise available modes, requests to move and change modes</p>
+</li>
+</ul>
+<h2 id="data-sharing-between-clients"><a class="header" href="#data-sharing-between-clients">Data sharing between clients</a></h2>
+<p>The Wayland protocol provides clients a mechanism for sharing data that allows
+the implementation of copy-paste and drag-and-drop. The client providing the
+data creates a <code>wl_data_source</code> object and the clients obtaining the data will
+see it as <code>wl_data_offer</code> object. This interface allows the clients to agree on
+a mutually supported mime type and transfer the data via a file descriptor that
+is passed through the protocol.</p>
+<p>The next section explains the negotiation between data source and data offer
+objects. <a href="#data-devices">Data devices</a> explains how these objects are created
+and passed to different clients using the <code>wl_data_device</code> interface that
+implements copy-paste and drag-and-drop support.</p>
+<p>See <a href="https://wayland.app/protocols/wayland#wl_data_offer">wl_data_offer</a>,
+<a href="https://wayland.app/protocols/wayland#wl_data_source">wl_data_source</a>,
+<a href="https://wayland.app/protocols/wayland#wl_data_device">wl_data_device</a> and
+<a href="https://wayland.app/protocols/wayland#wl_data_device_manager">wl_data_device_manager</a>
+for protocol descriptions.</p>
+<p>MIME is defined in RFC’s 2045-2049. A <a href="https://www.iana.org/assignments/media-types/media-types.xhtml">registry of MIME
+types</a> is
+maintained by the Internet Assigned Numbers Authority (IANA).</p>
+<h3 id="data-negotiation"><a class="header" href="#data-negotiation">Data negotiation</a></h3>
+<p>A client providing data to other clients will create a <code>wl_data_source</code> object
+and advertise the mime types for the formats it supports for that data through
+the <code>wl_data_source.offer</code> request. On the receiving end, the data offer object
+will generate one <code>wl_data_offer.offer</code> event for each supported mime type.</p>
+<p>The actual data transfer happens when the receiving client sends a
+<code>wl_data_offer.receive</code> request. This request takes a mime type and a file
+descriptor as arguments. This request will generate a <code>wl_data_source.send</code>
+event on the sending client with the same arguments, and the latter client is
+expected to write its data to the given file descriptor using the chosen mime
+type.</p>
+<h3 id="data-devices"><a class="header" href="#data-devices">Data devices</a></h3>
+<p>Data devices glue data sources and offers together. A data device is
+associated with a <code>wl_seat</code> and is obtained by the clients using the
+<code>wl_data_device_manager</code> factory object, which is also responsible for creating
+data sources.</p>
+<p>Clients are informed of new data offers through the <code>wl_data_device.data_offer</code>
+event. After this event is generated the data offer will advertise the available
+mime types. New data offers are introduced prior to their use for copy-paste
+or drag-and-drop.</p>
+<h4 id="selection"><a class="header" href="#selection">Selection</a></h4>
+<p>Each data device has a selection data source. Clients create a data source
+object using the device manager and may set it as the current selection for
+a given data device. Whenever the current selection changes, the client with
+keyboard focus receives a <code>wl_data_device.selection</code> event. This event is also
+generated on a client immediately before it receives keyboard focus.</p>
+<p>The data offer is introduced with <code>wl_data_device.data_offer</code> event before the
+selection event.</p>
+<h4 id="drag-and-drop"><a class="header" href="#drag-and-drop">Drag and Drop</a></h4>
+<p>A drag-and-drop operation is started using the <code>wl_data_device.start_drag</code>
+request. This requests causes a pointer grab that will generate enter,
+motion and leave events on the data device. A data source is supplied as
+argument to start_drag, and data offers associated with it are supplied to
+clients surfaces under the pointer in the <code>wl_data_device.enter</code> event. The
+data offer is introduced to the client prior to the enter event with the
+<code>wl_data_device.data_offer</code> event.</p>
+<p>Clients are expected to provide feedback to the data sending client by calling
+the <code>wl_data_offer.accept</code> request with a mime type it accepts. If none of the
+advertised mime types is supported by the receiving client, it should supply
+NULL to the accept request. The accept request causes the sending client to
+receive a <code>wl_data_source.target</code> event with the chosen mime type.</p>
+<p>When the drag ends, the receiving client receives a <code>wl_data_device.drop</code> event
+at which it is expected to transfer the data using the <code>wl_data_offer.receive</code>
+request.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="message-definition-language"><a class="header" href="#message-definition-language">Message Definition Language</a></h1>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The fundamentals of the Wayland protocol are explained in <a href="#wayland-protocol-and-model-of-operation">Wayland Protocol and
+Model of Operation</a>. This chapter formally defines the language
+used to define Wayland protocols.</p>
+<p>Wayland is an object-oriented protocol. Each object follows exactly one
+interface. An interface is a collection of message and enumeration definitions.
+A message can be either a request (sent by a client) or an event (sent by a
+server). A message can have arguments. All arguments are typed.</p>
+<h2 id="xml-elements"><a class="header" href="#xml-elements">XML Elements</a></h2>
+<h3 id="protocol"><a class="header" href="#protocol">protocol</a></h3>
+<pre><code>protocol ::= (copyright?, description? interface+)
+</code></pre>
+<p><code>protocol</code> is the root element in a Wayland protocol XML file. Code generation
+tools may optionally use the protocol <code>name</code> in API symbol names. The XML file
+name should be similar to the protocol name.</p>
+<p>The description element should be used to document the intended purpose of
+the protocol, give an overview, and give any development stage notices if
+applicable.</p>
+<p>The copyright element should be used to indicate the copyrights and the license
+of the XML file.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname"><a class="header" href="#namecname"><code>name</code>=“<code>cname</code>”</a></dt>
+<dd>
+<p>The name of the protocol (a.k.a protocol extension). cname-requirements</p>
+<p>The name should be globally unique. Protocols to be included in
+<a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a>
+must follow the naming rules set there. Other protocols should use a unique
+prefix for the name, e.g. referring to the owning project’s name.</p>
+</dd>
+</dl>
+<h3 id="copyright-1"><a class="header" href="#copyright-1">copyright</a></h3>
+<p>Parent elements: protocol</p>
+<pre><code>copyright ::= #PCDATA
+</code></pre>
+<p>Contains free-form, pre-formatted text for copyright and license notices.</p>
+<h3 id="description"><a class="header" href="#description">description</a></h3>
+<p>Parent elements: protocol, interface, request, event, arg, enum, entry</p>
+<pre><code>description ::= #PCDATA
+</code></pre>
+<p>Contains human-readable documentation for its parent element. May contain
+formatted text, including paragraphs and bulleted lists.</p>
+<p><strong>Optional attributes</strong></p>
+<dl>
+<dt id="summarysummary"><a class="header" href="#summarysummary"><code>summary</code>=“<code>summary</code>”</a></dt>
+<dd>
+<p>A short (half a line at most) description of the documented element.</p>
+<p>When a description element is used, it is recommended to not use the
+<code>summary</code> attribute of the parent element.</p>
+</dd>
+</dl>
+<h3 id="interface"><a class="header" href="#interface">interface</a></h3>
+<p>Parent elements: protocol</p>
+<pre><code>interface ::= (description?, (request|event|enum)+)
+</code></pre>
+<p>An interface element contains the requests and events that form the interface.
+Enumerations can also be defined with enum elements. These all belong into the
+namespace of the interface. Code generation tools may use the interface <code>name</code>
+in API symbol names.</p>
+<p>Interfaces form an ancestry tree. Aside from
+<a href="https://wayland.app/protocols/wayland#wl_display">wl_display</a>, new protocol
+objects are always created through an existing protocol object that may be
+referred to as <em>the factory object</em>. This can happen in one of two ways: the
+factory object’s interface either defines or does not define the new object’s
+interface.</p>
+<p>When the factory interface defines the new object’s interface, the new object
+also inherits the factory object’s interface version number. This number defines
+the interface version of the new object. The factory object is referred to as
+<em>the parent object</em> and the factory interface is referred to as <em>the parent
+interface</em>. This forms the ancestry tree of interfaces.</p>
+<p>When the factory interface does not define the new object’s
+interface, both the interface name and the version must be
+communicated explicitly. The foremost example of this is
+<a href="https://wayland.app/protocols/wayland#wl_registry:request:bind">wl_registry.bind</a>.
+In this case the terms “parent” or “ancestor” are
+not used. Interfaces that are advertised through
+<a href="https://wayland.app/protocols/wayland#wl_registry">wl_registry</a> are called
+<em>global interfaces</em>, or globals for short.</p>
+<p>If objects having the interface can cause protocol errors, the
+protocol error codes must be defined within the interface with an
+enum element with its <code>name</code> set to <code>"error"</code>. Protocol error codes
+are always specific to the interface of the object referred to in
+<a href="https://wayland.app/protocols/wayland#wl_display:event:error">wl_display.error</a>.</p>
+<p>The description element should be used to describe the purpose and the general
+usage of the interface.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname-1"><a class="header" href="#namecname-1"><code>name</code>=“<code>cname</code>”</a></dt>
+<dd>
+<p>The name of the interface. cname-requirements The name must be unique in
+the protocol, and preferably it should also be globally unique to avoid API
+conflicts in language bindings of multiple protocols.</p>
+<p>Protocols to be included in
+<a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a>
+must follow the interface naming rules set there. Other protocols should use
+a unique prefix for the name, e.g. referring to the owning project’s name.</p>
+</dd>
+<dt id="versionv"><a class="header" href="#versionv"><code>version</code>=“<code>V</code>”</a></dt>
+<dd>
+<p>The interface’s latest version number <code>V</code> must be an integer greater than
+zero. An interface element defines all versions of the interface from 1 to
+<code>V</code> inclusive. The contents of each interface version are defined in each of
+the request, event, enum and entry elements using the attributes <code>since</code> and
+<code>deprecated-since</code>, and in the specification text.</p>
+<p>When an interface is extended, the version number must be incremented on
+all the interfaces part of the same interface ancestry tree. The exception
+to this rule are interfaces which are forever stuck to version 1, which
+is usually caused by having multiple parent interfaces with independent
+ancestor global interfaces.</p>
+<p>A protocol object may have any defined version of the interface. The version
+of the object is determined at runtime either by inheritance from another
+protocol object or explicitly.</p>
+<p>It is possible for a protocol object to have a version higher than defined
+by its interface. This may happen when the interface is stuck at version
+1 as per above. It may also happen when a protocol XML file has not been
+thoroughly updated as required. In such cases the object shall function as
+with the highest defined interface version.</p>
+</dd>
+</dl>
+<h3 id="request"><a class="header" href="#request">request</a></h3>
+<p>Parent elements: interface</p>
+<pre><code>request ::= (description?, arg*)
+</code></pre>
+<p>Defines a request, a message from a client to a server. Requests are always
+associated with a specific protocol object.</p>
+<p>Requests are automatically assigned opcodes in the order they appear inside the
+interface element. Therefore the only backwards-compatible way to add requests
+to an interface is to add them to the end. Any event elements do not interfere
+with request opcode assignments.</p>
+<p>The arg elements declare the request’s arguments. There can be 0 to 20 arguments
+for a request. The order of arg inside the request element defines the order
+of the arguments on the wire. All declared arguments are mandatory, and extra
+arguments are not allowed on the wire.</p>
+<p>The description element should be used to document the request.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname-2"><a class="header" href="#namecname-2"><code>name</code>=“<code>cname</code>”</a></dt>
+<dd>
+<p>The name of the request. cname-requirements The name must be unique within
+all requests and events in the containing interface.</p>
+<p>Code and language binding generators may use the name in the API they
+create. The <code>name</code> of the containing interface provides the namespace for
+requests.</p>
+</dd>
+</dl>
+<p><strong>Optional attributes</strong></p>
+<dl>
+<dt id="typedestructor"><a class="header" href="#typedestructor"><code>type</code>=“<code>destructor</code>”</a></dt>
+<dd>
+<p>When this attribute is present, the request is a destructor: it shall
+destroy the protocol object it is sent on. Protocol IPC libraries may use
+this for bookkeeping protocol object lifetimes.</p>
+<p>Libwayland-client uses this information to ignore incoming events for
+destroyed protocol objects. Such events may occur due to a natural race
+condition between the client destroying a protocol object and the server
+sending events before processing the destroy request.</p>
+</dd>
+<dt id="sinces"><a class="header" href="#sinces"><code>since</code>=“<code>S</code>”</a></dt>
+<dd>
+<p><code>S</code> must be an integer greater than zero. If <code>since</code> is not specified,
+<code>since="1"</code> is assumed.</p>
+<p>This request was added in interface <code>version</code> <code>S</code>. The request does
+not exist if the protocol object has a bound version smaller than
+<code>S</code>. Attempts to use it in such a case shall raise the protocol error
+<code>wl_display.error.invalid_method</code>.</p>
+</dd>
+<dt id="deprecated-sinced"><a class="header" href="#deprecated-sinced"><code>deprecated-since</code>=“<code>D</code>”</a></dt>
+<dd>
+<p><code>D</code> must be an integer greater than the value of <code>since</code>. If
+<code>deprecated-since</code> is not specified, then the request is not deprecated in
+any version of the containing interface.</p>
+<p>This request was deprecated in interface <code>version</code> <code>D</code> and above, and should
+not be sent on protocol objects of such version. This is informational.
+Compositors must still be prepared to handle the request unless specified
+otherwise.</p>
+</dd>
+</dl>
+<h3 id="event"><a class="header" href="#event">event</a></h3>
+<p>Parent elements: interface</p>
+<pre><code>event ::= (description?, arg*)
+</code></pre>
+<p>Defines an event, a message from a server to a client. Events are always
+associated with a specific protocol object.</p>
+<p>Events are automatically assigned opcodes in the order they appear inside the
+interface element. Therefore the only backwards-compatible way to add events to
+an interface is to add them to the end. Any request elements do not interfere
+with event opcode assignments.</p>
+<p>The arg elements declare the event’s arguments. There can be 0 to 20 arguments
+for an event. The order of arg inside the event element defines the order of the
+arguments on the wire. All declared arguments are mandatory, and extra arguments
+are not allowed on the wire.</p>
+<p>The description element should be used to document the event.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname-3"><a class="header" href="#namecname-3"><code>name</code>=“<code>cname</code>”</a></dt>
+<dd>
+<p>The name of the event. cname-requirements The name must be unique within all
+requests and events in the containing interface.</p>
+<p>Code and language binding generators may use the name in the API they
+create. The <code>name</code> of the containing interface provides the namespace for
+events.</p>
+</dd>
+</dl>
+<p><strong>Optional attributes</strong></p>
+<dl>
+<dt id="typedestructor-1"><a class="header" href="#typedestructor-1"><code>type</code>=“<code>destructor</code>”</a></dt>
+<dd>
+<p>When this attribute is present, the event is a destructor: it shall destroy
+the protocol object it is sent on. Protocol IPC libraries may use this for
+bookkeeping protocol object lifetimes.</p>
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>Destructor events are an underdeveloped feature in Wayland. They can
+be used only on client-created protocol objects, and it is the protocol
+designer’s responsibility to design such a message exchange that race
+conditions cannot occur. The main problem would be a client sending a
+request at the same time as the server is sending a destructor event. The
+server will consider the protocol object to be already invalid or even
+recycled when it proceeds to process the request. This often results in
+protocol errors, but under specific conditions it might also result in
+silently incorrect behavior.</p>
+<p>Destructor events should not be used in new protocols. If a destructor
+event is necessary, the simplest way to avoid these problems is to have
+the interface not contain any requests.</p>
+</blockquote>
+</dd>
+<dt id="sinces-1"><a class="header" href="#sinces-1"><code>since</code>=“<code>S</code>”</a></dt>
+<dd>
+<p><code>S</code> must be an integer greater than zero. If <code>since</code> is not specified,
+<code>since="1"</code> is assumed.</p>
+<p>This event was added in interface <code>version</code> <code>S</code>. The event does not exist if
+the protocol object has a bound version smaller than <code>S</code>.</p>
+</dd>
+<dt id="deprecated-sinced-1"><a class="header" href="#deprecated-sinced-1"><code>deprecated-since</code>=“<code>D</code>”</a></dt>
+<dd>
+<p><code>D</code> must be an integer greater than the value of <code>since</code>. If
+<code>deprecated-since</code> is not specified, then the event is not deprecated in any
+version of the containing interface.</p>
+<p>This event was deprecated in interface <code>version</code> <code>D</code> and above, and should
+not be sent on protocol objects of such version. This is informational.
+Clients must still be prepared to receive this event unless otherwise
+specified.</p>
+</dd>
+</dl>
+<h3 id="arg"><a class="header" href="#arg">arg</a></h3>
+<p>Parent elements: request, event</p>
+<pre><code>arg ::= description?
+</code></pre>
+<p>This element declares one argument for the request or the event.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname-4"><a class="header" href="#namecname-4"><code>name</code>=“<code>cname</code>”</a></dt>
+<dd>
+<p>The name of the argument. cname-requirements The name must be unique within
+all the arguments of the parent element.</p>
+</dd>
+<dt id="typet"><a class="header" href="#typet"><code>type</code>=“<code>T</code>”</a></dt>
+<dd>
+<p>The type <code>T</code> of the argument datum must be one of:</p>
+<dl>
+<dt id="int"><a class="header" href="#int"><code>int</code></a></dt>
+<dd>
+<p>32-bit signed integer.</p>
+</dd>
+<dt id="uint"><a class="header" href="#uint"><code>uint</code></a></dt>
+<dd>
+<p>32-bit unsigned integer.</p>
+</dd>
+<dt id="fixed-1"><a class="header" href="#fixed-1"><code>fixed</code></a></dt>
+<dd>
+<p>Signed 24.8-bit fixed-point value.</p>
+</dd>
+<dt id="string-1"><a class="header" href="#string-1"><code>string</code></a></dt>
+<dd>
+<p>UTF-8 encoded string value, NUL byte terminated. Interior NUL bytes are
+not allowed.</p>
+</dd>
+<dt id="array-1"><a class="header" href="#array-1"><code>array</code></a></dt>
+<dd>
+<p>A byte array of arbitrary data.</p>
+</dd>
+<dt id="fd-1"><a class="header" href="#fd-1"><code>fd</code></a></dt>
+<dd>
+<p>A file descriptor.</p>
+<p>The file descriptor must be open and valid on send. It is not possible
+to pass a null value.</p>
+</dd>
+<dt id="new_id-1"><a class="header" href="#new_id-1"><code>new_id</code></a></dt>
+<dd>
+<p>Creates a new protocol object. A request or an event may have at most
+one <code>new_id</code> argument.</p>
+<p>If <code>interface</code> is specified, the new protocol object shall have the
+specified interface, and the new object’s (interface) version shall be
+the version of the object on which the request or event is being sent.</p>
+<p>If <code>interface</code> is not specified, the request shall implicitly
+have two additional arguments: A <code>string</code> for an interface
+name, and a <code>uint</code> for the new object’s version. Leaving
+the interface unspecified is reserved for special use,
+<a href="https://wayland.app/protocols/wayland#wl_registry:request:bind">wl_registry.bind</a>
+for example.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>An event argument must always specify the <code>new_id</code> <code>interface</code>.</p>
+</blockquote>
+</dd>
+<dt id="object-1"><a class="header" href="#object-1"><code>object</code></a></dt>
+<dd>
+<p>Reference to an existing protocol object.</p>
+<p>The attribute <code>interface</code> should be specified. Otherwise IPC libraries
+cannot enforce the interface, and checking the interface falls on user
+code and specification text.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p><strong>Optional attributes</strong></p>
+<dl>
+<dt id="summarysummary-1"><a class="header" href="#summarysummary-1"><code>summary</code>=“<code>summary</code>”</a></dt>
+<dd>
+<p>A short (half a line at most) description. This attribute should not be used
+if a description is used.</p>
+</dd>
+<dt id="interfaceiface"><a class="header" href="#interfaceiface"><code>interface</code>=“<code>iface</code>”</a></dt>
+<dd>
+<p>If given, <code>iface</code> must be the <code>name</code> of some interface, and <code>type</code> of
+this argument must be either <code>"object"</code> or <code>"new_id"</code>. This indicates that
+the existing or new object must have the interface <code>iface</code>. Use for other
+argument types is forbidden.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>If an interface from another protocol is used, then this creates a
+dependency between the protocols. If an application generates code for one
+protocol, then it must also generate code for all dependencies. Therefore
+this would not be a backwards compatible change.</p>
+</blockquote>
+</dd>
+<dt id="allow-nulltrue--false"><a class="header" href="#allow-nulltrue--false"><code>allow-null</code>=“<code>true</code>” | “<code>false</code>”</a></dt>
+<dd>
+<p>Whether the argument value can be null on send. Defaults to <code>"false"</code>,
+meaning it is illegal to send a null value. Can be used only when <code>type</code> is
+<code>"string"</code> or <code>"object"</code>.</p>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>Even though this attribute can be used to forbid a compositor from sending
+a null object as an event argument, an IPC library implementation may
+not protect the client from receiving a null object. This can happen with
+libwayland-client when the client has destroyed the protocol object before
+dispatching an event that referred to it in an argument.</p>
+</blockquote>
+</dd>
+<dt id="enumenum-cname-suffix"><a class="header" href="#enumenum-cname-suffix"><code>enum</code>=“<code>enum-cname-suffix</code>”</a></dt>
+<dd>
+<p>If specified, indicates that the argument value should come from the enum
+named <code>enum-cname-suffix</code>. If the enumeration is a bitfield, then <code>type</code>
+must be <code>"uint"</code>. Otherwise <code>type</code> must be either <code>"uint"</code> or <code>"int"</code>.</p>
+<p>The name <code>enum-cname-suffix</code> refers to an enum in the same interface
+by default. If it is necessary to refer to an enumeration from another
+interface, the interface name can be given with a period:</p>
+<pre><code>`enum`="`iface`.`enum-cname-suffix`"
+</code></pre>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>This attribute alone does not automatically restrict the legal values
+for this argument. If values from outside of the enumeration need to be
+forbidden, that must be specified explicitly in the documentation.</p>
+<p>A common design pattern is to have the server advertise the supported
+enumeration or bit values with events and explicitly forbid clients from
+using any other values in requests. This also requires a protocol error
+code to be specified with the error enum to be raised if a client uses an
+illegal value, see <a href="#interface">interface</a>.</p>
+</blockquote>
+</dd>
+</dl>
+<h3 id="enum"><a class="header" href="#enum">enum</a></h3>
+<p>Parent elements: protocol</p>
+<pre><code>enum ::= (description?, entry*)
+</code></pre>
+<p>This tag defines an enumeration of integer values. Enumerations are merely a
+syntactic construct to give names to arbitrary integer constants. Each constant
+is listed as an entry with its name. There are two types of enumerations:
+regular enumerations and bitfields.</p>
+<p>Regular enumerations do not use <code>bitfield</code> attribute, or they set it to
+<code>"false"</code>. The set of pre-defined values that belong to a regular enumeration
+is exactly the set of values listed as entry elements after the protocol
+object version is taken into account. See the entry attributes <code>since</code> and
+<code>deprecated-since</code>.</p>
+<p>Bitfields set <code>bitfield</code> to <code>"true"</code>. The set of values that belong to a
+bitfield enumeration are all the values that can be formed by the bitwise-or
+operator from the set of values listed as entry elements like in the regular
+enumeration. Usually also zero is implicitly included.</p>
+<p>All the values in a regular enumeration must be either signed or unsigned 32-bit
+integers. All the values in a bitfield enumeration must be unsigned 32-bit
+integers.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname-suffix"><a class="header" href="#namecname-suffix"><code>name</code>=“<code>cname-suffix</code>”</a></dt>
+<dd>The name of the enumeration. cname-suffix-requirements The name must be
+unique within all enumerations in the containing interface. The name is used
+as the namespace for all the contained entry elements.</dd>
+</dl>
+<p><strong>Optional attributes</strong></p>
+<dl>
+<dt id="sinces-2"><a class="header" href="#sinces-2"><code>since</code>=“<code>S</code>”</a></dt>
+<dd>
+<p><code>S</code> must be an integer greater than zero. If <code>since</code> is not specified,
+<code>since="1"</code> is assumed.</p>
+<p>This enumeration was added in interface <code>version</code> <code>S</code>. The enumeration does
+not exist if the protocol object has a bound version smaller than <code>S</code>.</p>
+</dd>
+<dt id="bitfieldtrue--false"><a class="header" href="#bitfieldtrue--false"><code>bitfield</code>=“<code>true</code>” | “<code>false</code>”</a></dt>
+<dd>
+<p>Specifies if this enumeration is a bitfield. Defaults to <code>"false"</code>.</p>
+</dd>
+</dl>
+<h3 id="entry"><a class="header" href="#entry">entry</a></h3>
+<p>Parent elements: enum</p>
+<pre><code>entry ::= description?
+</code></pre>
+<p>Defines a name for an integer constant and makes it part of the set of values of
+the containing enumeration.</p>
+<p><strong>Required attributes</strong></p>
+<dl>
+<dt id="namecname-suffix-1"><a class="header" href="#namecname-suffix-1"><code>name</code>=“<code>cname-suffix</code>”</a></dt>
+<dd>The name of a value in an enumeration. cname-suffix-requirements The name
+must be unique within all entry elements in the containing enum.</dd>
+<dt id="valuev"><a class="header" href="#valuev"><code>value</code>=“<code>V</code>”</a></dt>
+<dd>An integer value. The value can be given in decimal, hexadecimal, or octal
+representation.</dd>
+</dl>
+<p><strong>Optional attributes</strong></p>
+<dl>
+<dt id="summarysummary-2"><a class="header" href="#summarysummary-2"><code>summary</code>=“<code>summary</code>”</a></dt>
+<dd>
+<p>A short (half a line at most) description. This attribute should not be used
+if a description is used.</p>
+</dd>
+<dt id="sinces-3"><a class="header" href="#sinces-3"><code>since</code>=“<code>S</code>”</a></dt>
+<dd>
+<p><code>S</code> must be an integer greater than zero. If <code>since</code> is not specified,
+<code>since="1"</code> is assumed.</p>
+<p>This value was added in interface <code>version</code> <code>S</code>.</p>
+</dd>
+<dt id="deprecated-sinced-2"><a class="header" href="#deprecated-sinced-2"><code>deprecated-since</code>=“<code>D</code>”</a></dt>
+<dd>
+<p><code>D</code> must be an integer greater than the value of <code>since</code>. If
+<code>deprecated-since</code> is not specified, then the value is not deprecated in any
+version of the containing interface.</p>
+<p>This value was removed in interface <code>version</code> <code>D</code>. This does not make the
+value automatically illegal to use, see <a href="#arg">arg</a> attribute <code>enum</code>.</p>
+</dd>
+</dl>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="x11-application-support"><a class="header" href="#x11-application-support">X11 Application Support</a></h1>
+<h2 id="introduction-1"><a class="header" href="#introduction-1">Introduction</a></h2>
+<p>Being able to run existing X11 applications is crucial for the adoption of
+Wayland, especially on desktops, as there will always be X11 applications that
+have not been or cannot be converted into Wayland applications, and throwing
+them all away would be prohibitive. Therefore a Wayland compositor often needs
+to support running X11 applications.</p>
+<p>X11 and Wayland are different enough that there is no “simple” way to translate
+between them. Most of X11 is uninteresting to a Wayland compositor. That,
+combined with the gigantic implementation effort needed to support X11, makes
+it intractable to just write X11 support directly in a Wayland compositor. The
+implementation would be nothing short of a real X11 server.</p>
+<p>Therefore, Wayland compositors should use Xwayland, the X11 server that lives
+in the Xorg server source code repository and shares most of the implementation
+with the Xorg server. Xwayland is a complete X11 server, just like Xorg is, but
+instead of driving the displays and opening input devices, it acts as a Wayland
+client. The rest of this chapter talks about how Xwayland works.</p>
+<p>For integration and architecture reasons, while Xwayland is a Wayland client
+of the Wayland compositor, the Wayland compositor is an X11 client of Xwayland.
+This circular dependency requires special care from the Wayland compositor.</p>
+<h2 id="two-modes-for-foreign-windows"><a class="header" href="#two-modes-for-foreign-windows">Two Modes for Foreign Windows</a></h2>
+<p>In general, windows from a foreign window system can be presented in one of two
+ways: rootless and rootful (not rootless).</p>
+<p>In rootful mode, the foreign window system as a whole is represented as a
+window (or more) of its own. You have a native window, inside which all the
+foreign windows are. The advantage of this approach in Xwayland’s case is that
+you can run your favourite X11 window manager to manage your X11 applications.
+The disadvantage is that the foreign windows do not integrate with the native
+desktop. Therefore this mode is not usually used.</p>
+<p>In rootless mode, each foreign window is a first-class resident among the
+native windows. Foreign windows are not confined inside a native window but
+act as if they were native windows. The advantage is that one can freely stack
+and mix native and foreign windows, which is not possible in rootful mode.
+The disadvantage is that this mode is harder to implement and fundamental
+differences in window systems may prevent some things from working. With
+rootless Xwayland, the Wayland compositor must take the role as the X11 window
+manager, and one cannot use any other X11 window manager in its place.</p>
+<p>This chapter concentrates on the rootless mode, and ignores the rootful mode.</p>
+<h2 id="architecture"><a class="header" href="#architecture">Architecture</a></h2>
+<p>A Wayland compositor usually takes care of launching Xwayland. Xwayland works in
+cooperation with a Wayland compositor as follows:</p>
+<p><strong>Xwayland architecture diagram</strong></p>
+<p><img src="images/xwayland-architecture.png" alt=""></p>
+<p>An X11 application connects to Xwayland just like it would connect to any X
+server. Xwayland processes all the X11 requests. On the other end, Xwayland is a
+Wayland client that connects to the Wayland compositor.</p>
+<p>The X11 window manager (XWM) is an integral part of the Wayland compositor.
+XWM uses the usual X11 window management protocol to manage all X11 windows in
+Xwayland. Most importantly, XWM acts as a bridge between Xwayland window state
+and the Wayland compositor’s window manager (WWM). This way WWM can manage all
+windows, both native Wayland and X11 (Xwayland) windows. This is very important
+for a coherent user experience.</p>
+<p>Since Xwayland uses Wayland for input and output, it does not have any use for
+the device drivers that Xorg uses. None of the xf86-video-* or xf86-input-*
+modules are used. There also is no configuration file for the Xwayland server.
+For optional hardware accelerated rendering, Xwayland uses GLAMOR.</p>
+<p>A Wayland compositor usually spawns only one Xwayland instance. This is because
+many X11 applications assume they can communicate with other X11 applications
+through the X server, and this requires a shared X server instance. This also
+means that Xwayland does not protect nor isolate X11 clients from each other,
+unless the Wayland compositor specifically chooses to break the X11 client
+intercommunications by spawning application specific Xwayland instances. X11
+clients are naturally isolated from Wayland clients.</p>
+<p>Xwayland compatibility compared to a native X server will probably never reach
+100%. Desktop environment (DE) components, specifically X11 window managers,
+are practically never supported. An X11 window manager would not know about
+native Wayland windows, so it could manage only X11 windows. On the other hand,
+there must be an XWM that reserves the exclusive window manager role so that
+the Wayland compositor could show the X11 windows appropriately. For other DE
+components, like pagers and panels, adding the necessary interfaces to support
+them in WWM through XWM is often considered not worthwhile.</p>
+<h2 id="x-window-manager-xwm"><a class="header" href="#x-window-manager-xwm">X Window Manager (XWM)</a></h2>
+<p>From the X11 point of view, the X window manager (XWM) living inside a Wayland
+compositor is just like any other window manager. The difference is mostly in
+which process it resides in, and the few extra conventions in the X11 protocol
+to support Wayland window management (WWM) specifically.</p>
+<p>There are two separate asynchronous communication channels between Xwayland
+and a Wayland compositor: one uses the Wayland protocol, and the other one,
+solely for XWM, uses X11 protocol. This setting demands great care from the XWM
+implementation to avoid (random) deadlocks with Xwayland. It is often nearly
+impossible to prove that synchronous or blocking X11 calls from XWM cannot
+cause a deadlock, and therefore it is strongly recommended to make all X11
+communications asynchronous. All Wayland communications are already asynchronous
+by design.</p>
+<h3 id="window-identification"><a class="header" href="#window-identification">Window identification</a></h3>
+<p>In Xwayland, an X11 window may have a corresponding wl_surface object in
+Wayland. The wl_surface object is used for input and output: it is referenced
+by input events and used to provide the X11 window content to the Wayland
+compositor. The X11 window and the wl_surface live in different protocol
+streams, and they need to be matched for XWM to do its job.</p>
+<p>When Xwayland creates a wl_surface on Wayland, it will also send an X11
+ClientMessage of type atom “WL_SURFACE_ID” to the X11 window carrying the
+wl_surface Wayland object ID as the first 32-bit data element. This is how XWM
+can associate a wl_surface with an X11 window. Note that the request to create a
+wl_surface and the ID message may arrive in any order in the Wayland compositor.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="content-updates"><a class="header" href="#content-updates">Content Updates</a></h1>
+<h2 id="overview-1"><a class="header" href="#overview-1">Overview</a></h2>
+<p>In the Wayland protocol, requests are asynchronous but take effect immediately
+when the compositor receives them. However, some requests on surfaces are not
+applied immediately but are instead double-buffered to allow atomic changes.
+These double-buffered changes are committed through the wl_surface.commit
+request, which creates a Content Update.</p>
+<p>Content Updates encapsulate all double-buffered state changes and can be applied
+by the compositor. The complexity arises when considering subsurfaces, which
+can operate in synchronized mode. When a subsurface is synchronized, its Content
+Updates must be applied atomically together with the parent surface’s state.
+This synchronization can extend through an entire tree of subsurfaces, where
+child subsurfaces inherit the synchronized behavior from their parents.</p>
+<p>Historically, Content Updates from synchronized subsurfaces were merged into
+the pending state of the parent surface on commit. However, the introduction of
+constraints—which can defer the application of Content Updates—necessitated a
+more sophisticated model. This led to the implementation of per-surface queues
+of Content Updates, with dependencies between Content Updates across different
+queues. This queuing model maintains backwards compatibility with the earlier
+approach of merging Content Updates into the parent’s pending state on commit.</p>
+<p>The core protocol defines the semantics of Content Updates using per-surface
+queues, but compositors that do not need to support constraints may implement
+the simpler legacy model where synchronized subsurface states are merged
+directly into the parent’s pending state.</p>
+<h2 id="rules"><a class="header" href="#rules">Rules</a></h2>
+<p>The core protocol specifies the behavior in wl_subsurface and wl_surface.commit.
+The behavior can be summarized by the following rules:</p>
+<ol>
+<li>
+<p>Content Updates (CU) contain all double-buffered state of the surface and
+selected state from their direct children.</p>
+</li>
+<li>
+<p>Surfaces which are effectively synchronized create Synchronized Content
+Updates (SCU), otherwise they create Desync Content Updates (DCU).</p>
+</li>
+<li>
+<p>When a CU is created, it gets a dependency on the previous CU of the same
+queues (if it exists).</p>
+</li>
+<li>
+<p>When a CU is created, it gets a dependency on the last SCU of direct child
+surfaces that are not reachable (if they exists).</p>
+</li>
+<li>
+<p>The CUs and their dependencies form a DAG, where CUs are nodes and
+dependencies are edges.</p>
+</li>
+<li>
+<p>All DCUs starting from the front of the queues until the first SCU or the
+back of the queue is reached are candidates.</p>
+</li>
+<li>
+<p>If the maximal DAG that’s reachable from a candidate (candidate DAG) does not
+have any constraints, then this DAG can be applied.</p>
+</li>
+<li>
+<p>A DAG is applied atomically by recursively applying a content update without
+dependencies and removing it from the DAG.</p>
+</li>
+<li>
+<p>Surfaces transition from effectively sync to effectively desync after their
+parents.</p>
+</li>
+<li>
+<p>When a surface transitions to effectively desync, all SCUs in its queue
+which are not reachable by a DCU become DCUs.</p>
+</li>
+</ol>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>These examples should help to build an intuition for how content updates
+actually behave. They cover the interesting edge cases, such as subsurfaces with
+constraints, and transitioning from a sync subsurface to a desync one.</p>
+<p>In all the examples below, the surface T1 refers to a toplevel surface, SS1
+refers to a sub-surface which is a child of T1, and SS2 refers to a sub-surface
+which is a child of SS1.</p>
+<p><strong>Legend</strong></p>
+<p><img src="images/content-updates/content-update-legend.png" alt=""></p>
+<p><strong>Simple Desynchronized Case</strong></p>
+<p><img src="images/content-updates/simple-desynchronized-state-1.png" alt=""></p>
+<p>SS2 is effectively desynchronized and commits. This results in the
+desynchronized content update (DCU) <em>1</em>.</p>
+<p><img src="images/content-updates/simple-desynchronized-state-2.png" alt=""></p>
+<p>DCU <em>1</em> is a candidate, and the candidate DAG reachable from DCU <em>1</em> is only DCU
+<em>1</em> itself. DCU <em>1</em> and thus the candidate DAG does not have any constraints and
+can be applied.</p>
+<p><img src="images/content-updates/simple-desynchronized-state-3.png" alt=""></p>
+<p>The content updates of the candidate DAG get applied to the surface atomically.</p>
+<p><img src="images/content-updates/simple-desynchronized-state-4.png" alt=""></p>
+<p>T1 commits a DCU with a <em>buffer-sync</em> constraint. It is a candidate but its DAG
+can’t be applied because it contains a constraint.</p>
+<p><img src="images/content-updates/simple-desynchronized-state-5.png" alt=""></p>
+<p>T1 commits another CU (DCU <em>3</em>) which is added at the end of the queue,
+with a dependency to the previous CU (DCU <em>2</em>). Both DCU <em>2</em> and DCU <em>3</em> are
+candidates, but both DAGs contain DCU <em>2</em> with a constraint, and can’t be
+applied.</p>
+<p><img src="images/content-updates/simple-desynchronized-state-6.png" alt=""></p>
+<p>When the constraint gets cleared, both DAGs can be applied to the surface
+atomitcally (either only <em>2</em>, or <em>2</em> and <em>3</em>).</p>
+<p><strong>Simple Synchronized Case</strong></p>
+<p><img src="images/content-updates/simple-synchronized-state-1.png" alt=""></p>
+<p>SS1 and SS2 are effectively synchronized. SS2 commits SCU <em>1</em>.</p>
+<p><img src="images/content-updates/simple-synchronized-state-2.png" alt=""></p>
+<p>SS1 commits SCU <em>2</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in its
+queue, which is not reachable. This creates a dependency from SCU <em>2</em> to SCU
+<em>1</em>.</p>
+<p><img src="images/content-updates/simple-synchronized-state-3.png" alt=""></p>
+<p>SS1 commits SCU <em>3</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in
+its queue, which is already reachable by SCU <em>2</em>. No dependency to SCU <em>1</em> is
+created. A dependency to the previous CU of the same queue (SCU <em>2</em>) is created.</p>
+<p><img src="images/content-updates/simple-synchronized-state-4.png" alt=""></p>
+<p>T1 commit DCU <em>4</em>. It is a candidate, its DAG does not contain any constraint
+and it can be applied.</p>
+<p><img src="images/content-updates/simple-synchronized-state-5.png" alt=""></p>
+<p>The DAG gets applied to the surfaces atomically.</p>
+<p><strong>Complex Synchronized Subsurface Case 1</strong></p>
+<p><img src="images/content-updates/sync-subsurf-case1-1.png" alt=""></p>
+<p>Every DCU (<em>1</em> and <em>6</em>) contain CUs with constraints in their candidate DAG</p>
+<p><img src="images/content-updates/sync-subsurf-case1-2.png" alt=""></p>
+<p>Waiting until the <em>buffer-sync</em> constrain on CU <em>1</em> is cleared, the candidate
+DAG of CU <em>1</em> does not contain constraints and can be applied</p>
+<p><img src="images/content-updates/sync-subsurf-case1-3.png" alt=""></p>
+<p>That leaves the candidate DAG of CU <em>6</em> which still contains another CU with a
+<em>buffer-sync</em> constrain</p>
+<p><img src="images/content-updates/sync-subsurf-case1-4.png" alt=""></p>
+<p>Waiting until the <em>buffer-sync</em> constrain on CU <em>6</em> is cleared, the candidate
+DAG of <em>6</em> does not contain CUs with constraints and can be applied.</p>
+<p><img src="images/content-updates/sync-subsurf-case1-5.png" alt=""></p>
+<p>There is no DCU left and no constraint remaining. Nothing more can be applied
+without a new CU.</p>
+<p><strong>Complex Synchronized Subsurface Case 2</strong></p>
+<p><img src="images/content-updates/sync-subsurf-case2-1.png" alt=""></p>
+<p>Both DCUs (<em>1</em> and <em>6</em>) have a reachable DAG containing CU <em>1</em> with a constraint</p>
+<p><img src="images/content-updates/sync-subsurf-case2-2.png" alt=""></p>
+<p>Waiting until the <em>buffer-sync</em> constrain on <em>1</em> is cleared, both DAGs contain
+no CU with constraints and can be applied in any order</p>
+<p><img src="images/content-updates/sync-subsurf-case2-3.png" alt=""></p>
+<p>That leaves the same state as in the previous case</p>
+<p><strong>Synchronized to Desynchronized Subsurface</strong></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-1.png" alt=""></p>
+<p>There is one DCU (<em>4</em>) with its reachable DAG that cannot be applied because CU
+<em>4</em> contains a constraint</p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-2.png" alt=""></p>
+<p>Surface <em>SS1</em> transitions from effectively synchronized to effectively
+desynchronized. SCU <em>2</em> is reachable by DCU <em>4</em> so nothing changes.</p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-3.png" alt=""></p>
+<p>Surface <em>SS1</em> provides a new DCU (<em>5</em>) but because the CU before (<em>2</em>) is a
+Synchronized CU, it is not a candidate</p>
+<p><strong>Synchronized to Desynchronized Transition</strong></p>
+<p><img src="images/content-updates/sync-to-desync-transition-1.png" alt=""></p>
+<p>There are four SCUs and all surfaces are effectively synchronized.</p>
+<p><img src="images/content-updates/sync-to-desync-transition-2.png" alt=""></p>
+<p>Surface <em>SS1</em> transitions to effectively desynchronized and SCU <em>2</em> becomes a
+DCU because it is not reachable from a DCU</p>
+<p><img src="images/content-updates/sync-to-desync-transition-3.png" alt=""></p>
+<p>Surface <em>SS2</em> transitions to effectively desynchronized. SCUs <em>3</em> and <em>4</em> become
+DCUs because they are not reachable from a DCU. SCU <em>1</em> does not change because
+it is reachable by DCU <em>2</em>.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="color-management"><a class="header" href="#color-management">Color management</a></h1>
+<h2 id="overview-2"><a class="header" href="#overview-2">Overview</a></h2>
+<p>Color management in Wayland considers only displays. All pictures in Wayland
+are always display-referred, meaning that the pixel values are intended
+as-is for some specific display where they would produce the light emissions
+(<a href="https://cie.co.at/eilvterm/17-23-002">stimuli</a>) the picture’s author desired.
+Wayland does not support displaying “raw” camera or scanner images as they are
+not display-referred, nor are they even pictures without complex and subjective
+processing.</p>
+<p>Stimuli — the picture itself — are only half of the picture reproduction. The
+other half is the environment where a display is viewed. A striking example is
+comparing a brightly lit office to a dark movie theater, the stimuli required
+to produce a good reading of the picture is greatly different. Therefore
+display-referred does not include only the display but the viewing environment
+as well.</p>
+<p>Window systems have been very well capable of operating without any explicit
+consideration to color management. This is because there used to be the implicit
+assumption of the standard display, the sRGB display, which all computer
+monitors implemented, more or less. The viewing environment was and still
+is accounted by adjusting the display and/or the room to produce a workable
+experience. Pictures are authored on a computer system by drawing, painting
+and adjusting the picture until it looks right on the author’s monitor. This
+implicitly builds the standard display and environment assumption into the
+picture data. Deviations from the sRGB specification were minor enough that
+they often did not matter if not in a professional context like the printing
+industry. Displaying video material required some more attention to the details,
+because video and television standards differ enough from the sRGB display.
+What really made explicit color management a hard requirement for entertainment
+is the coming of wide color gamut (WCG) and high dynamic range (HDR) materials
+and displays.</p>
+<p>The color management design in Wayland follows the general Wayland design
+principles: compositors tell clients what would be the optimal thing to do,
+clients tell the compositors what kind of pictures they are actually producing,
+and then compositors display those pictures the best they can.</p>
+<h2 id="protocol-interfaces"><a class="header" href="#protocol-interfaces">Protocol Interfaces</a></h2>
+<p>Color management interfaces in Wayland and divided into two protocols:
+<a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/tree/main/staging/color-management?ref_type=heads">color-management</a>
+and
+<a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/tree/main/staging/color-representation?ref_type=heads">color-representation</a>.
+They are designed to work together, but they can also be used independently when
+the other one is not needed.</p>
+<h3 id="color-management-1"><a class="header" href="#color-management-1">Color-management</a></h3>
+<p>Color management protocol has two main purposes. First, it puts the
+responsibility of color management on the compositor. This means that clients
+do not necessarily need to care about color management at all, and can display
+just fine by using the traditional standard display assumption even when the
+actual display is wildly different. Clients can also choose to target some other
+assumed display and let the compositor handle it, or they can explicitly render
+for the actual display at hand. Second, when the window system has multiple
+different monitors, and a wl_surface happens to span more than one monitor, the
+compositor can display the surface content correctly on all spanned monitors
+simultaneously, as much as physically possible.</p>
+<p>Color-management protocol concentrates on colorimetry: when you have a
+pixel with RGB values, what stimulus do those values represent. The stimulus
+definition follows the CIE 1931 two-degree observer model. Some core concepts
+here are color primaries, white point, transfer function, and dynamic range.
+The viewing environment is represented in an extremely simplified way as the
+reference white luminance. The connection between pixel RGB values and stimulus
+plus viewing environment is recorded in an <em>image description</em> object. Clients
+can create image description objects and tag <code>wl_surface</code>s with them, to
+indicate what kind of surface content there will be. Clients can also ask what
+image description the compositor would prefer to have on the <code>wl_surface</code>, and
+that preference can change over time, e.g. when the <code>wl_surface</code> is moved from
+one <code>wl_output</code> to another. Following the compositor’s preference may provide
+advantages in image quality and power consumption.</p>
+<p>Image description objects can come in two flavors: parametric and ICC-based.
+The above was written with parametric image descriptions in mind, and they have
+first-class support for HDR. ICC-based image descriptions are wrapping an ICC
+profile and have no other data. ICC profiles are the standard tool for standard
+dynamic range (SDR) display color management. This means the capabilities
+between the two flavors differ, and one cannot always be replaced by the other.
+Compositor support for each flavor is optional.</p>
+<h3 id="color-representation"><a class="header" href="#color-representation">Color-representation</a></h3>
+<p>Color-representation protocol deals with (potentially sub-sampled) YCbCr-RGB
+conversion, quantization range, and the inclusion of alpha in the RGB color
+channels, a.k.a. pre-multiplication. There are several different specifications
+on how an YCbCr-like (including ICtCp) signal, with chroma sub-sampling or
+not, is created from a full-resolution RGB image. Again, a client can tag a
+<code>wl_surface</code> with color-representation metadata to tell the compositor what kind
+of pixel data will be displayed through the wl_surface.</p>
+<p>The main purpose of color-representation is to correctly off-load the YCbCr-RGB
+conversion to the compositor, which can then opportunistically off-load
+it further to very power-efficient fixed-function circuitry in a display
+controller. This can significantly reduce power consumption when watching videos
+compared to using a GPU for the same, and on some embedded hardware platforms it
+is a hard requirement for processing high resolution video.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+
+    </div>
+    </body>
+</html>
