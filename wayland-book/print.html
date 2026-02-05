@@ -36,7 +36,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -195,6 +195,44 @@ concrete Wayland interfaces, requests, and events.</p>
 <li><a href="https://wayland.app">wayland.app</a> - A community-maintained website that renders these protocols,
 and many more, as easily accessible HTML pages.</li>
 </ul>
+<h2 id="about-the-book"><a class="header" href="#about-the-book">About the Book</a></h2>
+<p>This book is written in markdown and converted to HTML using
+<a href="https://rust-lang.github.io/mdBook">mdbook</a>.</p>
+<p>It supports the <a href="https://commonmark.org/">CommonMark</a> dialect of markdown plus a number of
+widely supported extensions:</p>
+<ul>
+<li><code>~~strikethrough~~</code></li>
+<li>
+<pre><code class="language-markdown">footnotes[^note]
+
+[^note]: text
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">| Tables | Header2 |
+|--------|---------|
+| abc    | def     |
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">- [x] Task lists
+- [ ] Incomplete task
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">definition lists
+  : This is the definition of a
+    definition list
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">&gt; [!NOTE]
+&gt; Admonitions
+</code></pre>
+</li>
+</ul>
+<p>The full list of extensions is documented
+<a href="https://rust-lang.github.io/mdBook/format/markdown.html#extensions">here</a>.</p>
 <h2 id="copyright"><a class="header" href="#copyright">Copyright</a></h2>
 <p>Copyright © 2012 Kristian Høgsberg</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a
@@ -216,13 +254,13 @@ DEALINGS IN THE SOFTWARE.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
-<p>Most Linux and Unix-based systems rely on the X Window System (or simply <em>X</em>)
-as the low-level protocol for building bitmap graphics interfaces. On these
-systems, the X stack has grown to encompass functionality arguably belonging
-in client libraries, helper libraries, or the host operating system kernel.
-Support for things like PCI resource management, display configuration
-management, direct rendering, and memory management has been integrated into the
-X stack, imposing limitations like limited support for standalone applications,
+<p>Most Linux and Unix-based systems rely on the X Window System (or simply <em>X</em>) as
+the low-level protocol for building bitmap graphics interfaces. On these
+systems, the X stack has grown to encompass functionality arguably belonging in
+client libraries, helper libraries, or the host operating system kernel. Support
+for things like PCI resource management, display configuration management,
+direct rendering, and memory management has been integrated into the X stack,
+imposing limitations like limited support for standalone applications,
 duplication in other projects (e.g. the Linux fb layer or the DirectFB project),
 and high levels of complexity for systems combining multiple elements (for
 example radeon memory map handling between the fb driver and X driver, or VT
@@ -249,9 +287,9 @@ to the Linux kernel, further reducing the scope of X and its driver stack. The
 end result is a highly modular graphics stack.</p>
 <h2 id="the-compositing-manager-as-the-display-server"><a class="header" href="#the-compositing-manager-as-the-display-server">The compositing manager as the display server</a></h2>
 <p>Wayland is a new display server and compositing protocol, and Weston is the
-implementation of this protocol which builds on top of all the components
-above. We are trying to distill out the functionality in the X server that is
-still used by the modern Linux desktop. This turns out to be not a whole lot.
+implementation of this protocol which builds on top of all the components above.
+We are trying to distill out the functionality in the X server that is still
+used by the modern Linux desktop. This turns out to be not a whole lot.
 Applications can allocate their own off-screen buffers and render their window
 contents directly, using hardware accelerated libraries like libGL, or high
 quality software implementations like those found in Cairo. In the end, what’s
@@ -267,18 +305,18 @@ windows and how their contents are displayed. Rendering is left to clients, and
 system wide memory management interfaces are used to pass buffer handles between
 clients and the compositing manager.</p>
 <p><img src="images/wayland-architecture.png" alt=""></p>
-<p>The figure above illustrates how Wayland clients interact with a Wayland
-server. Note that window management and composition are handled entirely in the
-server, significantly reducing complexity while marginally improving performance
-through reduced context switching. The resulting system is easier to build and
-extend than a similar X system, because often changes need only be made in one
-place. Or in the case of protocol extensions, two (rather than 3 or 4 in the
-X case where window management and/or composition handling may also need to
-be updated).</p>
+<p>The figure above illustrates how Wayland clients interact with a Wayland server.
+Note that window management and composition are handled entirely in the server,
+significantly reducing complexity while marginally improving performance through
+reduced context switching. The resulting system is easier to build and extend
+than a similar X system, because often changes need only be made in one place.
+Or in the case of protocol extensions, two (rather than 3 or 4 in the X case
+where window management and/or composition handling may also need to be
+updated).</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="types-of-compositors"><a class="header" href="#types-of-compositors">Types of Compositors</a></h1>
-<p>Compositors come in different types, depending on which role they
-play in the overall architecture of the OS. For instance, a <a href="#system-compositor">system
+<p>Compositors come in different types, depending on which role they play in the
+overall architecture of the OS. For instance, a <a href="#system-compositor">system
 compositor</a> can be used for booting the system, handling
 multiple user switching, a possible console terminal emulator and so forth. A
 different compositor, a <a href="#session-compositor">session compositor</a> would provide
@@ -290,8 +328,8 @@ compositors to co-exist.</p>
 <p>A system compositor can run from early boot until shutdown. It effectively
 replaces the kernel vt system, and can tie in with the systems graphical boot
 setup and multiseat support.</p>
-<p>A system compositor can host different types of session compositors, and let
-us switch between multiple sessions (fast user switching, or secure/personal
+<p>A system compositor can host different types of session compositors, and let us
+switch between multiple sessions (fast user switching, or secure/personal
 desktop switching).</p>
 <p>A linux implementation of a system compositor will typically use libudev, egl,
 kms, evdev and cairo.</p>
@@ -336,22 +374,22 @@ contents rendered by another client into their window. This is often used for
 applets in a panel, browser plugins and similar. Wayland doesn’t directly allow
 this, but clients can communicate GEM buffer names out-of-band, for example,
 using D-Bus, or command line arguments when the panel launches the applet.
-Another option is to use a nested Wayland instance. For this, the Wayland
-server will have to be a library that the host application links to. The host
+Another option is to use a nested Wayland instance. For this, the Wayland server
+will have to be a library that the host application links to. The host
 application will then pass the Wayland server socket name to the embedded
 application, and will need to implement the Wayland compositor interface. The
-host application composites the client surfaces as part of it’s window, that
-is, in the web page or in the panel. The benefit of nesting the Wayland server
-is that it provides the requests the embedded client needs to inform the host
-about buffer updates and a mechanism for forwarding input events from the host
+host application composites the client surfaces as part of it’s window, that is,
+in the web page or in the panel. The benefit of nesting the Wayland server is
+that it provides the requests the embedded client needs to inform the host about
+buffer updates and a mechanism for forwarding input events from the host
 application.</p>
 <p>An example for this kind of setup is firefox embedding the flash player as a
 kind of special-purpose compositor.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="wayland-architecture"><a class="header" href="#wayland-architecture">Wayland Architecture</a></h1>
 <h2 id="x-vs-wayland-architecture"><a class="header" href="#x-vs-wayland-architecture">X vs. Wayland Architecture</a></h2>
-<p>A good way to understand the Wayland architecture and how it is different from
-X is to follow an event from the input device to the point where the change it
+<p>A good way to understand the Wayland architecture and how it is different from X
+is to follow an event from the input device to the point where the change it
 affects appears on screen.</p>
 <p>This is where we are now with X:</p>
 <p><strong>X architecture diagram</strong></p>
@@ -385,15 +423,15 @@ compositor as a damage event.</p>
 </li>
 <li>
 <p>The damage event tells the compositor that something changed in the window
-and that it has to recomposite the part of the screen where that window
-is visible. The compositor is responsible for rendering the entire screen
+and that it has to recomposite the part of the screen where that window is
+visible. The compositor is responsible for rendering the entire screen
 contents based on its scenegraph and the contents of the X windows. Yet, it
 has to go through the X server to render this.</p>
 </li>
 <li>
 <p>The X server receives the rendering requests from the compositor and either
-copies the compositor back buffer to the front buffer or does a pageflip.
-In the general case, the X server has to do this step so it can account for
+copies the compositor back buffer to the front buffer or does a pageflip. In
+the general case, the X server has to do this step so it can account for
 overlapping windows, which may require clipping and determine whether or not
 it can page flip. However, for a compositor, which is always fullscreen, this
 is another unnecessary context switch.</p>
@@ -402,10 +440,10 @@ is another unnecessary context switch.</p>
 <p>As suggested above, there are a few problems with this approach. The X server
 doesn’t have the information to decide which window should receive the event,
 nor can it transform the screen coordinates to window-local coordinates. And
-even though X has handed responsibility for the final painting of the screen
-to the compositing manager, X still controls the front buffer and modesetting.
-Most of the complexity that the X server used to handle is now available in
-the kernel or self contained libraries (KMS, evdev, mesa, fontconfig, freetype,
+even though X has handed responsibility for the final painting of the screen to
+the compositing manager, X still controls the front buffer and modesetting. Most
+of the complexity that the X server used to handle is now available in the
+kernel or self contained libraries (KMS, evdev, mesa, fontconfig, freetype,
 cairo, Qt etc). In general, the X server is now just a middle man that
 introduces an extra step between applications and the compositor and an extra
 step between the compositor and the hardware.</p>
@@ -488,14 +526,15 @@ small part of the buffer may be different, like a blinking cursor or a spinner.<
 <h2 id="accelerated-gpu-buffer-exchange"><a class="header" href="#accelerated-gpu-buffer-exchange">Accelerated GPU Buffer Exchange</a></h2>
 <p>Clients
 <a href="https://docs.kernel.org/userspace-api/dma-buf-alloc-exchange.html">exchange</a>
-GPU buffers with the compositor as dma-buf file descriptors,
-which are universal handles that are independent of
-any particular rendering API or memory allocator. The
+GPU buffers with the compositor as dma-buf file descriptors, which are universal
+handles that are independent of any particular rendering API or memory
+allocator. The
 <a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/stable/linux-dmabuf/linux-dmabuf-v1.xml">linux-dmabuf-v1</a>
 protocol is used to turn one or more dma-buf FDs into a
 <a href="https://wayland.app/protocols/wayland#wl_buffer">wl_buffer</a>.</p>
 <p>If the client uses the
-<a href="https://docs.vulkan.org/spec/latest/chapters/VK_KHR_surface/wsi.html">Vulkan</a> or
+<a href="https://docs.vulkan.org/spec/latest/chapters/VK_KHR_surface/wsi.html">Vulkan</a>
+or
 <a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_platform_wayland.txt">EGL</a>
 (via
 <a href="https://gitlab.freedesktop.org/wayland/wayland/-/tree/main/egl">wayland-egl</a>)
@@ -533,14 +572,14 @@ and
 <a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_image_dma_buf_import_modifiers.txt">EGL_EXT_image_dma_buf_import_modifiers</a>
 to import the dma-bufs provided by the client into their own Vulkan or EGL
 renderers.</p>
-<p>Clients do not need to wait for the GPU to finish rendering
-before submitting dma-bufs to the compositor. Clients can use the
+<p>Clients do not need to wait for the GPU to finish rendering before submitting
+dma-bufs to the compositor. Clients can use the
 <a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/staging/linux-drm-syncobj/linux-drm-syncobj-v1.xml">linux-drm-syncobj-v1</a>
 protocol to exchange DRM synchronization objects with the compositor. These
 objects are used to asynchronously signal ownership transfer of buffers from
 clients to the compositor and vice versa. The WSIs do this transparently.</p>
-<p>If the linux-drm-syncobj-v1 protocol is not supported
-by the compositor, clients and compositors can use the
+<p>If the linux-drm-syncobj-v1 protocol is not supported by the compositor, clients
+and compositors can use the
 <a href="https://docs.kernel.org/driver-api/dma-buf.html#c.dma_buf_export_sync_file">DMA_BUF_IOCTL_EXPORT_SYNC_FILE</a>
 and
 <a href="https://docs.kernel.org/driver-api/dma-buf.html#c.dma_buf_import_sync_file">DMA_BUF_IOCTL_IMPORT_SYNC_FILE</a>
@@ -549,9 +588,9 @@ ioctls to access and create implicit synchronization barriers.</p>
 <p>Compositors enumerate DRM KMS devices using
 <a href="https://en.wikipedia.org/wiki/Udev">udev</a>. Udev also notifies compositors of
 KMS device and display hotplug events.</p>
-<p>Access to DRM KMS device ioctls is privileged. Since
-compositors usually run as unprivileged applications, they
-typically gain access to a privileged file descriptor using the
+<p>Access to DRM KMS device ioctls is privileged. Since compositors usually run as
+unprivileged applications, they typically gain access to a privileged file
+descriptor using the
 <a href="https://www.freedesktop.org/software/systemd/man/latest/org.freedesktop.login1.html#Session%20Objects">TakeDevice</a>
 method provided by logind.</p>
 <p>Using the file descriptor, compositors use KMS
@@ -570,16 +609,16 @@ uniquely identifies an object on the server. Each object implements an interface
 and the requests include an opcode that identifies which method in the interface
 to invoke.</p>
 <p>The protocol is message-based. A message sent by a client to the server is
-called request. A message from the server to a client is called event. A
-message has a number of arguments, each of which has a certain type (see <a href="#wire-format">Wire
+called request. A message from the server to a client is called event. A message
+has a number of arguments, each of which has a certain type (see <a href="#wire-format">Wire
 Format</a> for a list of argument types).</p>
 <p>Additionally, the protocol can specify <code>enum</code>s which associate names to specific
 numeric enumeration values. These are primarily just descriptive in nature: at
 the wire format level enums are just integers. But they also serve a secondary
 purpose to enhance type safety or otherwise add context for use in language
-bindings or other such code. This latter usage is only supported so long as
-code written before these attributes were introduced still works after; in
-other words, adding an enum should not break API, otherwise it puts backwards
+bindings or other such code. This latter usage is only supported so long as code
+written before these attributes were introduced still works after; in other
+words, adding an enum should not break API, otherwise it puts backwards
 compatibility at risk.</p>
 <p><code>enum</code>s can be defined as just a set of integers, or as bitfields. This is
 specified via the <code>bitfield</code> boolean attribute in the <code>enum</code> definition. If this
@@ -635,8 +674,8 @@ the request/event opcode.</p>
 </li>
 </ul>
 <p>The payload describes the request/event arguments. Every argument is always
-aligned to 32-bits. Where padding is required, the value of padding bytes
-is undefined. There is no prefix that describes the type, but it is inferred
+aligned to 32-bits. Where padding is required, the value of padding bytes is
+undefined. There is no prefix that describes the type, but it is inferred
 implicitly from the xml specification.</p>
 <p>The representation of argument types are as follows:</p>
 <dl>
@@ -657,8 +696,8 @@ padding to a 32-bit boundary. A null value is represented with a length of
 <dd>32-bit object ID. A null value is represented with an ID of 0.</dd>
 <dt id="new_id"><a class="header" href="#new_id">new_id</a></dt>
 <dd>The 32-bit object ID. Generally, the interface used for the new object is
-inferred from the xml, but in the case where it’s not specified, a new_id
-is preceded by a <code>string</code> specifying the interface name, and a <code>uint</code>
+inferred from the xml, but in the case where it’s not specified, a new_id is
+preceded by a <code>string</code> specifying the interface name, and a <code>uint</code>
 specifying the version.</dd>
 <dt id="array"><a class="header" href="#array">array</a></dt>
 <dd>Starts with 32-bit array size in bytes, followed by the array contents
@@ -677,9 +716,9 @@ messages to process, as file descriptors may arrive earlier or later than the
 corresponding data bytes.</p>
 <h2 id="versioning"><a class="header" href="#versioning">Versioning</a></h2>
 <p>Every interface is versioned and every protocol object implements a particular
-version of its interface. For global objects, the maximum version supported
-by the server is advertised with the global and the actual version of the
-created protocol object is determined by the version argument passed to
+version of its interface. For global objects, the maximum version supported by
+the server is advertised with the global and the actual version of the created
+protocol object is determined by the version argument passed to
 wl_registry.bind(). For objects that are not globals, their version is inferred
 from the object that created them.</p>
 <p>In order to keep things sane, this has a few implications for interface
@@ -697,8 +736,8 @@ track.</p>
 <li>
 <p>A global interface’s version number acts like a counter for all of its child
 interfaces. Whenever a child interface gets modified, the global parent’s
-interface version number also increases (see above). The child interface
-then takes on the same version number as the new version of its parent global
+interface version number also increases (see above). The child interface then
+takes on the same version number as the new version of its parent global
 interface.</p>
 </li>
 </ul>
@@ -706,10 +745,10 @@ interface.</p>
 children, wl_surface and wl_region. As of wayland version 1.2, wl_surface and
 wl_compositor are both at version 3. If something is added to the wl_region
 interface, both wl_region and wl_compositor will get bumpped to version 4. If,
-afterwards, wl_surface is changed, both wl_compositor and wl_surface will be
-at version 5. In this way the global interface version is used as a sort of
-“counter” for all of its child interfaces. This makes it very simple to know
-the version of the child given the version of its parent. The child is at the
+afterwards, wl_surface is changed, both wl_compositor and wl_surface will be at
+version 5. In this way the global interface version is used as a sort of
+“counter” for all of its child interfaces. This makes it very simple to know the
+version of the child given the version of its parent. The child is at the
 highest possible interface version that is less than or equal to its parent’s
 version.</p>
 <p>It is worth noting a particular exception to the above versioning scheme. The
@@ -737,9 +776,9 @@ the compositor and the fd is already opened.</p>
 object (either client or server). IDs allocated by the client are in the range
 [1, 0xfeffffff] while IDs allocated by the server are in the range [0xff000000,
 0xffffffff]. The 0 ID is reserved to represent a null or non-existent object.
-For efficiency purposes, the IDs are densely packed in the sense that the
-ID N will not be used until N-1 has been used. This ordering is not merely
-a guideline, but a strict requirement, and there are implementations of the
+For efficiency purposes, the IDs are densely packed in the sense that the ID N
+will not be used until N-1 has been used. This ordering is not merely a
+guideline, but a strict requirement, and there are implementations of the
 protocol that rigorously enforce this rule, including the ubiquitous libwayland.</p>
 <h2 id="compositor"><a class="header" href="#compositor">Compositor</a></h2>
 <p>The compositor is a global object, advertised at connect time.</p>
@@ -764,15 +803,15 @@ But there is no way for clients to take an explicit grab. Instead, surfaces can
 be mapped as ‘popup’, which combines transient window semantics with a pointer
 grab.</p>
 <p>To avoid race conditions, input events that are likely to trigger further
-requests (such as button presses, key events, pointer motions) carry
-serial numbers, and requests such as wl_surface.set_popup require that the
-serial number of the triggering event is specified. The server maintains a
+requests (such as button presses, key events, pointer motions) carry serial
+numbers, and requests such as wl_surface.set_popup require that the serial
+number of the triggering event is specified. The server maintains a
 monotonically increasing counter for these serial numbers.</p>
-<p>Input events also carry timestamps with millisecond granularity. Their base
-is undefined, so they can’t be compared against system time (as obtained with
-clock_gettime or gettimeofday). They can be compared with each other though,
-and for instance be used to identify sequences of button presses as double or
-triple clicks.</p>
+<p>Input events also carry timestamps with millisecond granularity. Their base is
+undefined, so they can’t be compared against system time (as obtained with
+clock_gettime or gettimeofday). They can be compared with each other though, and
+for instance be used to identify sequences of button presses as double or triple
+clicks.</p>
 <p>See <a href="https://wayland.app/protocols/wayland#wl_seat">wl_seat</a> for the protocol
 description.</p>
 <p>Talk about:</p>
@@ -800,11 +839,11 @@ To the client this will look like it successfully set the pointer image.</p>
 <p>The compositor will revert the pointer image back to a default image when no
 surface has the pointer focus for that device.</p>
 <p>What if the pointer moves from one window which has set a special pointer image
-to a surface that doesn’t set an image in response to the motion event? The
-new surface will be stuck with the special pointer image. We can’t just revert
-the pointer image on leaving a surface, since if we immediately enter a surface
-that sets a different image, the image will flicker. If a client does not set
-a pointer image when the pointer enters a surface, the pointer stays with the
+to a surface that doesn’t set an image in response to the motion event? The new
+surface will be stuck with the special pointer image. We can’t just revert the
+pointer image on leaving a surface, since if we immediately enter a surface that
+sets a different image, the image will flicker. If a client does not set a
+pointer image when the pointer enters a surface, the pointer stays with the
 image set by the last surface that changed it, possibly even hidden. Such a
 client is likely just broken.</p>
 <h2 id="output"><a class="header" href="#output">Output</a></h2>
@@ -857,29 +896,29 @@ event on the sending client with the same arguments, and the latter client is
 expected to write its data to the given file descriptor using the chosen mime
 type.</p>
 <h3 id="data-devices"><a class="header" href="#data-devices">Data devices</a></h3>
-<p>Data devices glue data sources and offers together. A data device is
-associated with a <code>wl_seat</code> and is obtained by the clients using the
+<p>Data devices glue data sources and offers together. A data device is associated
+with a <code>wl_seat</code> and is obtained by the clients using the
 <code>wl_data_device_manager</code> factory object, which is also responsible for creating
 data sources.</p>
 <p>Clients are informed of new data offers through the <code>wl_data_device.data_offer</code>
 event. After this event is generated the data offer will advertise the available
-mime types. New data offers are introduced prior to their use for copy-paste
-or drag-and-drop.</p>
+mime types. New data offers are introduced prior to their use for copy-paste or
+drag-and-drop.</p>
 <h4 id="selection"><a class="header" href="#selection">Selection</a></h4>
 <p>Each data device has a selection data source. Clients create a data source
-object using the device manager and may set it as the current selection for
-a given data device. Whenever the current selection changes, the client with
+object using the device manager and may set it as the current selection for a
+given data device. Whenever the current selection changes, the client with
 keyboard focus receives a <code>wl_data_device.selection</code> event. This event is also
 generated on a client immediately before it receives keyboard focus.</p>
 <p>The data offer is introduced with <code>wl_data_device.data_offer</code> event before the
 selection event.</p>
 <h4 id="drag-and-drop"><a class="header" href="#drag-and-drop">Drag and Drop</a></h4>
 <p>A drag-and-drop operation is started using the <code>wl_data_device.start_drag</code>
-request. This requests causes a pointer grab that will generate enter,
-motion and leave events on the data device. A data source is supplied as
-argument to start_drag, and data offers associated with it are supplied to
-clients surfaces under the pointer in the <code>wl_data_device.enter</code> event. The
-data offer is introduced to the client prior to the enter event with the
+request. This requests causes a pointer grab that will generate enter, motion
+and leave events on the data device. A data source is supplied as argument to
+start_drag, and data offers associated with it are supplied to clients surfaces
+under the pointer in the <code>wl_data_device.enter</code> event. The data offer is
+introduced to the client prior to the enter event with the
 <code>wl_data_device.data_offer</code> event.</p>
 <p>Clients are expected to provide feedback to the data sending client by calling
 the <code>wl_data_offer.accept</code> request with a mime type it accepts. If none of the
@@ -906,8 +945,8 @@ server). A message can have arguments. All arguments are typed.</p>
 <p><code>protocol</code> is the root element in a Wayland protocol XML file. Code generation
 tools may optionally use the protocol <code>name</code> in API symbol names. The XML file
 name should be similar to the protocol name.</p>
-<p>The description element should be used to document the intended purpose of
-the protocol, give an overview, and give any development stage notices if
+<p>The description element should be used to document the intended purpose of the
+protocol, give an overview, and give any development stage notices if
 applicable.</p>
 <p>The copyright element should be used to indicate the copyrights and the license
 of the XML file.</p>
@@ -961,18 +1000,18 @@ also inherits the factory object’s interface version number. This number defin
 the interface version of the new object. The factory object is referred to as
 <em>the parent object</em> and the factory interface is referred to as <em>the parent
 interface</em>. This forms the ancestry tree of interfaces.</p>
-<p>When the factory interface does not define the new object’s
-interface, both the interface name and the version must be
-communicated explicitly. The foremost example of this is
+<p>When the factory interface does not define the new object’s interface, both the
+interface name and the version must be communicated explicitly. The foremost
+example of this is
 <a href="https://wayland.app/protocols/wayland#wl_registry:request:bind">wl_registry.bind</a>.
-In this case the terms “parent” or “ancestor” are
-not used. Interfaces that are advertised through
+In this case the terms “parent” or “ancestor” are not used. Interfaces that are
+advertised through
 <a href="https://wayland.app/protocols/wayland#wl_registry">wl_registry</a> are called
 <em>global interfaces</em>, or globals for short.</p>
-<p>If objects having the interface can cause protocol errors, the
-protocol error codes must be defined within the interface with an
-enum element with its <code>name</code> set to <code>"error"</code>. Protocol error codes
-are always specific to the interface of the object referred to in
+<p>If objects having the interface can cause protocol errors, the protocol error
+codes must be defined within the interface with an enum element with its <code>name</code>
+set to <code>"error"</code>. Protocol error codes are always specific to the interface of
+the object referred to in
 <a href="https://wayland.app/protocols/wayland#wl_display:event:error">wl_display.error</a>.</p>
 <p>The description element should be used to describe the purpose and the general
 usage of the interface.</p>
@@ -980,8 +1019,8 @@ usage of the interface.</p>
 <dl>
 <dt id="namecname-1"><a class="header" href="#namecname-1"><code>name</code>=“<code>cname</code>”</a></dt>
 <dd>
-<p>The name of the interface. cname-requirements The name must be unique in
-the protocol, and preferably it should also be globally unique to avoid API
+<p>The name of the interface. cname-requirements The name must be unique in the
+protocol, and preferably it should also be globally unique to avoid API
 conflicts in language bindings of multiple protocols.</p>
 <p>Protocols to be included in
 <a href="https://gitlab.freedesktop.org/wayland/wayland-protocols">wayland-protocols</a>
@@ -995,17 +1034,17 @@ zero. An interface element defines all versions of the interface from 1 to
 <code>V</code> inclusive. The contents of each interface version are defined in each of
 the request, event, enum and entry elements using the attributes <code>since</code> and
 <code>deprecated-since</code>, and in the specification text.</p>
-<p>When an interface is extended, the version number must be incremented on
-all the interfaces part of the same interface ancestry tree. The exception
-to this rule are interfaces which are forever stuck to version 1, which
-is usually caused by having multiple parent interfaces with independent
+<p>When an interface is extended, the version number must be incremented on all
+the interfaces part of the same interface ancestry tree. The exception to
+this rule are interfaces which are forever stuck to version 1, which is
+usually caused by having multiple parent interfaces with independent
 ancestor global interfaces.</p>
 <p>A protocol object may have any defined version of the interface. The version
 of the object is determined at runtime either by inheritance from another
 protocol object or explicitly.</p>
 <p>It is possible for a protocol object to have a version higher than defined
-by its interface. This may happen when the interface is stuck at version
-1 as per above. It may also happen when a protocol XML file has not been
+by its interface. This may happen when the interface is stuck at version 1
+as per above. It may also happen when a protocol XML file has not been
 thoroughly updated as required. In such cases the object shall function as
 with the highest defined interface version.</p>
 </dd>
@@ -1021,8 +1060,8 @@ interface element. Therefore the only backwards-compatible way to add requests
 to an interface is to add them to the end. Any event elements do not interfere
 with request opcode assignments.</p>
 <p>The arg elements declare the request’s arguments. There can be 0 to 20 arguments
-for a request. The order of arg inside the request element defines the order
-of the arguments on the wire. All declared arguments are mandatory, and extra
+for a request. The order of arg inside the request element defines the order of
+the arguments on the wire. All declared arguments are mandatory, and extra
 arguments are not allowed on the wire.</p>
 <p>The description element should be used to document the request.</p>
 <p><strong>Required attributes</strong></p>
@@ -1052,9 +1091,9 @@ sending events before processing the destroy request.</p>
 <dd>
 <p><code>S</code> must be an integer greater than zero. If <code>since</code> is not specified,
 <code>since="1"</code> is assumed.</p>
-<p>This request was added in interface <code>version</code> <code>S</code>. The request does
-not exist if the protocol object has a bound version smaller than
-<code>S</code>. Attempts to use it in such a case shall raise the protocol error
+<p>This request was added in interface <code>version</code> <code>S</code>. The request does not
+exist if the protocol object has a bound version smaller than <code>S</code>. Attempts
+to use it in such a case shall raise the protocol error
 <code>wl_display.error.invalid_method</code>.</p>
 </dd>
 <dt id="deprecated-sinced"><a class="header" href="#deprecated-sinced"><code>deprecated-since</code>=“<code>D</code>”</a></dt>
@@ -1103,8 +1142,8 @@ the protocol object it is sent on. Protocol IPC libraries may use this for
 bookkeeping protocol object lifetimes.</p>
 <blockquote class="blockquote-tag blockquote-tag-warning">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
-<p>Destructor events are an underdeveloped feature in Wayland. They can
-be used only on client-created protocol objects, and it is the protocol
+<p>Destructor events are an underdeveloped feature in Wayland. They can be
+used only on client-created protocol objects, and it is the protocol
 designer’s responsibility to design such a message exchange that race
 conditions cannot occur. The main problem would be a client sending a
 request at the same time as the server is sending a destructor event. The
@@ -1185,10 +1224,10 @@ one <code>new_id</code> argument.</p>
 <p>If <code>interface</code> is specified, the new protocol object shall have the
 specified interface, and the new object’s (interface) version shall be
 the version of the object on which the request or event is being sent.</p>
-<p>If <code>interface</code> is not specified, the request shall implicitly
-have two additional arguments: A <code>string</code> for an interface
-name, and a <code>uint</code> for the new object’s version. Leaving
-the interface unspecified is reserved for special use,
+<p>If <code>interface</code> is not specified, the request shall implicitly have two
+additional arguments: A <code>string</code> for an interface name, and a <code>uint</code> for
+the new object’s version. Leaving the interface unspecified is reserved
+for special use,
 <a href="https://wayland.app/protocols/wayland#wl_registry:request:bind">wl_registry.bind</a>
 for example.</p>
 <blockquote class="blockquote-tag blockquote-tag-note">
@@ -1215,9 +1254,9 @@ if a description is used.</p>
 </dd>
 <dt id="interfaceiface"><a class="header" href="#interfaceiface"><code>interface</code>=“<code>iface</code>”</a></dt>
 <dd>
-<p>If given, <code>iface</code> must be the <code>name</code> of some interface, and <code>type</code> of
-this argument must be either <code>"object"</code> or <code>"new_id"</code>. This indicates that
-the existing or new object must have the interface <code>iface</code>. Use for other
+<p>If given, <code>iface</code> must be the <code>name</code> of some interface, and <code>type</code> of this
+argument must be either <code>"object"</code> or <code>"new_id"</code>. This indicates that the
+existing or new object must have the interface <code>iface</code>. Use for other
 argument types is forbidden.</p>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
@@ -1235,8 +1274,8 @@ meaning it is illegal to send a null value. Can be used only when <code>type</co
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
 <p>Even though this attribute can be used to forbid a compositor from sending
-a null object as an event argument, an IPC library implementation may
-not protect the client from receiving a null object. This can happen with
+a null object as an event argument, an IPC library implementation may not
+protect the client from receiving a null object. This can happen with
 libwayland-client when the client has destroyed the protocol object before
 dispatching an event that referred to it in an argument.</p>
 </blockquote>
@@ -1246,15 +1285,15 @@ dispatching an event that referred to it in an argument.</p>
 <p>If specified, indicates that the argument value should come from the enum
 named <code>enum-cname-suffix</code>. If the enumeration is a bitfield, then <code>type</code>
 must be <code>"uint"</code>. Otherwise <code>type</code> must be either <code>"uint"</code> or <code>"int"</code>.</p>
-<p>The name <code>enum-cname-suffix</code> refers to an enum in the same interface
-by default. If it is necessary to refer to an enumeration from another
+<p>The name <code>enum-cname-suffix</code> refers to an enum in the same interface by
+default. If it is necessary to refer to an enumeration from another
 interface, the interface name can be given with a period:</p>
 <pre><code>`enum`="`iface`.`enum-cname-suffix`"
 </code></pre>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>This attribute alone does not automatically restrict the legal values
-for this argument. If values from outside of the enumeration need to be
+<p>This attribute alone does not automatically restrict the legal values for
+this argument. If values from outside of the enumeration need to be
 forbidden, that must be specified explicitly in the documentation.</p>
 <p>A common design pattern is to have the server advertise the supported
 enumeration or bit values with events and explicitly forbid clients from
@@ -1273,9 +1312,9 @@ syntactic construct to give names to arbitrary integer constants. Each constant
 is listed as an entry with its name. There are two types of enumerations:
 regular enumerations and bitfields.</p>
 <p>Regular enumerations do not use <code>bitfield</code> attribute, or they set it to
-<code>"false"</code>. The set of pre-defined values that belong to a regular enumeration
-is exactly the set of values listed as entry elements after the protocol
-object version is taken into account. See the entry attributes <code>since</code> and
+<code>"false"</code>. The set of pre-defined values that belong to a regular enumeration is
+exactly the set of values listed as entry elements after the protocol object
+version is taken into account. See the entry attributes <code>since</code> and
 <code>deprecated-since</code>.</p>
 <p>Bitfields set <code>bitfield</code> to <code>"true"</code>. The set of values that belong to a
 bitfield enumeration are all the values that can be formed by the bitwise-or
@@ -1352,31 +1391,31 @@ them all away would be prohibitive. Therefore a Wayland compositor often needs
 to support running X11 applications.</p>
 <p>X11 and Wayland are different enough that there is no “simple” way to translate
 between them. Most of X11 is uninteresting to a Wayland compositor. That,
-combined with the gigantic implementation effort needed to support X11, makes
-it intractable to just write X11 support directly in a Wayland compositor. The
+combined with the gigantic implementation effort needed to support X11, makes it
+intractable to just write X11 support directly in a Wayland compositor. The
 implementation would be nothing short of a real X11 server.</p>
-<p>Therefore, Wayland compositors should use Xwayland, the X11 server that lives
-in the Xorg server source code repository and shares most of the implementation
+<p>Therefore, Wayland compositors should use Xwayland, the X11 server that lives in
+the Xorg server source code repository and shares most of the implementation
 with the Xorg server. Xwayland is a complete X11 server, just like Xorg is, but
 instead of driving the displays and opening input devices, it acts as a Wayland
 client. The rest of this chapter talks about how Xwayland works.</p>
-<p>For integration and architecture reasons, while Xwayland is a Wayland client
-of the Wayland compositor, the Wayland compositor is an X11 client of Xwayland.
+<p>For integration and architecture reasons, while Xwayland is a Wayland client of
+the Wayland compositor, the Wayland compositor is an X11 client of Xwayland.
 This circular dependency requires special care from the Wayland compositor.</p>
 <h2 id="two-modes-for-foreign-windows"><a class="header" href="#two-modes-for-foreign-windows">Two Modes for Foreign Windows</a></h2>
 <p>In general, windows from a foreign window system can be presented in one of two
 ways: rootless and rootful (not rootless).</p>
-<p>In rootful mode, the foreign window system as a whole is represented as a
-window (or more) of its own. You have a native window, inside which all the
-foreign windows are. The advantage of this approach in Xwayland’s case is that
-you can run your favourite X11 window manager to manage your X11 applications.
-The disadvantage is that the foreign windows do not integrate with the native
+<p>In rootful mode, the foreign window system as a whole is represented as a window
+(or more) of its own. You have a native window, inside which all the foreign
+windows are. The advantage of this approach in Xwayland’s case is that you can
+run your favourite X11 window manager to manage your X11 applications. The
+disadvantage is that the foreign windows do not integrate with the native
 desktop. Therefore this mode is not usually used.</p>
-<p>In rootless mode, each foreign window is a first-class resident among the
-native windows. Foreign windows are not confined inside a native window but
-act as if they were native windows. The advantage is that one can freely stack
-and mix native and foreign windows, which is not possible in rootful mode.
-The disadvantage is that this mode is harder to implement and fundamental
+<p>In rootless mode, each foreign window is a first-class resident among the native
+windows. Foreign windows are not confined inside a native window but act as if
+they were native windows. The advantage is that one can freely stack and mix
+native and foreign windows, which is not possible in rootful mode. The
+disadvantage is that this mode is harder to implement and fundamental
 differences in window systems may prevent some things from working. With
 rootless Xwayland, the Wayland compositor must take the role as the X11 window
 manager, and one cannot use any other X11 window manager in its place.</p>
@@ -1389,8 +1428,8 @@ cooperation with a Wayland compositor as follows:</p>
 <p>An X11 application connects to Xwayland just like it would connect to any X
 server. Xwayland processes all the X11 requests. On the other end, Xwayland is a
 Wayland client that connects to the Wayland compositor.</p>
-<p>The X11 window manager (XWM) is an integral part of the Wayland compositor.
-XWM uses the usual X11 window management protocol to manage all X11 windows in
+<p>The X11 window manager (XWM) is an integral part of the Wayland compositor. XWM
+uses the usual X11 window management protocol to manage all X11 windows in
 Xwayland. Most importantly, XWM acts as a bridge between Xwayland window state
 and the Wayland compositor’s window manager (WWM). This way WWM can manage all
 windows, both native Wayland and X11 (Xwayland) windows. This is very important
@@ -1407,11 +1446,11 @@ unless the Wayland compositor specifically chooses to break the X11 client
 intercommunications by spawning application specific Xwayland instances. X11
 clients are naturally isolated from Wayland clients.</p>
 <p>Xwayland compatibility compared to a native X server will probably never reach
-100%. Desktop environment (DE) components, specifically X11 window managers,
-are practically never supported. An X11 window manager would not know about
-native Wayland windows, so it could manage only X11 windows. On the other hand,
-there must be an XWM that reserves the exclusive window manager role so that
-the Wayland compositor could show the X11 windows appropriately. For other DE
+100%. Desktop environment (DE) components, specifically X11 window managers, are
+practically never supported. An X11 window manager would not know about native
+Wayland windows, so it could manage only X11 windows. On the other hand, there
+must be an XWM that reserves the exclusive window manager role so that the
+Wayland compositor could show the X11 windows appropriately. For other DE
 components, like pagers and panels, adding the necessary interfaces to support
 them in WWM through XWM is often considered not worthwhile.</p>
 <h2 id="x-window-manager-xwm"><a class="header" href="#x-window-manager-xwm">X Window Manager (XWM)</a></h2>
@@ -1419,18 +1458,18 @@ them in WWM through XWM is often considered not worthwhile.</p>
 compositor is just like any other window manager. The difference is mostly in
 which process it resides in, and the few extra conventions in the X11 protocol
 to support Wayland window management (WWM) specifically.</p>
-<p>There are two separate asynchronous communication channels between Xwayland
-and a Wayland compositor: one uses the Wayland protocol, and the other one,
-solely for XWM, uses X11 protocol. This setting demands great care from the XWM
+<p>There are two separate asynchronous communication channels between Xwayland and
+a Wayland compositor: one uses the Wayland protocol, and the other one, solely
+for XWM, uses X11 protocol. This setting demands great care from the XWM
 implementation to avoid (random) deadlocks with Xwayland. It is often nearly
-impossible to prove that synchronous or blocking X11 calls from XWM cannot
-cause a deadlock, and therefore it is strongly recommended to make all X11
+impossible to prove that synchronous or blocking X11 calls from XWM cannot cause
+a deadlock, and therefore it is strongly recommended to make all X11
 communications asynchronous. All Wayland communications are already asynchronous
 by design.</p>
 <h3 id="window-identification"><a class="header" href="#window-identification">Window identification</a></h3>
 <p>In Xwayland, an X11 window may have a corresponding wl_surface object in
-Wayland. The wl_surface object is used for input and output: it is referenced
-by input events and used to provide the X11 window content to the Wayland
+Wayland. The wl_surface object is used for input and output: it is referenced by
+input events and used to provide the X11 window content to the Wayland
 compositor. The X11 window and the wl_surface live in different protocol
 streams, and they need to be matched for XWM to do its job.</p>
 <p>When Xwayland creates a wl_surface on Wayland, it will also send an X11
@@ -1447,13 +1486,13 @@ applied immediately but are instead double-buffered to allow atomic changes.
 These double-buffered changes are committed through the wl_surface.commit
 request, which creates a Content Update.</p>
 <p>Content Updates encapsulate all double-buffered state changes and can be applied
-by the compositor. The complexity arises when considering subsurfaces, which
-can operate in synchronized mode. When a subsurface is synchronized, its Content
+by the compositor. The complexity arises when considering subsurfaces, which can
+operate in synchronized mode. When a subsurface is synchronized, its Content
 Updates must be applied atomically together with the parent surface’s state.
 This synchronization can extend through an entire tree of subsurfaces, where
 child subsurfaces inherit the synchronized behavior from their parents.</p>
-<p>Historically, Content Updates from synchronized subsurfaces were merged into
-the pending state of the parent surface on commit. However, the introduction of
+<p>Historically, Content Updates from synchronized subsurfaces were merged into the
+pending state of the parent surface on commit. However, the introduction of
 constraints—which can defer the application of Content Updates—necessitated a
 more sophisticated model. This led to the implementation of per-surface queues
 of Content Updates, with dependencies between Content Updates across different
@@ -1515,119 +1554,181 @@ constraints, and transitioning from a sync subsurface to a desync one.</p>
 <p>In all the examples below, the surface T1 refers to a toplevel surface, SS1
 refers to a sub-surface which is a child of T1, and SS2 refers to a sub-surface
 which is a child of SS1.</p>
-<p><strong>Legend</strong></p>
+<h3 id="legend"><a class="header" href="#legend">Legend</a></h3>
 <p><img src="images/content-updates/content-update-legend.png" alt=""></p>
-<p><strong>Simple Desynchronized Case</strong></p>
-<p><img src="images/content-updates/simple-desynchronized-state-1.png" alt=""></p>
+<h3 id="simple-desynchronized-case"><a class="header" href="#simple-desynchronized-case">Simple Desynchronized Case</a></h3>
+<ol>
+<li>
 <p>SS2 is effectively desynchronized and commits. This results in the
 desynchronized content update (DCU) <em>1</em>.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-2.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-1.png" alt=""></p>
+</li>
+<li>
 <p>DCU <em>1</em> is a candidate, and the candidate DAG reachable from DCU <em>1</em> is only DCU
 <em>1</em> itself. DCU <em>1</em> and thus the candidate DAG does not have any constraints and
 can be applied.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-3.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-2.png" alt=""></p>
+</li>
+<li>
 <p>The content updates of the candidate DAG get applied to the surface atomically.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-4.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-3.png" alt=""></p>
+</li>
+<li>
 <p>T1 commits a DCU with a <em>buffer-sync</em> constraint. It is a candidate but its DAG
 can’t be applied because it contains a constraint.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-5.png" alt=""></p>
-<p>T1 commits another CU (DCU <em>3</em>) which is added at the end of the queue,
-with a dependency to the previous CU (DCU <em>2</em>). Both DCU <em>2</em> and DCU <em>3</em> are
+<p><img src="images/content-updates/simple-desynchronized-state-4.png" alt=""></p>
+</li>
+<li>
+<p>T1 commits another CU (DCU <em>3</em>) which is added at the end of the queue, with a
+dependency to the previous CU (DCU <em>2</em>). Both DCU <em>2</em> and DCU <em>3</em> are
 candidates, but both DAGs contain DCU <em>2</em> with a constraint, and can’t be
 applied.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-6.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-5.png" alt=""></p>
+</li>
+<li>
 <p>When the constraint gets cleared, both DAGs can be applied to the surface
 atomitcally (either only <em>2</em>, or <em>2</em> and <em>3</em>).</p>
-<p><strong>Simple Synchronized Case</strong></p>
-<p><img src="images/content-updates/simple-synchronized-state-1.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-6.png" alt=""></p>
+</li>
+</ol>
+<h3 id="simple-synchronized-case"><a class="header" href="#simple-synchronized-case">Simple Synchronized Case</a></h3>
+<ol>
+<li>
 <p>SS1 and SS2 are effectively synchronized. SS2 commits SCU <em>1</em>.</p>
-<p><img src="images/content-updates/simple-synchronized-state-2.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-1.png" alt=""></p>
+</li>
+<li>
 <p>SS1 commits SCU <em>2</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in its
 queue, which is not reachable. This creates a dependency from SCU <em>2</em> to SCU
 <em>1</em>.</p>
-<p><img src="images/content-updates/simple-synchronized-state-3.png" alt=""></p>
-<p>SS1 commits SCU <em>3</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in
-its queue, which is already reachable by SCU <em>2</em>. No dependency to SCU <em>1</em> is
+<p><img src="images/content-updates/simple-synchronized-state-2.png" alt=""></p>
+</li>
+<li>
+<p>SS1 commits SCU <em>3</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in its
+queue, which is already reachable by SCU <em>2</em>. No dependency to SCU <em>1</em> is
 created. A dependency to the previous CU of the same queue (SCU <em>2</em>) is created.</p>
-<p><img src="images/content-updates/simple-synchronized-state-4.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-3.png" alt=""></p>
+</li>
+<li>
 <p>T1 commit DCU <em>4</em>. It is a candidate, its DAG does not contain any constraint
 and it can be applied.</p>
-<p><img src="images/content-updates/simple-synchronized-state-5.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-4.png" alt=""></p>
+</li>
+<li>
 <p>The DAG gets applied to the surfaces atomically.</p>
-<p><strong>Complex Synchronized Subsurface Case 1</strong></p>
-<p><img src="images/content-updates/sync-subsurf-case1-1.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-5.png" alt=""></p>
+</li>
+</ol>
+<h3 id="complex-synchronized-subsurface-case-1"><a class="header" href="#complex-synchronized-subsurface-case-1">Complex Synchronized Subsurface Case 1</a></h3>
+<ol>
+<li>
 <p>Every DCU (<em>1</em> and <em>6</em>) contain CUs with constraints in their candidate DAG</p>
-<p><img src="images/content-updates/sync-subsurf-case1-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-1.png" alt=""></p>
+</li>
+<li>
 <p>Waiting until the <em>buffer-sync</em> constrain on CU <em>1</em> is cleared, the candidate
 DAG of CU <em>1</em> does not contain constraints and can be applied</p>
-<p><img src="images/content-updates/sync-subsurf-case1-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-2.png" alt=""></p>
+</li>
+<li>
 <p>That leaves the candidate DAG of CU <em>6</em> which still contains another CU with a
 <em>buffer-sync</em> constrain</p>
-<p><img src="images/content-updates/sync-subsurf-case1-4.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-3.png" alt=""></p>
+</li>
+<li>
 <p>Waiting until the <em>buffer-sync</em> constrain on CU <em>6</em> is cleared, the candidate
 DAG of <em>6</em> does not contain CUs with constraints and can be applied.</p>
-<p><img src="images/content-updates/sync-subsurf-case1-5.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-4.png" alt=""></p>
+</li>
+<li>
 <p>There is no DCU left and no constraint remaining. Nothing more can be applied
 without a new CU.</p>
-<p><strong>Complex Synchronized Subsurface Case 2</strong></p>
-<p><img src="images/content-updates/sync-subsurf-case2-1.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-5.png" alt=""></p>
+</li>
+</ol>
+<h3 id="complex-synchronized-subsurface-case-2"><a class="header" href="#complex-synchronized-subsurface-case-2">Complex Synchronized Subsurface Case 2</a></h3>
+<ol>
+<li>
 <p>Both DCUs (<em>1</em> and <em>6</em>) have a reachable DAG containing CU <em>1</em> with a constraint</p>
-<p><img src="images/content-updates/sync-subsurf-case2-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case2-1.png" alt=""></p>
+</li>
+<li>
 <p>Waiting until the <em>buffer-sync</em> constrain on <em>1</em> is cleared, both DAGs contain
 no CU with constraints and can be applied in any order</p>
-<p><img src="images/content-updates/sync-subsurf-case2-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case2-2.png" alt=""></p>
+</li>
+<li>
 <p>That leaves the same state as in the previous case</p>
-<p><strong>Synchronized to Desynchronized Subsurface</strong></p>
-<p><img src="images/content-updates/sync-to-desync-subsurf-1.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case2-3.png" alt=""></p>
+</li>
+</ol>
+<h3 id="synchronized-to-desynchronized-subsurface"><a class="header" href="#synchronized-to-desynchronized-subsurface">Synchronized to Desynchronized Subsurface</a></h3>
+<ol>
+<li>
 <p>There is one DCU (<em>4</em>) with its reachable DAG that cannot be applied because CU
 <em>4</em> contains a constraint</p>
-<p><img src="images/content-updates/sync-to-desync-subsurf-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-1.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS1</em> transitions from effectively synchronized to effectively
 desynchronized. SCU <em>2</em> is reachable by DCU <em>4</em> so nothing changes.</p>
-<p><img src="images/content-updates/sync-to-desync-subsurf-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-2.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS1</em> provides a new DCU (<em>5</em>) but because the CU before (<em>2</em>) is a
 Synchronized CU, it is not a candidate</p>
-<p><strong>Synchronized to Desynchronized Transition</strong></p>
-<p><img src="images/content-updates/sync-to-desync-transition-1.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-3.png" alt=""></p>
+</li>
+</ol>
+<h3 id="synchronized-to-desynchronized-transition"><a class="header" href="#synchronized-to-desynchronized-transition">Synchronized to Desynchronized Transition</a></h3>
+<ol>
+<li>
 <p>There are four SCUs and all surfaces are effectively synchronized.</p>
-<p><img src="images/content-updates/sync-to-desync-transition-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-transition-1.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS1</em> transitions to effectively desynchronized and SCU <em>2</em> becomes a
 DCU because it is not reachable from a DCU</p>
-<p><img src="images/content-updates/sync-to-desync-transition-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-transition-2.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS2</em> transitions to effectively desynchronized. SCUs <em>3</em> and <em>4</em> become
 DCUs because they are not reachable from a DCU. SCU <em>1</em> does not change because
 it is reachable by DCU <em>2</em>.</p>
+<p><img src="images/content-updates/sync-to-desync-transition-3.png" alt=""></p>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="color-management"><a class="header" href="#color-management">Color management</a></h1>
 <h2 id="overview-2"><a class="header" href="#overview-2">Overview</a></h2>
-<p>Color management in Wayland considers only displays. All pictures in Wayland
-are always display-referred, meaning that the pixel values are intended
-as-is for some specific display where they would produce the light emissions
+<p>Color management in Wayland considers only displays. All pictures in Wayland are
+always display-referred, meaning that the pixel values are intended as-is for
+some specific display where they would produce the light emissions
 (<a href="https://cie.co.at/eilvterm/17-23-002">stimuli</a>) the picture’s author desired.
 Wayland does not support displaying “raw” camera or scanner images as they are
 not display-referred, nor are they even pictures without complex and subjective
 processing.</p>
 <p>Stimuli — the picture itself — are only half of the picture reproduction. The
 other half is the environment where a display is viewed. A striking example is
-comparing a brightly lit office to a dark movie theater, the stimuli required
-to produce a good reading of the picture is greatly different. Therefore
+comparing a brightly lit office to a dark movie theater, the stimuli required to
+produce a good reading of the picture is greatly different. Therefore
 display-referred does not include only the display but the viewing environment
 as well.</p>
 <p>Window systems have been very well capable of operating without any explicit
 consideration to color management. This is because there used to be the implicit
 assumption of the standard display, the sRGB display, which all computer
-monitors implemented, more or less. The viewing environment was and still
-is accounted by adjusting the display and/or the room to produce a workable
-experience. Pictures are authored on a computer system by drawing, painting
-and adjusting the picture until it looks right on the author’s monitor. This
+monitors implemented, more or less. The viewing environment was and still is
+accounted by adjusting the display and/or the room to produce a workable
+experience. Pictures are authored on a computer system by drawing, painting and
+adjusting the picture until it looks right on the author’s monitor. This
 implicitly builds the standard display and environment assumption into the
-picture data. Deviations from the sRGB specification were minor enough that
-they often did not matter if not in a professional context like the printing
+picture data. Deviations from the sRGB specification were minor enough that they
+often did not matter if not in a professional context like the printing
 industry. Displaying video material required some more attention to the details,
-because video and television standards differ enough from the sRGB display.
-What really made explicit color management a hard requirement for entertainment
-is the coming of wide color gamut (WCG) and high dynamic range (HDR) materials
-and displays.</p>
+because video and television standards differ enough from the sRGB display. What
+really made explicit color management a hard requirement for entertainment is
+the coming of wide color gamut (WCG) and high dynamic range (HDR) materials and
+displays.</p>
 <p>The color management design in Wayland follows the general Wayland design
 principles: compositors tell clients what would be the optimal thing to do,
 clients tell the compositors what kind of pictures they are actually producing,
@@ -1641,20 +1742,20 @@ They are designed to work together, but they can also be used independently when
 the other one is not needed.</p>
 <h3 id="color-management-1"><a class="header" href="#color-management-1">Color-management</a></h3>
 <p>Color management protocol has two main purposes. First, it puts the
-responsibility of color management on the compositor. This means that clients
-do not necessarily need to care about color management at all, and can display
-just fine by using the traditional standard display assumption even when the
-actual display is wildly different. Clients can also choose to target some other
+responsibility of color management on the compositor. This means that clients do
+not necessarily need to care about color management at all, and can display just
+fine by using the traditional standard display assumption even when the actual
+display is wildly different. Clients can also choose to target some other
 assumed display and let the compositor handle it, or they can explicitly render
 for the actual display at hand. Second, when the window system has multiple
 different monitors, and a wl_surface happens to span more than one monitor, the
 compositor can display the surface content correctly on all spanned monitors
 simultaneously, as much as physically possible.</p>
-<p>Color-management protocol concentrates on colorimetry: when you have a
-pixel with RGB values, what stimulus do those values represent. The stimulus
+<p>Color-management protocol concentrates on colorimetry: when you have a pixel
+with RGB values, what stimulus do those values represent. The stimulus
 definition follows the CIE 1931 two-degree observer model. Some core concepts
-here are color primaries, white point, transfer function, and dynamic range.
-The viewing environment is represented in an extremely simplified way as the
+here are color primaries, white point, transfer function, and dynamic range. The
+viewing environment is represented in an extremely simplified way as the
 reference white luminance. The connection between pixel RGB values and stimulus
 plus viewing environment is recorded in an <em>image description</em> object. Clients
 can create image description objects and tag <code>wl_surface</code>s with them, to
@@ -1663,8 +1764,8 @@ image description the compositor would prefer to have on the <code>wl_surface</c
 that preference can change over time, e.g. when the <code>wl_surface</code> is moved from
 one <code>wl_output</code> to another. Following the compositor’s preference may provide
 advantages in image quality and power consumption.</p>
-<p>Image description objects can come in two flavors: parametric and ICC-based.
-The above was written with parametric image descriptions in mind, and they have
+<p>Image description objects can come in two flavors: parametric and ICC-based. The
+above was written with parametric image descriptions in mind, and they have
 first-class support for HDR. ICC-based image descriptions are wrapping an ICC
 profile and have no other data. ICC profiles are the standard tool for standard
 dynamic range (SDR) display color management. This means the capabilities
@@ -1674,13 +1775,13 @@ Compositor support for each flavor is optional.</p>
 <p>Color-representation protocol deals with (potentially sub-sampled) YCbCr-RGB
 conversion, quantization range, and the inclusion of alpha in the RGB color
 channels, a.k.a. pre-multiplication. There are several different specifications
-on how an YCbCr-like (including ICtCp) signal, with chroma sub-sampling or
-not, is created from a full-resolution RGB image. Again, a client can tag a
+on how an YCbCr-like (including ICtCp) signal, with chroma sub-sampling or not,
+is created from a full-resolution RGB image. Again, a client can tag a
 <code>wl_surface</code> with color-representation metadata to tell the compositor what kind
 of pixel data will be displayed through the wl_surface.</p>
 <p>The main purpose of color-representation is to correctly off-load the YCbCr-RGB
-conversion to the compositor, which can then opportunistically off-load
-it further to very power-efficient fixed-function circuitry in a display
+conversion to the compositor, which can then opportunistically off-load it
+further to very power-efficient fixed-function circuitry in a display
 controller. This can significantly reduce power consumption when watching videos
 compared to using a GPU for the same, and on some embedded hardware platforms it
 is a hard requirement for processing high resolution video.</p>

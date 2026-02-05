@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -182,8 +182,8 @@
                     <main>
                         <h1 id="wayland-architecture"><a class="header" href="#wayland-architecture">Wayland Architecture</a></h1>
 <h2 id="x-vs-wayland-architecture"><a class="header" href="#x-vs-wayland-architecture">X vs. Wayland Architecture</a></h2>
-<p>A good way to understand the Wayland architecture and how it is different from
-X is to follow an event from the input device to the point where the change it
+<p>A good way to understand the Wayland architecture and how it is different from X
+is to follow an event from the input device to the point where the change it
 affects appears on screen.</p>
 <p>This is where we are now with X:</p>
 <p><strong>X architecture diagram</strong></p>
@@ -217,15 +217,15 @@ compositor as a damage event.</p>
 </li>
 <li>
 <p>The damage event tells the compositor that something changed in the window
-and that it has to recomposite the part of the screen where that window
-is visible. The compositor is responsible for rendering the entire screen
+and that it has to recomposite the part of the screen where that window is
+visible. The compositor is responsible for rendering the entire screen
 contents based on its scenegraph and the contents of the X windows. Yet, it
 has to go through the X server to render this.</p>
 </li>
 <li>
 <p>The X server receives the rendering requests from the compositor and either
-copies the compositor back buffer to the front buffer or does a pageflip.
-In the general case, the X server has to do this step so it can account for
+copies the compositor back buffer to the front buffer or does a pageflip. In
+the general case, the X server has to do this step so it can account for
 overlapping windows, which may require clipping and determine whether or not
 it can page flip. However, for a compositor, which is always fullscreen, this
 is another unnecessary context switch.</p>
@@ -234,10 +234,10 @@ is another unnecessary context switch.</p>
 <p>As suggested above, there are a few problems with this approach. The X server
 doesn’t have the information to decide which window should receive the event,
 nor can it transform the screen coordinates to window-local coordinates. And
-even though X has handed responsibility for the final painting of the screen
-to the compositing manager, X still controls the front buffer and modesetting.
-Most of the complexity that the X server used to handle is now available in
-the kernel or self contained libraries (KMS, evdev, mesa, fontconfig, freetype,
+even though X has handed responsibility for the final painting of the screen to
+the compositing manager, X still controls the front buffer and modesetting. Most
+of the complexity that the X server used to handle is now available in the
+kernel or self contained libraries (KMS, evdev, mesa, fontconfig, freetype,
 cairo, Qt etc). In general, the X server is now just a middle man that
 introduces an extra step between applications and the compositor and an extra
 step between the compositor and the hardware.</p>
@@ -320,14 +320,15 @@ small part of the buffer may be different, like a blinking cursor or a spinner.<
 <h2 id="accelerated-gpu-buffer-exchange"><a class="header" href="#accelerated-gpu-buffer-exchange">Accelerated GPU Buffer Exchange</a></h2>
 <p>Clients
 <a href="https://docs.kernel.org/userspace-api/dma-buf-alloc-exchange.html">exchange</a>
-GPU buffers with the compositor as dma-buf file descriptors,
-which are universal handles that are independent of
-any particular rendering API or memory allocator. The
+GPU buffers with the compositor as dma-buf file descriptors, which are universal
+handles that are independent of any particular rendering API or memory
+allocator. The
 <a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/stable/linux-dmabuf/linux-dmabuf-v1.xml">linux-dmabuf-v1</a>
 protocol is used to turn one or more dma-buf FDs into a
 <a href="https://wayland.app/protocols/wayland#wl_buffer">wl_buffer</a>.</p>
 <p>If the client uses the
-<a href="https://docs.vulkan.org/spec/latest/chapters/VK_KHR_surface/wsi.html">Vulkan</a> or
+<a href="https://docs.vulkan.org/spec/latest/chapters/VK_KHR_surface/wsi.html">Vulkan</a>
+or
 <a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_platform_wayland.txt">EGL</a>
 (via
 <a href="https://gitlab.freedesktop.org/wayland/wayland/-/tree/main/egl">wayland-egl</a>)
@@ -365,14 +366,14 @@ and
 <a href="https://registry.khronos.org/EGL/extensions/EXT/EGL_EXT_image_dma_buf_import_modifiers.txt">EGL_EXT_image_dma_buf_import_modifiers</a>
 to import the dma-bufs provided by the client into their own Vulkan or EGL
 renderers.</p>
-<p>Clients do not need to wait for the GPU to finish rendering
-before submitting dma-bufs to the compositor. Clients can use the
+<p>Clients do not need to wait for the GPU to finish rendering before submitting
+dma-bufs to the compositor. Clients can use the
 <a href="https://gitlab.freedesktop.org/wayland/wayland-protocols/-/blob/main/staging/linux-drm-syncobj/linux-drm-syncobj-v1.xml">linux-drm-syncobj-v1</a>
 protocol to exchange DRM synchronization objects with the compositor. These
 objects are used to asynchronously signal ownership transfer of buffers from
 clients to the compositor and vice versa. The WSIs do this transparently.</p>
-<p>If the linux-drm-syncobj-v1 protocol is not supported
-by the compositor, clients and compositors can use the
+<p>If the linux-drm-syncobj-v1 protocol is not supported by the compositor, clients
+and compositors can use the
 <a href="https://docs.kernel.org/driver-api/dma-buf.html#c.dma_buf_export_sync_file">DMA_BUF_IOCTL_EXPORT_SYNC_FILE</a>
 and
 <a href="https://docs.kernel.org/driver-api/dma-buf.html#c.dma_buf_import_sync_file">DMA_BUF_IOCTL_IMPORT_SYNC_FILE</a>
@@ -381,9 +382,9 @@ ioctls to access and create implicit synchronization barriers.</p>
 <p>Compositors enumerate DRM KMS devices using
 <a href="https://en.wikipedia.org/wiki/Udev">udev</a>. Udev also notifies compositors of
 KMS device and display hotplug events.</p>
-<p>Access to DRM KMS device ioctls is privileged. Since
-compositors usually run as unprivileged applications, they
-typically gain access to a privileged file descriptor using the
+<p>Access to DRM KMS device ioctls is privileged. Since compositors usually run as
+unprivileged applications, they typically gain access to a privileged file
+descriptor using the
 <a href="https://www.freedesktop.org/software/systemd/man/latest/org.freedesktop.login1.html#Session%20Objects">TakeDevice</a>
 method provided by logind.</p>
 <p>Using the file descriptor, compositors use KMS

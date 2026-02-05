@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -189,31 +189,31 @@ them all away would be prohibitive. Therefore a Wayland compositor often needs
 to support running X11 applications.</p>
 <p>X11 and Wayland are different enough that there is no “simple” way to translate
 between them. Most of X11 is uninteresting to a Wayland compositor. That,
-combined with the gigantic implementation effort needed to support X11, makes
-it intractable to just write X11 support directly in a Wayland compositor. The
+combined with the gigantic implementation effort needed to support X11, makes it
+intractable to just write X11 support directly in a Wayland compositor. The
 implementation would be nothing short of a real X11 server.</p>
-<p>Therefore, Wayland compositors should use Xwayland, the X11 server that lives
-in the Xorg server source code repository and shares most of the implementation
+<p>Therefore, Wayland compositors should use Xwayland, the X11 server that lives in
+the Xorg server source code repository and shares most of the implementation
 with the Xorg server. Xwayland is a complete X11 server, just like Xorg is, but
 instead of driving the displays and opening input devices, it acts as a Wayland
 client. The rest of this chapter talks about how Xwayland works.</p>
-<p>For integration and architecture reasons, while Xwayland is a Wayland client
-of the Wayland compositor, the Wayland compositor is an X11 client of Xwayland.
+<p>For integration and architecture reasons, while Xwayland is a Wayland client of
+the Wayland compositor, the Wayland compositor is an X11 client of Xwayland.
 This circular dependency requires special care from the Wayland compositor.</p>
 <h2 id="two-modes-for-foreign-windows"><a class="header" href="#two-modes-for-foreign-windows">Two Modes for Foreign Windows</a></h2>
 <p>In general, windows from a foreign window system can be presented in one of two
 ways: rootless and rootful (not rootless).</p>
-<p>In rootful mode, the foreign window system as a whole is represented as a
-window (or more) of its own. You have a native window, inside which all the
-foreign windows are. The advantage of this approach in Xwayland’s case is that
-you can run your favourite X11 window manager to manage your X11 applications.
-The disadvantage is that the foreign windows do not integrate with the native
+<p>In rootful mode, the foreign window system as a whole is represented as a window
+(or more) of its own. You have a native window, inside which all the foreign
+windows are. The advantage of this approach in Xwayland’s case is that you can
+run your favourite X11 window manager to manage your X11 applications. The
+disadvantage is that the foreign windows do not integrate with the native
 desktop. Therefore this mode is not usually used.</p>
-<p>In rootless mode, each foreign window is a first-class resident among the
-native windows. Foreign windows are not confined inside a native window but
-act as if they were native windows. The advantage is that one can freely stack
-and mix native and foreign windows, which is not possible in rootful mode.
-The disadvantage is that this mode is harder to implement and fundamental
+<p>In rootless mode, each foreign window is a first-class resident among the native
+windows. Foreign windows are not confined inside a native window but act as if
+they were native windows. The advantage is that one can freely stack and mix
+native and foreign windows, which is not possible in rootful mode. The
+disadvantage is that this mode is harder to implement and fundamental
 differences in window systems may prevent some things from working. With
 rootless Xwayland, the Wayland compositor must take the role as the X11 window
 manager, and one cannot use any other X11 window manager in its place.</p>
@@ -226,8 +226,8 @@ cooperation with a Wayland compositor as follows:</p>
 <p>An X11 application connects to Xwayland just like it would connect to any X
 server. Xwayland processes all the X11 requests. On the other end, Xwayland is a
 Wayland client that connects to the Wayland compositor.</p>
-<p>The X11 window manager (XWM) is an integral part of the Wayland compositor.
-XWM uses the usual X11 window management protocol to manage all X11 windows in
+<p>The X11 window manager (XWM) is an integral part of the Wayland compositor. XWM
+uses the usual X11 window management protocol to manage all X11 windows in
 Xwayland. Most importantly, XWM acts as a bridge between Xwayland window state
 and the Wayland compositor’s window manager (WWM). This way WWM can manage all
 windows, both native Wayland and X11 (Xwayland) windows. This is very important
@@ -244,11 +244,11 @@ unless the Wayland compositor specifically chooses to break the X11 client
 intercommunications by spawning application specific Xwayland instances. X11
 clients are naturally isolated from Wayland clients.</p>
 <p>Xwayland compatibility compared to a native X server will probably never reach
-100%. Desktop environment (DE) components, specifically X11 window managers,
-are practically never supported. An X11 window manager would not know about
-native Wayland windows, so it could manage only X11 windows. On the other hand,
-there must be an XWM that reserves the exclusive window manager role so that
-the Wayland compositor could show the X11 windows appropriately. For other DE
+100%. Desktop environment (DE) components, specifically X11 window managers, are
+practically never supported. An X11 window manager would not know about native
+Wayland windows, so it could manage only X11 windows. On the other hand, there
+must be an XWM that reserves the exclusive window manager role so that the
+Wayland compositor could show the X11 windows appropriately. For other DE
 components, like pagers and panels, adding the necessary interfaces to support
 them in WWM through XWM is often considered not worthwhile.</p>
 <h2 id="x-window-manager-xwm"><a class="header" href="#x-window-manager-xwm">X Window Manager (XWM)</a></h2>
@@ -256,18 +256,18 @@ them in WWM through XWM is often considered not worthwhile.</p>
 compositor is just like any other window manager. The difference is mostly in
 which process it resides in, and the few extra conventions in the X11 protocol
 to support Wayland window management (WWM) specifically.</p>
-<p>There are two separate asynchronous communication channels between Xwayland
-and a Wayland compositor: one uses the Wayland protocol, and the other one,
-solely for XWM, uses X11 protocol. This setting demands great care from the XWM
+<p>There are two separate asynchronous communication channels between Xwayland and
+a Wayland compositor: one uses the Wayland protocol, and the other one, solely
+for XWM, uses X11 protocol. This setting demands great care from the XWM
 implementation to avoid (random) deadlocks with Xwayland. It is often nearly
-impossible to prove that synchronous or blocking X11 calls from XWM cannot
-cause a deadlock, and therefore it is strongly recommended to make all X11
+impossible to prove that synchronous or blocking X11 calls from XWM cannot cause
+a deadlock, and therefore it is strongly recommended to make all X11
 communications asynchronous. All Wayland communications are already asynchronous
 by design.</p>
 <h3 id="window-identification"><a class="header" href="#window-identification">Window identification</a></h3>
 <p>In Xwayland, an X11 window may have a corresponding wl_surface object in
-Wayland. The wl_surface object is used for input and output: it is referenced
-by input events and used to provide the X11 window content to the Wayland
+Wayland. The wl_surface object is used for input and output: it is referenced by
+input events and used to provide the X11 window content to the Wayland
 compositor. The X11 window and the wl_surface live in different protocol
 streams, and they need to be matched for XWM to do its job.</p>
 <p>When Xwayland creates a wl_surface on Wayland, it will also send an X11

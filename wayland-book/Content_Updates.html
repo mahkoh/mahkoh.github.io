@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -188,13 +188,13 @@ applied immediately but are instead double-buffered to allow atomic changes.
 These double-buffered changes are committed through the wl_surface.commit
 request, which creates a Content Update.</p>
 <p>Content Updates encapsulate all double-buffered state changes and can be applied
-by the compositor. The complexity arises when considering subsurfaces, which
-can operate in synchronized mode. When a subsurface is synchronized, its Content
+by the compositor. The complexity arises when considering subsurfaces, which can
+operate in synchronized mode. When a subsurface is synchronized, its Content
 Updates must be applied atomically together with the parent surface’s state.
 This synchronization can extend through an entire tree of subsurfaces, where
 child subsurfaces inherit the synchronized behavior from their parents.</p>
-<p>Historically, Content Updates from synchronized subsurfaces were merged into
-the pending state of the parent surface on commit. However, the introduction of
+<p>Historically, Content Updates from synchronized subsurfaces were merged into the
+pending state of the parent surface on commit. However, the introduction of
 constraints—which can defer the application of Content Updates—necessitated a
 more sophisticated model. This led to the implementation of per-surface queues
 of Content Updates, with dependencies between Content Updates across different
@@ -256,88 +256,150 @@ constraints, and transitioning from a sync subsurface to a desync one.</p>
 <p>In all the examples below, the surface T1 refers to a toplevel surface, SS1
 refers to a sub-surface which is a child of T1, and SS2 refers to a sub-surface
 which is a child of SS1.</p>
-<p><strong>Legend</strong></p>
+<h3 id="legend"><a class="header" href="#legend">Legend</a></h3>
 <p><img src="images/content-updates/content-update-legend.png" alt=""></p>
-<p><strong>Simple Desynchronized Case</strong></p>
-<p><img src="images/content-updates/simple-desynchronized-state-1.png" alt=""></p>
+<h3 id="simple-desynchronized-case"><a class="header" href="#simple-desynchronized-case">Simple Desynchronized Case</a></h3>
+<ol>
+<li>
 <p>SS2 is effectively desynchronized and commits. This results in the
 desynchronized content update (DCU) <em>1</em>.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-2.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-1.png" alt=""></p>
+</li>
+<li>
 <p>DCU <em>1</em> is a candidate, and the candidate DAG reachable from DCU <em>1</em> is only DCU
 <em>1</em> itself. DCU <em>1</em> and thus the candidate DAG does not have any constraints and
 can be applied.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-3.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-2.png" alt=""></p>
+</li>
+<li>
 <p>The content updates of the candidate DAG get applied to the surface atomically.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-4.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-3.png" alt=""></p>
+</li>
+<li>
 <p>T1 commits a DCU with a <em>buffer-sync</em> constraint. It is a candidate but its DAG
 can’t be applied because it contains a constraint.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-5.png" alt=""></p>
-<p>T1 commits another CU (DCU <em>3</em>) which is added at the end of the queue,
-with a dependency to the previous CU (DCU <em>2</em>). Both DCU <em>2</em> and DCU <em>3</em> are
+<p><img src="images/content-updates/simple-desynchronized-state-4.png" alt=""></p>
+</li>
+<li>
+<p>T1 commits another CU (DCU <em>3</em>) which is added at the end of the queue, with a
+dependency to the previous CU (DCU <em>2</em>). Both DCU <em>2</em> and DCU <em>3</em> are
 candidates, but both DAGs contain DCU <em>2</em> with a constraint, and can’t be
 applied.</p>
-<p><img src="images/content-updates/simple-desynchronized-state-6.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-5.png" alt=""></p>
+</li>
+<li>
 <p>When the constraint gets cleared, both DAGs can be applied to the surface
 atomitcally (either only <em>2</em>, or <em>2</em> and <em>3</em>).</p>
-<p><strong>Simple Synchronized Case</strong></p>
-<p><img src="images/content-updates/simple-synchronized-state-1.png" alt=""></p>
+<p><img src="images/content-updates/simple-desynchronized-state-6.png" alt=""></p>
+</li>
+</ol>
+<h3 id="simple-synchronized-case"><a class="header" href="#simple-synchronized-case">Simple Synchronized Case</a></h3>
+<ol>
+<li>
 <p>SS1 and SS2 are effectively synchronized. SS2 commits SCU <em>1</em>.</p>
-<p><img src="images/content-updates/simple-synchronized-state-2.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-1.png" alt=""></p>
+</li>
+<li>
 <p>SS1 commits SCU <em>2</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in its
 queue, which is not reachable. This creates a dependency from SCU <em>2</em> to SCU
 <em>1</em>.</p>
-<p><img src="images/content-updates/simple-synchronized-state-3.png" alt=""></p>
-<p>SS1 commits SCU <em>3</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in
-its queue, which is already reachable by SCU <em>2</em>. No dependency to SCU <em>1</em> is
+<p><img src="images/content-updates/simple-synchronized-state-2.png" alt=""></p>
+</li>
+<li>
+<p>SS1 commits SCU <em>3</em>. The direct child surfaces SS2 has the last SCU <em>1</em> in its
+queue, which is already reachable by SCU <em>2</em>. No dependency to SCU <em>1</em> is
 created. A dependency to the previous CU of the same queue (SCU <em>2</em>) is created.</p>
-<p><img src="images/content-updates/simple-synchronized-state-4.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-3.png" alt=""></p>
+</li>
+<li>
 <p>T1 commit DCU <em>4</em>. It is a candidate, its DAG does not contain any constraint
 and it can be applied.</p>
-<p><img src="images/content-updates/simple-synchronized-state-5.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-4.png" alt=""></p>
+</li>
+<li>
 <p>The DAG gets applied to the surfaces atomically.</p>
-<p><strong>Complex Synchronized Subsurface Case 1</strong></p>
-<p><img src="images/content-updates/sync-subsurf-case1-1.png" alt=""></p>
+<p><img src="images/content-updates/simple-synchronized-state-5.png" alt=""></p>
+</li>
+</ol>
+<h3 id="complex-synchronized-subsurface-case-1"><a class="header" href="#complex-synchronized-subsurface-case-1">Complex Synchronized Subsurface Case 1</a></h3>
+<ol>
+<li>
 <p>Every DCU (<em>1</em> and <em>6</em>) contain CUs with constraints in their candidate DAG</p>
-<p><img src="images/content-updates/sync-subsurf-case1-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-1.png" alt=""></p>
+</li>
+<li>
 <p>Waiting until the <em>buffer-sync</em> constrain on CU <em>1</em> is cleared, the candidate
 DAG of CU <em>1</em> does not contain constraints and can be applied</p>
-<p><img src="images/content-updates/sync-subsurf-case1-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-2.png" alt=""></p>
+</li>
+<li>
 <p>That leaves the candidate DAG of CU <em>6</em> which still contains another CU with a
 <em>buffer-sync</em> constrain</p>
-<p><img src="images/content-updates/sync-subsurf-case1-4.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-3.png" alt=""></p>
+</li>
+<li>
 <p>Waiting until the <em>buffer-sync</em> constrain on CU <em>6</em> is cleared, the candidate
 DAG of <em>6</em> does not contain CUs with constraints and can be applied.</p>
-<p><img src="images/content-updates/sync-subsurf-case1-5.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-4.png" alt=""></p>
+</li>
+<li>
 <p>There is no DCU left and no constraint remaining. Nothing more can be applied
 without a new CU.</p>
-<p><strong>Complex Synchronized Subsurface Case 2</strong></p>
-<p><img src="images/content-updates/sync-subsurf-case2-1.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case1-5.png" alt=""></p>
+</li>
+</ol>
+<h3 id="complex-synchronized-subsurface-case-2"><a class="header" href="#complex-synchronized-subsurface-case-2">Complex Synchronized Subsurface Case 2</a></h3>
+<ol>
+<li>
 <p>Both DCUs (<em>1</em> and <em>6</em>) have a reachable DAG containing CU <em>1</em> with a constraint</p>
-<p><img src="images/content-updates/sync-subsurf-case2-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case2-1.png" alt=""></p>
+</li>
+<li>
 <p>Waiting until the <em>buffer-sync</em> constrain on <em>1</em> is cleared, both DAGs contain
 no CU with constraints and can be applied in any order</p>
-<p><img src="images/content-updates/sync-subsurf-case2-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case2-2.png" alt=""></p>
+</li>
+<li>
 <p>That leaves the same state as in the previous case</p>
-<p><strong>Synchronized to Desynchronized Subsurface</strong></p>
-<p><img src="images/content-updates/sync-to-desync-subsurf-1.png" alt=""></p>
+<p><img src="images/content-updates/sync-subsurf-case2-3.png" alt=""></p>
+</li>
+</ol>
+<h3 id="synchronized-to-desynchronized-subsurface"><a class="header" href="#synchronized-to-desynchronized-subsurface">Synchronized to Desynchronized Subsurface</a></h3>
+<ol>
+<li>
 <p>There is one DCU (<em>4</em>) with its reachable DAG that cannot be applied because CU
 <em>4</em> contains a constraint</p>
-<p><img src="images/content-updates/sync-to-desync-subsurf-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-1.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS1</em> transitions from effectively synchronized to effectively
 desynchronized. SCU <em>2</em> is reachable by DCU <em>4</em> so nothing changes.</p>
-<p><img src="images/content-updates/sync-to-desync-subsurf-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-2.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS1</em> provides a new DCU (<em>5</em>) but because the CU before (<em>2</em>) is a
 Synchronized CU, it is not a candidate</p>
-<p><strong>Synchronized to Desynchronized Transition</strong></p>
-<p><img src="images/content-updates/sync-to-desync-transition-1.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-subsurf-3.png" alt=""></p>
+</li>
+</ol>
+<h3 id="synchronized-to-desynchronized-transition"><a class="header" href="#synchronized-to-desynchronized-transition">Synchronized to Desynchronized Transition</a></h3>
+<ol>
+<li>
 <p>There are four SCUs and all surfaces are effectively synchronized.</p>
-<p><img src="images/content-updates/sync-to-desync-transition-2.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-transition-1.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS1</em> transitions to effectively desynchronized and SCU <em>2</em> becomes a
 DCU because it is not reachable from a DCU</p>
-<p><img src="images/content-updates/sync-to-desync-transition-3.png" alt=""></p>
+<p><img src="images/content-updates/sync-to-desync-transition-2.png" alt=""></p>
+</li>
+<li>
 <p>Surface <em>SS2</em> transitions to effectively desynchronized. SCUs <em>3</em> and <em>4</em> become
 DCUs because they are not reachable from a DCU. SCU <em>1</em> does not change because
 it is reachable by DCU <em>2</em>.</p>
+<p><img src="images/content-updates/sync-to-desync-transition-3.png" alt=""></p>
+</li>
+</ol>
 
                     </main>
 

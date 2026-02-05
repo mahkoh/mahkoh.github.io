@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -197,6 +197,44 @@ concrete Wayland interfaces, requests, and events.</p>
 <li><a href="https://wayland.app">wayland.app</a> - A community-maintained website that renders these protocols,
 and many more, as easily accessible HTML pages.</li>
 </ul>
+<h2 id="about-the-book"><a class="header" href="#about-the-book">About the Book</a></h2>
+<p>This book is written in markdown and converted to HTML using
+<a href="https://rust-lang.github.io/mdBook">mdbook</a>.</p>
+<p>It supports the <a href="https://commonmark.org/">CommonMark</a> dialect of markdown plus a number of
+widely supported extensions:</p>
+<ul>
+<li><code>~~strikethrough~~</code></li>
+<li>
+<pre><code class="language-markdown">footnotes[^note]
+
+[^note]: text
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">| Tables | Header2 |
+|--------|---------|
+| abc    | def     |
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">- [x] Task lists
+- [ ] Incomplete task
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">definition lists
+  : This is the definition of a
+    definition list
+</code></pre>
+</li>
+<li>
+<pre><code class="language-markdown">&gt; [!NOTE]
+&gt; Admonitions
+</code></pre>
+</li>
+</ul>
+<p>The full list of extensions is documented
+<a href="https://rust-lang.github.io/mdBook/format/markdown.html#extensions">here</a>.</p>
 <h2 id="copyright"><a class="header" href="#copyright">Copyright</a></h2>
 <p>Copyright © 2012 Kristian Høgsberg</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a

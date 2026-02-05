@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -181,8 +181,8 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="types-of-compositors"><a class="header" href="#types-of-compositors">Types of Compositors</a></h1>
-<p>Compositors come in different types, depending on which role they
-play in the overall architecture of the OS. For instance, a <a href="#system-compositor">system
+<p>Compositors come in different types, depending on which role they play in the
+overall architecture of the OS. For instance, a <a href="#system-compositor">system
 compositor</a> can be used for booting the system, handling
 multiple user switching, a possible console terminal emulator and so forth. A
 different compositor, a <a href="#session-compositor">session compositor</a> would provide
@@ -194,8 +194,8 @@ compositors to co-exist.</p>
 <p>A system compositor can run from early boot until shutdown. It effectively
 replaces the kernel vt system, and can tie in with the systems graphical boot
 setup and multiseat support.</p>
-<p>A system compositor can host different types of session compositors, and let
-us switch between multiple sessions (fast user switching, or secure/personal
+<p>A system compositor can host different types of session compositors, and let us
+switch between multiple sessions (fast user switching, or secure/personal
 desktop switching).</p>
 <p>A linux implementation of a system compositor will typically use libudev, egl,
 kms, evdev and cairo.</p>
@@ -240,14 +240,14 @@ contents rendered by another client into their window. This is often used for
 applets in a panel, browser plugins and similar. Wayland doesn’t directly allow
 this, but clients can communicate GEM buffer names out-of-band, for example,
 using D-Bus, or command line arguments when the panel launches the applet.
-Another option is to use a nested Wayland instance. For this, the Wayland
-server will have to be a library that the host application links to. The host
+Another option is to use a nested Wayland instance. For this, the Wayland server
+will have to be a library that the host application links to. The host
 application will then pass the Wayland server socket name to the embedded
 application, and will need to implement the Wayland compositor interface. The
-host application composites the client surfaces as part of it’s window, that
-is, in the web page or in the panel. The benefit of nesting the Wayland server
-is that it provides the requests the embedded client needs to inform the host
-about buffer updates and a mechanism for forwarding input events from the host
+host application composites the client surfaces as part of it’s window, that is,
+in the web page or in the panel. The benefit of nesting the Wayland server is
+that it provides the requests the embedded client needs to inform the host about
+buffer updates and a mechanism for forwarding input events from the host
 application.</p>
 <p>An example for this kind of setup is firefox embedding the flash player as a
 kind of special-purpose compositor.</p>

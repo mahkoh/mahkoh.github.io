@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -182,34 +182,34 @@
                     <main>
                         <h1 id="color-management"><a class="header" href="#color-management">Color management</a></h1>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>Color management in Wayland considers only displays. All pictures in Wayland
-are always display-referred, meaning that the pixel values are intended
-as-is for some specific display where they would produce the light emissions
+<p>Color management in Wayland considers only displays. All pictures in Wayland are
+always display-referred, meaning that the pixel values are intended as-is for
+some specific display where they would produce the light emissions
 (<a href="https://cie.co.at/eilvterm/17-23-002">stimuli</a>) the picture’s author desired.
 Wayland does not support displaying “raw” camera or scanner images as they are
 not display-referred, nor are they even pictures without complex and subjective
 processing.</p>
 <p>Stimuli — the picture itself — are only half of the picture reproduction. The
 other half is the environment where a display is viewed. A striking example is
-comparing a brightly lit office to a dark movie theater, the stimuli required
-to produce a good reading of the picture is greatly different. Therefore
+comparing a brightly lit office to a dark movie theater, the stimuli required to
+produce a good reading of the picture is greatly different. Therefore
 display-referred does not include only the display but the viewing environment
 as well.</p>
 <p>Window systems have been very well capable of operating without any explicit
 consideration to color management. This is because there used to be the implicit
 assumption of the standard display, the sRGB display, which all computer
-monitors implemented, more or less. The viewing environment was and still
-is accounted by adjusting the display and/or the room to produce a workable
-experience. Pictures are authored on a computer system by drawing, painting
-and adjusting the picture until it looks right on the author’s monitor. This
+monitors implemented, more or less. The viewing environment was and still is
+accounted by adjusting the display and/or the room to produce a workable
+experience. Pictures are authored on a computer system by drawing, painting and
+adjusting the picture until it looks right on the author’s monitor. This
 implicitly builds the standard display and environment assumption into the
-picture data. Deviations from the sRGB specification were minor enough that
-they often did not matter if not in a professional context like the printing
+picture data. Deviations from the sRGB specification were minor enough that they
+often did not matter if not in a professional context like the printing
 industry. Displaying video material required some more attention to the details,
-because video and television standards differ enough from the sRGB display.
-What really made explicit color management a hard requirement for entertainment
-is the coming of wide color gamut (WCG) and high dynamic range (HDR) materials
-and displays.</p>
+because video and television standards differ enough from the sRGB display. What
+really made explicit color management a hard requirement for entertainment is
+the coming of wide color gamut (WCG) and high dynamic range (HDR) materials and
+displays.</p>
 <p>The color management design in Wayland follows the general Wayland design
 principles: compositors tell clients what would be the optimal thing to do,
 clients tell the compositors what kind of pictures they are actually producing,
@@ -223,20 +223,20 @@ They are designed to work together, but they can also be used independently when
 the other one is not needed.</p>
 <h3 id="color-management-1"><a class="header" href="#color-management-1">Color-management</a></h3>
 <p>Color management protocol has two main purposes. First, it puts the
-responsibility of color management on the compositor. This means that clients
-do not necessarily need to care about color management at all, and can display
-just fine by using the traditional standard display assumption even when the
-actual display is wildly different. Clients can also choose to target some other
+responsibility of color management on the compositor. This means that clients do
+not necessarily need to care about color management at all, and can display just
+fine by using the traditional standard display assumption even when the actual
+display is wildly different. Clients can also choose to target some other
 assumed display and let the compositor handle it, or they can explicitly render
 for the actual display at hand. Second, when the window system has multiple
 different monitors, and a wl_surface happens to span more than one monitor, the
 compositor can display the surface content correctly on all spanned monitors
 simultaneously, as much as physically possible.</p>
-<p>Color-management protocol concentrates on colorimetry: when you have a
-pixel with RGB values, what stimulus do those values represent. The stimulus
+<p>Color-management protocol concentrates on colorimetry: when you have a pixel
+with RGB values, what stimulus do those values represent. The stimulus
 definition follows the CIE 1931 two-degree observer model. Some core concepts
-here are color primaries, white point, transfer function, and dynamic range.
-The viewing environment is represented in an extremely simplified way as the
+here are color primaries, white point, transfer function, and dynamic range. The
+viewing environment is represented in an extremely simplified way as the
 reference white luminance. The connection between pixel RGB values and stimulus
 plus viewing environment is recorded in an <em>image description</em> object. Clients
 can create image description objects and tag <code>wl_surface</code>s with them, to
@@ -245,8 +245,8 @@ image description the compositor would prefer to have on the <code>wl_surface</c
 that preference can change over time, e.g. when the <code>wl_surface</code> is moved from
 one <code>wl_output</code> to another. Following the compositor’s preference may provide
 advantages in image quality and power consumption.</p>
-<p>Image description objects can come in two flavors: parametric and ICC-based.
-The above was written with parametric image descriptions in mind, and they have
+<p>Image description objects can come in two flavors: parametric and ICC-based. The
+above was written with parametric image descriptions in mind, and they have
 first-class support for HDR. ICC-based image descriptions are wrapping an ICC
 profile and have no other data. ICC profiles are the standard tool for standard
 dynamic range (SDR) display color management. This means the capabilities
@@ -256,13 +256,13 @@ Compositor support for each flavor is optional.</p>
 <p>Color-representation protocol deals with (potentially sub-sampled) YCbCr-RGB
 conversion, quantization range, and the inclusion of alpha in the RGB color
 channels, a.k.a. pre-multiplication. There are several different specifications
-on how an YCbCr-like (including ICtCp) signal, with chroma sub-sampling or
-not, is created from a full-resolution RGB image. Again, a client can tag a
+on how an YCbCr-like (including ICtCp) signal, with chroma sub-sampling or not,
+is created from a full-resolution RGB image. Again, a client can tag a
 <code>wl_surface</code> with color-representation metadata to tell the compositor what kind
 of pixel data will be displayed through the wl_surface.</p>
 <p>The main purpose of color-representation is to correctly off-load the YCbCr-RGB
-conversion to the compositor, which can then opportunistically off-load
-it further to very power-efficient fixed-function circuitry in a display
+conversion to the compositor, which can then opportunistically off-load it
+further to very power-efficient fixed-function circuitry in a display
 controller. This can significantly reduce power consumption when watching videos
 compared to using a GPU for the same, and on some embedded hardware platforms it
 is a hard requirement for processing high resolution video.</p>

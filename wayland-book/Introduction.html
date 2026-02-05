@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1cb904f2.js";
+            window.path_to_searchindex_js = "searchindex-c85273cc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-b64e8b16.js"></script>
@@ -182,13 +182,13 @@
                     <main>
                         <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
 <h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
-<p>Most Linux and Unix-based systems rely on the X Window System (or simply <em>X</em>)
-as the low-level protocol for building bitmap graphics interfaces. On these
-systems, the X stack has grown to encompass functionality arguably belonging
-in client libraries, helper libraries, or the host operating system kernel.
-Support for things like PCI resource management, display configuration
-management, direct rendering, and memory management has been integrated into the
-X stack, imposing limitations like limited support for standalone applications,
+<p>Most Linux and Unix-based systems rely on the X Window System (or simply <em>X</em>) as
+the low-level protocol for building bitmap graphics interfaces. On these
+systems, the X stack has grown to encompass functionality arguably belonging in
+client libraries, helper libraries, or the host operating system kernel. Support
+for things like PCI resource management, display configuration management,
+direct rendering, and memory management has been integrated into the X stack,
+imposing limitations like limited support for standalone applications,
 duplication in other projects (e.g. the Linux fb layer or the DirectFB project),
 and high levels of complexity for systems combining multiple elements (for
 example radeon memory map handling between the fb driver and X driver, or VT
@@ -215,9 +215,9 @@ to the Linux kernel, further reducing the scope of X and its driver stack. The
 end result is a highly modular graphics stack.</p>
 <h2 id="the-compositing-manager-as-the-display-server"><a class="header" href="#the-compositing-manager-as-the-display-server">The compositing manager as the display server</a></h2>
 <p>Wayland is a new display server and compositing protocol, and Weston is the
-implementation of this protocol which builds on top of all the components
-above. We are trying to distill out the functionality in the X server that is
-still used by the modern Linux desktop. This turns out to be not a whole lot.
+implementation of this protocol which builds on top of all the components above.
+We are trying to distill out the functionality in the X server that is still
+used by the modern Linux desktop. This turns out to be not a whole lot.
 Applications can allocate their own off-screen buffers and render their window
 contents directly, using hardware accelerated libraries like libGL, or high
 quality software implementations like those found in Cairo. In the end, what’s
@@ -233,14 +233,14 @@ windows and how their contents are displayed. Rendering is left to clients, and
 system wide memory management interfaces are used to pass buffer handles between
 clients and the compositing manager.</p>
 <p><img src="images/wayland-architecture.png" alt=""></p>
-<p>The figure above illustrates how Wayland clients interact with a Wayland
-server. Note that window management and composition are handled entirely in the
-server, significantly reducing complexity while marginally improving performance
-through reduced context switching. The resulting system is easier to build and
-extend than a similar X system, because often changes need only be made in one
-place. Or in the case of protocol extensions, two (rather than 3 or 4 in the
-X case where window management and/or composition handling may also need to
-be updated).</p>
+<p>The figure above illustrates how Wayland clients interact with a Wayland server.
+Note that window management and composition are handled entirely in the server,
+significantly reducing complexity while marginally improving performance through
+reduced context switching. The resulting system is easier to build and extend
+than a similar X system, because often changes need only be made in one place.
+Or in the case of protocol extensions, two (rather than 3 or 4 in the X case
+where window management and/or composition handling may also need to be
+updated).</p>
 
                     </main>
 
